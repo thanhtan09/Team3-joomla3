@@ -52,7 +52,7 @@ public class TC_JOOMLA_BANNERS_BANNERS_001 extends Abstract_test{
 		
 		log.info("Create new banner");
 		bannerPage = categoriesPage.navigatetoBannerpage();
-		bannerPage.addNewBanner(banner.getName(), category.getTitle(), client.getName(), "");
+		bannerPage.addNewBanner(banner.getName(), category.getTitle(), client.getName(), "","");
 		
 		log.info("A message : Banner successfully saved shows and new banner is created");
 		verifyTrue(bannerPage.isMessageSuccessDisplay());
@@ -63,7 +63,7 @@ public class TC_JOOMLA_BANNERS_BANNERS_001 extends Abstract_test{
 	public void TC_BANNERS_002(){
 		
 		log.info("Add new banner");
-		bannerPage.addNewBanner(banner2.getName(), category.getTitle(), client.getName(), "Save");
+		bannerPage.addNewBanner(banner2.getName(), category.getTitle(), client.getName(), "","Save");
 		
 		log.info("A message : Banner successfully saved shows and Edit Banner page displays");
 		newbannerPage = Factory_page.getNewBannerPage(driver);
@@ -71,11 +71,25 @@ public class TC_JOOMLA_BANNERS_BANNERS_001 extends Abstract_test{
 		verifyTrue(newbannerPage.isEditBannerPage());
 	}
 	
+	@Test(description = "Verify that user can create a new banner with unpublished status")
+	public void TC_BANNERS_003(){
+		
+		log.info("Add new banner with Unpublished status");
+		bannerPage = Factory_page.getBannerPage(driver);
+		bannerPage.addNewBanner(banner3.getName(), category.getTitle(), client.getName(),STATUS_PUBLISH, "");
+		
+		log.info("A message : Banner successfully saved shows and new banner is created");
+		verifyTrue(bannerPage.isMessageSuccessDisplay());
+		verifyTrue(bannerPage.isBannerDisplay(banner3.getName()));
+		
+	}
+	
 	@AfterClass
 	public void end(){
 		log.info("Delete banner");
 		bannerPage.deleteBanner(banner.getName());
 		bannerPage.deleteBanner(banner2.getName());
+		bannerPage.deleteBanner(banner3.getName());
 		
 		log.info("Delete client");
 		homePage = Factory_page.getHomePage(driver);
