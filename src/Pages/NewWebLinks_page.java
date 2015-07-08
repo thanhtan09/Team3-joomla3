@@ -11,9 +11,10 @@ public class NewWebLinks_page extends Abstract_page{
 		this.driver = driver;
 	}
 
-	public WebLinks_page addNewWebLink(String _title, String _category,
+	public WebLinks_page addNewWebLink(String _title, String _url,  String _category,
 			String _status, String _content, String _image, String button) {
 		enterTitle(_title);
+		enterURL(_url);
 		selectCatetory(_category);
 		if (_status != "") {
 			selectStatus(_status);
@@ -47,6 +48,10 @@ public class NewWebLinks_page extends Abstract_page{
 		enter(driver, By.xpath(Interfaces.NewWebLinksPage.TXT_TITLE), _title);
 	}
 
+	public void enterURL(String _url) {
+		enter(driver, By.xpath(Interfaces.NewWebLinksPage.TXT_URL), _url);
+	}
+	
 	/*
 	 * Select Category
 	 * 
