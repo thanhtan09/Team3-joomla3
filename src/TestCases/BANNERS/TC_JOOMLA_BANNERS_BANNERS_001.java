@@ -76,12 +76,26 @@ public class TC_JOOMLA_BANNERS_BANNERS_001 extends Abstract_test{
 		
 		log.info("Add new banner with Unpublished status");
 		bannerPage = Factory_page.getBannerPage(driver);
-		bannerPage.addNewBanner(banner3.getName(), category.getTitle(), client.getName(),STATUS_PUBLISH, "");
+		bannerPage.addNewBanner(banner3.getName(), category.getTitle(), client.getName(),banner3.getStatus(), "");
 		
 		log.info("A message : Banner successfully saved shows and new banner is created");
 		verifyTrue(bannerPage.isMessageSuccessDisplay());
 		verifyTrue(bannerPage.isBannerDisplay(banner3.getName()));
 		
+	}
+	
+	@Test (description = "Verify that user can unpublish a banner")
+	public void TC_BANNERS_004(){
+		
+		log.info("A message : Banner successfully saved shows and new banner is created");
+		verifyTrue(bannerPage.isBannerDisplay(banner2.getName()));
+		
+		log.info("Unpublish a banner");
+		bannerPage.unpublishBanner(banner2.getName());
+		
+		log.info("A message : 1 banner successfully unpublished shows and banner is unpublished");
+		verifyTrue(bannerPage.isMessaggeUnpublishDisplay());
+		verifyTrue(bannerPage.isBannerUnpublish(banner2.getName()));
 	}
 	
 	@AfterClass
