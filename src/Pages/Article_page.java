@@ -337,8 +337,8 @@ public class Article_page extends Abstract_page {
 	}
 
 	public boolean isArticleChangePosition(String article) {
+		selectDisplayItem("All");
 		int first, second = 0;
-
 		clickOrdering();
 		first = getPositionArticle(article);
 		clickOrdering();
