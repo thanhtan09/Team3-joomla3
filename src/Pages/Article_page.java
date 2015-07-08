@@ -13,6 +13,7 @@ public class Article_page extends Abstract_page {
 	private String MESSAGEUNPUBLISH = "1 article unpublished.";
 	private String MESSAGEARCHIVE = "1 article archived.";
 	private String MESSAGEDELETE = "1 article deleted.";
+	private String MESSAGETRASHARTICLE = "1 article trashed.";
 	private String MESSAGECHECKIN = "1 article successfully checked in";
 
 	// Status
@@ -633,5 +634,59 @@ public class Article_page extends Abstract_page {
 			paging = true;
 		}
 		return paging;
+	}
+	
+	/*
+	 * Trash Article
+	 * 
+	 * Author: Nga Nguyen
+	 */
+	public void TrashArticle(String article) {
+		select(driver, By.xpath(Interfaces.ArticlePage.DROP_STATUS),
+				"All");
+		searchforArticle(article);
+		click(driver, By.xpath(Interfaces.BannerPage.CHECKBOX_1));
+		click(driver, By.xpath(Interfaces.ArticlePage.BTN_TRASH));
+	}
+	
+	/*
+	 * Is Trash Article
+	 * 
+	 * Author: Nga Nguyen
+	 */
+	public boolean isTrashArticleMessage() {
+		if (getText(driver, By.xpath(Interfaces.ArticlePage.CONTROL_MESSAGE))
+				.equals(MESSAGETRASHARTICLE))
+			return true;
+
+		return false;
+	}
+	
+	/*
+	 * Is Trashed Article in Table Grid
+	 * 
+	 * Author: Nga Nguyen
+	 */
+	public boolean isTrashedArticleinG(String article) {
+		boolean show = false;
+		select(driver, By.xpath(Interfaces.ArticlePage.DROP_STATUS),
+				STATUS_TRASHED);
+		int iCount = 0;
+		iCount = countElement(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR));
+		for (int i = 1; i <= iCount; i++) {
+			String cell = getText(
+					driver,
+					By.xpath(Interfaces.ArticlePage.TABLE_TR + "[" + i
+							+ "]/td[" + 2 + "]/a"));
+			if (cell.equals(article)) {
+				if (isControlExist(
+						driver,
+						By.xpath(Interfaces.ArticlePage.TABLE_TR + "[" + i
+								+ "]/td[" + 2 + "]/a")))
+					show = true;
+				break;
+			}
+		}
+		return show;
 	}
 }
