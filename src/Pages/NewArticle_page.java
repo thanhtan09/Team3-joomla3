@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 public class NewArticle_page extends Abstract_page {
 
 	private WebDriver driver;
+	private String MESSAGESUCCESS = "Article successfully saved";
 
 	public NewArticle_page(WebDriver driver) {
 		this.driver = driver;
@@ -33,8 +34,10 @@ public class NewArticle_page extends Abstract_page {
 		switch (button) {
 		case "Save":
 			clickSavebutton();
+			break;
 		case "": case "SaveAndClose":
 			clickSaveandClosebutton();
+			break;
 		}
 
 		return new Article_page(driver);
@@ -159,5 +162,19 @@ public class NewArticle_page extends Abstract_page {
 	 */
 	public void clickCancelbutton() {
 		click(driver, By.xpath(Interfaces.NewArticlePage.BTN_CANCEL));
+	}
+	
+	/*
+	 * Is message Article successfully saved displayed
+	 * 
+	 * Author: Nga Nguyen
+	 */
+	public boolean isMessageArticleDisplay(){
+		if(getText(driver, By.xpath(Interfaces.ArticlePage.CONTROL_MESSAGE))
+				.equals(MESSAGESUCCESS)){
+			click(driver, By.xpath(Interfaces.NewArticlePage.BTN_CLOSE));
+			return true;
+		}
+		return false;
 	}
 }
