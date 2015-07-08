@@ -49,4 +49,15 @@ public class Factory_page {
 	public static Banner_page getBannerPage(WebDriver driver){
 		return new Banner_page(driver);
 	}
+	
+	public static WebLinks_page getWebLinkPage(WebDriver driver)
+	{
+		return new WebLinks_page(driver);
+	}
+	
+	public static NewWebLinks_page getNewWebLinksPage(WebDriver driver)
+	{
+		return new NewWebLinks_page(driver);
+	}
+
 }
