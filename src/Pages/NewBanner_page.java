@@ -18,11 +18,14 @@ public class NewBanner_page extends Abstract_page {
 	 * 
 	 * Author: Tan Vo
 	 */
-	public void addNew(String name, String category, String client,
+	public void addNew(String name, String category, String client, String status,
 			String button) {
 		enter(driver, By.xpath(Interfaces.NewBannerPage.TXT_NAME), name);
 		selectCategory(category);
 		selectClient(client);
+		if(status!="")
+			selectStatus(status);
+		
 		switch (button) {
 		case "Save":
 			clickSave();
@@ -96,5 +99,14 @@ public class NewBanner_page extends Abstract_page {
 	 */
 	public void selectClient(String client) {
 		select(driver, By.xpath(Interfaces.NewBannerPage.DROP_CLIENT), client);
+	}
+	
+	/*
+	 * Select status
+	 * 
+	 * Author: Tan Vo
+	 */
+	public void selectStatus(String status){
+		select(driver, By.xpath(Interfaces.NewBannerPage.DROP_STATUS), status);
 	}
 }

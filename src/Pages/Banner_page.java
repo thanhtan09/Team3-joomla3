@@ -19,13 +19,13 @@ public class Banner_page extends Abstract_page{
 	 * 
 	 * Author: Tan Vo
 	 */
-	public void addNewBanner(String name, String category, String client, String button){
+	public void addNewBanner(String name, String category, String client, String status, String button){
 		
 		clickNew();
 		
 		NewBanner_page newBanner = Factory_page.getNewBannerPage(driver);
 		
-		newBanner.addNew(name, category, client, button);
+		newBanner.addNew(name, category, client, status, button);
 	}
 	
 	/*
