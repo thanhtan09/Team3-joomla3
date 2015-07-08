@@ -237,10 +237,12 @@ public class ReadData {
 						Cell name = sheet.getCell(1, row);
 						Cell category = sheet.getCell(2, row);
 						Cell client = sheet.getCell(3, row);
+						Cell status = sheet.getCell(4,row);
 						
 						banner.setName(name.getContents());
 						banner.setCategory(category.getContents());
 						banner.setClient(client.getContents());
+						banner.setStatus(status.getContents());
 					}
 				}
 			}

@@ -19,10 +19,17 @@ public abstract class Abstract_test {
 	protected ReadData data = new ReadData();
 	protected String url;
 	protected User user;
+	
+	//Status
+	protected String STATUS_UNPUBLISH = "Unpublished";
+	protected String STATUS_PUBLISH = "Published";
+	
+	//Data content
 	protected Article article,article2,article3,article4,article5,article6,article7;
 	protected Client client;
 	protected Category category;
 	protected Banner banner,banner2,banner3;
+	
 
 	protected Abstract_test() {
 		log = LogFactory.getLog(getClass());
