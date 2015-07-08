@@ -9,12 +9,14 @@ import Pages.Article_page;
 import Pages.Factory_page;
 import Pages.Home_page;
 import Pages.Login_page;
+import Pages.NewArticle_page;
 
 public class TC_JOOMLA_ARTICLE_006 extends Abstract_test{
 
 	private Login_page loginPage;
 	private Home_page homePage;
 	private Article_page articlePage;
+	private NewArticle_page newarticlePage;
 	private String article1;
 	
 	@BeforeMethod
@@ -30,8 +32,9 @@ public class TC_JOOMLA_ARTICLE_006 extends Abstract_test{
 		articlePage = homePage.navigatetoArticlepage();
 		
 		articlePage.addNewArticle(article.getTitle(), article.getCategory(), "", article.getContent(),"","Save");
-		log.info("Verify message Article successfully saved displayed");
-		verifyTrue(articlePage.isMessageArticleDisplay());
+		log.info("Verify message Article successfully saved displayed");		
+		newarticlePage = Factory_page.getNewArticlePage(driver);
+		verifyTrue(newarticlePage.isMessageArticleDisplay());
 		
 		shutdown();
 		
