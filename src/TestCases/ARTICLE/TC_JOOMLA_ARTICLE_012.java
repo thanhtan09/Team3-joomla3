@@ -29,7 +29,7 @@ public class TC_JOOMLA_ARTICLE_012 extends Abstract_test{
 		homePage = loginPage.loginValidAccount(user.getUsername(), user.getPassword(), "");
 		articlePage = homePage.navigatetoArticlepage();
 		articlePage.selectDisplayItem("5");
-		verifyTrue(articlePage.isPaging("5"));
+		verifyTrue(articlePage.isPaging(5));
 		articlePage.selectDisplayItem("All");
 		verifyFalse(articlePage.isControlExist(driver, By.xpath(Interfaces.ArticlePage.BAR_PAGING)));		
 	}
