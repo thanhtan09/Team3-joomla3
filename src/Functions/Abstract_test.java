@@ -22,7 +22,7 @@ public abstract class Abstract_test {
 	protected Article article,article2,article3,article4,article5,article6,article7;
 	protected Client client;
 	protected Category category;
-	protected Banner banner,banner2;
+	protected Banner banner,banner2,banner3;
 
 	protected Abstract_test() {
 		log = LogFactory.getLog(getClass());
@@ -103,5 +103,6 @@ public abstract class Abstract_test {
 		category = data.getCategory("Cate1");
 		banner = data.getBanner("Banner1");
 		banner2 = data.getBanner("Banner2");
+		banner3 = data.getBanner("Banner3");
 	}
 }
