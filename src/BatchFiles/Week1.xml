@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Week 1">
+  <test name="TC_ARTICLE">
+    <classes>
+       <class name="TestCases.ARTICLE.TC_JOOMLA_ARTICLE_003"/>
+       <class name="TestCases.ARTICLE.TC_JOOMLA_ARTICLE_005"/>
+       <class name="TestCases.ARTICLE.TC_JOOMLA_ARTICLE_009"/>
+       <class name="TestCases.ARTICLE.TC_JOOMLA_ARTICLE_012"/>
+       <class name="TestCases.ARTICLE.TC_JOOMLA_ARTICLE_017"/>
+    </classes>
+  </test>
+</suite>

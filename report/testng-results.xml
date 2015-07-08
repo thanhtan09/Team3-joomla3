@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="1" total="5" passed="4">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Week 1" duration-ms="189598" started-at="2015-07-08T01:48:03Z" finished-at="2015-07-08T01:51:12Z">
+    <groups>
+    </groups>
+    <test name="TC_ARTICLE" duration-ms="189598" started-at="2015-07-08T01:48:03Z" finished-at="2015-07-08T01:51:12Z">
+      <class name="TestCases.ARTICLE.TC_JOOMLA_ARTICLE_009">
+        <test-method status="PASS" signature="setup()[pri:0, instance:TestCases.ARTICLE.TC_JOOMLA_ARTICLE_009@180d80f]" name="setup" is-config="true" duration-ms="6897" started-at="2015-07-08T08:49:45Z" finished-at="2015-07-08T08:49:52Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="TC_ARTICLE_009()[pri:0, instance:TestCases.ARTICLE.TC_JOOMLA_ARTICLE_009@180d80f]" name="TC_ARTICLE_009" duration-ms="8276" started-at="2015-07-08T08:49:52Z" description="User can search for articles using the filter text field" finished-at="2015-07-08T08:50:00Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_ARTICLE_009 -->
+        <test-method status="PASS" signature="end()[pri:0, instance:TestCases.ARTICLE.TC_JOOMLA_ARTICLE_009@180d80f]" name="end" is-config="true" duration-ms="11137" started-at="2015-07-08T08:50:00Z" finished-at="2015-07-08T08:50:11Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- end -->
+      </class> <!-- TestCases.ARTICLE.TC_JOOMLA_ARTICLE_009 -->
+      <class name="TestCases.ARTICLE.TC_JOOMLA_ARTICLE_017">
+        <test-method status="PASS" signature="setup()[pri:0, instance:TestCases.ARTICLE.TC_JOOMLA_ARTICLE_017@ee9593]" name="setup" is-config="true" duration-ms="9959" started-at="2015-07-08T08:50:44Z" finished-at="2015-07-08T08:50:54Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="TC_ARTICLE_017()[pri:0, instance:TestCases.ARTICLE.TC_JOOMLA_ARTICLE_017@ee9593]" name="TC_ARTICLE_017" duration-ms="7029" started-at="2015-07-08T08:50:54Z" description="User can create a new article with &#039;Public&#039; Access Level property" finished-at="2015-07-08T08:51:01Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_ARTICLE_017 -->
+        <test-method status="PASS" signature="end()[pri:0, instance:TestCases.ARTICLE.TC_JOOMLA_ARTICLE_017@ee9593]" name="end" is-config="true" duration-ms="11135" started-at="2015-07-08T08:51:01Z" finished-at="2015-07-08T08:51:12Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- end -->
+      </class> <!-- TestCases.ARTICLE.TC_JOOMLA_ARTICLE_017 -->
+      <class name="TestCases.ARTICLE.TC_JOOMLA_ARTICLE_005">
+        <test-method status="PASS" signature="setup()[pri:0, instance:TestCases.ARTICLE.TC_JOOMLA_ARTICLE_005@b39c39]" name="setup" is-config="true" duration-ms="7622" started-at="2015-07-08T08:49:16Z" finished-at="2015-07-08T08:49:23Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="TC_ARTICLE_005()[pri:0, instance:TestCases.ARTICLE.TC_JOOMLA_ARTICLE_005@b39c39]" name="TC_ARTICLE_005" duration-ms="10497" started-at="2015-07-08T08:49:23Z" description="Verify user can move an article to the archive" finished-at="2015-07-08T08:49:34Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_ARTICLE_005 -->
+        <test-method status="PASS" signature="end()[pri:0, instance:TestCases.ARTICLE.TC_JOOMLA_ARTICLE_005@b39c39]" name="end" is-config="true" duration-ms="11285" started-at="2015-07-08T08:49:34Z" finished-at="2015-07-08T08:49:45Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- end -->
+      </class> <!-- TestCases.ARTICLE.TC_JOOMLA_ARTICLE_005 -->
+      <class name="TestCases.ARTICLE.TC_JOOMLA_ARTICLE_012">
+        <test-method status="PASS" signature="setup()[pri:0, instance:TestCases.ARTICLE.TC_JOOMLA_ARTICLE_012@107ec20]" name="setup" is-config="true" duration-ms="20055" started-at="2015-07-08T08:50:11Z" finished-at="2015-07-08T08:50:31Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="FAIL" signature="TC_ARTICLE_012()[pri:0, instance:TestCases.ARTICLE.TC_JOOMLA_ARTICLE_012@107ec20]" name="TC_ARTICLE_012" duration-ms="6788" started-at="2015-07-08T08:50:31Z" description="User can paging the article using the paging control" finished-at="2015-07-08T08:50:38Z">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[expected [true] but found [false]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:94)
+	at org.testng.Assert.failNotEquals(Assert.java:494)
+	at org.testng.Assert.assertTrue(Assert.java:42)
+	at org.testng.Assert.assertTrue(Assert.java:52)
+	at Functions.Abstract_test.verifyTrue(Abstract_test.java:74)
+	at TestCases.ARTICLE.TC_JOOMLA_ARTICLE_012.TC_ARTICLE_012(TC_JOOMLA_ARTICLE_012.java:32)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1149)
+	at org.testng.TestNG.run(TestNG.java:1057)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_ARTICLE_012 -->
+        <test-method status="PASS" signature="end()[pri:0, instance:TestCases.ARTICLE.TC_JOOMLA_ARTICLE_012@107ec20]" name="end" is-config="true" duration-ms="6026" started-at="2015-07-08T08:50:38Z" finished-at="2015-07-08T08:50:44Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- end -->
+      </class> <!-- TestCases.ARTICLE.TC_JOOMLA_ARTICLE_012 -->
+      <class name="TestCases.ARTICLE.TC_JOOMLA_ARTICLE_003">
+        <test-method status="PASS" signature="setup()[pri:0, instance:TestCases.ARTICLE.TC_JOOMLA_ARTICLE_003@13c0b17]" name="setup" is-config="true" duration-ms="53183" started-at="2015-07-08T08:48:03Z" finished-at="2015-07-08T08:48:56Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="TC_ARTICLE_003()[pri:0, instance:TestCases.ARTICLE.TC_JOOMLA_ARTICLE_003@13c0b17]" name="TC_ARTICLE_003" duration-ms="8204" started-at="2015-07-08T08:48:56Z" description="Verify user can publish an unpublished article" finished-at="2015-07-08T08:49:04Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_ARTICLE_003 -->
+        <test-method status="PASS" signature="end()[pri:0, instance:TestCases.ARTICLE.TC_JOOMLA_ARTICLE_003@13c0b17]" name="end" is-config="true" duration-ms="11490" started-at="2015-07-08T08:49:04Z" finished-at="2015-07-08T08:49:16Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- end -->
+      </class> <!-- TestCases.ARTICLE.TC_JOOMLA_ARTICLE_003 -->
+    </test> <!-- TC_ARTICLE -->
+  </suite> <!-- Week 1 -->
+</testng-results>

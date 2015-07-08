@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+  <title>TestNG reports</title>
+
+    <link type="text/css" href="testng-reports.css" rel="stylesheet" />  
+    <script type="text/javascript" src="jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="testng-reports.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type='text/javascript'>
+      google.load('visualization', '1', {packages:['table']});
+      google.setOnLoadCallback(drawTable);
+      var suiteTableInitFunctions = new Array();
+      var suiteTableData = new Array();
+    </script>
+    <!--
+      <script type="text/javascript" src="jquery-ui/js/jquery-ui-1.8.16.custom.min.js"></script>
+     -->
+  </head>
+
+  <body>
+    <div class="top-banner-root">
+      <span class="top-banner-title-font">Test results</span>
+      <br/>
+      <span class="top-banner-font-1">1 suite, 1 failed test</span>
+    </div> <!-- top-banner-root -->
+    <div class="navigator-root">
+      <div class="navigator-suite-header">
+        <span>All suites</span>
+        <a href="#" class="collapse-all-link" title="Collapse/expand all the suites">
+          <img class="collapse-all-icon" src="collapseall.gif">
+          </img> <!-- collapse-all-icon -->
+        </a> <!-- collapse-all-link -->
+      </div> <!-- navigator-suite-header -->
+      <div class="suite">
+        <div class="rounded-window">
+          <div class="suite-header light-rounded-window-top">
+            <a href="#" class="navigator-link" panel-name="suite-Week_1">
+              <span class="suite-name border-failed">Week 1</span>
+            </a> <!-- navigator-link -->
+          </div> <!-- suite-header light-rounded-window-top -->
+          <div class="navigator-suite-content">
+            <div class="suite-section-title">
+              <span>Info</span>
+            </div> <!-- suite-section-title -->
+            <div class="suite-section-content">
+              <ul>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="test-xml-Week_1">
+                    <span>C:\Users\giang.nguyen\git\Team3-joomla\src\BatchFiles\Week1.xml</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="testlist-Week_1">
+                    <span class="test-stats">1 test</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="group-Week_1">
+                    <span>0 groups</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="times-Week_1">
+                    <span>Times</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="reporter-Week_1">
+                    <span>Reporter output</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="ignored-methods-Week_1">
+                    <span>Ignored methods</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="chronological-Week_1">
+                    <span>Chronological view</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+              </ul>
+            </div> <!-- suite-section-content -->
+            <div class="result-section">
+              <div class="suite-section-title">
+                <span>Results</span>
+              </div> <!-- suite-section-title -->
+              <div class="suite-section-content">
+                <ul>
+                  <li>
+                    <span class="method-stats">5 methods, 1 failed,   4 passed</span>
+                  </li>
+                  <li>
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-Week_1" class="hide-methods failed suite-Week_1"> (hide)</a> <!-- hide-methods failed suite-Week_1 -->
+                      <a href="#" panel-name="suite-Week_1" class="show-methods failed suite-Week_1"> (show)</a> <!-- show-methods failed suite-Week_1 -->
+                    </span>
+                    <div class="method-list-content failed suite-Week_1">
+                      <span>
+                        <img width="3%" src="failed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Week_1" title="TestCases.ARTICLE.TC_JOOMLA_ARTICLE_012" hash-for-method="TC_ARTICLE_012">TC_ARTICLE_012</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content failed suite-Week_1 -->
+                  </li>
+                  <li>
+                    <span class="method-list-title passed">Passed methods</span>
+                    <span class="show-or-hide-methods passed">
+                      <a href="#" panel-name="suite-Week_1" class="hide-methods passed suite-Week_1"> (hide)</a> <!-- hide-methods passed suite-Week_1 -->
+                      <a href="#" panel-name="suite-Week_1" class="show-methods passed suite-Week_1"> (show)</a> <!-- show-methods passed suite-Week_1 -->
+                    </span>
+                    <div class="method-list-content passed suite-Week_1">
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Week_1" title="TestCases.ARTICLE.TC_JOOMLA_ARTICLE_003" hash-for-method="TC_ARTICLE_003">TC_ARTICLE_003</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Week_1" title="TestCases.ARTICLE.TC_JOOMLA_ARTICLE_005" hash-for-method="TC_ARTICLE_005">TC_ARTICLE_005</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Week_1" title="TestCases.ARTICLE.TC_JOOMLA_ARTICLE_009" hash-for-method="TC_ARTICLE_009">TC_ARTICLE_009</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Week_1" title="TestCases.ARTICLE.TC_JOOMLA_ARTICLE_017" hash-for-method="TC_ARTICLE_017">TC_ARTICLE_017</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content passed suite-Week_1 -->
+                  </li>
+                </ul>
+              </div> <!-- suite-section-content -->
+            </div> <!-- result-section -->
+          </div> <!-- navigator-suite-content -->
+        </div> <!-- rounded-window -->
+      </div> <!-- suite -->
+    </div> <!-- navigator-root -->
+    <div class="wrapper">
+      <div class="main-panel-root">
+        <div panel-name="suite-Week_1" class="panel Week_1">
+          <div class="suite-Week_1-class-failed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="failed.png"/>
+              <span class="class-name">TestCases.ARTICLE.TC_JOOMLA_ARTICLE_012</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="TC_ARTICLE_012">
+                  </a> <!-- TC_ARTICLE_012 -->
+                  <span class="method-name">TC_ARTICLE_012</span>
+                  <div class="stack-trace">java.lang.AssertionError: expected [true] but found [false]
+	at Functions.Abstract_test.verifyTrue(Abstract_test.java:74)
+	at TestCases.ARTICLE.TC_JOOMLA_ARTICLE_012.TC_ARTICLE_012(TC_JOOMLA_ARTICLE_012.java:32)
+... Removed 28 stack frames
+</div> <!-- stack-trace -->
+                  <em>
+(User can paging the article using the paging control)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Week_1-class-failed -->
+          <div class="suite-Week_1-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">TestCases.ARTICLE.TC_JOOMLA_ARTICLE_003</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="TC_ARTICLE_003">
+                  </a> <!-- TC_ARTICLE_003 -->
+                  <span class="method-name">TC_ARTICLE_003</span>
+                  <em>
+(Verify user can publish an unpublished article)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Week_1-class-passed -->
+          <div class="suite-Week_1-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">TestCases.ARTICLE.TC_JOOMLA_ARTICLE_009</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="TC_ARTICLE_009">
+                  </a> <!-- TC_ARTICLE_009 -->
+                  <span class="method-name">TC_ARTICLE_009</span>
+                  <em>
+(User can search for articles using the filter text field)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Week_1-class-passed -->
+          <div class="suite-Week_1-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">TestCases.ARTICLE.TC_JOOMLA_ARTICLE_005</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="TC_ARTICLE_005">
+                  </a> <!-- TC_ARTICLE_005 -->
+                  <span class="method-name">TC_ARTICLE_005</span>
+                  <em>
+(Verify user can move an article to the archive)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Week_1-class-passed -->
+          <div class="suite-Week_1-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">TestCases.ARTICLE.TC_JOOMLA_ARTICLE_017</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="TC_ARTICLE_017">
+                  </a> <!-- TC_ARTICLE_017 -->
+                  <span class="method-name">TC_ARTICLE_017</span>
+                  <em>
+(User can create a new article with 'Public' Access Level property)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Week_1-class-passed -->
+        </div> <!-- panel Week_1 -->
+        <div panel-name="test-xml-Week_1" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">C:\Users\giang.nguyen\git\Team3-joomla\src\BatchFiles\Week1.xml</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <pre>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE suite SYSTEM &quot;http://testng.org/testng-1.0.dtd&quot;&gt;
+&lt;suite name=&quot;Week 1&quot;&gt;
+  &lt;test name=&quot;TC_ARTICLE&quot;&gt;
+    &lt;classes&gt;
+      &lt;class name=&quot;TestCases.ARTICLE.TC_JOOMLA_ARTICLE_003&quot;/&gt;
+      &lt;class name=&quot;TestCases.ARTICLE.TC_JOOMLA_ARTICLE_005&quot;/&gt;
+      &lt;class name=&quot;TestCases.ARTICLE.TC_JOOMLA_ARTICLE_009&quot;/&gt;
+      &lt;class name=&quot;TestCases.ARTICLE.TC_JOOMLA_ARTICLE_012&quot;/&gt;
+      &lt;class name=&quot;TestCases.ARTICLE.TC_JOOMLA_ARTICLE_017&quot;/&gt;
+    &lt;/classes&gt;
+  &lt;/test&gt; &lt;!-- TC_ARTICLE --&gt;
+&lt;/suite&gt; &lt;!-- Week 1 --&gt;
+            </pre>
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="testlist-Week_1" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Tests for Week 1</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <ul>
+              <li>
+                <span class="test-name">TC_ARTICLE (5 classes)</span>
+              </li>
+            </ul>
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="group-Week_1" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Groups for Week 1</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="times-Week_1" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Times for Week 1</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="times-div">
+              <script type="text/javascript">
+suiteTableInitFunctions.push('tableData_Week_1');
+function tableData_Week_1() {
+var data = new google.visualization.DataTable();
+data.addColumn('number', 'Number');
+data.addColumn('string', 'Method');
+data.addColumn('string', 'Class');
+data.addColumn('number', 'Time (ms)');
+data.addRows(5);
+data.setCell(0, 0, 0)
+data.setCell(0, 1, 'TC_ARTICLE_005')
+data.setCell(0, 2, 'TestCases.ARTICLE.TC_JOOMLA_ARTICLE_005')
+data.setCell(0, 3, 10497);
+data.setCell(1, 0, 1)
+data.setCell(1, 1, 'TC_ARTICLE_009')
+data.setCell(1, 2, 'TestCases.ARTICLE.TC_JOOMLA_ARTICLE_009')
+data.setCell(1, 3, 8276);
+data.setCell(2, 0, 2)
+data.setCell(2, 1, 'TC_ARTICLE_003')
+data.setCell(2, 2, 'TestCases.ARTICLE.TC_JOOMLA_ARTICLE_003')
+data.setCell(2, 3, 8204);
+data.setCell(3, 0, 3)
+data.setCell(3, 1, 'TC_ARTICLE_017')
+data.setCell(3, 2, 'TestCases.ARTICLE.TC_JOOMLA_ARTICLE_017')
+data.setCell(3, 3, 7029);
+data.setCell(4, 0, 4)
+data.setCell(4, 1, 'TC_ARTICLE_012')
+data.setCell(4, 2, 'TestCases.ARTICLE.TC_JOOMLA_ARTICLE_012')
+data.setCell(4, 3, 6788);
+window.suiteTableData['Week_1']= { tableData: data, tableDiv: 'times-div-Week_1'}
+return data;
+}
+              </script>
+              <span class="suite-total-time">Total running time: 40 seconds</span>
+              <div id="times-div-Week_1">
+              </div> <!-- times-div-Week_1 -->
+            </div> <!-- times-div -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="reporter-Week_1" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Reporter output for Week 1</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="ignored-methods-Week_1" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">0 ignored methods</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="chronological-Week_1" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Methods in chronological order</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="chronological-class">
+              <div class="chronological-class-name">TestCases.ARTICLE.TC_JOOMLA_ARTICLE_003</div> <!-- chronological-class-name -->
+              <div class="configuration-method before">
+                <span class="method-name">setup</span>
+                <span class="method-start">0 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">TC_ARTICLE_003</span>
+                <span class="method-start">53183 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">end</span>
+                <span class="method-start">61388 ms</span>
+              </div> <!-- configuration-method after -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">TestCases.ARTICLE.TC_JOOMLA_ARTICLE_005</div> <!-- chronological-class-name -->
+              <div class="configuration-method before">
+                <span class="method-name">setup</span>
+                <span class="method-start">72879 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">TC_ARTICLE_005</span>
+                <span class="method-start">80501 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">end</span>
+                <span class="method-start">90998 ms</span>
+              </div> <!-- configuration-method after -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">TestCases.ARTICLE.TC_JOOMLA_ARTICLE_009</div> <!-- chronological-class-name -->
+              <div class="configuration-method before">
+                <span class="method-name">setup</span>
+                <span class="method-start">102283 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">TC_ARTICLE_009</span>
+                <span class="method-start">109180 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">end</span>
+                <span class="method-start">117456 ms</span>
+              </div> <!-- configuration-method after -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">TestCases.ARTICLE.TC_JOOMLA_ARTICLE_012</div> <!-- chronological-class-name -->
+              <div class="configuration-method before">
+                <span class="method-name">setup</span>
+                <span class="method-start">128594 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <img src="failed.png">
+                </img>
+                <span class="method-name">TC_ARTICLE_012</span>
+                <span class="method-start">148649 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">end</span>
+                <span class="method-start">155437 ms</span>
+              </div> <!-- configuration-method after -->
+            </div> <!-- chronological-class -->
+            <div class="chronological-class">
+              <div class="chronological-class-name">TestCases.ARTICLE.TC_JOOMLA_ARTICLE_017</div> <!-- chronological-class-name -->
+              <div class="configuration-method before">
+                <span class="method-name">setup</span>
+                <span class="method-start">161463 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">TC_ARTICLE_017</span>
+                <span class="method-start">171422 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">end</span>
+                <span class="method-start">178452 ms</span>
+              </div> <!-- configuration-method after -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+      </div> <!-- main-panel-root -->
+    </div> <!-- wrapper -->
+  </body>
+</html>

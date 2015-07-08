@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Week 1]">
+  <test name="TC_ARTICLE(failed)">
+    <classes>
+      <class name="TestCases.ARTICLE.TC_JOOMLA_ARTICLE_003">
+        <methods>
+          <include name="end"/>
+          <include name="setup"/>
+        </methods>
+      </class> <!-- TestCases.ARTICLE.TC_JOOMLA_ARTICLE_003 -->
+      <class name="TestCases.ARTICLE.TC_JOOMLA_ARTICLE_009">
+        <methods>
+          <include name="end"/>
+          <include name="setup"/>
+        </methods>
+      </class> <!-- TestCases.ARTICLE.TC_JOOMLA_ARTICLE_009 -->
+      <class name="TestCases.ARTICLE.TC_JOOMLA_ARTICLE_005">
+        <methods>
+          <include name="end"/>
+          <include name="setup"/>
+        </methods>
+      </class> <!-- TestCases.ARTICLE.TC_JOOMLA_ARTICLE_005 -->
+      <class name="TestCases.ARTICLE.TC_JOOMLA_ARTICLE_017">
+        <methods>
+          <include name="setup"/>
+          <include name="end"/>
+        </methods>
+      </class> <!-- TestCases.ARTICLE.TC_JOOMLA_ARTICLE_017 -->
+      <class name="TestCases.ARTICLE.TC_JOOMLA_ARTICLE_012">
+        <methods>
+          <include name="setup"/>
+          <include name="TC_ARTICLE_012"/>
+          <include name="end"/>
+        </methods>
+      </class> <!-- TestCases.ARTICLE.TC_JOOMLA_ARTICLE_012 -->
+    </classes>
+  </test> <!-- TC_ARTICLE(failed) -->
+</suite> <!-- Failed suite [Week 1] -->
