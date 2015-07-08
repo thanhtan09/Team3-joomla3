@@ -45,4 +45,8 @@ public class Factory_page {
 	public static NewBanner_page getNewBannerPage(WebDriver driver){
 		return new NewBanner_page(driver);
 	}
+	
+	public static Banner_page getBannerPage(WebDriver driver){
+		return new Banner_page(driver);
+	}
 }
