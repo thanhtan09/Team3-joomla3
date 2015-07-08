@@ -625,12 +625,11 @@ public class Article_page extends Abstract_page {
 
 	}
 
-	public boolean isPaging(String _item) {
+	public boolean isPaging(int _item) {
 		boolean paging = false;
 		int row = countElement(driver,
 				By.xpath(Interfaces.ArticlePage.TABLE_TR));
-		String row1 = Integer.toString(row);
-		if (row1.equals(_item)) {
+		if (row <= _item) {
 			paging = true;
 		}
 		return paging;
