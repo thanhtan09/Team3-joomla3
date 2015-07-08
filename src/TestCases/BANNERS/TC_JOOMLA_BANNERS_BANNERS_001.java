@@ -5,13 +5,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import Functions.Abstract_test;
-import Pages.Banner_page;
-import Pages.Categories_page;
-import Pages.Client_page;
-import Pages.Factory_page;
-import Pages.Home_page;
-import Pages.Login_page;
-import Pages.NewBanner_page;
+import Pages.*;
 
 public class TC_JOOMLA_BANNERS_BANNERS_001 extends Abstract_test{
 
