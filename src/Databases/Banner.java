@@ -7,11 +7,13 @@ public class Banner {
 	String name;
 	String category;
 	String client;
+	String status;
 	
 	public Banner(){
 		this.name="";
 		this.category="";
 		this.client="";
+		this.status="";
 	};
 	
 	//Set name
@@ -48,5 +50,15 @@ public class Banner {
 	//Get client
 	public String getClient(){
 		return client;
+	}
+	
+	//Set status
+	public void setStatus(String status){
+		this.status = status;
+	}
+	
+	//Get status
+	public String getStatus(){
+		return status;
 	}
 }
