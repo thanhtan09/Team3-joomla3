@@ -30,6 +30,7 @@ public class Interfaces {
 	 * Author: Tan Vo
 	 */
 	public class ArticlePage {
+		public static final String BTN_HELP = "//li[@id='toolbar-help']/a/span";
 		public static final String BTN_NEW = "//span[@class='icon-32-new']";
 		public static final String BTN_EDIT = "//li[@id='toolbar-edit']/a/span";
 		public static final String BTN_PUBLISH = "//li[@id='toolbar-publish']/a/span";
