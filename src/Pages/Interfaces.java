@@ -154,6 +154,7 @@ public class Interfaces {
 		public static final String BTN_TRASH = "//li[@id='toolbar-trash']/a/span";
 		public static final String BTN_EMPTYTRASH = "//li[@id='toolbar-delete']/a/span";
 		public static final String BTN_UNPUBLISH = "//li[@id='toolbar-unpublish']/a/span";
+		public static final String BTN_ARCHIEVE = "//li[@id='toolbar-archive']/a/span";
 		public static final String MESSAGE = "//dd[@class='message message']/ul/li";
 		public static final String DROP_STATUS = "//select[@name='filter_state']";
 		public static final String DROP_DISPLAY = "//select[@id='limit']";

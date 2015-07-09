@@ -9,7 +9,9 @@ public class Banner_page extends Abstract_page {
 	private String MESSAGE_SUCCESS = "Banner successfully saved";
 	private String MESSAGE_TRASH = "1 banner successfully deleted";
 	private String MESSAGE_UNPUBLISH = "1 banner successfully unpublished";
+	private String MESSAGE_ARCHIEVE = "1 banner successfully archived";
 	private String STATUS_TRASHED = "Trashed";
+	private String STATUS_ARCHIEVE = "Archived";
 
 	public Banner_page(WebDriver driver) {
 		this.driver = driver;
@@ -63,7 +65,7 @@ public class Banner_page extends Abstract_page {
 	 */
 	public void unpublishBanner(String banner) {
 		searchBanner(banner);
-		click(driver, By.xpath(Interfaces.BannerPage.CHECKBOX_1));
+		clickFirstBanner();
 		clickUnpublish();
 	}
 
@@ -91,6 +93,42 @@ public class Banner_page extends Abstract_page {
 			return true;
 		return false;
 	}
+	
+	/*
+	 * Archive banner
+	 * 
+	 * Author: Tan Vo
+	 */
+	public void archiveBanner(String banner){
+		selectStatus("All");
+		searchBanner(banner);
+		clickFirstBanner();
+		clickArchieve();
+	}
+	
+	/*
+	 * Is message archieve display
+	 * 
+	 * Author: Tan Vo
+	 */
+	public boolean isArchieveMessageDisplay(){
+		if(getText(driver, By.xpath(Interfaces.BannerPage.MESSAGE)).equals(MESSAGE_ARCHIEVE))
+			return true;
+		return false;
+	}
+	
+	/*
+	 * Is banner archieved
+	 * 
+	 * Author: Tan Vo
+	 */
+	public boolean isBannerArchieved(String banner){
+		selectStatus(STATUS_ARCHIEVE);
+		searchBanner(banner);
+		if(getText(driver, By.xpath(Interfaces.BannerPage.TABLE_TR+"/td[2]/a")).equals(banner))
+			return true;
+		return false;
+	}
 
 	/*
 	 * Delete banner
@@ -98,18 +136,26 @@ public class Banner_page extends Abstract_page {
 	 * Author: Tan Vo
 	 */
 	public void deleteBanner(String banner) {
-		select(driver, By.xpath(Interfaces.BannerPage.DROP_STATUS), "All");
+		selectStatus("All");
 		searchBanner(banner);
-		click(driver, By.xpath(Interfaces.BannerPage.CHECKBOX_1));
+		clickFirstBanner();
 		clickTrash();
-		select(driver, By.xpath(Interfaces.BannerPage.DROP_STATUS),
-				STATUS_TRASHED);
-		click(driver, By.xpath(Interfaces.BannerPage.CHECKBOX_1));
+		selectStatus(STATUS_TRASHED);
+		clickFirstBanner();
 		clickEmptyTrash();
 		waitControlExist(
 				driver,
 				By.xpath(Interfaces.BannerPage.MESSAGE + "[contains(text(),'"
 						+ MESSAGE_TRASH + "')]"));
+	}
+	
+	/*
+	 * Click first banner
+	 * 
+	 * Author: Tan Vo
+	 */
+	public void clickFirstBanner(){
+		click(driver, By.xpath(Interfaces.BannerPage.CHECKBOX_1));
 	}
 
 	/*
@@ -147,6 +193,15 @@ public class Banner_page extends Abstract_page {
 	public void clickUnpublish() {
 		click(driver, By.xpath(Interfaces.BannerPage.BTN_UNPUBLISH));
 	}
+	
+	/*
+	 * Click Archieve button
+	 * 
+	 * Author: Tan Vo
+	 */
+	public void clickArchieve() {
+		click(driver, By.xpath(Interfaces.BannerPage.BTN_ARCHIEVE));
+	}
 
 	/*
 	 * Search banner
@@ -156,5 +211,14 @@ public class Banner_page extends Abstract_page {
 	public void searchBanner(String banner) {
 		enter(driver, By.xpath(Interfaces.BannerPage.TXT_SEARCH), banner);
 		click(driver, By.xpath(Interfaces.BannerPage.BTN_SEARCH));
+	}
+	
+	/*
+	 * Select status
+	 * 
+	 * Author: Tan Vo
+	 */
+	public void selectStatus(String status){
+		select(driver, By.xpath(Interfaces.BannerPage.DROP_STATUS), status);
 	}
 }
