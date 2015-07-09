@@ -20,13 +20,12 @@ public class WebLinks_page extends Abstract_page {
 	 * 
 	 * Author: Tan Vo
 	 */
-	public void addNewWebLink(String _title, String _url,  String _category,
-			String _status, String _content, String _image, String button) {
+	public void addNewWebLink(String _title, String _url, String _content, String button) {
+		
 		clickNewbutton();
 		
-		NewWebLinks_page newweblink = Factory_page.getNewWebLinksPage(driver);
-		
-	
+		NewWebLinks_page wblink = Factory_page.getNewWebLinksPage(driver);
+		wblink.addNewWebLink(_title, _url, _content, button);
 		
 	}
 

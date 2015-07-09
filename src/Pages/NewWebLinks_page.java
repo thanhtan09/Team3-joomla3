@@ -11,24 +11,18 @@ public class NewWebLinks_page extends Abstract_page{
 		this.driver = driver;
 	}
 
-	public WebLinks_page addNewWebLink(String _title, String _url,  String _category,
-			String _status, String _content, String _image, String button) {
+	public WebLinks_page addNewWebLink(String _title, String _url, String _content, String button) {
+		
 		enterTitle(_title);
 		enterURL(_url);
-		selectCatetory(_category);
-		if (_status != "") {
-			selectStatus(_status);
-		}
-		enterArticleText(_content);
+		enterWLText(_content);
 
-		//if (_image != "") {
-		///	insertImage(_image);
-		//}
 		switch (button) {
 		case "Save":
 			clickSavebutton();
 			break;
-		case "": case "SaveAndClose":
+		case "": 
+		case "SaveAndClose":
 			clickSaveandClosebutton();
 			break;
 		}
@@ -81,7 +75,7 @@ public class NewWebLinks_page extends Abstract_page{
 	 * 
 	 * Author: Giang
 	 */
-	public void enterArticleText(String _content) {
+	public void enterWLText(String _content) {
 		switchFrame(driver, By.xpath(Interfaces.NewWebLinksPage.FRAME_CONTENT));
 		enter(driver, By.xpath(Interfaces.NewWebLinksPage.TXT_CONTENT), _content);
 		driver.switchTo().defaultContent();
