@@ -103,6 +103,19 @@ public class TC_JOOMLA_BANNERS_BANNERS_001 extends Abstract_test{
 		
 	}
 	
+	@Test (description = "Verify that user can send a banner to trash")
+	public void TC_BANNERS_006(){
+		
+		log.info("Trash a banner");
+		bannerPage.trashBanner(banner2.getName());
+		
+		log.info("A message : 1 banner successfully sent to trash shows");
+		verifyTrue(bannerPage.isTrashMessageDisplay());
+		
+		log.info("Banner is sent to trash");
+		verifyTrue(bannerPage.isBannerSentToTrash(banner2.getName()));
+	}
+	
 	@AfterClass
 	public void end(){
 		log.info("Delete banner");
