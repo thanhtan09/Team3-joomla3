@@ -81,15 +81,26 @@ public class TC_JOOMLA_BANNERS_BANNERS_001 extends Abstract_test{
 	@Test (description = "Verify that user can unpublish a banner")
 	public void TC_BANNERS_004(){
 		
-		log.info("A message : Banner successfully saved shows and new banner is created");
-		verifyTrue(bannerPage.isBannerDisplay(banner2.getName()));
-		
 		log.info("Unpublish a banner");
 		bannerPage.unpublishBanner(banner2.getName());
 		
 		log.info("A message : 1 banner successfully unpublished shows and banner is unpublished");
 		verifyTrue(bannerPage.isMessaggeUnpublishDisplay());
 		verifyTrue(bannerPage.isBannerUnpublish(banner2.getName()));
+	}
+	
+	@Test (description = "Verify that user can archive a banner")
+	public void TC_BANNERS_005(){
+		
+		log.info("Archieve a banner");
+		bannerPage.archiveBanner(banner2.getName());
+		
+		log.info("A message : 1 banner successfully archived shows");
+		verifyTrue(bannerPage.isArchieveMessageDisplay());
+		
+		log.info("Banner is archived");
+		verifyTrue(bannerPage.isBannerArchieved(banner2.getName()));
+		
 	}
 	
 	@AfterClass
