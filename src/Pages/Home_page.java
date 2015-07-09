@@ -30,5 +30,8 @@ public class Home_page extends Abstract_page{
 		return new Client_page(driver);
 	}
 	
-	
+	public WebLinks_page navigatetoWeblinkpage(){
+		navigateMenu(driver,"Components|Weblinks");		
+		return new WebLinks_page(driver);
+	}
 }

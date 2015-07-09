@@ -187,6 +187,7 @@ public class Interfaces {
 		public static final String BTN_ARCHIVE = "//li[@id='toolbar-archive']/a/span";
 		public static final String BTN_TRASH = "//li[@id='toolbar-trash']/a/span";	
 		public static final String TABLE_TR = "//table[@class='adminlist']/tbody/tr";
+		public static final String CONTROL_MESSAGE = "//dd[@class='message message']/ul/li";
 	}
 	
 	public class NewWebLinksPage{
