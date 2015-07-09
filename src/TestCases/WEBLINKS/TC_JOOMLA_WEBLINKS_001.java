@@ -34,7 +34,7 @@ public class TC_JOOMLA_WEBLINKS_001 extends Abstract_test{
 		weblinkPage = homePage.navigatetoWeblinkpage();		
 		
 		log.info("Create new article");
-		weblinkPage.addNewWebLink("abc", "http://abc.com", "", "", "test", "", "");
+		weblinkPage.addNewWebLink("abc", "http://abc.com", "test", "");
 		
 		log.info("Verify message Article successfully saved displayed");
 		verifyTrue(weblinkPage.isWebLinkDisplay("abc"));
