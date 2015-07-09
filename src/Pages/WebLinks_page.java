@@ -13,12 +13,14 @@ public class WebLinks_page extends Abstract_page {
 		this.driver = driver;
 	}
 
+	private String MESSAGESUCCESS = "Weblink successfully saved";
+	
 	/*
 	 * Add new article
 	 * 
 	 * Author: Tan Vo
 	 */
-	public void addNewWebLink(String _title, String _category,
+	public void addNewWebLink(String _title, String _url,  String _category,
 			String _status, String _content, String _image, String button) {
 		clickNewbutton();
 		
@@ -35,6 +37,32 @@ public class WebLinks_page extends Abstract_page {
 	 */
 	public void clickNewbutton() {
 		click(driver, By.xpath(Interfaces.WebLinksPage.BTN_NEW));
+	}
+
+	/*
+	 * Is Article successfully saved displayed
+	 * 
+	 * Author: Giang
+	 */
+	public boolean isWebLinkDisplay(String weblink) {
+		boolean show = false;
+		if (getText(driver, By.xpath(Interfaces.WebLinksPage.CONTROL_MESSAGE))
+				.equals(MESSAGESUCCESS)) {
+			int iCount = 0;
+			iCount = countElement(driver,
+					By.xpath(Interfaces.WebLinksPage.TABLE_TR));
+			for (int i = 1; i <= iCount; i++) {
+				String cell = getText(
+						driver,
+						By.xpath(Interfaces.WebLinksPage.TABLE_TR + "[" + i
+								+ "]/td[" + 2 + "]/a"));
+				if (cell.equals(weblink)) {
+					show = true;
+					break;
+				}
+			}
+		}
+		return show;
 	}
 	
 }
