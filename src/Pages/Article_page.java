@@ -723,8 +723,7 @@ public class Article_page extends Abstract_page {
 		}
 
 		// get Title of new window and comparing
-		driver.getTitle().equals(HELP_TITLE);
-
+		getPageTitle(driver).equals(HELP_TITLE);
 		driver.close(); // close new window when done it.
 		driver.switchTo().window(parentHandle); // switch back to the original
 												// window
