@@ -15,6 +15,7 @@ public class Article_page extends Abstract_page {
 	private String MESSAGEDELETE = "1 article deleted.";
 	private String MESSAGETRASHARTICLE = "1 article trashed.";
 	private String MESSAGECHECKIN = "1 article successfully checked in";
+	private String HELP_TITLE = "Joomla! Help";
 
 	// Status
 	private String STATUS_TRASHED = "Trashed";
@@ -35,14 +36,15 @@ public class Article_page extends Abstract_page {
 	 * 
 	 * Author: Tan Vo
 	 */
-	public void addNewArticle(String _title, String _category,
-			String _status, String _content, String _image, String button) {
+	public void addNewArticle(String _title, String _category, String _status,
+			String _content, String _image, String button) {
 		clickNewbutton();
-		
+
 		NewArticle_page newarticle = Factory_page.getNewArticlePage(driver);
-		
-		newarticle.addNewArticle(_title, _category, _status, _content, _image, button);
-		
+
+		newarticle.addNewArticle(_title, _category, _status, _content, _image,
+				button);
+
 	}
 
 	/*
@@ -53,14 +55,14 @@ public class Article_page extends Abstract_page {
 	public void clickNewbutton() {
 		click(driver, By.xpath(Interfaces.ArticlePage.BTN_NEW));
 	}
-	
+
 	/*
 	 * Is message Article successfully saved displayed
 	 * 
 	 * Author: Nga Nguyen
 	 */
-	public boolean isMessageArticleDisplay(){
-		if(getText(driver, By.xpath(Interfaces.ArticlePage.CONTROL_MESSAGE))
+	public boolean isMessageArticleDisplay() {
+		if (getText(driver, By.xpath(Interfaces.ArticlePage.CONTROL_MESSAGE))
 				.equals(MESSAGESUCCESS))
 			return true;
 		return false;
@@ -202,7 +204,8 @@ public class Article_page extends Abstract_page {
 	 * 
 	 * Author: Tan Vo
 	 */
-	public Article_page editArticle(String oldtitle,String title,String category, String status, String content) {
+	public Article_page editArticle(String oldtitle, String title,
+			String category, String status, String content) {
 		int iCount = 0;
 		iCount = countElement(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR));
 		for (int i = 1; i <= iCount; i++) {
@@ -221,7 +224,7 @@ public class Article_page extends Abstract_page {
 
 		NewArticle_page newarticle = Factory_page.getNewArticlePage(driver);
 		newarticle.editArticle(title, category, status, content);
-		
+
 		return new Article_page(driver);
 	}
 
@@ -233,21 +236,20 @@ public class Article_page extends Abstract_page {
 	 * Author: Tan Vo
 	 */
 	public void deleteArticle(String _article) {
-		select(driver, By.xpath(Interfaces.ArticlePage.DROP_STATUS),
-				"All");
+		select(driver, By.xpath(Interfaces.ArticlePage.DROP_STATUS), "All");
 		searchforArticle(_article);
 		click(driver, By.xpath(Interfaces.BannerPage.CHECKBOX_1));
 		click(driver, By.xpath(Interfaces.ArticlePage.BTN_TRASH));
 		select(driver, By.xpath(Interfaces.ArticlePage.DROP_STATUS),
 				STATUS_TRASHED);
-		
+
 		click(driver, By.xpath(Interfaces.BannerPage.CHECKBOX_1));
-		
+
 		click(driver, By.xpath(Interfaces.ArticlePage.BTN_EMPTYTRASH));
 		waitControlExist(
 				driver,
 				By.xpath(Interfaces.ArticlePage.CONTROL_MESSAGE
-						+ "[contains(text(),'" + MESSAGEDELETE + "')]"));		
+						+ "[contains(text(),'" + MESSAGEDELETE + "')]"));
 	}
 
 	/*
@@ -344,7 +346,7 @@ public class Article_page extends Abstract_page {
 		first = getPositionArticle(article);
 		clickOrdering();
 		second = getPositionArticle(article);
-		clickOrdering();		
+		clickOrdering();
 		if (first != second)
 			return true;
 		return false;
@@ -634,20 +636,19 @@ public class Article_page extends Abstract_page {
 		}
 		return paging;
 	}
-	
+
 	/*
 	 * Trash Article
 	 * 
 	 * Author: Nga Nguyen
 	 */
 	public void TrashArticle(String article) {
-		select(driver, By.xpath(Interfaces.ArticlePage.DROP_STATUS),
-				"All");
+		select(driver, By.xpath(Interfaces.ArticlePage.DROP_STATUS), "All");
 		searchforArticle(article);
 		click(driver, By.xpath(Interfaces.BannerPage.CHECKBOX_1));
 		click(driver, By.xpath(Interfaces.ArticlePage.BTN_TRASH));
 	}
-	
+
 	/*
 	 * Is Trash Article
 	 * 
@@ -660,7 +661,7 @@ public class Article_page extends Abstract_page {
 
 		return false;
 	}
-	
+
 	/*
 	 * Is Trashed Article in Table Grid
 	 * 
@@ -687,5 +688,45 @@ public class Article_page extends Abstract_page {
 			}
 		}
 		return show;
+	}
+
+	/*
+	 * Access to Article's Help window
+	 * 
+	 * Author: Nga Nguyen
+	 */
+	public void AccessHelpWindow(WebDriver driver) {
+
+		click(driver, By.xpath(Interfaces.ArticlePage.BTN_HELP));
+
+	}
+
+	/*
+	 * Verify Article's Help window
+	 * 
+	 * Author: Nga Nguyen
+	 */
+	public void verifyHelpwindow(WebDriver driver) {
+
+		// get the current window handle
+		String parentHandle = driver.getWindowHandle();
+
+		// click the link to open a new window
+
+		AccessHelpWindow(driver);
+
+		for (String winHandle : driver.getWindowHandles()) {
+			driver.switchTo().window(winHandle); // switch focus of WebDriver to
+													// the next found window
+													// handle (that's your newly
+													// opened window)
+		}
+
+		// get Title of new window and comparing
+		driver.getTitle().equals(HELP_TITLE);
+
+		driver.close(); // close new window when done it.
+		driver.switchTo().window(parentHandle); // switch back to the original
+												// window
 	}
 }
