@@ -20,7 +20,7 @@ public class AutoIT {
  
 	    driver.findElement(By.id("photo")).click();
  
-	    Runtime.getRuntime().exec("C:/Users/phong/Desktop/autoittest.exe");
+	    Runtime.getRuntime().exec("src/Demo/autoittest.exe");
  
 	    Thread.sleep(5000);
  
