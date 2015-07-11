@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.seleniumhq.jetty7.util.log.Log;
 
 public class Abstract_page {
-	
+
 	private int timeout = 5;
 	private Log log;
 
@@ -75,7 +75,7 @@ public class Abstract_page {
 	 */
 	public void waitControlExist(WebDriver driver, By by) {
 		try {
-			WebElement element  = driver.findElement(by);
+			WebElement element = driver.findElement(by);
 			WebDriverWait wait = new WebDriverWait(driver, timeout);
 			wait.until(ExpectedConditions.visibilityOfElementLocated(by));
 		} catch (Exception e) {
@@ -146,7 +146,7 @@ public class Abstract_page {
 	public void refresh(WebDriver driver) {
 		driver.navigate().refresh();
 	}
-	
+
 	/*
 	 * Is Control Exist
 	 * 
@@ -156,17 +156,16 @@ public class Abstract_page {
 	 * 
 	 * Author: Tan Vo
 	 */
-	public boolean isControlExist(WebDriver driver, By by){
-		try{
-            driver.findElement(by);
-            return true;
-        }
-        catch(Exception e){
-        	log.debug("Control doesn't exist");
-            return false;
-        }
+	public boolean isControlExist(WebDriver driver, By by) {
+		try {
+			driver.findElement(by);
+			return true;
+		} catch (Exception e) {
+			log.debug("Control doesn't exist");
+			return false;
+		}
 	}
-	
+
 	/*
 	 * Navigate menu
 	 * 
@@ -174,17 +173,46 @@ public class Abstract_page {
 	 * 
 	 * Author: Tan Vo
 	 */
-	public void navigateMenu(WebDriver driver,String list){
+	public void navigateMenu(WebDriver driver, String list) {
 		String menu = list;
 		String lastItem = "";
-		String[] subMenu = menu.split("[|]");		
-		for (String r: subMenu){
-			hover(driver, By.xpath("//ul[@id='menu']/descendant::a[contains(text(),'"+r+"')]"));
+		String[] subMenu = menu.split("[|]");
+		for (String r : subMenu) {
+			hover(driver,
+					By.xpath("//ul[@id='menu']/descendant::a[contains(text(),'"
+							+ r + "')]"));
 			lastItem = r;
 		}
-		click(driver, By.xpath("//ul[@id='menu']/descendant::a[contains(text(),'"+lastItem+"')]"));
+		click(driver,
+				By.xpath("//ul[@id='menu']/descendant::a[contains(text(),'"
+						+ lastItem + "')]"));
+	}
+
+	/*
+	 * Switch windows
+	 * 
+	 * Parameter: driver
+	 * 
+	 * Author: Tan Vo
+	 */
+	public void switchToNewWindows(WebDriver driver) {
+		for (String winHandle : driver.getWindowHandles()) {
+			driver.switchTo().window(winHandle);
+		}
 	}
 	
+	/*
+	 * Get current windows 
+	 * 
+	 * Parameter: driver
+	 * 
+	 * Author: Tan Vo
+	 */
+	public String getCurrentWindows(WebDriver driver){
+		String parentHandle = driver.getWindowHandle();
+		return parentHandle;
+	}
+
 	/*
 	 * Get Page title
 	 * 
