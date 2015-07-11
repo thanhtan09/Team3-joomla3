@@ -1,5 +1,6 @@
 package Demo;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
@@ -20,9 +21,10 @@ public class AutoIT {
  
 	    driver.findElement(By.id("photo")).click();
  
-	    Runtime.getRuntime().exec("src/Demo/autoittest.exe");
- 
-	    Thread.sleep(5000);
+	   Runtime.getRuntime().exec("C:\\Users\\giang.nguyen\\git\\Team3-joomla3\\src\\Demo\\autoittest.exe");
+	    
+	   //Runtime.getRuntime().exec("../Team3Joomla/src/Demo/autoittest.exe");
+	   Thread.sleep(5000);
  
 	    driver.close();
 	}
