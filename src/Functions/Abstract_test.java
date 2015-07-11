@@ -113,5 +113,7 @@ public abstract class Abstract_test {
 		banner2 = data.getBanner("Banner2");
 		banner3 = data.getBanner("Banner3");
 		contact = data.getContact("Contact1");
+		contact2 = data.getContact("Contact2");
+		contact3 = data.getContact("Contact3");
 	}
 }
