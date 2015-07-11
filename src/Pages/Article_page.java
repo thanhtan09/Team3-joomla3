@@ -240,8 +240,7 @@ public class Article_page extends Abstract_page {
 		searchforArticle(_article);
 		click(driver, By.xpath(Interfaces.BannerPage.CHECKBOX_1));
 		click(driver, By.xpath(Interfaces.ArticlePage.BTN_TRASH));
-		select(driver, By.xpath(Interfaces.ArticlePage.DROP_STATUS),
-				STATUS_TRASHED);
+		select(driver, By.xpath(Interfaces.ArticlePage.DROP_STATUS), STATUS_TRASHED);
 
 		click(driver, By.xpath(Interfaces.BannerPage.CHECKBOX_1));
 
