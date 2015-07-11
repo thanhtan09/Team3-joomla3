@@ -36,7 +36,7 @@ public class NewContacts_page extends Abstract_page {
 	
 	//Edit Contact
 	public Contacts_page editContact(String name, String category,
-			String status, String button) {
+			String status) {
 
 		enterName(name);
 		selectCatetory(category);
