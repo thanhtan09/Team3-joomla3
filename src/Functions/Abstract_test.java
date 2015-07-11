@@ -29,6 +29,7 @@ public abstract class Abstract_test {
 	protected Client client;
 	protected Category category;
 	protected Banner banner,banner2,banner3;
+	protected Contact contact;
 	
 
 	protected Abstract_test() {
@@ -111,5 +112,6 @@ public abstract class Abstract_test {
 		banner = data.getBanner("Banner1");
 		banner2 = data.getBanner("Banner2");
 		banner3 = data.getBanner("Banner3");
+		contact = data.getContact("Contact1");
 	}
 }

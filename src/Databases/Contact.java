@@ -51,6 +51,11 @@ public class Contact {
 		return status;
 		}
 	
+	//Set image
+		public void setImage(String _image){
+			this.image = _image;
+		}
+	
 	//Get image
 		public String getImage(){
 			return image;

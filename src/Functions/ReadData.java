@@ -259,6 +259,55 @@ public class ReadData {
 	}
 	
 	/*
+	 * Get Contact
+	 * 
+	 * Author: Nga Nguyen
+	 */
+	public Contact getContact(String cont){
+		Contact contact = new Contact();
+		Workbook workbook;
+		try {
+			// create workbook to open file
+			workbook = Workbook.getWorkbook(new File(fileName));
+
+			// get sheet want read
+			Sheet sheet = workbook.getSheet(0);
+
+			// get number row and col contain data
+			int rows = sheet.getRows();
+			int cols = sheet.getColumns();
+
+			// read data in each cell
+			for (int row = 0; row < rows; row++) {
+				for (int col = 0; col < cols; col++) {
+					Cell cell = sheet.getCell(col, row);
+
+					if (cell.getContents().equals(cont)) {
+						Cell name = sheet.getCell(1, row);
+						Cell category = sheet.getCell(2, row);
+						Cell status = sheet.getCell(3, row);
+						Cell image = sheet.getCell(4,row);
+						
+						contact.setName(name.getContents());
+						contact.setCategory(category.getContents());
+						contact.setStatus(status.getContents());
+						contact.setImage(image.getContents());
+					}
+				}
+			}
+			// close
+			workbook.close();
+
+		} catch (BiffException e) {
+			System.out.println("File not found\n" + e.toString());
+		} catch (IOException e) {
+			System.out.println("File not found\n" + e.toString());
+		}
+
+		return contact;
+	}
+	
+	/*
 	 * Get url
 	 * 
 	 * Parameter: where
