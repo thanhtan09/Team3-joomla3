@@ -194,7 +194,7 @@ public class Banner_page extends Abstract_page {
 		clickHelp();
 		switchToNewWindows(driver);
 		if(getPageTitle(driver).equals(HELP_TITLE)){
-			driver.quit();
+			driver.close();
 			driver.switchTo().window(currentWindows);
 			return true;
 		} else

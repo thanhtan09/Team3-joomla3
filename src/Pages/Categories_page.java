@@ -59,22 +59,13 @@ public class Categories_page extends Abstract_page {
 	 * Author: Tan Vo
 	 */
 	public boolean isCategoryDisplay(String cate) {
-		boolean display = false;
-
-		int iCount = 0;
-		iCount = countElement(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR));
-		for (int i = 1; i <= iCount; i++) {
-			String cell = getText(
-					driver,
-					By.xpath(Interfaces.ArticlePage.TABLE_TR + "[" + i
-							+ "]/td[2]/a"));
-			if (cell.equals(cate)) {
-				display = true;
-				break;
-			}
-		}
-
-		return display;
+		searchCategory(cate);
+		
+		String cell = getText(driver,
+				By.xpath(Interfaces.ArticlePage.TABLE_TR + "[1]/td[2]/a"));
+		if (cell.equals(cate))
+			return true;
+		return false;
 
 	}
 	
