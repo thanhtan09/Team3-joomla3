@@ -116,6 +116,12 @@ public class TC_JOOMLA_BANNERS_BANNERS_001 extends Abstract_test{
 		verifyTrue(bannerPage.isBannerSentToTrash(banner2.getName()));
 	}
 	
+	@Test (description = "Verify that user can browse Banner help page")
+	public void TC_BANNERS_007(){
+		
+		verifyTrue(bannerPage.isHelpPage());
+	}
+	
 	@AfterClass
 	public void end(){
 		log.info("Delete banner");
