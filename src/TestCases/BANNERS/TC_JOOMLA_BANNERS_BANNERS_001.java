@@ -119,7 +119,18 @@ public class TC_JOOMLA_BANNERS_BANNERS_001 extends Abstract_test{
 	@Test (description = "Verify that user can browse Banner help page")
 	public void TC_BANNERS_007(){
 		
+		log.info("Banner help page appears");
 		verifyTrue(bannerPage.isHelpPage());
+	}
+	
+	@Test (description = "Verify that user can search a banner by using filter textbox")
+	public void TC_BANNERS_008(){
+		
+		log.info("Search banner");
+		bannerPage.searchBanner(banner2.getName());
+		
+		log.info("Recently created banner displays");
+		bannerPage.isBannerDisplay(banner2.getName());
 	}
 	
 	@AfterClass
