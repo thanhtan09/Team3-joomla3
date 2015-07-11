@@ -1,8 +1,8 @@
 package TestCases.CONTACTS;
 
-import org.testng.annotations.Test;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
 import Functions.Abstract_test;
 import Pages.Contacts_page;
@@ -10,7 +10,7 @@ import Pages.Factory_page;
 import Pages.Home_page;
 import Pages.Login_page;
 
-public class TC_JOOMLA_CONTACTS_001 extends Abstract_test {
+public class CONTACTS_TC001_002 extends Abstract_test {
 	private Login_page loginPage;
 	private Home_page homePage;
 	private Contacts_page contactsPage;
