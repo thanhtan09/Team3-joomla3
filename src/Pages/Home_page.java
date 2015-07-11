@@ -34,4 +34,14 @@ public class Home_page extends Abstract_page{
 		navigateMenu(driver,"Components|Weblinks");		
 		return new WebLinks_page(driver);
 	}
+	
+	/*
+	 * Navigate to Contacts Page
+	 * 
+	 * Author: Nga Nguyen
+	 */
+	public Contacts_page navigatetoContactspage(){
+		navigateMenu(driver,"Components|Contacts");		
+		return new Contacts_page (driver);
+	}
 }
