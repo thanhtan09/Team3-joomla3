@@ -18,7 +18,7 @@ public class Group_TC003_004_009 extends Abstract_test{
 		driver = openJoomla();
 	}
 	
-	@Test
+	@Test(description = "Verify user can unpublish an published article")
 	public void TC_ARTICLE_004 (){
 		loginPage = Factory_page.getLoginPage(driver);
 		homePage = loginPage.loginValidAccount(user.getUsername(), user.getPassword(), "");
