@@ -221,6 +221,7 @@ public class Interfaces {
 		public static final String BTN_ARCHIVE = "//li[@id='toolbar-archive']/a/span";
 		public static final String BTN_TRASH = "//span[@class='icon-32-trash']";
 		public static final String BTN_EMPTYTRASH = "//li[@id='toolbar-delete']/a/span";
+		public static final String BTN_HELP = "//li[@id='toolbar-help']/a/span";
 		public static final String CONTROL_MESSAGE = "//dd[@class='message message']/ul/li";
 		public static final String DROP_STATUS = "//select[@name='filter_published']";
 		public static final String DROP_DISPLAY = "//select[@id='limit']";
