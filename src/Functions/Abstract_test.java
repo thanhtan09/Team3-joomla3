@@ -29,7 +29,7 @@ public abstract class Abstract_test {
 	protected Client client;
 	protected Category category;
 	protected Banner banner,banner2,banner3;
-	protected Contact contact;
+	protected Contact contact, contact2, contact3;
 	
 
 	protected Abstract_test() {
