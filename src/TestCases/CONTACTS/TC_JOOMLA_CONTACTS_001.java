@@ -1,8 +1,8 @@
 package TestCases.CONTACTS;
 
 import org.testng.annotations.Test;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 
 import Functions.Abstract_test;
 import Pages.Contacts_page;
@@ -15,7 +15,7 @@ public class TC_JOOMLA_CONTACTS_001 extends Abstract_test {
 	private Home_page homePage;
 	private Contacts_page contactsPage;
 	
-	@BeforeMethod
+	@BeforeClass
 	public void setup(){
 		driver = openJoomla();
 	}
@@ -30,19 +30,34 @@ public class TC_JOOMLA_CONTACTS_001 extends Abstract_test {
 		log.info("Enter Contacts page");
 		contactsPage = homePage.navigatetoContactspage();		
 		
-		log.info("Create new article");
+		log.info("Create new contact");
 		contactsPage.addNewContact(contact.getName(),contact.getCategory(),"","","");
 		
 		log.info("Verify Contact successfully saved message is displayed");
 		verifyTrue(contactsPage.isMessageContactDisplay());
 		
 		log.info("Verify Created contact is displayed on the contacts table");
-		verifyTrue(contactsPage.isMessageContactDisplay());
+		verifyTrue(contactsPage.isContactDisplay(contact.getName()));
 		
 	}
 	
-	@AfterMethod
+	@Test(description = "Verify user can edit a contact", dependsOnMethods = "TC_CONTACT_001")
+	public void TC_CONTACT_002 (){
+
+		log.info("Edit a contact");
+		contactsPage.editContact(contact.getName(),contact3.getName(),contact3.getCategory(),"");
+		
+		log.info("Verify Edited Contact successfully saved message is displayed");
+		verifyTrue(contactsPage.isMessageContactDisplay());
+		
+		log.info("Verify Edited contact is displayed on the contacts table");
+		verifyTrue(contactsPage.isContactDisplay(contact3.getName()));
+		
+	}
+	
+	@AfterClass
 	public void end(){
+		contactsPage.deleteContact(contact3.getName());
 		shutdown();
 	}
 	
