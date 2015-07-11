@@ -32,6 +32,9 @@ public class Group_TC001_002_005 extends Abstract_test{
 		articlePage.addNewArticle(article.getTitle(), article.getCategory(), "",article.getContent(),"","");
 		
 		log.info("Verify message Article successfully saved displayed");
+		verifyTrue(articlePage.isMessageArticleDisplay());
+		
+		log.info("Verify Created article is displayed on the articles table");
 		verifyTrue(articlePage.isArticleDisplay(article.getTitle()));
 	}
 	
@@ -40,7 +43,10 @@ public class Group_TC001_002_005 extends Abstract_test{
 			
 		articlePage.editArticle(article.getTitle(),article2.getTitle(), article2.getCategory(), "", article2.getContent());
 		
-		log.info("Verify message Article successfully saved displayed");
+		log.info("Verify message Edited Article successfully saved displayed");
+		verifyTrue(articlePage.isMessageArticleDisplay());
+		
+		log.info("Verify Edited article is displayed on the articles table");
 		verifyTrue(articlePage.isArticleDisplay(article2.getTitle()));
 	}
 	
