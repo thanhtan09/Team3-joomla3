@@ -13,7 +13,7 @@ public class NewContacts_page extends Abstract_page {
 	
 	public Contacts_page addNewContact(String _name, String _category,
 			String _status, String _image, String button) {
-		enterTitle(_name);
+		enterName(_name);
 		selectCatetory(_category);
 		if (_status != "") {
 			selectStatus(_status);
@@ -34,8 +34,23 @@ public class NewContacts_page extends Abstract_page {
 		return new Contacts_page(driver);
 	}
 	
+	//Edit Contact
+	public Contacts_page editContact(String title, String category,
+			String status, String button) {
+
+		enterName(title);
+		selectCatetory(category);
+		if (status != "") {
+			selectStatus(status);
+		}
+		
+		clickSaveandClosebutton();
+
+		return new Contacts_page(driver);
+	}
+		
 	//enter Name
-	public void enterTitle(String _name) {
+	public void enterName(String _name) {
 		enter(driver, By.xpath(Interfaces.NewContactspage.TXT_NAME), _name);
 	}
 	
