@@ -10,7 +10,7 @@ import Pages.Factory_page;
 import Pages.Home_page;
 import Pages.Login_page;
 
-public class CONTACTS_TC006 extends Abstract_test{
+public class CONTACTS_TC008 extends Abstract_test{
 
 	private Login_page loginPage;
 	private Home_page homePage;
