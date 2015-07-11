@@ -59,5 +59,15 @@ public class Factory_page {
 	{
 		return new NewWebLinks_page(driver);
 	}
+	
+	public static Contacts_page getContactsPage(WebDriver driver){
+		return new Contacts_page(driver);
+		
+	}
+	
+	public static NewContacts_page getNewContactsPage(WebDriver driver){
+		return new NewContacts_page(driver);
+		
+	}
 
 }
