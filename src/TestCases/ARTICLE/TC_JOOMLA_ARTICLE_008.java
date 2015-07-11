@@ -9,7 +9,6 @@ import Pages.Article_page;
 import Pages.Factory_page;
 import Pages.Home_page;
 import Pages.Login_page;
-import Pages.NewArticle_page;
 
 public class TC_JOOMLA_ARTICLE_008 extends Abstract_test{
 
