@@ -13,6 +13,7 @@ public class Banner_page extends Abstract_page {
 	private String MESSAGE_TRASHBANNER = "1 banner successfully trashed";
 	private String STATUS_TRASHED = "Trashed";
 	private String STATUS_ARCHIEVE = "Archived";
+	private String HELP_TITLE = "Joomla! Help";
 
 	public Banner_page(WebDriver driver) {
 		this.driver = driver;
@@ -184,6 +185,23 @@ public class Banner_page extends Abstract_page {
 	}
 	
 	/*
+	 * Is help page display
+	 * 
+	 * Author: Tan Vo
+	 */
+	public boolean isHelpPage(){
+		String currentWindows = getCurrentWindows(driver);
+		clickHelp();
+		switchToNewWindows(driver);
+		if(getPageTitle(driver).equals(HELP_TITLE)){
+			driver.quit();
+			driver.switchTo().window(currentWindows);
+			return true;
+		} else
+		return false;
+	}
+	
+	/*
 	 * Is banner sent to trash
 	 * 
 	 * Author: Tan Vo
@@ -247,6 +265,15 @@ public class Banner_page extends Abstract_page {
 	 */
 	public void clickArchieve() {
 		click(driver, By.xpath(Interfaces.BannerPage.BTN_ARCHIEVE));
+	}
+	
+	/*
+	 * Click Help button
+	 * 
+	 * Author: Tan Vo
+	 */
+	public void clickHelp() {
+		click(driver, By.xpath(Interfaces.BannerPage.BTN_HELP));
 	}
 
 	/*
