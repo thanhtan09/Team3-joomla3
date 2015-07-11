@@ -54,8 +54,7 @@ public class Contacts_page extends Abstract_page {
 	public boolean isMessageContactDisplay(){
 		if(getText(driver, By.xpath(Interfaces.ContactsPage.CONTROL_MESSAGE))
 				.equals(MESSAGESUCCESS)){
-			click(driver, By.xpath(Interfaces.NewContactspage.BTN_CLOSE));
-			return true;
+		return true;
 		}
 		return false;
 	}
