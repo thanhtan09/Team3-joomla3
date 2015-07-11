@@ -80,4 +80,30 @@ public class Contacts_page extends Abstract_page {
 		}
 		return show;
 	}
+	 
+	 
+	//Edit contact
+		public Contacts_page editContact(String oldname, String name,
+				String category, String status, String button) {
+			int iCount = 0;
+			iCount = countElement(driver, By.xpath(Interfaces.ContactsPage.TABLE_TR));
+			for (int i = 1; i <= iCount; i++) {
+				String cell = getText(
+						driver,
+						By.xpath(Interfaces.ContactsPage.TABLE_TR + "[" + i
+								+ "]/td[" + 2 + "]/a"));
+				if (cell.equals(oldname)) {
+					click(driver,
+							By.xpath(Interfaces.ContactsPage.TABLE_TR + "[" + i
+									+ "]/td[" + 1 + "]/input[@type='checkbox']"));
+					break;
+				}
+			}
+			click(driver, By.xpath(Interfaces.ContactsPage.BTN_EDIT));
+
+			NewContacts_page newContact = Factory_page.getNewContactsPage(driver);
+			newContact.editContact(name, category, status, button);
+
+			return new Contacts_page(driver);
+		}
 }
