@@ -215,6 +215,7 @@ public class Interfaces {
 	 */
 	public class ContactsPage{
 		public static final String BTN_NEW = "//span[@class='icon-32-new']";
+		public static final String BTN_EDIT = "//li[@id='toolbar-edit']/a/span";
 		public static final String BTN_TRASH = "//span[@class='icon-32-trash']";
 		public static final String BTN_EMPTYTRASH = "//li[@id='toolbar-delete']/a/span";
 		public static final String CONTROL_MESSAGE = "//dd[@class='message message']/ul/li";
