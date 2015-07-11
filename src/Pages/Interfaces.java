@@ -216,6 +216,9 @@ public class Interfaces {
 	public class ContactsPage{
 		public static final String BTN_NEW = "//span[@class='icon-32-new']";
 		public static final String BTN_EDIT = "//li[@id='toolbar-edit']/a/span";
+		public static final String BTN_PUBLISH = "//li[@id='toolbar-publish']/a/span";
+		public static final String BTN_UNPUBLISH = "//li[@id='toolbar-unpublish']/a/span";
+		public static final String BTN_ARCHIVE = "//li[@id='toolbar-archive']/a/span";
 		public static final String BTN_TRASH = "//span[@class='icon-32-trash']";
 		public static final String BTN_EMPTYTRASH = "//li[@id='toolbar-delete']/a/span";
 		public static final String CONTROL_MESSAGE = "//dd[@class='message message']/ul/li";
@@ -225,6 +228,7 @@ public class Interfaces {
 		public static final String TXT_SEARCH = "//input[@id='filter_search']";
 		public static final String BTN_SEARCH = "//button[contains(text(),'Search')]";
 		public static final String CHECKBOX_1 = "//input[@id='cb0']";
+				
 	}
 
 	/*
