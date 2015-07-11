@@ -165,7 +165,7 @@ public class Abstract_page {
 			return false;
 		}
 	}
-
+	
 	/*
 	 * Navigate menu
 	 * 
@@ -175,17 +175,16 @@ public class Abstract_page {
 	 */
 	public void navigateMenu(WebDriver driver, String list) {
 		String menu = list;
+		String tab = "";
 		String lastItem = "";
 		String[] subMenu = menu.split("[|]");
 		for (String r : subMenu) {
 			hover(driver,
-					By.xpath("//ul[@id='menu']/descendant::a[contains(text(),'"
-							+ r + "')]"));
-			lastItem = r;
+					By.xpath("//ul[@id='menu']/li"+tab+"/a[contains(text(),'"+r+"')]"));
+			lastItem = "//ul[@id='menu']/li"+tab+"/a[contains(text(),'"+r+"')]";
+			tab = tab+"/ul/li";
 		}
-		click(driver,
-				By.xpath("//ul[@id='menu']/descendant::a[contains(text(),'"
-						+ lastItem + "')]"));
+		click(driver,By.xpath(lastItem));
 	}
 
 	/*

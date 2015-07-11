@@ -34,9 +34,7 @@ public class Categories_page extends Abstract_page {
 	 */
 	public Banner_page navigatetoBannerpage(){
 		
-		hover(driver, By.xpath("//ul[@id='menu']/li/a[contains(text(),'Components')]"));
-		hover(driver, By.xpath("//ul[@id='menu']/li/ul/li/a[contains(text(),'Banners')]"));
-		click(driver, By.xpath("//ul[@id='menu']/li/ul/li/ul/li/a[contains(text(),'Banners')]"));		
+		navigateMenu(driver, "Components|Banners|Banners");		
 		
 		return new Banner_page(driver);
 	}

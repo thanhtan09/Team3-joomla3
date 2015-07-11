@@ -72,9 +72,7 @@ public class Client_page extends Abstract_page {
 	 */
 	public Categories_page navigateCategoriespage(){
 		
-		hover(driver, By.xpath("//ul[@id='menu']/li/a[contains(text(),'Components')]"));
-		hover(driver, By.xpath("//ul[@id='menu']/li/ul/li/a[contains(text(),'Banners')]"));
-		click(driver, By.xpath("//ul[@id='menu']/li/ul/li//ul/li/a[contains(text(),'Categories')]"));
+		navigateMenu(driver, "Components|Banners|Categories");
 		
 		return new Categories_page(driver);
 	}
