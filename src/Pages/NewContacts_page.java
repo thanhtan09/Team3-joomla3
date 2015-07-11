@@ -35,10 +35,10 @@ public class NewContacts_page extends Abstract_page {
 	}
 	
 	//Edit Contact
-	public Contacts_page editContact(String title, String category,
+	public Contacts_page editContact(String name, String category,
 			String status, String button) {
 
-		enterName(title);
+		enterName(name);
 		selectCatetory(category);
 		if (status != "") {
 			selectStatus(status);
