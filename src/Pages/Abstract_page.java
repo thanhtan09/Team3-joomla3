@@ -12,6 +12,7 @@ import org.seleniumhq.jetty7.util.log.Log;
 public class Abstract_page {
 
 	private int timeout = 5;
+	private String XPATH_MENU = "//ul[@id='menu']/li";
 	private Log log;
 
 	/*
@@ -180,8 +181,8 @@ public class Abstract_page {
 		String[] subMenu = menu.split("[|]");
 		for (String r : subMenu) {
 			hover(driver,
-					By.xpath("//ul[@id='menu']/li"+tab+"/a[contains(text(),'"+r+"')]"));
-			lastItem = "//ul[@id='menu']/li"+tab+"/a[contains(text(),'"+r+"')]";
+					By.xpath(XPATH_MENU+tab+"/a[contains(text(),'"+r+"')]"));
+			lastItem = XPATH_MENU+tab+"/a[contains(text(),'"+r+"')]";
 			tab = tab+"/ul/li";
 		}
 		click(driver,By.xpath(lastItem));
