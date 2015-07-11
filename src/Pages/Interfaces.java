@@ -207,4 +207,46 @@ public class Interfaces {
 		public static final String BTN_IMAGE = "//div[@id='editor-xtd-buttons']/descendant::a[contains(text(),'Image')]";
 		public static final String BTN_INSERT = "//div[@class='fltrt']/button[contains(text(),'Insert')]";
 	}
+	
+	/*
+	 * Element in Contacts page
+	 * 
+	 * Author: Nga N
+	 */
+	public class ContactsPage{
+		public static final String BTN_NEW = "//span[@class='icon-32-new']";
+		public static final String BTN_TRASH = "//span[@class='icon-32-trash']";
+		public static final String BTN_EMPTYTRASH = "//li[@id='toolbar-delete']/a/span";
+		public static final String CONTROL_MESSAGE = "//dd[@class='message message']/ul/li";
+		//public static final String DROP_STATUS = "//select[@name='filter_state']";
+		public static final String DROP_DISPLAY = "//select[@id='limit']";
+		public static final String TABLE_TR = "//table[@class='adminlist']/tbody/tr";
+		public static final String TXT_SEARCH = "//input[@id='filter_search']";
+		public static final String BTN_SEARCH = "//button[contains(text(),'Search')]";
+		public static final String CHECKBOX_1 = "//input[@id='cb0']";
+	}
+
+	/*
+	 * Element in NewContacts page
+	 * 
+	 * Author: Nga N
+	 */
+
+	public class NewContactspage {
+		public static final String TXT_NAME = "//input[@id='jform_name']";
+		public static final String TXT_ALIAS = "//input[@id='jform_alias']";
+		public static final String BTN_SELECTUSER = "//a[contains(text(), 'Select User')]";
+		public static final String DROP_CATEGORY = "//select[@id='jform_catid']";
+		public static final String DROP_STATUS = "//select [@id='jform_published']";
+		public static final String DROP_ACCESS = "//select[@id='jform_access']";
+		public static final String DROP_FEATURED = "//select[@id='jform_featured']";
+		public static final String DROP_LANGUAGE = "//select[@id='jform_language']";
+		public static final String BTN_SAVE = "//li[@id='toolbar-apply']/a/span";
+		public static final String BTN_SAVEANDCLOSE = "//li[@id='toolbar-save']/a/span";
+		public static final String BTN_SAVEANDNEW = "//li[@id='toolbar-save-new']/a/span";
+		public static final String BTN_CANCEL = "//li[@id='toolbar-cancel']/a/span";
+		public static final String BTN_IMAGE = "//div[@id='editor-xtd-buttons']/descendant::a[contains(text(),'Image')]";
+		public static final String FRAME_IMAGE = "//iframe[@id='imageframe']";
+		public static final String BTN_CLOSE = "//li[@id='toolbar-cancel']/a/span";
+	}
 }
