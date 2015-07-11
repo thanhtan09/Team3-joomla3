@@ -21,7 +21,7 @@ public class CONTACTS_TC003_004_009 extends Abstract_test{
 	}
 	
 	@Test(description = "Verify user can unpublish a published contact")
-	public void TC_CONTACT_003 (){
+	public void TC_CONTACT_004 (){
 		
 		log.info("Login with valid account");
 		loginPage = Factory_page.getLoginPage(driver);
@@ -39,6 +39,20 @@ public class CONTACTS_TC003_004_009 extends Abstract_test{
 		log.info("Verify Created contact is displayed on the contacts table");
 		verifyTrue(contactsPage.isContactDisplay(contact2.getName()));
 		
+		log.info("UnPublish a publish contact");
+		contactsPage.unpublishContact(contact2.getName());
+		
+		log.info("Verify '1 contact successfully unpublished' message is displayed");
+		contactsPage.isMessageUnpublishContactDisplay();
+		
+		log.info("Verify the icon of the selected item is showed as 'Publish'");
+		contactsPage.isUnpublishContactDisplay(contact2.getName());
+		
+	}
+	
+	@Test(description = "Verify user can publish a published contact", dependsOnMethods = "TC_CONTACT_004")
+	public void TC_CONTACT_003 (){
+
 		log.info("Publish an unpublish contact");
 		contactsPage.publishContact(contact2.getName());
 		
@@ -47,39 +61,26 @@ public class CONTACTS_TC003_004_009 extends Abstract_test{
 		
 		log.info("Verify the icon of the selected item is showed as 'Publish'");
 		contactsPage.isPublishContactDisplay(contact2.getName());
-			
+					
 	}
 	
-	@Test(description = "Verify user can edit a contact", dependsOnMethods = "TC_CONTACT_003")
-	public void TC_CONTACT_004 (){
-
-		log.info("UnPublish a publish contact");
-		contactsPage.unpublishContact(contact2.getName());
-		
-		log.info("Verify '1 contact successfully unpublished' message is displayed");
-		contactsPage.isMessageUnpublishContactDisplay();
-		
-		log.info("Verify the icon of the selected item is showed as 'Publish'");
-		contactsPage.isUnpublishContactDisplay(contact2.getName());
-		
-	}
-	
-	@Test(description = "Verify user can move a contact to the archive", dependsOnMethods = "TC_CONTACT_004")
+	@Test(description = "Verify user can move a contact to the archive", dependsOnMethods = "TC_CONTACT_005")
 	public void TC_CONTACT_005 (){
 
-		log.info("UnPublish a publish contact");
-		contactsPage.unpublishContact(contact2.getName());
+		log.info("Archive a contact");
+		contactsPage.archiveContact(contact2.getName());
 		
-		log.info("Verify '1 contact successfully unpublished' message is displayed");
-		contactsPage.isMessageUnpublishContactDisplay();
+		log.info("Verify '1 contact archived' message is displayed");
+		contactsPage.isMessageArchivedContactDisplay();
 		
-		log.info("Verify the icon of the selected item is showed as 'Publish'");
-		contactsPage.isUnpublishContactDisplay(contact2.getName());
+		log.info("Verify the archived contact is displayed on the table grid");
+		contactsPage.isArchivedContactDisplay(contact2.getName());
 		
 	}
 	
 	@AfterClass
 	public void end(){
+		contactsPage.deleteContact(contact2.getName());
 		shutdown();
 	}
 }
