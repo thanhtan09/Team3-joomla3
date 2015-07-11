@@ -1,8 +1,8 @@
 package TestCases.CONTACTS;
 
-import org.testng.annotations.Test;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
 import Functions.Abstract_test;
 import Pages.Contacts_page;
@@ -10,7 +10,7 @@ import Pages.Factory_page;
 import Pages.Home_page;
 import Pages.Login_page;
 
-public class CONTACTS_TC003_004_009 extends Abstract_test{
+public class CONTACTS_TC003_004_005 extends Abstract_test{
 	private Login_page loginPage;
 	private Home_page homePage;
 	private Contacts_page contactsPage;
@@ -64,7 +64,7 @@ public class CONTACTS_TC003_004_009 extends Abstract_test{
 					
 	}
 	
-	@Test(description = "Verify user can move a contact to the archive", dependsOnMethods = "TC_CONTACT_005")
+	@Test(description = "Verify user can move a contact to the archive", dependsOnMethods = "TC_CONTACT_003")
 	public void TC_CONTACT_005 (){
 
 		log.info("Archive a contact");

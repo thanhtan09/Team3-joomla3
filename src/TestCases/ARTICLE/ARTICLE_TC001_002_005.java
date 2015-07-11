@@ -5,9 +5,12 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import Functions.Abstract_test;
-import Pages.*;
+import Pages.Article_page;
+import Pages.Factory_page;
+import Pages.Home_page;
+import Pages.Login_page;
 
-public class Group_TC001_002_005 extends Abstract_test{
+public class ARTICLE_TC001_002_005 extends Abstract_test{
 
 	private Login_page loginPage;
 	private Home_page homePage;
