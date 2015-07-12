@@ -13,8 +13,8 @@ public class Contacts_page extends Abstract_page {
 	private String MESSAGEUNPUBLISH = "1 contact successfully unpublished.";
 	private String MESSAGEARCHIVE = "1 contact successfully archived";
 	private String MESSAGEDELETE = "1 contact successfully deleted";
-	//private String MESSAGECHECKIN = "1 contact successfully checked in";
-	//private String MESSAGETRASHARTICLE = "1 contact successfully trashed";
+	private String MESSAGECHECKIN = "1 contact successfully checked in";
+	private String MESSAGETRASHCONTACT = "1 contact successfully trashed";
 
 	// Status
 	private String STATUS_TRASHED = "Trashed";
@@ -319,5 +319,97 @@ public class Contacts_page extends Abstract_page {
 		driver.close(); // close new window when done it.
 		driver.switchTo().window(parentHandle); // switch back to the original
 												// window
+	}
+	
+	//Check in a contact
+	public void checkinContact (String contact){
+		int iCount = 0;
+		iCount = countElement(driver, By.xpath(Interfaces.ContactsPage.TABLE_TR));
+			for (int i = 1; i <= iCount; i++) {
+				String cell = getText(
+						driver,
+						By.xpath(Interfaces.ContactsPage.TABLE_TR + "[" + i
+								+ "]/td[" + 2 + "]/a"));
+				if (cell.equals(contact)) {
+					click(driver,
+							By.xpath(Interfaces.ContactsPage.TABLE_TR + "[" + i
+									+ "]/td[" + 1 + "]/input[@type='checkbox']"));
+					break;
+				}
+			}
+	click(driver, By.xpath(Interfaces.ContactsPage.BTN_CHECKIN));
+	}
+	
+	//Is Check in Message displayed
+	public boolean isCheckinMessage() {
+		if (getText(driver, By.xpath(Interfaces.ContactsPage.CONTROL_MESSAGE))
+				.equals(MESSAGECHECKIN))
+			return true;
+
+		return false;
+	}
+
+	// Is Checked-in Contact displayed
+	public boolean isCheckinContact(String contact) {
+		boolean show = false;
+
+		int iCount = 0;
+		iCount = countElement(driver, By.xpath(Interfaces.ContactsPage.TABLE_TR));
+		for (int i = 1; i <= iCount; i++) {
+			String cell = getText(
+					driver,
+					By.xpath(Interfaces.ContactsPage.TABLE_TR + "[" + i
+							+ "]/td[" + 2 + "]/a"));
+			if (cell.equals(contact)) {
+				if (isControlExist(
+						driver,
+						By.xpath(Interfaces.ContactsPage.TABLE_TR + "[" + i
+								+ "]/td[" + 2 + "]/a/span/span")))
+					show = true;
+				break;
+			}
+		}
+		return show;
+	}
+	
+	// Trash Contact
+	public void trashContact(String contact) {
+		select(driver, By.xpath(Interfaces.ContactsPage.DROP_STATUS), "All");
+		searchforContact(contact);
+		click(driver, By.xpath(Interfaces.ContactsPage.CHECKBOX_1));
+		click(driver, By.xpath(Interfaces.ContactsPage.BTN_TRASH));
+	}
+
+	// Is Trash Contact Message displayed
+	public boolean isTrashContactMessage() {
+		if (getText(driver, By.xpath(Interfaces.ContactsPage.CONTROL_MESSAGE))
+				.equals(MESSAGETRASHCONTACT))
+			return true;
+
+		return false;
+	}
+
+	//Is Trashed Article in Table Grid displayed
+	public boolean isTrashedContactinG(String contact) {
+		boolean show = false;
+		select(driver, By.xpath(Interfaces.ContactsPage.DROP_STATUS),
+				STATUS_TRASHED);
+		int iCount = 0;
+		iCount = countElement(driver, By.xpath(Interfaces.ContactsPage.TABLE_TR));
+		for (int i = 1; i <= iCount; i++) {
+			String cell = getText(
+					driver,
+					By.xpath(Interfaces.ContactsPage.TABLE_TR + "[" + i
+							+ "]/td[" + 2 + "]/a"));
+			if (cell.equals(contact)) {
+				if (isControlExist(
+						driver,
+						By.xpath(Interfaces.ContactsPage.TABLE_TR + "[" + i
+								+ "]/td[" + 2 + "]/a")))
+					show = true;
+				break;
+			}
+		}
+		return show;
 	}
 }
