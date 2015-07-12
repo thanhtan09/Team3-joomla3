@@ -133,6 +133,19 @@ public class TC_JOOMLA_BANNERS_BANNERS_001 extends Abstract_test{
 		bannerPage.isBannerDisplay(banner2.getName());
 	}
 	
+	@Test (description = "Verify that user can search a banner by using filter dropdown lists")
+	public void TC_BANNERS_009(){
+		
+		log.info("Select Client that banner belong to in Client dropdown list");
+		bannerPage.selectClient(client.getName());
+		
+		log.info("Select Category that banner belong to in Category dropdown list");
+		bannerPage.selectCategory(category.getTitle());
+		
+		log.info("Recently created banner displays");
+		verifyTrue(bannerPage.isBannerDisplay(banner2.getName()));
+	}
+	
 	@AfterClass
 	public void end(){
 		log.info("Delete banner");

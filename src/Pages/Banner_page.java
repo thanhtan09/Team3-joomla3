@@ -150,6 +150,8 @@ public class Banner_page extends Abstract_page {
 	 */
 	public void trashBanner(String banner){
 		selectStatus("All");
+		selectClient("- Select Client -");
+		selectCategory("- Select Category -");
 		searchBanner(banner);
 		clickFirstBanner();
 		clickTrash();
@@ -293,5 +295,23 @@ public class Banner_page extends Abstract_page {
 	 */
 	public void selectStatus(String status){
 		select(driver, By.xpath(Interfaces.BannerPage.DROP_STATUS), status);
+	}
+	
+	/*
+	 * Select client
+	 * 
+	 * Author: Tan Vo
+	 */
+	public void selectClient(String client){
+		select(driver, By.xpath(Interfaces.BannerPage.FILTER_CLIENT), client);
+	}
+	
+	/*
+	 * Select Category
+	 * 
+	 * Author: Tan Vo
+	 */
+	public void selectCategory(String cate){
+		select(driver, By.xpath(Interfaces.BannerPage.FILTER_CATEGORY), cate);
 	}
 }
