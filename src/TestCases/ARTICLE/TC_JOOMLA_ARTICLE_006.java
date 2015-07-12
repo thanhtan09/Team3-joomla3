@@ -46,8 +46,11 @@ public class TC_JOOMLA_ARTICLE_006 extends Abstract_test{
 		log.info("Check in an article");
 		articlePage.checkinArticle(article1);
 	
-		log.info("Verify the confirm message is displayed");
+		log.info("Verify the '1 article successfully checked in' message is displayed");
 		verifyTrue(articlePage.isCheckinMessage());
+		
+		log.info("Verify the lock icon next to the article is removed");
+		verifyFalse(articlePage.isCheckinArticle(article.getTitle()));
 	}
 	
 	@AfterMethod

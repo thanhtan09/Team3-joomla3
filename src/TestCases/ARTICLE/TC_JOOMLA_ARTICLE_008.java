@@ -29,7 +29,7 @@ public class TC_JOOMLA_ARTICLE_008 extends Abstract_test{
 		
 			
 		log.info("Verify the article's help window is displayed");
-		articlePage.verifyHelpwindow(driver);
+		verifyTrue(articlePage.isHelpWindow());
 	
 	}
 	

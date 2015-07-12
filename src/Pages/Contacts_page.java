@@ -290,35 +290,32 @@ public class Contacts_page extends Abstract_page {
 									+ "[contains(text(),'" + MESSAGEDELETE + "')]"));
 	}
 	
-	//Access to Article's Help window
-	public void AccessHelpWindow(WebDriver driver) {
+	/*
+	 * Access to Help window
+	 * 
+	 * Author: Nga Nguyen
+	 */
+	public void accessToHelpWindow() {
 
-		click(driver, By.xpath(Interfaces.ContactsPage.BTN_HELP));
+		click(driver, By.xpath(Interfaces.ArticlePage.BTN_HELP));
 
 	}
 
-	//Verify Article's Help window
-	public void verifyHelpwindow(WebDriver driver) {
-
-		// get the current window handle
-		String parentHandle = driver.getWindowHandle();
-
-		// click the link to open a new window
-
-		AccessHelpWindow(driver);
-
-		for (String winHandle : driver.getWindowHandles()) {
-			driver.switchTo().window(winHandle); // switch focus of WebDriver to
-													// the next found window
-													// handle (that's your newly
-													// opened window)
-		}
-
-		// get Title of new window and comparing
-		getPageTitle(driver).equals(HELP_TITLE);
-		driver.close(); // close new window when done it.
-		driver.switchTo().window(parentHandle); // switch back to the original
-												// window
+	/*
+	 * Is HelpWindow displayed
+	 * 
+	 * Author: Nga Nguyen
+	 */
+	public boolean isHelpWindow(){
+		String currentWindows = getCurrentWindows(driver);
+		accessToHelpWindow();
+		switchToNewWindows(driver);
+		if(getPageTitle(driver).equals(HELP_TITLE)){
+			driver.close();
+			driver.switchTo().window(currentWindows);
+			return true;
+		} else
+		return false;
 	}
 	
 	//Check in a contact
