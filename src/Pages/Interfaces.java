@@ -220,6 +220,7 @@ public class Interfaces {
 		public static final String BTN_PUBLISH = "//li[@id='toolbar-publish']/a/span";
 		public static final String BTN_UNPUBLISH = "//li[@id='toolbar-unpublish']/a/span";
 		public static final String BTN_ARCHIVE = "//li[@id='toolbar-archive']/a/span";
+		public static final String BTN_CHECKIN = "//li[@id='toolbar-checkin']/a/span";
 		public static final String BTN_TRASH = "//span[@class='icon-32-trash']";
 		public static final String BTN_EMPTYTRASH = "//li[@id='toolbar-delete']/a/span";
 		public static final String BTN_HELP = "//li[@id='toolbar-help']/a/span";
