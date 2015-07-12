@@ -27,7 +27,7 @@ public class CONTACTS_TC008 extends Abstract_test{
 		contactsPage = homePage.navigatetoContactspage();
 			
 		log.info("Verify the contact's help window is displayed");
-		contactsPage.verifyHelpwindow(driver);
+		contactsPage.isHelpWindow();
 	}
 	
 	@Test(description = "Verify user can check in a contact")
