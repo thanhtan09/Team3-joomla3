@@ -30,8 +30,6 @@ public abstract class Abstract_test {
 	protected Category category;
 	protected Banner banner,banner2,banner3;
 	protected Contact contact, contact2, contact3;
-	
-
 	protected Abstract_test() {
 		log = LogFactory.getLog(getClass());
 	}
