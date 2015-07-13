@@ -203,7 +203,7 @@ public class Interfaces {
 		public static final String TXT_TITLE = "//input[@id='jform_title']";
 		public static final String TXT_URL = ".//input[@id='jform_url']";
 		public static final String DROP_CATEGORY = "//select[@id='jform_catid']";
-		public static final String DROP_STATUS = "//select[@name='filter_published']";
+		public static final String DROP_STATUS = "//select [@id='jform_state']";
 		public static final String DROP_FRATURE = "//select[@id='jform_featured']";
 		public static final String TXT_CONTENT = "//body[@id='tinymce']";
 		public static final String BTN_SAVE = "//li[@id='toolbar-apply']/a/span";
