@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Week 3">
+	<test name="week3">
+		<classes>
+			<class name="TestCases.ARTICLE.ARTICLE_TC001_002_005" />
+			<class name="TestCases.ARTICLE.ARTICLE_TC003_004_009" />
+			<class name="TestCases.ARTICLE.ARTICLE_TC006" />
+			<class name="TestCases.ARTICLE.ARTICLE_TC007" />
+			<class name="TestCases.ARTICLE.ARTICLE_TC008" />
+			<class name="TestCases.ARTICLE.ARTICLE_TC012" />
+			<class name="TestCases.ARTICLE.ARTICLE_TC013" />
+			<class name="TestCases.ARTICLE.ARTICLE_TC014" />
+			<class name="TestCases.ARTICLE.ARTICLE_TC015" />
+			<class name="TestCases.ARTICLE.ARTICLE_TC016" />
+			<class name="TestCases.ARTICLE.ARTICLE_TC017" />
+		</classes>
+		<packages>
+			<package name="TestCases.BANNERS" />
+			<package name="TestCases.CONTACTS" />
+		</packages>
+	</test>
+</suite>
