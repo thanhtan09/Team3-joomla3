@@ -15,8 +15,8 @@ public class WebLinks_page extends Abstract_page {
 
 	// Message
 	private String MESSAGESUCCESS = "Weblink successfully saved";
-	private String MESSAGEPUBLISH = "1 weblink published.";
-	private String MESSAGEUNPUBLISH = "1 weblink unpublished.";
+	private String MESSAGEPUBLISH = "1 weblink successfully unpublished";
+	private String MESSAGEUNPUBLISH = "1 weblink successfully published";
 	private String MESSAGEARCHIVE = "1 weblink archived.";
 	private String MESSAGEDELETE = "1 weblink deleted.";
 	private String MESSAGETRASHWEBLINK = "1 weblink trashed.";
@@ -38,12 +38,12 @@ public class WebLinks_page extends Abstract_page {
 	 * 
 	 * Author: Tan Vo
 	 */
-	public void addNewWebLink(String _title, String _url, String _content, String button) {
+	public void addNewWebLink(String _title, String _url, String _content, String status, String button) {
 		
 		clickNewbutton();
 		
 		NewWebLinks_page wblink = Factory_page.getNewWebLinksPage(driver);
-		wblink.addNewWebLink(_title, _url, _content, button);
+		wblink.addNewWebLink(_title, _url, _content, status, button);
 		
 	}
 
@@ -250,5 +250,13 @@ public class WebLinks_page extends Abstract_page {
 		}
 
 		return show;
+	}
+	// Is Message CONTACT SAVED SUCCESSFULLY displayed
+	public boolean isMessageUnpublishWeblinkDisplay(){
+		if(getText(driver, By.xpath(Interfaces.WebLinksPage.CONTROL_MESSAGE))
+				.equals(MESSAGEUNPUBLISH)){
+			return true;
+			}
+		return false;
 	}
 }
