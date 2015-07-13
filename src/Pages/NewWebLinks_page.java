@@ -11,12 +11,16 @@ public class NewWebLinks_page extends Abstract_page{
 		this.driver = driver;
 	}
 
-	public WebLinks_page addNewWebLink(String _title, String _url, String _content, String button) {
+	public WebLinks_page addNewWebLink(String _title, String _url, String _content, String status, String button) {
 		
 		enterTitle(_title);
 		enterURL(_url);
 		enterWLText(_content);
-
+		
+		if (status != "") {
+			selectStatus(status);
+		}
+		
 		switch (button) {
 		case "Save":
 			clickSavebutton();
