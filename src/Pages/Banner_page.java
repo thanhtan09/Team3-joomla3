@@ -14,7 +14,7 @@ public class Banner_page extends Abstract_page {
 	private String MESSAGE_CHECKEDIN = "1 banner successfully checked in";
 	private String STATUS_TRASHED = "Trashed";
 	private String STATUS_ARCHIEVE = "Archived";
-	private String HELP_TITLE = "Joomla! Help";
+	private String HELP_BANNERPAGE_TITLE = "Joomla! Help";
 
 	public Banner_page(WebDriver driver) {
 		this.driver = driver;
@@ -143,6 +143,8 @@ public class Banner_page extends Abstract_page {
 	 * Author: Tan Vo
 	 */
 	public void deleteBanner(String banner) {
+		if(isControlExist(driver, By.xpath(Interfaces.NewBannerPage.BTN_CLOSE)))
+			click(driver, By.xpath(Interfaces.NewBannerPage.BTN_CLOSE));
 		trashBanner(banner);
 		emptytrashBanner(banner);
 	}
@@ -199,7 +201,7 @@ public class Banner_page extends Abstract_page {
 		String currentWindows = getCurrentWindows(driver);
 		clickHelp();
 		switchToNewWindows(driver);
-		if(getPageTitle(driver).equals(HELP_TITLE)){
+		if(getPageTitle(driver).equals(HELP_BANNERPAGE_TITLE)){
 			driver.close();
 			driver.switchTo().window(currentWindows);
 			return true;
@@ -363,5 +365,15 @@ public class Banner_page extends Abstract_page {
 	 */
 	public void selectCategory(String cate){
 		select(driver, By.xpath(Interfaces.BannerPage.FILTER_CATEGORY), cate);
+	}
+	
+	/*
+	 * Open new banner help
+	 * 
+	 * Author: Tan Vo
+	 */
+	public void openNewBannerHelp(){
+		clickNew();
+		clickHelp();
 	}
 }
