@@ -28,7 +28,7 @@ public abstract class Abstract_test {
 	protected Article article,article2,article3,article4,article5,article6,article7;
 	protected Client client;
 	protected Category category;
-	protected Banner banner,banner2,banner3;
+	protected Banner banner,banner2,banner3,banner4;
 	protected Contact contact, contact2, contact3;
 	protected Weblink weblink1, weblink2, weblink3, weblink4;
 	
@@ -130,6 +130,7 @@ public abstract class Abstract_test {
 		banner = data.getBanner("Banner1");
 		banner2 = data.getBanner("Banner2");
 		banner3 = data.getBanner("Banner3");
+		banner3 = data.getBanner("Banner4");
 		contact = data.getContact("Contact1");
 		contact2 = data.getContact("Contact2");
 		contact3 = data.getContact("Contact3");
