@@ -168,6 +168,25 @@ public class Abstract_page {
 	}
 	
 	/*
+	 * Is Control Not Exist
+	 * 
+	 * Parameter: driver, By
+	 * 
+	 * Return: true/false
+	 * 
+	 * Author: Tan Vo
+	 */
+	public boolean isControlNotExist(WebDriver driver, By by){
+		try{
+			driver.findElement(by);
+			return false;
+		}catch (Exception e) {
+			log.debug("Control is exist");
+			return true;
+		}
+	}
+	
+	/*
 	 * Navigate menu
 	 * 
 	 * Parameter: menu (e.g: Content|Article Manager)
