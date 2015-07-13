@@ -348,5 +348,58 @@ public class ReadData {
 		}
 		return URL;
 	}
+	
+	/*
+	 * Get weblink data
+	 * 
+	 * Parameter: weblink
+	 * 
+	 * Author: Giang Nguyen
+	 */
+	public Weblink getWeblink(String _weblink) {
+
+		Weblink wblink = new Weblink();
+		Workbook workbook;
+		try {
+			// create workbook to open file
+			workbook = Workbook.getWorkbook(new File(fileName));
+
+			// get sheet want read
+			Sheet sheet = workbook.getSheet(0);
+
+			// get number row and col contain data
+			int rows = sheet.getRows();
+			int cols = sheet.getColumns();
+
+			// read data in each cell
+			for (int row = 0; row < rows; row++) {
+				for (int col = 0; col < cols; col++) {
+					Cell cell = sheet.getCell(col, row);
+
+					if (cell.getContents().equals(_weblink)) {
+						Cell title = sheet.getCell(1, row);
+						Cell url = sheet.getCell(2, row);
+						Cell content = sheet.getCell(3, row);
+						Cell status = sheet.getCell(4,row);
+						
+						wblink.setName(title.getContents());
+						wblink.setUrl(url.getContents());
+						wblink.setContent(content.getContents());
+						wblink.setStatus(status.getContents());
+					}
+				}
+			}
+			// close
+			workbook.close();
+
+		} catch (BiffException e) {
+			System.out.println("File not found\n" + e.toString());
+		} catch (IOException e) {
+			System.out.println("File not found\n" + e.toString());
+		}
+
+		return wblink;
+	}
+	
 
 }
