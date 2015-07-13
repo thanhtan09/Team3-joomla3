@@ -19,7 +19,7 @@ public class Contacts_page extends Abstract_page {
 	// Status
 	private String STATUS_TRASHED = "Trashed";
 	//private String STATUS_ARCHIVED = "Archived";
-	//private String STATUS_ALL = "All";
+	private String STATUS_ALL = "All";
 	//private String PUBLISH = "Published";
 	//private String UNPUBLISH = "Unpublished";
 	//private String FRATURED = "Featured article";
@@ -53,33 +53,21 @@ public class Contacts_page extends Abstract_page {
 	// Is Message CONTACT SAVED SUCCESSFULLY displayed
 	public boolean isMessageContactDisplay(){
 		if(getText(driver, By.xpath(Interfaces.ContactsPage.CONTROL_MESSAGE))
-				.equals(MESSAGESUCCESS)){
-		return true;
-		}
-		return false;
+				.equals(MESSAGESUCCESS))
+				return true;
+			return false;
 	}
 	
 	// Is CONTACT successfully saved 
 	 public boolean isContactDisplay(String contact) {
-		boolean show = false;
-		if (getText(driver, By.xpath(Interfaces.ContactsPage.CONTROL_MESSAGE))
-				.equals(MESSAGESUCCESS)) {
-			int iCount = 0;
-			iCount = countElement(driver,
-					By.xpath(Interfaces.ContactsPage.TABLE_TR));
-			for (int i = 1; i <= iCount; i++) {
-				String cell = getText(
-						driver,
-						By.xpath(Interfaces.ContactsPage.TABLE_TR + "[" + i
-								+ "]/td[" + 2 + "]/a"));
-				if (cell.equals(contact)) {
-					show = true;
-					break;
-				}
-			}
+			searchforContact(contact);
+			String cell = getText(driver,
+					By.xpath(Interfaces.ContactsPage.TABLE_TR + "[1]/td[2]/a"));
+			if (cell.equals(contact))
+				return true;
+			return false;
+			
 		}
-		return show;
-	}
 	 
 	 
 	//Edit contact
@@ -111,20 +99,8 @@ public class Contacts_page extends Abstract_page {
 	//Publish an unpublished contact
 	public void publishContact (String contact){
 			
-		int iCount = 0;
-			iCount = countElement(driver, By.xpath(Interfaces.ContactsPage.TABLE_TR));
-			for (int i = 1; i <= iCount; i++) {
-				String cell = getText(
-					driver,
-					By.xpath(Interfaces.ContactsPage.TABLE_TR + "[" + i
-							+ "]/td[" + 2 + "]/a"));
-				if (cell.equals(contact)) {
-					click(driver,
-						By.xpath(Interfaces.ContactsPage.TABLE_TR + "[" + i
-								+ "]/td[" + 1 + "]/input[@type='checkbox']"));
-					break;
-				}
-			}
+		searchforContact(contact);
+		clickFirstContact();
 		click(driver, By.xpath(Interfaces.ContactsPage.BTN_PUBLISH));
 	}
 		
@@ -214,20 +190,8 @@ public class Contacts_page extends Abstract_page {
 	//Archive Contact
 	 public void archiveContact (String contact){
 				
-		int iCount = 0;
-			iCount = countElement(driver, By.xpath(Interfaces.ContactsPage.TABLE_TR));
-				for (int i = 1; i <= iCount; i++) {
-					String cell = getText(
-							driver,
-							By.xpath(Interfaces.ContactsPage.TABLE_TR + "[" + i
-									+ "]/td[" + 2 + "]/a"));
-					if (cell.equals(contact)) {
-						click(driver,
-								By.xpath(Interfaces.ContactsPage.TABLE_TR + "[" + i
-										+ "]/td[" + 1 + "]/input[@type='checkbox']"));
-						break;
-					}
-				}
+		searchforContact(contact);
+		clickFirstContact();
 		click(driver, By.xpath(Interfaces.ContactsPage.BTN_ARCHIVE));
 	}
 		 
@@ -318,23 +282,22 @@ public class Contacts_page extends Abstract_page {
 		return false;
 	}
 	
+	//Click first contact
+	public void clickFirstContact(){
+		click(driver, By.xpath(Interfaces.ContactsPage.CHECKBOX_1));
+	}
+	
+	public void clickCheckin() {
+		click(driver, By.xpath(Interfaces.ContactsPage.BTN_CHECKIN));
+	}
+	
 	//Check in a contact
-	public void checkinContact (String contact){
-		int iCount = 0;
-		iCount = countElement(driver, By.xpath(Interfaces.ContactsPage.TABLE_TR));
-			for (int i = 1; i <= iCount; i++) {
-				String cell = getText(
-						driver,
-						By.xpath(Interfaces.ContactsPage.TABLE_TR + "[" + i
-								+ "]/td[" + 2 + "]/a"));
-				if (cell.equals(contact)) {
-					click(driver,
-							By.xpath(Interfaces.ContactsPage.TABLE_TR + "[" + i
-									+ "]/td[" + 1 + "]/input[@type='checkbox']"));
-					break;
-				}
-			}
-	click(driver, By.xpath(Interfaces.ContactsPage.BTN_CHECKIN));
+	public void checkinContact (String _contact){
+		
+			searchforContact(_contact);
+			clickFirstContact ();
+			clickCheckin();
+			
 	}
 	
 	//Is Check in Message displayed
@@ -408,5 +371,87 @@ public class Contacts_page extends Abstract_page {
 			}
 		}
 		return show;
+	}
+	
+		
+	//Search for contacts using the filter dropdown list
+	public void searchbyfilter (String _name, String _cate, String _stt){
+		
+		click(driver, By.xpath(Interfaces.ContactsPage.BTN_CLEAR));
+		//enter(driver, By.xpath(Interfaces.ContactsPage.TXT_SEARCH), _name);
+		select(driver, By.xpath(Interfaces.ContactsPage.DROP_DISPLAY), STATUS_ALL); 
+			if (_cate != null){
+				select(driver, By.xpath(Interfaces.ContactsPage.DROP_CATEGORY), _cate);
+			} 
+			if (_stt != null){
+				select(driver, By.xpath(Interfaces.ContactsPage.DROP_STATUS), _stt);
+			}
+		
+		}
+	
+	//Is the filtered contact displayed == FAILED
+	public boolean isFilteredContact (String _cate, String _stt){
+		boolean show = false;
+		int iCount = 0;
+		iCount = countElement(driver, By.xpath(Interfaces.ContactsPage.TABLE_TR));
+		for (int i = 1; i <= iCount; i++) {
+			String category = getText(
+					driver,
+					By.xpath(Interfaces.ContactsPage.TABLE_TR + "[" + i
+							+ "]/td[" + 6 + "]"));
+			
+			String status = getText(
+					driver,
+					By.xpath(Interfaces.ContactsPage.TABLE_TR + "[" + i
+							+ "]/td[" + 4 + "]/a/span/span"));
+			
+			if (category.equals(_cate) && status.equals(_stt)) {
+				show = true;
+			}
+		}
+		return show;		
+	}
+	
+	// Sort the contacts table by ID column
+	public void sortbyID (){
+		
+		click(driver, By.xpath(Interfaces.ContactsPage.LNK_SORTID));
+	}
+	
+	// Is Sort ASC order
+	public boolean isAscOrder (){
+		boolean isSort = false;
+		
+			isSort = true;
+		return isSort;
+	}
+	
+	// Is Sort DSC order
+	public boolean isDscOrder (){
+		
+		boolean show = false;
+		
+		click(driver, By.xpath(Interfaces.ContactsPage.LNK_SORTID));
+			show = true;
+		return show;
+	}
+	
+	
+	//Select number of items displayed
+	public void selectDisplayItem(String _item) {
+
+		select(driver, By.xpath(Interfaces.ContactsPage.DROP_DISPLAY), _item);
+
+	}
+	
+
+	public boolean isPaging(int _item) {
+		boolean paging = false;
+		int row = countElement(driver,
+				By.xpath(Interfaces.ContactsPage.TABLE_TR));
+		if (row <= _item) {
+			paging = true;
+		}
+		return paging;
 	}
 }
