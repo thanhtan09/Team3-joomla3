@@ -130,7 +130,7 @@ public abstract class Abstract_test {
 		banner = data.getBanner("Banner1");
 		banner2 = data.getBanner("Banner2");
 		banner3 = data.getBanner("Banner3");
-		banner3 = data.getBanner("Banner4");
+		banner4 = data.getBanner("Banner4");
 		contact = data.getContact("Contact1");
 		contact2 = data.getContact("Contact2");
 		contact3 = data.getContact("Contact3");
