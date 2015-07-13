@@ -19,7 +19,7 @@ public class WebLinks_page extends Abstract_page {
 	private String MESSAGEUNPUBLISH = "1 weblink unpublished.";
 	private String MESSAGEARCHIVE = "1 weblink archived.";
 	private String MESSAGEDELETE = "1 weblink deleted.";
-	private String MESSAGETRASHARTICLE = "1 weblink trashed.";
+	private String MESSAGETRASHWEBLINK = "1 weblink trashed.";
 	private String MESSAGECHECKIN = "1 weblink successfully checked in";
 	private String HELP_TITLE = "Joomla! Help";
 
@@ -29,8 +29,8 @@ public class WebLinks_page extends Abstract_page {
 	private String STATUS_ALL = "All";
 	private String PUBLISH = "Published";
 	private String UNPUBLISH = "Unpublished";
-	private String FRATURED = "Featured article";
-	private String UNFRATURED = "Unfeatured article";
+	private String FRATURED = "Featured weblink";
+	private String UNFRATURED = "Unfeatured weblink";
 	private String ACCESS_PUBLIC = "Public";
 	
 	/*
@@ -57,7 +57,7 @@ public class WebLinks_page extends Abstract_page {
 	}
 
 	/*
-	 * Is Article successfully saved displayed
+	 * Is Weblink successfully saved displayed
 	 * 
 	 * Author: Giang
 	 */
@@ -135,4 +135,120 @@ public class WebLinks_page extends Abstract_page {
 
 	}
 	
+	/*
+	 * Publish Weblink
+	 * 
+	 * Parameter: Weblink name
+	 * 
+	 * Author: Giang Nguyen
+	 */
+	public void publishWeblink(String weblink) {
+		int iCount = 0;
+		iCount = countElement(driver, By.xpath(Interfaces.WebLinksPage.TABLE_TR));
+		for (int i = 1; i <= iCount; i++) {
+			String cell = getText(
+					driver,
+					By.xpath(Interfaces.WebLinksPage.TABLE_TR + "[" + i
+							+ "]/td[" + 2 + "]/a"));
+			if (cell.equals(weblink)) {
+				click(driver,
+						By.xpath(Interfaces.WebLinksPage.TABLE_TR + "[" + i
+								+ "]/td[" + 1 + "]/input[@type='checkbox']"));
+
+				break;
+			}
+		}
+		click(driver, By.xpath(Interfaces.WebLinksPage.BTN_PUBLISH));
+	}
+
+	/*
+	 * UnPublish Weblink
+	 * 
+	 * Parameter: Weblink name
+	 * 
+	 * Author: Giang Nguyen
+	 */
+	public void unpublishWeblink(String weblink) {
+		int iCount = 0;
+		iCount = countElement(driver, By.xpath(Interfaces.WebLinksPage.TABLE_TR));
+		for (int i = 1; i <= iCount; i++) {
+			String cell = getText(
+					driver,
+					By.xpath(Interfaces.WebLinksPage.TABLE_TR + "[" + i
+							+ "]/td[" + 2 + "]/a"));
+			if (cell.equals(weblink)) {
+				click(driver,
+						By.xpath(Interfaces.WebLinksPage.TABLE_TR + "[" + i
+								+ "]/td[" + 1 + "]/input[@type='checkbox']"));
+
+				break;
+			}
+		}
+		click(driver, By.xpath(Interfaces.WebLinksPage.BTN_UNPUBLISH));
+	}
+	
+	/*
+	 * Is weblink publish
+	 * 
+	 * Author: Giang Nguyen
+	 */
+	public boolean isPublish(String weblink) {
+		boolean show = false;
+		if (getText(driver, By.xpath(Interfaces.WebLinksPage.CONTROL_MESSAGE))
+				.equals(MESSAGEPUBLISH)) {
+			int iCount = 0;
+			iCount = countElement(driver,
+					By.xpath(Interfaces.WebLinksPage.TABLE_TR));
+			for (int i = 1; i <= iCount; i++) {
+				String cell = getText(
+						driver,
+						By.xpath(Interfaces.WebLinksPage.TABLE_TR + "[" + i
+								+ "]/td[" + 2 + "]/a"));
+				if (cell.equals(weblink)) {
+					if (isControlExist(
+							driver,
+							By.xpath(Interfaces.WebLinksPage.TABLE_TR + "[" + i
+									+ "]/td[3]/a/span/span[contains(text(),'"
+									+ PUBLISH + "')]")))
+						show = true;
+					break;
+				}
+			}
+		}
+
+		return show;
+	}
+
+	/*
+	 * Is weblink unpublish
+	 * 
+	 * Author: Giang Nguyen
+	 */
+	public boolean isUnPublish(String weblink) {
+		boolean show = false;
+
+		if (getText(driver, By.xpath(Interfaces.WebLinksPage.CONTROL_MESSAGE))
+				.equals(MESSAGEUNPUBLISH)) {
+			int iCount = 0;
+			iCount = countElement(driver,
+					By.xpath(Interfaces.WebLinksPage.TABLE_TR));
+			for (int i = 1; i <= iCount; i++) {
+				String cell = getText(
+						driver,
+						By.xpath(Interfaces.WebLinksPage.TABLE_TR + "[" + i
+								+ "]/td[" + 2 + "]/a"));
+				if (cell.equals(weblink)) {
+					if (isControlExist(
+							driver,
+							By.xpath(Interfaces.WebLinksPage.TABLE_TR + "[" + i
+									+ "]/td[3]/a/span/span[contains(text(),'"
+									+ UNPUBLISH + "')]")))
+						show = true;
+					break;
+				}
+			}
+		}
+
+		return show;
+	}
 }
