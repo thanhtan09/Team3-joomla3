@@ -36,7 +36,7 @@ public class Group_WEBLINKS_001_002 extends Abstract_test{
 		weblinkPage = homePage.navigatetoWeblinkpage();		
 		
 		log.info("Create new article");
-		weblinkPage.addNewWebLink(weblink1.getName(), weblink1.getUrl(), weblink1.getContent(), "");
+		weblinkPage.addNewWebLink(weblink1.getName(), weblink1.getUrl(), weblink1.getContent(), weblink1.getStatus(), "");
 		
 		log.info("Verify message Article successfully saved displayed");
 		verifyTrue(weblinkPage.isWebLinkDisplay(weblink1.getName()));
