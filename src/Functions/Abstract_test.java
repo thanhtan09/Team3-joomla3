@@ -50,7 +50,7 @@ public abstract class Abstract_test {
 		
 		//Start Joomla
 		driver = new FirefoxDriver();
-		url = data.getUrl("Logigear_url");
+		url = data.getUrl("Local_url");
 		driver.get(url);
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
@@ -85,6 +85,24 @@ public abstract class Abstract_test {
 		}
 	}
 	
+	/*
+	 * Verify True
+	 * 
+	 * Parameter: condition, message
+	 * 
+	 * Author: Tan Vo
+	 */
+	protected void verifyTrue(boolean condition, String message){
+		try{
+			Assert.assertTrue(condition, message);
+		} catch(Exception e){
+			log.info("FAIL:" + e);
+		}
+	}
+	
+	/*
+	 * Author: Giang NGuyen
+	 */
 	protected void verifyFalse(boolean condition) {
 		try {
 			Assert.assertFalse(condition);
