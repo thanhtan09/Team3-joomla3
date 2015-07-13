@@ -21,6 +21,16 @@ public class Home_page extends Abstract_page{
 	}
 	
 	/*
+	 * Navigate to Banner Page
+	 * 
+	 * Author: Tan Vo
+	 */
+	public Banner_page navigatetoBannerpage(){
+		navigateMenu(driver, "Components|Banners|Banners");
+		return new Banner_page(driver);
+	}
+	
+	/*
 	 * Navigate to Article Page
 	 * 
 	 * Author: Tan Vo
