@@ -30,7 +30,7 @@ public abstract class Abstract_test {
 	protected Category category;
 	protected Banner banner,banner2,banner3;
 	protected Contact contact, contact2, contact3;
-	protected Weblink weblink1, weblink2;
+	protected Weblink weblink1, weblink2, weblink3, weblink4;
 	
 	protected Abstract_test() {
 		log = LogFactory.getLog(getClass());
@@ -117,5 +117,7 @@ public abstract class Abstract_test {
 		contact3 = data.getContact("Contact3");
 		weblink1 = data.getWeblink("Weblink1");
 		weblink2 = data.getWeblink("Weblink2");
+		weblink3 = data.getWeblink("Weblink3");
+		weblink4 = data.getWeblink("Weblink4");
 	}
 }
