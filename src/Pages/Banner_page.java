@@ -11,6 +11,7 @@ public class Banner_page extends Abstract_page {
 	private String MESSAGE_UNPUBLISH = "1 banner successfully unpublished";
 	private String MESSAGE_ARCHIEVE = "1 banner successfully archived";
 	private String MESSAGE_TRASHBANNER = "1 banner successfully trashed";
+	private String MESSAGE_CHECKEDIN = "1 banner successfully checked in";
 	private String STATUS_TRASHED = "Trashed";
 	private String STATUS_ARCHIEVE = "Archived";
 	private String HELP_TITLE = "Joomla! Help";
@@ -216,6 +217,52 @@ public class Banner_page extends Abstract_page {
 		if(getText(driver, By.xpath(Interfaces.BannerPage.TABLE_TR+"/td[2]/a")).equals(banner))
 			return true;
 		return false;
+	}
+	
+	/*
+	 * Is banner locked
+	 * 
+	 * Author: Tan Vo
+	 */
+	public boolean isBannerLocked(String banner){
+		searchBanner(banner);
+		if(isControlExist(driver, By.xpath(Interfaces.BannerPage.TABLE_TR+"/td[2]/a/span/span[contains(text(),'Checked out')]")))
+			return true;
+		return false;
+	}
+	
+	/*
+	 * Is message when checked in banner
+	 * 
+	 * Author: Tan Vo
+	 */
+	public boolean isMessageCheckedInDisplay(){
+		if(getText(driver, By.xpath(Interfaces.BannerPage.MESSAGE)).equals(MESSAGE_CHECKEDIN))
+			return true;
+		return false;
+	}
+	
+	/*
+	 * Is banner checked in
+	 * 
+	 * Author: Tan Vo
+	 */
+	public boolean isCheckedInBanner(String banner){
+		searchBanner(banner);
+		if(isControlNotExist(driver, By.xpath(Interfaces.BannerPage.TABLE_TR+"/td[2]/a/span/span[contains(text(),'Checked out')]")))
+			return true;
+		return false;
+	}
+	
+	/*
+	 * Check in banner
+	 * 
+	 * Author: Tan Vo
+	 */
+	public void checkinBanner(String banner){
+		searchBanner(banner);
+		clickFirstBanner();
+		click(driver, By.xpath(Interfaces.BannerPage.BTN_CHECKIN));
 	}
 	
 	/*
