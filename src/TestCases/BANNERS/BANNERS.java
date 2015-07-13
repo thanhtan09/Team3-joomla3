@@ -19,16 +19,14 @@ public class BANNERS extends Abstract_test{
 	private Client_page clientPage;
 	private Categories_page categoriesPage;
 	private Banner_page bannerPage;
-	private String banner1;
 	
 	@BeforeClass
 	public void setup(){
 		driver = openJoomla();
-		banner1 = banner.getName();
 	}
 	
-	@Test(description = "Verify that user can check in a banner")
-	public void TC_BANNERS_010 (){
+	@Test(description = "Verify that user can create many banners by using Save & New button")
+	public void TC_BANNERS_011 (){
 		
 		log.info("Login with valid account");
 		loginPage = Factory_page.getLoginPage(driver);
@@ -52,52 +50,36 @@ public class BANNERS extends Abstract_test{
 		
 		log.info("Create new banner");
 		bannerPage = categoriesPage.navigatetoBannerpage();
-		bannerPage.addNewBanner(banner.getName(), category.getTitle(), client.getName(), "","Save");
+		bannerPage.addNewBanner(banner.getName(), category.getTitle(), client.getName(), "","");
 		
 		log.info("A message : Banner successfully saved shows and new banner is created");
-		verifyTrue(bannerPage.isMessageSuccessDisplay(), "Banner successfully saved");
+		verifyTrue(bannerPage.isMessageSuccessDisplay(),"Banner successfully saved");
+		verifyTrue(bannerPage.isBannerDisplay(banner.getName()),"New banner displays");
 		
-		log.info("Close browser");
-		shutdown();
-		
-		log.info("Open Joomla");
-		driver = openJoomla();
-		
-		log.info("Login with valid account");
-		loginPage = Factory_page.getLoginPage(driver);
-		homePage = loginPage.loginValidAccount(user.getUsername(), user.getPassword(),"");
-		
-		log.info("Navigate to Banner page");
-		bannerPage = homePage.navigatetoBannerpage();
-		
-		log.info("Recently created banner displays and locked");
-		verifyTrue(bannerPage.isBannerLocked(banner1), "Recently created banner displays and locked");
-		
-		log.info("Check in banner");
-		bannerPage.checkinBanner(banner1);
-		
-		log.info("A message 1 banner successfully checked in appears and banner is changed to unlock");
-		verifyTrue(bannerPage.isMessageCheckedInDisplay(), "1 banner successfully checked in");
-		verifyTrue(bannerPage.isCheckedInBanner(banner1), "Banner is changed to unlock");
-	}
-	
-	@Test(description = "Verify that user can create many banners by using Save & New button")
-	public void TC_BANNERS_011 (){
-		
-		log.info("Add new banner");
-		bannerPage.addNewBanner(banner.getName(), banner.getCategory(), banner.getClient(), banner.getStatus(), "");
+		log.info("Create new banner");
+		bannerPage = categoriesPage.navigatetoBannerpage();
+		bannerPage.addNewBanner(banner4.getName(), category.getTitle(), client.getName(), "","");
 		
 		log.info("A message : Banner successfully saved shows and new banner is created");
 		verifyTrue(bannerPage.isMessageSuccessDisplay(),"Banner successfully saved");
 		verifyTrue(bannerPage.isBannerDisplay(banner.getName()),"New banner displays");
 	}
 	
+	@Test(description = "Verify that user can browse New Banner help page in New banner page")
+	public void TC_BANNERS_012 (){
+		
+		log.info("Open new banner help page");
+		bannerPage.openNewBannerHelp();
+		
+		log.info("New banner help page appears");
+		verifyTrue(bannerPage.isHelpPage(), "New banner help page appears");
+	}
+	
 	@AfterClass
 	public void end(){	
 		log.info("Delete banner");
 		bannerPage.deleteBanner(banner.getName());
-		bannerPage.deleteBanner(banner1);
-		shutdown();
+		bannerPage.deleteBanner(banner4.getName());
 		
 		log.info("Delete client");
 		homePage = Factory_page.getHomePage(driver);
