@@ -117,6 +117,15 @@ public class NewWebLinks_page extends Abstract_page{
 		click(driver, By.xpath(Interfaces.NewWebLinksPage.BTN_CANCEL));
 	}
 	
+	public WebLinks_page editWeblink(String title, String url,
+			String content, String status) {
 
+		enterTitle(title);
+		enterURL(url);
+		enterWLText(content);
+		clickSaveandClosebutton();
+
+		return new WebLinks_page(driver);
+	}
 
 }
