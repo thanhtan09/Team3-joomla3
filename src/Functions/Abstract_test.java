@@ -50,7 +50,7 @@ public abstract class Abstract_test {
 		
 		//Start Joomla
 		driver = new FirefoxDriver();
-		url = data.getUrl("Local_url");
+		url = data.getUrl("Logigear_url");
 		driver.get(url);
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
