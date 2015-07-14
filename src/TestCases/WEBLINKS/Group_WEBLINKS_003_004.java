@@ -37,12 +37,12 @@ public class Group_WEBLINKS_003_004 extends Abstract_test {
 		log.info("Verify message Article successfully saved displayed");
 		verifyTrue(weblinkPage.isWebLinkDisplay(weblink3.getName()));
 		
-		log.info("unpublish a weblink");
-		weblinkPage.unpublishWeblink(weblink3.getName());
+		log.info("Publish a weblink");
+		weblinkPage.publishWeblink(weblink3.getName());
 		
-		log.info("Verify weblink is unpublish successfully");
-		verifyTrue(weblinkPage.isMessageUnpublishWeblinkDisplay());
-		verifyTrue(weblinkPage.isUnPublish(weblink3.getName()));
+		log.info("Verify weblink is publish successfully");
+		verifyTrue(weblinkPage.isMessagePublishWeblinkDisplay());
+		verifyTrue(weblinkPage.isPublish(weblink3.getName()));
 		
 	}
 	
