@@ -23,7 +23,7 @@ public class CONTACTS_TC001_to_005 extends Abstract_test {
 	@Test(description = "Verify user can create new contact with valid information")
 	public void TC_CONTACT_001 (){
 		
-		log.info("Login with valid account");
+		log.info("Login with valid account.");
 		loginPage = Factory_page.getLoginPage(driver);
 		homePage = loginPage.loginValidAccount(user.getUsername(), user.getPassword(),"");
 		
