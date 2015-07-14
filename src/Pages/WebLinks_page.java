@@ -15,8 +15,8 @@ public class WebLinks_page extends Abstract_page {
 
 	// Message
 	private String MESSAGESUCCESS = "Weblink successfully saved";
-	private String MESSAGEPUBLISH = "1 weblink successfully unpublished";
-	private String MESSAGEUNPUBLISH = "1 weblink successfully published";
+	private String MESSAGEPUBLISH = "1 weblink successfully published";
+	private String MESSAGEUNPUBLISH = "1 weblink successfully unpublished";
 	private String MESSAGEARCHIVE = "1 weblink archived.";
 	private String MESSAGEDELETE = "1 weblink deleted.";
 	private String MESSAGETRASHWEBLINK = "1 weblink trashed.";
@@ -251,10 +251,18 @@ public class WebLinks_page extends Abstract_page {
 
 		return show;
 	}
-	// Is Message CONTACT SAVED SUCCESSFULLY displayed
+	// Is Message Unpublished displayed
 	public boolean isMessageUnpublishWeblinkDisplay(){
 		if(getText(driver, By.xpath(Interfaces.WebLinksPage.CONTROL_MESSAGE))
 				.equals(MESSAGEUNPUBLISH)){
+			return true;
+			}
+		return false;
+	}
+	// Is Message Published displayed
+	public boolean isMessagePublishWeblinkDisplay(){
+		if(getText(driver, By.xpath(Interfaces.WebLinksPage.CONTROL_MESSAGE))
+				.equals(MESSAGEPUBLISH)){
 			return true;
 			}
 		return false;
