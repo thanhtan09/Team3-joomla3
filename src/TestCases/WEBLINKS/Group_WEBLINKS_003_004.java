@@ -43,9 +43,18 @@ public class Group_WEBLINKS_003_004 extends Abstract_test {
 		log.info("Verify weblink is publish successfully");
 		verifyTrue(weblinkPage.isMessagePublishWeblinkDisplay());
 		verifyTrue(weblinkPage.isPublish(weblink3.getName()));
-		
 	}
 	
+	@Test(description = "Verify user can unpublish a published weblink")
+	public void TC_WEBLINK_004 (){
+		
+		log.info("Unpublish a weblink");
+		weblinkPage.unpublishWeblink(weblink3.getName());
+		
+		log.info("Weblink is unpublished successfully");
+		weblinkPage.isMessageUnpublishWeblinkDisplay();
+		weblinkPage.isUnPublish(weblink3.getName());		
+	}
 	
 	@AfterClass
 	public void end(){
