@@ -257,6 +257,23 @@ public class Banner_page extends Abstract_page {
 	}
 	
 	/*
+	 * Is Quantity of items displayed in table is changed
+	 * 
+	 * Author: Tan Vo
+	 */
+	public boolean isBannerDisplayedInTable(String display){
+		selectDisplay("All");
+		int all = countElement(driver, By.xpath(Interfaces.BannerPage.TABLE_TR));
+		int number = Integer.parseInt(display);
+		
+		selectDisplay(display);
+		int count = countElement(driver, By.xpath(Interfaces.BannerPage.TABLE_TR));
+		if(count==all || count==number)
+			return true;
+		return false;
+	}
+	
+	/*
 	 * Check in banner
 	 * 
 	 * Author: Tan Vo
