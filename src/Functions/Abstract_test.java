@@ -29,7 +29,7 @@ public abstract class Abstract_test {
 	protected Client client;
 	protected Category category;
 	protected Banner banner,banner2,banner3,banner4;
-	protected Contact contact, contact2, contact3;
+	protected Contact contact, contact2, contact3, contact4;
 	protected Weblink weblink1, weblink2, weblink3, weblink4;
 	
 	protected Abstract_test() {
@@ -134,6 +134,7 @@ public abstract class Abstract_test {
 		contact = data.getContact("Contact1");
 		contact2 = data.getContact("Contact2");
 		contact3 = data.getContact("Contact3");
+		contact4 = data.getContact("Contact4");
 		weblink1 = data.getWeblink("Weblink1");
 		weblink2 = data.getWeblink("Weblink2");
 		weblink3 = data.getWeblink("Weblink3");
