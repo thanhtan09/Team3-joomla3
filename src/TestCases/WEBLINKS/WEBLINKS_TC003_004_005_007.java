@@ -28,13 +28,13 @@ public class WEBLINKS_TC003_004_005_007 extends Abstract_test {
 		loginPage = Factory_page.getLoginPage(driver);
 		homePage = loginPage.loginValidAccount(user.getUsername(), user.getPassword(),"");
 		
-		log.info("Enter Article page");
+		log.info("Enter Weblink page");
 		weblinkPage = homePage.navigatetoWeblinkpage();		
 		
-		log.info("Create new article");
+		log.info("Create new weblink");
 		weblinkPage.addNewWebLink(weblink3.getName(), weblink3.getUrl(), weblink3.getContent(), weblink3.getStatus(), "");
 		
-		log.info("Verify message Article successfully saved displayed");
+		log.info("Verify message Weblink successfully saved displayed");
 		verifyTrue(weblinkPage.isWebLinkDisplay(weblink3.getName()));
 		
 		log.info("Publish a weblink");

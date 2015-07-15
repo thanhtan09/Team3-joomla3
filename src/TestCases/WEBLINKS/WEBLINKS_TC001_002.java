@@ -32,13 +32,13 @@ public class WEBLINKS_TC001_002 extends Abstract_test{
 		loginPage = Factory_page.getLoginPage(driver);
 		homePage = loginPage.loginValidAccount(user.getUsername(), user.getPassword(),"");
 		
-		log.info("Enter Article page");
+		log.info("Enter Weblink page");
 		weblinkPage = homePage.navigatetoWeblinkpage();		
 		
-		log.info("Create new article");
+		log.info("Create new weblink");
 		weblinkPage.addNewWebLink(weblink1.getName(), weblink1.getUrl(), weblink1.getContent(), weblink1.getStatus(), "");
 		
-		log.info("Verify message Article successfully saved displayed");
+		log.info("Verify message Weblink successfully saved displayed");
 		verifyTrue(weblinkPage.isWebLinkDisplay(weblink1.getName()));
 	}
 	
@@ -47,10 +47,10 @@ public class WEBLINKS_TC001_002 extends Abstract_test{
 			
 		weblinkPage.editWeblink(weblink1.getName(), weblink2.getName(), weblink2.getUrl(), weblink2.getContent(), "");
 		
-		log.info("Verify message Edited Article successfully saved displayed");
+		log.info("Verify message Edited Weblink successfully saved displayed");
 		verifyTrue(weblinkPage.isMessageWeblinkDisplay());
 		
-		log.info("Verify Edited article is displayed on the articles table");
+		log.info("Verify Edited weblink is displayed on the table");
 		verifyTrue(weblinkPage.isWebLinkDisplay(weblink2.getName()));
 		
 	}
