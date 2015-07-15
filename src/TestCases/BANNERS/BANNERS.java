@@ -98,6 +98,12 @@ public class BANNERS extends Abstract_test{
 		verifyTrue(bannerPage.isBannerDescendingByID(), "Items are sorted descending by ID in banner table");
 	}
 	
+	@Test(description = "Verify that user can access Banner clients page while browsing Banner page")
+	public void TC_BANNERS_017 (){
+		
+		
+	}
+	
 	@AfterClass
 	public void end(){	
 		log.info("Delete banner");
