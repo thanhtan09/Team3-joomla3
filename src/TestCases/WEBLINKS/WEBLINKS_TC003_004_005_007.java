@@ -80,6 +80,17 @@ public class WEBLINKS_TC003_004_005_007 extends Abstract_test {
 			
 	}
 	
+	@Test(description = "Verify user can can search for weblinks using the filter text field", dependsOnMethods = "TC_WEBLINK_003")
+	public void TC_WEBLINK_009 (){
+		
+		log.info("Enter weblink into textfield and click Search button");
+		weblinkPage.searchforWeblink(weblink3.getName());
+		
+		log.info("Verify the titles of displayed weblinks are partially matched with the entered keyword");
+		weblinkPage.isSearchWeblinkDisplay(weblink3.getName());
+		
+	}
+	
 	@AfterClass
 	public void end(){
 		weblinkPage.deleteWeblink(weblink3.getName());
