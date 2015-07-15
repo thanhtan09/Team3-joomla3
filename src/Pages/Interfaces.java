@@ -200,6 +200,7 @@ public class Interfaces {
 		public static final String BTN_EMPTYTRASH = "//li[@id='toolbar-delete']/a/span";
 		public static final String TXT_SEARCH = "//input[@id='filter_search']";
 		public static final String BTN_SEARCH = "//button[contains(text(),'Search')]";
+		public static final String BTN_HELP = "//li[@id='toolbar-help']/a/span";	
 	}
 	
 	public class NewWebLinksPage{
