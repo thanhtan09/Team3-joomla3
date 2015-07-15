@@ -16,6 +16,7 @@ public class Banner_page extends Abstract_page {
 	private String STATUS_ARCHIEVE = "Archived";
 	private String CATETORY_DEFAULT = "- Select Category -";
 	private String HELP_BANNERPAGE_TITLE = "Joomla! Help";
+	private String CLIENTPAGE_TITLE = "joomla selenium advance - Administration - Banner Manager: Clients";
 
 	/*
 	 * Data to test for display banner
@@ -388,6 +389,18 @@ public class Banner_page extends Abstract_page {
 				
 		return descending;
 	}
+	
+	/*
+	 * Is client page
+	 * 
+	 * Author: Tan Vo
+	 */
+	public boolean isClientPage(){
+		
+		if(getPageTitle(driver).equals(CLIENTPAGE_TITLE))
+			return true;
+		return false;
+	}
 
 	/*
 	 * Check in banner
@@ -542,5 +555,15 @@ public class Banner_page extends Abstract_page {
 	public void clickID(){
 		
 		click(driver, By.xpath(Interfaces.BannerPage.FILTER_ID));
+	}
+	
+	/*
+	 * Click Client link
+	 * 
+	 * Author: Tan Vo
+	 */
+	public void clickClientLink(){
+		
+		click(driver, By.xpath(Interfaces.BannerPage.LINK_CLIENT));
 	}
 }
