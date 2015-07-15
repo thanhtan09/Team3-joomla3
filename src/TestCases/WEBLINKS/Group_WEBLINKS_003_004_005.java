@@ -68,6 +68,17 @@ public class Group_WEBLINKS_003_004_005 extends Abstract_test {
 			
 	}
 	
+	@Test(description = "Verify user can move a weblink to trash section", dependsOnMethods = "TC_WEBLINK_003")
+	public void TC_WEBLINK_007 (){
+		
+		log.info("Trash a weblink");
+		weblinkPage.TrashWeblink(weblink3.getName());
+		
+		log.info("Weblink is trashed successfully");
+		verifyTrue(weblinkPage.isTrashWeblinkMessage());
+		verifyTrue(weblinkPage.isTrashedWeblinkinTable(weblink3.getName()));
+			
+	}
 	
 	@AfterClass
 	public void end(){
