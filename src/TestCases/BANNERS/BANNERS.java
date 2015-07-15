@@ -75,6 +75,12 @@ public class BANNERS extends Abstract_test{
 		verifyTrue(bannerPage.isHelpPage(), "New banner help page appears");
 	}
 	
+	@Test(description = "Verify that user can change the quantity of items displayed in banner table")
+	public void TC_BANNERS_015 (){
+		
+		
+	}
+	
 	@AfterClass
 	public void end(){	
 		log.info("Delete banner");
