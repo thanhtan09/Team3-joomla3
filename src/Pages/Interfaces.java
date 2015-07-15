@@ -245,6 +245,7 @@ public class Interfaces {
 		public static final String CHECKBOX_1 = "//input[@id='cb0']";
 		public static final String LNK_SORTID = "//a[contains(text(), 'Title')]/img"; 
 		public static final String BAR_PAGING = "//div[@class = 'pagination']/div[4]";
+
 				
 	}
 
@@ -268,7 +269,11 @@ public class Interfaces {
 		public static final String BTN_SAVEANDNEW = "//li[@id='toolbar-save-new']/a/span";
 		public static final String BTN_CANCEL = "//li[@id='toolbar-cancel']/a/span";
 		public static final String BTN_IMAGE = "//div[@id='editor-xtd-buttons']/descendant::a[contains(text(),'Image')]";
-		public static final String FRAME_IMAGE = "//iframe[@id='imageframe']";
+		//public static final String FRAME_IMAGE = "//iframe[@id='imageframe']";
 		public static final String BTN_CLOSE = "//li[@id='toolbar-cancel']/a/span";
+		public static final String BTN_BROWSE = "//input[@id='upload-file']";
+		public static final String BTN_UPLOAD ="//input[@id='upload-submit']";
+		public static final String BTN_CLOSEPOPUP ="//a[@id='sbox-btn-close']";
+		
 	}
 }
