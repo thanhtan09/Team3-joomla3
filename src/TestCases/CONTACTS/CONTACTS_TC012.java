@@ -41,12 +41,6 @@ public class CONTACTS_TC012 extends Abstract_test {
 	@Test(description = "Verify user can add image to contact's information")
 	public void TC_CONTACT_013 (){
 
-		log.info("Login with valid account");
-		loginPage = Factory_page.getLoginPage(driver);
-		homePage = loginPage.loginValidAccount(user.getUsername(), user.getPassword(),"");
-		log.info("Enter Contacts page");
-		contactsPage = homePage.navigatetoContactspage();	
-		
 		contactsPage.addNewContact(contact.getName(), contact.getCategory(), "",contact.getImage(),"");
 		log.info("Verify message Article successfully saved displayed");
 		verifyTrue(contactsPage.isContactDisplay(contact.getName()));
@@ -54,6 +48,7 @@ public class CONTACTS_TC012 extends Abstract_test {
 	}
 	@AfterClass
 	public void end(){
+		contactsPage.deleteContact(contact.getName());
 		shutdown();
 	}
 }

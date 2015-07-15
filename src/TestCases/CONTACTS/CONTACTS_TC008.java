@@ -20,7 +20,7 @@ public class CONTACTS_TC008 extends Abstract_test{
 		contact2 = contact.getName();
 	}
 	
-	@Test(description = "Verify user can access article's help section")
+	@Test(description = "Verify user can access article's help section.")
 	public void TC_CONTACT_008 (){
 		loginPage = Factory_page.getLoginPage(driver);
 		homePage = loginPage.loginValidAccount(user.getUsername(), user.getPassword(), "");

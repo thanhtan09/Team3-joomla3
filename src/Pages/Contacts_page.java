@@ -238,7 +238,7 @@ public class Contacts_page extends Abstract_page {
 	// Delete Contact
 	public void deleteContact(String _contact) {
 		
-			select(driver, By.xpath(Interfaces.ContactsPage.DROP_STATUS), "All");
+			//select(driver, By.xpath(Interfaces.ContactsPage.DROP_STATUS), "All");
 			searchforContact(_contact);
 			click(driver, By.xpath(Interfaces.ContactsPage.CHECKBOX_1));
 			click(driver, By.xpath(Interfaces.ContactsPage.BTN_TRASH));
