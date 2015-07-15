@@ -360,15 +360,30 @@ public class WebLinks_page extends Abstract_page {
 	}
 	
 	/*
-	 * Access to Article's Help window
+	 * Access to Weblink's Help window
 	 * 
-	 * Author: Nga Nguyen
+	 * Author: Giang
 	 */
 	public void accessToHelpWindow() {
 
 		click(driver, By.xpath(Interfaces.WebLinksPage.BTN_HELP));
 
 	}
-
+	/*
+	 * Is HelpWindow displayed
+	 * 
+	 * Author: Giang
+	 */
+	public boolean isHelpWindow(){
+		String currentWindows = getCurrentWindows(driver);
+		accessToHelpWindow();
+		switchToNewWindows(driver);
+		if(getPageTitle(driver).equals(HELP_TITLE)){
+			driver.close();
+			driver.switchTo().window(currentWindows);
+			return true;
+		} else
+		return false;
+	}
 
 }
