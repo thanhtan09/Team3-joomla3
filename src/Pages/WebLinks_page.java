@@ -17,7 +17,7 @@ public class WebLinks_page extends Abstract_page {
 	private String MESSAGESUCCESS = "Weblink successfully saved";
 	private String MESSAGEPUBLISH = "1 weblink successfully published";
 	private String MESSAGEUNPUBLISH = "1 weblink successfully unpublished";
-	private String MESSAGEARCHIVE = "1 weblink archived.";
+	private String MESSAGEARCHIVE = "1 weblink successfully archived";
 	private String MESSAGEDELETE = "1 weblink deleted.";
 	private String MESSAGETRASHWEBLINK = "1 weblink trashed.";
 	private String MESSAGECHECKIN = "1 weblink successfully checked in";
