@@ -27,11 +27,11 @@ public class CONTACTS_TC011 extends Abstract_test {
 		loginPage = Factory_page.getLoginPage(driver);
 		homePage = loginPage.loginValidAccount(user.getUsername(), user.getPassword(),"");
 		
-		log.info("Enter Contacts page");
+		log.info("Enter Contacts page.");
 		contactsPage = homePage.navigatetoContactspage();	
 		
 		contactsPage.sortbyID();
-		//Verify point
+		//Verify point..
 		contactsPage.sortbyID();
 		//Verify point
 	}
