@@ -62,7 +62,7 @@ public class Group_WEBLINKS_003_004 extends Abstract_test {
 		log.info("Archive a weblink");
 		weblinkPage.archiveWeblink(weblink3.getName());
 		
-		log.info("Weblink is unpublished successfully");
+		log.info("Weblink is archived successfully");
 		verifyTrue(weblinkPage.isArchiveMessage());
 		verifyTrue(weblinkPage.isArchiveList(weblink3.getName()));
 			
