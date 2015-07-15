@@ -34,7 +34,7 @@ public class CreateData extends Abstract_test{
 		
 		log.info("Create new client");
 		clientPage = homePage.navigatetoCLientpage();
-		clientPage.addNewClient(client.getName(), client.getContact(), client.getEmail(), "");
+		clientPage.addNewClient(client.getName(), client.getContact(), client.getEmail(), "","");
 		
 		log.info("A message : Client successfully saved shows and new client is created");
 		verifyTrue(clientPage.isMessageDisplay(),"Client is added success");
