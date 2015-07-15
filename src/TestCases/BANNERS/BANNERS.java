@@ -75,6 +75,29 @@ public class BANNERS extends Abstract_test{
 		verifyTrue(bannerPage.isHelpPage(), "New banner help page appears");
 	}
 	
+	@Test(description = "Verify that user can change the quantity of items displayed in banner table")
+	public void TC_BANNERS_015 (){
+		
+		log.info("Quantity of items displayed in table is changed");
+		verifyTrue(bannerPage.isBannerDisplayedInTable("20"),"Quantity of items displayed in table is changed");
+	}
+	
+	@Test(description = "Verify that user can sort items displayed in banner table by ID")
+	public void TC_BANNERS_016 (){
+		
+		log.info("Click ID link in the top of table");
+		bannerPage.clickID();
+		
+		log.info("Items are sorted ascending by ID in banner table");
+		verifyTrue(bannerPage.isBannerAscendingByID(), "Items are sorted ascending by ID in banner table");
+		
+		log.info("Click ID link in the top of table");
+		bannerPage.clickID();
+		
+		log.info("Items are sorted descending by ID in banner table");
+		verifyTrue(bannerPage.isBannerDescendingByID(), "Items are sorted descending by ID in banner table");
+	}
+	
 	@AfterClass
 	public void end(){	
 		log.info("Delete banner");

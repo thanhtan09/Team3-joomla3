@@ -166,6 +166,7 @@ public class Interfaces {
 		public static final String BTN_HELP = "//li[@id='toolbar-help']/a/span";
 		public static final String FILTER_CLIENT = "//select[@name='filter_client_id']";
 		public static final String FILTER_CATEGORY = "//select[@name='filter_category_id']";
+		public static final String FILTER_ID = "//form[@id='adminForm']/table/thead/tr/th/a[contains(text(),'ID')]";
 	}
 	
 	/*

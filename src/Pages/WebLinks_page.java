@@ -17,7 +17,7 @@ public class WebLinks_page extends Abstract_page {
 	private String MESSAGESUCCESS = "Weblink successfully saved";
 	private String MESSAGEPUBLISH = "1 weblink successfully published";
 	private String MESSAGEUNPUBLISH = "1 weblink successfully unpublished";
-	private String MESSAGEARCHIVE = "1 weblink archived.";
+	private String MESSAGEARCHIVE = "1 weblink successfully archived";
 	private String MESSAGEDELETE = "1 weblink deleted.";
 	private String MESSAGETRASHWEBLINK = "1 weblink trashed.";
 	private String MESSAGECHECKIN = "1 weblink successfully checked in";
@@ -267,4 +267,53 @@ public class WebLinks_page extends Abstract_page {
 			}
 		return false;
 	}
+	
+	/*
+	 * Archive weblink
+	 * 
+	 * Parameter: weblink name
+	 * 
+	 * Author: giang
+	 */
+	public void archiveWeblink(String weblink) {
+		
+		searchforWeblink(weblink);
+		click(driver, By.xpath(Interfaces.WebLinksPage.TABLE_TR + "[" + 1 + "]/td[" + 1 + "]/input[@type='checkbox']"));
+		click(driver, By.xpath(Interfaces.WebLinksPage.BTN_ARCHIVE));
+	}
+	
+	/*
+	 * Is message archive
+	 * 
+	 * Author: Giang
+	 */
+	public boolean isArchiveMessage() {
+		if (getText(driver, By.xpath(Interfaces.WebLinksPage.CONTROL_MESSAGE))
+				.equals(MESSAGEARCHIVE))
+			return true;
+
+		return false;
+	}
+
+	/*
+	 * Is weblink in archive list
+	 * 
+	 * Author: Giang
+	 */
+	public boolean isArchiveList(String weblink) {
+		boolean show = false;
+
+		select(driver, By.xpath(Interfaces.WebLinksPage.DROP_STATUS),
+				STATUS_ARCHIVED);
+		searchforWeblink(weblink);
+			String cell = getText(
+					driver,
+					By.xpath(Interfaces.WebLinksPage.TABLE_TR + "[" + 1
+							+ "]/td[" + 2 + "]/a"));
+			if (cell.equals(weblink)) {
+				show = true;
+			}
+		return show;
+	}
+
 }
