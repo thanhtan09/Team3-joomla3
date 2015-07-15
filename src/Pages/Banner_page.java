@@ -16,7 +16,6 @@ public class Banner_page extends Abstract_page {
 	private String STATUS_ARCHIEVE = "Archived";
 	private String HELP_BANNERPAGE_TITLE = "Joomla! Help";
 
-	
 	/*
 	 * Data to test for display banner
 	 * 
@@ -64,7 +63,7 @@ public class Banner_page extends Abstract_page {
 		searchBanner(banner);
 		String cell = getText(driver,
 				By.xpath(Interfaces.ArticlePage.TABLE_TR + "[1]/td[2]/a"));
-		if (cell.equals(banner)){
+		if (cell.equals(banner)) {
 			selectClient("- Select Client -");
 			selectCategory("- Select Category -");
 			return true;
@@ -107,38 +106,41 @@ public class Banner_page extends Abstract_page {
 			return true;
 		return false;
 	}
-	
+
 	/*
 	 * Archive banner
 	 * 
 	 * Author: Tan Vo
 	 */
-	public void archiveBanner(String banner){
+	public void archiveBanner(String banner) {
 		searchBanner(banner);
 		clickFirstBanner();
 		clickArchieve();
 	}
-	
+
 	/*
 	 * Is message archieve display
 	 * 
 	 * Author: Tan Vo
 	 */
-	public boolean isArchieveMessageDisplay(){
-		if(getText(driver, By.xpath(Interfaces.BannerPage.MESSAGE)).equals(MESSAGE_ARCHIEVE))
+	public boolean isArchieveMessageDisplay() {
+		if (getText(driver, By.xpath(Interfaces.BannerPage.MESSAGE)).equals(
+				MESSAGE_ARCHIEVE))
 			return true;
 		return false;
 	}
-	
+
 	/*
 	 * Is banner archieved
 	 * 
 	 * Author: Tan Vo
 	 */
-	public boolean isBannerArchieved(String banner){
+	public boolean isBannerArchieved(String banner) {
 		selectStatus(STATUS_ARCHIEVE);
 		searchBanner(banner);
-		if(getText(driver, By.xpath(Interfaces.BannerPage.TABLE_TR+"/td[2]/a")).equals(banner)){
+		if (getText(driver,
+				By.xpath(Interfaces.BannerPage.TABLE_TR + "/td[2]/a")).equals(
+				banner)) {
 			selectStatus("All");
 			return true;
 		}
@@ -151,34 +153,36 @@ public class Banner_page extends Abstract_page {
 	 * Author: Tan Vo
 	 */
 	public void deleteBanner(String banner) {
-		if(isControlExist(driver, By.xpath(Interfaces.NewBannerPage.BTN_CLOSE)))
+		if (isControlExist(driver, By.xpath(Interfaces.NewBannerPage.BTN_CLOSE)))
 			click(driver, By.xpath(Interfaces.NewBannerPage.BTN_CLOSE));
 		trashBanner(banner);
 		emptytrashBanner(banner);
 	}
-	
+
 	/*
 	 * Trash banner
 	 * 
 	 * Author: Tan Vo
 	 */
-	public void trashBanner(String banner){
+	public void trashBanner(String banner) {
 		selectStatus("All");
 		selectClient("- Select Client -");
 		selectCategory("- Select Category -");
 		searchBanner(banner);
 		clickFirstBanner();
 		clickTrash();
-		waitControlExist(driver, By.xpath(Interfaces.BannerPage.MESSAGE + "[contains(text(),'"
-				+ MESSAGE_TRASHBANNER + "')]"));
+		waitControlExist(
+				driver,
+				By.xpath(Interfaces.BannerPage.MESSAGE + "[contains(text(),'"
+						+ MESSAGE_TRASHBANNER + "')]"));
 	}
-	
+
 	/*
 	 * EMPTY Trash banner
 	 * 
 	 * Author: Tan Vo
 	 */
-	public void emptytrashBanner(String banner){
+	public void emptytrashBanner(String banner) {
 		selectStatus(STATUS_TRASHED);
 		searchBanner(banner);
 		clickFirstBanner();
@@ -188,118 +192,138 @@ public class Banner_page extends Abstract_page {
 				By.xpath(Interfaces.BannerPage.MESSAGE + "[contains(text(),'"
 						+ MESSAGE_EMPTYTRASH + "')]"));
 	}
-	
+
 	/*
 	 * Is message banner is trashed display
 	 * 
 	 * Author: Tan Vo
 	 */
-	public boolean isTrashMessageDisplay(){
-		if(getText(driver, By.xpath(Interfaces.BannerPage.MESSAGE)).equals(MESSAGE_TRASHBANNER))
+	public boolean isTrashMessageDisplay() {
+		if (getText(driver, By.xpath(Interfaces.BannerPage.MESSAGE)).equals(
+				MESSAGE_TRASHBANNER))
 			return true;
 		return false;
 	}
-	
+
 	/*
 	 * Is help page display
 	 * 
 	 * Author: Tan Vo
 	 */
-	public boolean isHelpPage(){
+	public boolean isHelpPage() {
 		String currentWindows = getCurrentWindows(driver);
 		clickHelp();
 		switchToNewWindows(driver);
-		if(getPageTitle(driver).equals(HELP_BANNERPAGE_TITLE)){
+		if (getPageTitle(driver).equals(HELP_BANNERPAGE_TITLE)) {
 			driver.close();
 			driver.switchTo().window(currentWindows);
-			if(isControlExist(driver, By.xpath(Interfaces.NewBannerPage.BTN_CLOSE)))
+			if (isControlExist(driver,
+					By.xpath(Interfaces.NewBannerPage.BTN_CLOSE)))
 				click(driver, By.xpath(Interfaces.NewBannerPage.BTN_CLOSE));
 			return true;
 		} else
-		return false;
+			return false;
 	}
-	
+
 	/*
 	 * Is banner sent to trash
 	 * 
 	 * Author: Tan Vo
 	 */
-	public boolean isBannerSentToTrash(String banner){
+	public boolean isBannerSentToTrash(String banner) {
 		selectStatus(STATUS_TRASHED);
-		if(getText(driver, By.xpath(Interfaces.BannerPage.TABLE_TR+"/td[2]/a")).equals(banner))
+		if (getText(driver,
+				By.xpath(Interfaces.BannerPage.TABLE_TR + "/td[2]/a")).equals(
+				banner))
 			return true;
 		return false;
 	}
-	
+
 	/*
 	 * Is banner locked
 	 * 
 	 * Author: Tan Vo
 	 */
-	public boolean isBannerLocked(String banner){
+	public boolean isBannerLocked(String banner) {
 		searchBanner(banner);
-		if(isControlExist(driver, By.xpath(Interfaces.BannerPage.TABLE_TR+"/td[2]/a/span/span[contains(text(),'Checked out')]")))
+		if (isControlExist(
+				driver,
+				By.xpath(Interfaces.BannerPage.TABLE_TR
+						+ "/td[2]/a/span/span[contains(text(),'Checked out')]")))
 			return true;
 		return false;
 	}
-	
+
 	/*
 	 * Is message when checked in banner
 	 * 
 	 * Author: Tan Vo
 	 */
-	public boolean isMessageCheckedInDisplay(){
-		if(getText(driver, By.xpath(Interfaces.BannerPage.MESSAGE)).equals(MESSAGE_CHECKEDIN))
+	public boolean isMessageCheckedInDisplay() {
+		if (getText(driver, By.xpath(Interfaces.BannerPage.MESSAGE)).equals(
+				MESSAGE_CHECKEDIN))
 			return true;
 		return false;
 	}
-	
+
 	/*
 	 * Is banner checked in
 	 * 
 	 * Author: Tan Vo
 	 */
-	public boolean isCheckedInBanner(String banner){
+	public boolean isCheckedInBanner(String banner) {
 		searchBanner(banner);
-		if(isControlNotExist(driver, By.xpath(Interfaces.BannerPage.TABLE_TR+"/td[2]/a/span/span[contains(text(),'Checked out')]")))
+		if (isControlNotExist(
+				driver,
+				By.xpath(Interfaces.BannerPage.TABLE_TR
+						+ "/td[2]/a/span/span[contains(text(),'Checked out')]")))
 			return true;
 		return false;
 	}
-	
+
 	/*
 	 * Is Quantity of items displayed in table is changed
 	 * 
 	 * Author: Tan Vo
 	 */
-	public boolean isBannerDisplayedInTable(String display){
-		if(getText(driver, By.xpath(Interfaces.BannerPage.TXT_SEARCH))!=null)
+	public boolean isBannerDisplayedInTable(String display) {
+		if (getText(driver, By.xpath(Interfaces.BannerPage.TXT_SEARCH)) != null)
 			enter(driver, By.xpath(Interfaces.BannerPage.TXT_SEARCH), "");
-		select(driver, By.xpath(Interfaces.BannerPage.FILTER_CATEGORY), Data_Catetory);
+		select(driver, By.xpath(Interfaces.BannerPage.FILTER_CATEGORY),
+				Data_Catetory);
 		select(driver, By.xpath(Interfaces.BannerPage.DROP_DISPLAY), display);
-		int count = countElement(driver, By.xpath(Interfaces.BannerPage.TABLE_TR));
+		int count = countElement(driver,
+				By.xpath(Interfaces.BannerPage.TABLE_TR));
 		int dis = Integer.parseInt(display);
-		if(count==dis)
-			return true;
-		return false;
+
+		if (display.equals("All")) {
+			if (count == 101)
+				return true;
+			return false;
+		} else {
+			if (count == dis)
+				return true;
+			return false;
+		}
 	}
-	
+
 	/*
 	 * Check in banner
 	 * 
 	 * Author: Tan Vo
 	 */
-	public void checkinBanner(String banner){
+	public void checkinBanner(String banner) {
 		searchBanner(banner);
 		clickFirstBanner();
 		click(driver, By.xpath(Interfaces.BannerPage.BTN_CHECKIN));
 	}
-	
+
 	/*
 	 * Click first banner
 	 * 
 	 * Author: Tan Vo
 	 */
-	public void clickFirstBanner(){
+	public void clickFirstBanner() {
 		click(driver, By.xpath(Interfaces.BannerPage.CHECKBOX_1));
 	}
 
@@ -338,7 +362,7 @@ public class Banner_page extends Abstract_page {
 	public void clickUnpublish() {
 		click(driver, By.xpath(Interfaces.BannerPage.BTN_UNPUBLISH));
 	}
-	
+
 	/*
 	 * Click Archieve button
 	 * 
@@ -347,7 +371,7 @@ public class Banner_page extends Abstract_page {
 	public void clickArchieve() {
 		click(driver, By.xpath(Interfaces.BannerPage.BTN_ARCHIEVE));
 	}
-	
+
 	/*
 	 * Click Help button
 	 * 
@@ -366,50 +390,50 @@ public class Banner_page extends Abstract_page {
 		enter(driver, By.xpath(Interfaces.BannerPage.TXT_SEARCH), banner);
 		click(driver, By.xpath(Interfaces.BannerPage.BTN_SEARCH));
 	}
-	
+
 	/*
 	 * Select status
 	 * 
 	 * Author: Tan Vo
 	 */
-	public void selectStatus(String status){
+	public void selectStatus(String status) {
 		select(driver, By.xpath(Interfaces.BannerPage.DROP_STATUS), status);
 	}
-	
+
 	/*
 	 * Select client
 	 * 
 	 * Author: Tan Vo
 	 */
-	public void selectClient(String client){
+	public void selectClient(String client) {
 		select(driver, By.xpath(Interfaces.BannerPage.FILTER_CLIENT), client);
 	}
-	
+
 	/*
 	 * Select Category
 	 * 
 	 * Author: Tan Vo
 	 */
-	public void selectCategory(String cate){
+	public void selectCategory(String cate) {
 		select(driver, By.xpath(Interfaces.BannerPage.FILTER_CATEGORY), cate);
 	}
-	
+
 	/*
 	 * Open new banner help
 	 * 
 	 * Author: Tan Vo
 	 */
-	public void openNewBannerHelp(){
+	public void openNewBannerHelp() {
 		clickNew();
 		clickHelp();
 	}
-	
+
 	/*
 	 * Select Display
 	 * 
 	 * Author: Tan Vo
 	 */
-	public void selectDisplay(String number){
+	public void selectDisplay(String number) {
 		select(driver, By.xpath(Interfaces.BannerPage.DROP_DISPLAY), number);
 	}
 }
