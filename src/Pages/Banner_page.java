@@ -348,10 +348,8 @@ public class Banner_page extends Abstract_page {
 		
 		for(int i=1;i<count;i++){
 			firstrow = Integer.parseInt(getText(driver, By.xpath(Interfaces.BannerPage.TABLE_TR+"["+i+"]/td[13]")));
-			System.out.println(firstrow);
 			int j = i+1;
 			secondrow = Integer.parseInt(getText(driver, By.xpath(Interfaces.BannerPage.TABLE_TR+"["+j+"]/td[13]")));
-			System.out.println(secondrow);
 			if(firstrow<secondrow)
 				ascending = true;
 			else {
@@ -361,6 +359,34 @@ public class Banner_page extends Abstract_page {
 		}
 				
 		return ascending;
+	}
+	
+	/*
+	 * Items are sorted descending by ID in banner table or not
+	 * 
+	 * Author: Tan Vo
+	 */
+	public boolean isBannerDescendingByID(){
+		
+		int count = countElement(driver, By.xpath(Interfaces.BannerPage.TABLE_TR));
+		int firstrow=0;
+		int secondrow=0;
+		boolean descending = false;
+		
+		for(int i=1;i<count;i++){
+			firstrow = Integer.parseInt(getText(driver, By.xpath(Interfaces.BannerPage.TABLE_TR+"["+i+"]/td[13]")));
+			int j = i+1;
+			secondrow = Integer.parseInt(getText(driver, By.xpath(Interfaces.BannerPage.TABLE_TR+"["+j+"]/td[13]")));
+			if(firstrow>secondrow){
+				descending = true;
+			}
+			else {
+				descending = false;
+				break;
+			}
+		}
+				
+		return descending;
 	}
 
 	/*
