@@ -45,7 +45,7 @@ public class Group_WEBLINKS_003_004 extends Abstract_test {
 		verifyTrue(weblinkPage.isPublish(weblink3.getName()));
 	}
 	
-	@Test(description = "Verify user can unpublish a published weblink")
+	@Test(description = "Verify user can unpublish a published weblink", dependsOnMethods = "TC_WEBLINK_003")
 	public void TC_WEBLINK_004 (){
 		
 		log.info("Unpublish a weblink");
@@ -55,6 +55,19 @@ public class Group_WEBLINKS_003_004 extends Abstract_test {
 		weblinkPage.isMessageUnpublishWeblinkDisplay();
 		weblinkPage.isUnPublish(weblink3.getName());		
 	}
+	
+	@Test(description = "Verify user can archive a weblink", dependsOnMethods = "TC_WEBLINK_003")
+	public void TC_WEBLINK_005 (){
+		
+		log.info("Archive a weblink");
+		weblinkPage.archiveWeblink(weblink3.getName());
+		
+		log.info("Weblink is unpublished successfully");
+		verifyTrue(weblinkPage.isArchiveMessage());
+		verifyTrue(weblinkPage.isArchiveList(weblink3.getName()));
+			
+	}
+	
 	
 	@AfterClass
 	public void end(){
