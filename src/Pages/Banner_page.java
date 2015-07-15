@@ -376,4 +376,13 @@ public class Banner_page extends Abstract_page {
 		clickNew();
 		clickHelp();
 	}
+	
+	/*
+	 * Select Display
+	 * 
+	 * Author: Tan Vo
+	 */
+	public void selectDisplay(String number){
+		select(driver, By.xpath(Interfaces.BannerPage.DROP_DISPLAY), number);
+	}
 }
