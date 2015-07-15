@@ -36,7 +36,7 @@ public class WebLinks_page extends Abstract_page {
 	/*
 	 * Add new weblink
 	 * 
-	 * Author: Tan Vo
+	 * Author: Giang Nguyen
 	 */
 	public void addNewWebLink(String _title, String _url, String _content, String status, String button) {
 		
@@ -50,7 +50,7 @@ public class WebLinks_page extends Abstract_page {
 	/*
 	 * Click on New button
 	 * 
-	 * Author: Tan Vo
+	 * Author: Giang Nguyen
 	 */
 	public void clickNewbutton() {
 		click(driver, By.xpath(Interfaces.WebLinksPage.BTN_NEW));
@@ -315,5 +315,48 @@ public class WebLinks_page extends Abstract_page {
 			}
 		return show;
 	}
+	
+	/*
+	 * Trash Weblink
+	 * 
+	 * Author: Giang
+	 */
+	public void TrashWeblink(String weblink) {
+		select(driver, By.xpath(Interfaces.WebLinksPage.DROP_STATUS), "All");
+		searchforWeblink(weblink);
+		click(driver, By.xpath(Interfaces.BannerPage.CHECKBOX_1));
+		click(driver, By.xpath(Interfaces.WebLinksPage.BTN_TRASH));
+	}
 
+	/*
+	 * Is Trash Weblink message
+	 * 
+	 * Author: Giang Nguyen
+	 */
+	public boolean isTrashWeblinkMessage() {
+		if (getText(driver, By.xpath(Interfaces.WebLinksPage.CONTROL_MESSAGE))
+				.equals(MESSAGETRASHWEBLINK))
+			return true;
+
+		return false;
+	}
+
+	/*
+	 * Is Trashed Weblink in Table Grid
+	 * 
+	 * Author: Giang Nguyen
+	 */
+	public boolean isTrashedWeblinkinTable(String weblink) {
+		boolean show = false;
+		select(driver, By.xpath(Interfaces.WebLinksPage.DROP_STATUS),
+				STATUS_TRASHED);
+		searchforWeblink(weblink);
+		String cell = getText(driver, By.xpath(Interfaces.WebLinksPage.TABLE_TR + "[" + 1
+						+ "]/td[" + 2 + "]/a"));
+		if (cell.equals(weblink)) {
+			show = true;
+		}
+		return show;
+	}
+	
 }
