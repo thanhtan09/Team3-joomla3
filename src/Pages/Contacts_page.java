@@ -413,27 +413,56 @@ public class Contacts_page extends Abstract_page {
 	}
 	
 	// Sort the contacts table by ID column
-	public void sortbyID (){
+	public void clickSortID(){
 		
 		click(driver, By.xpath(Interfaces.ContactsPage.LNK_SORTID));
+	}
+	
+	// Is Sort DES order
+	public boolean isContactDESByID(){
+		
+		int count = countElement(driver, By.xpath(Interfaces.ContactsPage.TABLE_TR));
+		int firstrow=0;
+		int secondrow=0;
+		boolean descending = false;
+		
+		for(int i=1;i<count;i++){
+			firstrow = Integer.parseInt(getText(driver, By.xpath(Interfaces.ContactsPage.TABLE_TR+"["+i+"]/td[13]")));
+			int j = i+1;
+			secondrow = Integer.parseInt(getText(driver, By.xpath(Interfaces.ContactsPage.TABLE_TR+"["+j+"]/td[13]")));
+			if(firstrow>secondrow){
+				descending = true;
+			}
+			else {
+				descending = false;
+				break;
+			}
+		}
+				
+		return descending;
 	}
 	
 	// Is Sort ASC order
-	public boolean isAscOrder (){
-		boolean isSort = false;
+	public boolean isContactASCByID(){
 		
-			isSort = true;
-		return isSort;
-	}
-	
-	// Is Sort DSC order
-	public boolean isDscOrder (){
+		int count = countElement(driver, By.xpath(Interfaces.BannerPage.TABLE_TR));
+		int firstrow=0;
+		int secondrow=0;
+		boolean ascending = false;
 		
-		boolean show = false;
-		
-		click(driver, By.xpath(Interfaces.ContactsPage.LNK_SORTID));
-			show = true;
-		return show;
+		for(int i=1;i<count;i++){
+			firstrow = Integer.parseInt(getText(driver, By.xpath(Interfaces.ContactsPage.TABLE_TR+"["+i+"]/td[13]")));
+			int j = i+1;
+			secondrow = Integer.parseInt(getText(driver, By.xpath(Interfaces.ContactsPage.TABLE_TR+"["+j+"]/td[13]")));
+			if(firstrow<secondrow)
+				ascending = true;
+			else {
+				ascending = false;
+				break;
+			}
+		}
+				
+		return ascending;
 	}
 	
 	
