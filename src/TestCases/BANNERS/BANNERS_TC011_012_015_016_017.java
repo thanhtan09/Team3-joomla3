@@ -65,7 +65,7 @@ public class BANNERS_TC011_012_015_016_017 extends Abstract_test{
 		verifyTrue(bannerPage.isBannerDisplay(banner.getName()),"New banner displays");
 	}
 	
-	@Test(description = "Verify that user can browse New Banner help page in New banner page")
+	@Test(description = "Verify that user can browse New Banner help page in New banner page", dependsOnMethods = "TC_BANNERS_011")
 	public void TC_BANNERS_012 (){
 		
 		log.info("Open new banner help page");
