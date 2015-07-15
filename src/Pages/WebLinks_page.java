@@ -386,4 +386,23 @@ public class WebLinks_page extends Abstract_page {
 		return false;
 	}
 
+	/*
+	 * Is Search Weblink Display
+	 * 
+	 * Parameter: weblink name
+	 * 
+	 * Author: Giang Nguyen
+	 */
+	public boolean isSearchWeblinkDisplay(String weblink) {
+		boolean search = false;
+		if (getText(
+				driver,
+				By.xpath(Interfaces.WebLinksPage.TABLE_TR + "[" + 1 + "]/td["
+						+ 2 + "]/a")).equals(weblink)) {
+			search = true;
+		}
+		return search;
+	}
+	
+	
 }
