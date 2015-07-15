@@ -16,6 +16,14 @@ public class Banner_page extends Abstract_page {
 	private String STATUS_ARCHIEVE = "Archived";
 	private String HELP_BANNERPAGE_TITLE = "Joomla! Help";
 
+	
+	/*
+	 * Data to test for display banner
+	 * 
+	 * This category has 101 banners are created
+	 */
+	private String Data_Catetory = "115154248-Category Test 1";
+
 	public Banner_page(WebDriver driver) {
 		this.driver = driver;
 	}
@@ -204,6 +212,8 @@ public class Banner_page extends Abstract_page {
 		if(getPageTitle(driver).equals(HELP_BANNERPAGE_TITLE)){
 			driver.close();
 			driver.switchTo().window(currentWindows);
+			if(isControlExist(driver, By.xpath(Interfaces.NewBannerPage.BTN_CLOSE)))
+				click(driver, By.xpath(Interfaces.NewBannerPage.BTN_CLOSE));
 			return true;
 		} else
 		return false;
@@ -262,13 +272,13 @@ public class Banner_page extends Abstract_page {
 	 * Author: Tan Vo
 	 */
 	public boolean isBannerDisplayedInTable(String display){
-		selectDisplay("All");
-		int all = countElement(driver, By.xpath(Interfaces.BannerPage.TABLE_TR));
-		int number = Integer.parseInt(display);
-		
-		selectDisplay(display);
+		if(getText(driver, By.xpath(Interfaces.BannerPage.TXT_SEARCH))!=null)
+			enter(driver, By.xpath(Interfaces.BannerPage.TXT_SEARCH), "");
+		select(driver, By.xpath(Interfaces.BannerPage.FILTER_CATEGORY), Data_Catetory);
+		select(driver, By.xpath(Interfaces.BannerPage.DROP_DISPLAY), display);
 		int count = countElement(driver, By.xpath(Interfaces.BannerPage.TABLE_TR));
-		if(count==all || count==number)
+		int dis = Integer.parseInt(display);
+		if(count==dis)
 			return true;
 		return false;
 	}

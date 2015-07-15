@@ -78,7 +78,8 @@ public class BANNERS extends Abstract_test{
 	@Test(description = "Verify that user can change the quantity of items displayed in banner table")
 	public void TC_BANNERS_015 (){
 		
-		
+		log.info("Quantity of items displayed in table is changed");
+		verifyTrue(bannerPage.isBannerDisplayedInTable("20"),"Quantity of items displayed in table is changed");
 	}
 	
 	@AfterClass
