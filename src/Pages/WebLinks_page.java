@@ -359,4 +359,16 @@ public class WebLinks_page extends Abstract_page {
 		return show;
 	}
 	
+	/*
+	 * Access to Article's Help window
+	 * 
+	 * Author: Nga Nguyen
+	 */
+	public void accessToHelpWindow() {
+
+		click(driver, By.xpath(Interfaces.WebLinksPage.BTN_HELP));
+
+	}
+
+
 }
