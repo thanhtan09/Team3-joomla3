@@ -26,7 +26,7 @@ public abstract class Abstract_test {
 	
 	//Data content
 	protected Article article,article2,article3,article4,article5,article6,article7;
-	protected Client client;
+	protected Client client,client2;
 	protected Category category;
 	protected Banner banner,banner2,banner3,banner4;
 	protected Contact contact, contact2, contact3, contact4;
@@ -50,7 +50,7 @@ public abstract class Abstract_test {
 		
 		//Start Joomla
 		driver = new FirefoxDriver();
-		url = data.getUrl("Logigear_url");
+		url = data.getUrl("Local_url");
 		driver.get(url);
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
@@ -126,6 +126,7 @@ public abstract class Abstract_test {
 		article6 = data.getArticle("Article6");
 		article7 = data.getArticle("Article7");
 		client = data.getClient("Client1");
+		client2 = data.getClient("Client2");
 		category = data.getCategory("Cate1");
 		banner = data.getBanner("Banner1");
 		banner2 = data.getBanner("Banner2");

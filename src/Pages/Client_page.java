@@ -8,6 +8,7 @@ public class Client_page extends Abstract_page {
 	private WebDriver driver;
 	
 	private String MESSAGESUCCESS = "Client successfully saved";
+	private String MESSAGE_PUBLISH = "1 client successfully published";
 	private String MESSAGE_TRASH = "1 client successfully deleted";
 	private String STATUS_TRASH = "Trashed";
 
@@ -15,7 +16,8 @@ public class Client_page extends Abstract_page {
 		this.driver = driver;
 	}
 	
-	/*
+	/*======================CHECK ACTION=====================
+	 * 
 	 * Is messagge success displays
 	 * 
 	 * Author: Tan Vo
@@ -50,19 +52,45 @@ public class Client_page extends Abstract_page {
 		
 		return display;
 	}
-
+	
 	/*
+	 * Is Message published Client display
+	 * 
+	 * Author: Tan Vo
+	 */
+	public boolean isMessagePublishedClientDisplay(){
+		
+		if(getText(driver, By.xpath(Interfaces.ClientPage.MESSAGE)).equals(MESSAGE_PUBLISH))
+			return true;
+		return false;
+	}
+	
+	/*
+	 * Is client published
+	 * 
+	 * Author: Tan Vo
+	 */
+	public boolean isClientPublished(String client){
+		
+		searchClient(client);
+		if (isControlExist(driver, By.xpath(Interfaces.ClientPage.TABLE_TR
+				+ "[1]/td[4]/descendant::span[contains(text(),'Published')]")))
+			return true;
+		return false;
+	}
+
+	/*======================ACTION ON CLIENT ACTION=================
+	 * 
 	 * Open New client page 
 	 * 
 	 * Author: Tan Vo
 	 */
-	public NewClient_page addNewClient(String name, String contact, String email, String status) {
+	public void addNewClient(String name, String contact, String email, String status, String button) {
+		
 		clickNew();	
 		
 		NewClient_page newClient = Factory_page.getNewClientPage(driver);
-		newClient.addClient(name, contact, email, status);
-		
-		return new NewClient_page(driver);
+		newClient.addClient(name, contact, email, status, button);
 	}
 	
 	/*
@@ -99,12 +127,36 @@ public class Client_page extends Abstract_page {
 	}
 	
 	/*
+	 * Publish a client
+	 * 
+	 * Author: Tan Vo
+	 */
+	public void publishClient(String client){
+		
+		searchClient(client);
+		clickFirstClient();
+		clickPublish();
+	}
+	
+	
+	/*======================STEP ON ONE ACTION=========================
+	 * 
+	 * 
 	 * CLick on New button 
 	 * 
 	 * Author: Tan Vo
 	 */
 	public void clickNew() {
 		click(driver, By.xpath(Interfaces.ClientPage.BTN_NEW));
+	}
+	
+	/*
+	 * Click first check box
+	 * 
+	 * Author: Tan Vo
+	 */
+	public void clickFirstClient(){
+		click(driver, By.xpath(Interfaces.ClientPage.CHECKBOX_1));
 	}
 
 	/*
@@ -170,6 +222,4 @@ public class Client_page extends Abstract_page {
 		enter(driver, By.xpath(Interfaces.ClientPage.TXT_SEARCH), client);
 		click(driver, By.xpath(Interfaces.ClientPage.BTN_SEARCH));
 	}
-	
-	
 }

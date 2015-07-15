@@ -91,7 +91,7 @@ public class Interfaces {
 		public static final String BTN_EMPTYTRASH = "//li[@id='toolbar-delete']/a/span";
 		public static final String MESSAGE = "//dd[@class='message message']/ul/li";
 		public static final String DROP_STATUS = "//select[@name='filter_state']";
-		
+		public static final String TABLE_TR = "//table[@class='adminlist']/tbody/tr";
 		public static final String TXT_SEARCH = "//input[@id='filter_search']";
 		public static final String BTN_SEARCH = "//button[contains(text(),'Search')]";
 		public static final String CHECKBOX_1 = "//input[@id='cb0']";

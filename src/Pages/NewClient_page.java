@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 public class NewClient_page extends Abstract_page{
 
 	private WebDriver driver;
+	private String PAGE_TITLE = "Joomla - Administration - Banner Manager: Edit Client";
 	
 	public NewClient_page(WebDriver driver){
 		this.driver = driver;
@@ -18,7 +19,7 @@ public class NewClient_page extends Abstract_page{
 	 * 
 	 * Author: Tan Vo
 	 */
-	public Client_page addClient(String name, String contact, String email, String status){
+	public Client_page addClient(String name, String contact, String email, String status, String button){
 		
 		if(name!="")
 			enterClientName(name);
@@ -28,9 +29,29 @@ public class NewClient_page extends Abstract_page{
 			enterEmail(email);
 		if(status!="")
 			selectStatus(status);
+		if(status!="")
+			selectStatus(status);
 		
-		clickSaveandClose();		
+		switch (button) {
+		case "Save":
+			clickSave();
+			break;
+		case "":
+		case "SaveAndClose":
+			clickSaveandClose();
+			break;
+		}		
 		return new Client_page(driver);
+	}
+	
+	/*
+	 * Is edit client page
+	 */
+	public boolean isEditClientPage(){
+		
+		if(getPageTitle(driver).equals(PAGE_TITLE))
+			return true;		
+		return false;
 	}
 	
 	/*
@@ -86,5 +107,14 @@ public class NewClient_page extends Abstract_page{
 	 */
 	public void selectStatus(String status){
 		select(driver, By.xpath(Interfaces.NewClientPage.DROP_STATUS), status);
+	}
+	
+	/*
+	 * Click Save button
+	 * 
+	 * Author: Tan Vo
+	 */
+	public void clickSave(){
+		click(driver, By.xpath(Interfaces.NewClientPage.BTN_SAVE));
 	}
 }
