@@ -3,6 +3,8 @@ package Pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import autoIT.autoIT;
+
 public class NewContacts_page extends Abstract_page {
 
 	private WebDriver driver;
@@ -62,16 +64,18 @@ public class NewContacts_page extends Abstract_page {
 	public void selectStatus(String _status) {
 		select(driver, By.xpath(Interfaces.NewContactspage.DROP_STATUS), _status);
 	}
+	
+	
 
 	// Insert image
 	public void insertImage(String image) {
 
 		click(driver, By.xpath(Interfaces.NewContactspage.BTN_IMAGE));
-		driver.switchTo().frame(
-				driver.findElement(By.xpath("//iframe[@frameborder='0']")));
-		switchFrame(driver, By.xpath(Interfaces.NewContactspage.FRAME_IMAGE));
-		click(driver,
-				By.xpath("//div[@class='item']/a[@title='" + image + "']/img"));
+		click(driver, By.xpath(Interfaces.NewContactspage.BTN_BROWSE));
+		autoIT au = new autoIT();
+		au.uploadFile("D:/CONTENT/MINSU/cat.jpg");
+		click(driver, By.xpath(Interfaces.NewContactspage.BTN_UPLOAD));
+		click(driver, By.xpath(Interfaces.NewContactspage.BTN_CLOSEPOPUP));
 	}
 
 	// Save only
