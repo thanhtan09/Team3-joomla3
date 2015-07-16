@@ -89,6 +89,7 @@ public class Interfaces {
 		public static final String BTN_CHECKIN = "//li[@id='toolbar-checkin']/a/span";
 		public static final String BTN_TRASH = "//li[@id='toolbar-trash']/a/span";	
 		public static final String BTN_EMPTYTRASH = "//li[@id='toolbar-delete']/a/span";
+		public static final String BTN_HELP = "//li[@id='toolbar-help']/a/span";
 		public static final String MESSAGE = "//dd[@class='message message']/ul/li";
 		public static final String DROP_STATUS = "//select[@name='filter_state']";
 		public static final String TABLE_TR = "//table[@class='adminlist']/tbody/tr";
