@@ -9,6 +9,7 @@ public class Client_page extends Abstract_page {
 	
 	private String MESSAGESUCCESS = "Client successfully saved";
 	private String MESSAGE_PUBLISH = "1 client successfully published";
+	private String MESSAGE_UNPUBLISH = "1 client successfully unpublished";
 	private String MESSAGE_TRASH = "1 client successfully deleted";
 	private String STATUS_TRASH = "Trashed";
 
@@ -66,6 +67,18 @@ public class Client_page extends Abstract_page {
 	}
 	
 	/*
+	 * Is Message unpublished Client display
+	 * 
+	 * Author: Tan Vo
+	 */
+	public boolean isMessageUnPublishedClientDisplay(){
+		
+		if(getText(driver, By.xpath(Interfaces.ClientPage.MESSAGE)).equals(MESSAGE_UNPUBLISH))
+			return true;
+		return false;
+	}
+	
+	/*
 	 * Is client published
 	 * 
 	 * Author: Tan Vo
@@ -75,6 +88,20 @@ public class Client_page extends Abstract_page {
 		searchClient(client);
 		if (isControlExist(driver, By.xpath(Interfaces.ClientPage.TABLE_TR
 				+ "[1]/td[4]/descendant::span[contains(text(),'Published')]")))
+			return true;
+		return false;
+	}
+	
+	/*
+	 * Is client Unpublished
+	 * 
+	 * Author: Tan Vo
+	 */
+	public boolean isClientUnPublished(String client){
+		
+		searchClient(client);
+		if (isControlExist(driver, By.xpath(Interfaces.ClientPage.TABLE_TR
+				+ "[1]/td[4]/descendant::span[contains(text(),'Unpublished')]")))
 			return true;
 		return false;
 	}
@@ -136,6 +163,18 @@ public class Client_page extends Abstract_page {
 		searchClient(client);
 		clickFirstClient();
 		clickPublish();
+	}
+	
+	/*
+	 * UNPublish a client
+	 * 
+	 * Author: Tan Vo
+	 */
+	public void unpublishClient(String client){
+		
+		searchClient(client);
+		clickFirstClient();
+		clickUnblish();
 	}
 	
 	
