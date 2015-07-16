@@ -16,6 +16,8 @@ public class Client_page extends Abstract_page {
 	private String STATUS_TRASH = "Trashed";
 	private String STATUS_ARCHIEVE = "Archived";
 	private String STATUS_DEFAULT = "- Select Status -";
+	
+	private String HELPPAGE_TITLE = "Joomla! Help";
 
 	public Client_page(WebDriver driver) {
 		this.driver = driver;
@@ -169,6 +171,24 @@ public class Client_page extends Abstract_page {
 				client))
 			return true;
 		return false;
+	}
+	
+	/*
+	 * Is help page display
+	 * 
+	 * Author: Tan Vo
+	 */
+	public boolean isHelpPage() {
+		
+		String currentWindows = getCurrentWindows(driver);
+		clickHelp();
+		switchToNewWindows(driver);
+		if (getPageTitle(driver).equals(HELPPAGE_TITLE)) {
+			driver.close();
+			driver.switchTo().window(currentWindows);
+			return true;
+		} else
+			return false;
 	}
 
 	/*
@@ -374,5 +394,15 @@ public class Client_page extends Abstract_page {
 	public void searchClient(String client) {
 		enter(driver, By.xpath(Interfaces.ClientPage.TXT_SEARCH), client);
 		click(driver, By.xpath(Interfaces.ClientPage.BTN_SEARCH));
+	}
+	
+	/*
+	 * Click help button
+	 * 
+	 * Author: Tan Vo
+	 */
+	public void clickHelp(){
+		
+		click(driver, By.xpath(Interfaces.ClientPage.BTN_HELP));
 	}
 }
