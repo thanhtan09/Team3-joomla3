@@ -462,4 +462,22 @@ public class WebLinks_page extends Abstract_page {
 					
 			return ascending;
 		}
+		
+		//Select number of items displayed
+		public void selectDisplayItem(String _item) {
+
+			select(driver, By.xpath(Interfaces.WebLinksPage.DROP_DISPLAY), _item);
+
+		}
+		
+
+		public boolean isPaging(int _item) {
+			boolean paging = false;
+			int row = countElement(driver,
+					By.xpath(Interfaces.WebLinksPage.TABLE_TR));
+			if (row <= _item) {
+				paging = true;
+			}
+			return paging;
+		}
 }
