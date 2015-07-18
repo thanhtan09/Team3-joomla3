@@ -52,7 +52,7 @@ public class WEBLINKS_TC011_012 extends Abstract_test {
 		weblinkPage.selectDisplayItem("5");
 		verifyTrue(weblinkPage.isPaging(5));
 		weblinkPage.selectDisplayItem("All");
-		verifyFalse(weblinkPage.isControlExist(driver, By.xpath(Interfaces.ContactsPage.BAR_PAGING)));
+		verifyFalse(weblinkPage.isControlExist(driver, By.xpath(Interfaces.WebLinksPage.BAR_PAGING)));
 	}
 	
 	@AfterClass
