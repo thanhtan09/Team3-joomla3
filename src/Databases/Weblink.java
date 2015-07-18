@@ -8,12 +8,14 @@ public class Weblink {
 	String url;
 	String conten;
 	String status;
+	String cate;
 	
 	public Weblink(){
 		this.name="";
 		this.url="";
 		this.conten="";
 		this.status="";
+		this.cate ="";
 	};
 	
 	//Set name
@@ -60,5 +62,15 @@ public class Weblink {
 	//Get status
 	public String getStatus(){
 		return status;
+	}
+	
+	//Set category
+	public void setCategory(String cate){
+		this.cate = cate;
+	}
+	
+	//Get status
+	public String getCategory(){
+		return cate;
 	}
 }
