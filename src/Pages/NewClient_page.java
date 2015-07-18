@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 public class NewClient_page extends Abstract_page{
 
 	private WebDriver driver;
-	private String PAGE_TITLE = "Joomla - Administration - Banner Manager: Edit Client";
+	private String PAGE_TITLE = "joomla selenium advance - Administration - Banner Manager: Edit Client";
 	
 	public NewClient_page(WebDriver driver){
 		this.driver = driver;
