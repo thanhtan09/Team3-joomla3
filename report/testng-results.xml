@@ -1,37 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="4" passed="4">
+<testng-results skipped="0" failed="0" total="2" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="79035" started-at="2015-07-08T13:47:05Z" finished-at="2015-07-08T13:48:24Z">
+  <suite name="Default suite" duration-ms="41370" started-at="2015-07-18T13:24:11Z" finished-at="2015-07-18T13:24:53Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="79035" started-at="2015-07-08T13:47:05Z" finished-at="2015-07-08T13:48:24Z">
-      <class name="TestCases.BANNERS.TC_JOOMLA_BANNERS_BANNERS_001">
-        <test-method status="PASS" signature="setup()[pri:0, instance:TestCases.BANNERS.TC_JOOMLA_BANNERS_BANNERS_001@61a52fbd]" name="setup" is-config="true" duration-ms="18827" started-at="2015-07-08T20:47:05Z" finished-at="2015-07-08T20:47:24Z">
+    <test name="Default test" duration-ms="41370" started-at="2015-07-18T13:24:11Z" finished-at="2015-07-18T13:24:53Z">
+      <class name="TestCases.CLIENTS.Client_test">
+        <test-method status="PASS" signature="setup()[pri:0, instance:TestCases.CLIENTS.Client_test@17d99928]" name="setup" is-config="true" duration-ms="22819" started-at="2015-07-18T20:24:12Z" finished-at="2015-07-18T20:24:34Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="TC_BANNERS_001()[pri:0, instance:TestCases.BANNERS.TC_JOOMLA_BANNERS_BANNERS_001@61a52fbd]" name="TC_BANNERS_001" duration-ms="14900" started-at="2015-07-08T20:47:24Z" description="Verify that user can create new banner" finished-at="2015-07-08T20:47:39Z">
+        <test-method status="PASS" signature="TC_CLIENTS_007()[pri:0, instance:TestCases.CLIENTS.Client_test@17d99928]" name="TC_CLIENTS_007" duration-ms="11605" started-at="2015-07-18T20:24:34Z" description="Verify that user can browse Banner client help page" finished-at="2015-07-18T20:24:46Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- TC_BANNERS_001 -->
-        <test-method status="PASS" signature="TC_BANNERS_002()[pri:0, instance:TestCases.BANNERS.TC_JOOMLA_BANNERS_BANNERS_001@61a52fbd]" name="TC_BANNERS_002" duration-ms="3918" started-at="2015-07-08T20:47:39Z" description="Verify that user can edit a banner" finished-at="2015-07-08T20:47:43Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- TC_BANNERS_002 -->
-        <test-method status="PASS" signature="TC_BANNERS_003()[pri:0, instance:TestCases.BANNERS.TC_JOOMLA_BANNERS_BANNERS_001@61a52fbd]" name="TC_BANNERS_003" duration-ms="3941" started-at="2015-07-08T20:47:43Z" description="Verify that user can create a new banner with unpublished status" finished-at="2015-07-08T20:47:47Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- TC_BANNERS_003 -->
-        <test-method status="PASS" signature="TC_BANNERS_004()[pri:0, instance:TestCases.BANNERS.TC_JOOMLA_BANNERS_BANNERS_001@61a52fbd]" name="TC_BANNERS_004" duration-ms="3918" started-at="2015-07-08T20:47:47Z" description="Verify that user can unpublish a banner" finished-at="2015-07-08T20:47:51Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- TC_BANNERS_004 -->
-        <test-method status="PASS" signature="end()[pri:0, instance:TestCases.BANNERS.TC_JOOMLA_BANNERS_BANNERS_001@61a52fbd]" name="end" is-config="true" duration-ms="33500" started-at="2015-07-08T20:47:51Z" finished-at="2015-07-08T20:48:24Z">
+        </test-method> <!-- TC_CLIENTS_007 -->
+        <test-method status="PASS" signature="end()[pri:0, instance:TestCases.CLIENTS.Client_test@17d99928]" name="end" is-config="true" duration-ms="6927" started-at="2015-07-18T20:24:46Z" finished-at="2015-07-18T20:24:53Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- end -->
-      </class> <!-- TestCases.BANNERS.TC_JOOMLA_BANNERS_BANNERS_001 -->
+        <test-method status="PASS" signature="TC_CLIENTS_008()[pri:0, instance:TestCases.CLIENTS.Client_test@17d99928]" name="TC_CLIENTS_008" duration-ms="0" started-at="2015-07-18T20:24:46Z" description="Verify that user can search a client  by using filter textbox" finished-at="2015-07-18T20:24:46Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC_CLIENTS_008 -->
+      </class> <!-- TestCases.CLIENTS.Client_test -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

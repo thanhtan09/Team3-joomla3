@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="TestCases.BANNERS.TC_JOOMLA_BANNERS_BANNERS_001">
+      <class name="TestCases.CLIENTS.Client_test">
         <methods>
+          <include name="TC_CLIENTS_007"/>
           <include name="setup"/>
           <include name="end"/>
-          <include name="TC_BANNERS_004"/>
         </methods>
-      </class> <!-- TestCases.BANNERS.TC_JOOMLA_BANNERS_BANNERS_001 -->
+      </class> <!-- TestCases.CLIENTS.Client_test -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
