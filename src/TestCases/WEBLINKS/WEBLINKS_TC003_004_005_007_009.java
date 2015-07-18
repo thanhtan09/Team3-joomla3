@@ -45,6 +45,16 @@ public class WEBLINKS_TC003_004_005_007_009 extends Abstract_test {
 		verifyTrue(weblinkPage.isPublish(weblink3.getName()));
 	}
 	
+	@Test(description = "Verify user can search for weblinks using the filter dropdown lists", dependsOnMethods = "TC_WEBLINK_003")
+	public void TC_WEBLINK_010 (){
+		
+		log.info("Select an item from the 'Category' filter dropdown list/Select an item from the 'Status' filter dropdown list");
+		weblinkPage.searchbyfilter(weblink3.getCategory(), weblink3.getStatus());
+		
+		log.info("Verify the property of displayed weblinks are matched with the selected criteria from the filter dropdown lists");
+		verifyTrue(weblinkPage.isFilteredWeblinks(weblink3.getCategory(), weblink3.getStatus()));
+	}
+	
 	@Test(description = "Verify user can unpublish a published weblink", dependsOnMethods = "TC_WEBLINK_003")
 	public void TC_WEBLINK_004 (){
 		
