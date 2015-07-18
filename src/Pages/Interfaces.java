@@ -205,6 +205,7 @@ public class Interfaces {
 		public static final String BTN_CLEAR = "//button[contains(text(),'Clear')]";
 		public static final String DROP_DISPLAY = "//select[@id='limit']";
 		public static final String DROP_CATEGORY = "//select[@name='filter_category_id']";
+		public static final String LNK_SORTID = "//a[contains(text(), 'Title')]/img"; 
 	}
 	
 	public class NewWebLinksPage{
