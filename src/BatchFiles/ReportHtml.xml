@@ -6,7 +6,7 @@
   </listeners>
   <test name="Regression Test Suite"   >
     <classes>
-       <class name="TestCases.CLIENTS.Client_test"/>
+       <class name="TestCases.CLIENTS.CLIENTS_TC001_to_TC006"/>
     </classes>
  </test>
 </suite>
