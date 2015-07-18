@@ -11,14 +11,18 @@ public class NewWebLinks_page extends Abstract_page{
 		this.driver = driver;
 	}
 
-	public WebLinks_page addNewWebLink(String _title, String _url, String _content, String status, String button) {
+	public WebLinks_page addNewWebLink(String _title, String _url, String _content, String _status, String _cate, String button) {
 		
 		enterTitle(_title);
 		enterURL(_url);
 		enterWLText(_content);
 		
-		if (status != "") {
-			selectStatus(status);
+		if (_status != "") {
+			selectStatus(_status);
+		}
+		
+		if (_cate != "") {
+			selectCatetory(_cate);
 		}
 		
 		switch (button) {
