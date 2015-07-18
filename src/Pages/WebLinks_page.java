@@ -480,4 +480,15 @@ public class WebLinks_page extends Abstract_page {
 			}
 			return paging;
 		}
+		
+		public void clickStatusIcon(String weblink) {
+			searchforWeblink(weblink);
+					click(driver,
+							By.xpath(Interfaces.ArticlePage.TABLE_TR + "[" + 1
+									+ "]/td[1]/input"));
+					click(driver,
+							By.xpath(Interfaces.ArticlePage.TABLE_TR + "[" + 1
+									+ "]/td[3]/a/span"));
+				
+		}
 }
