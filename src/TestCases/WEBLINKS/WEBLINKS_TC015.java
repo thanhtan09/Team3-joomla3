@@ -53,7 +53,7 @@ public class WEBLINKS_TC015 extends Abstract_test{
 	
 	@AfterClass
 	public void end(){
-		weblinkPage.deleteWeblink(weblink3.getName());
+		weblinkPage.deleteWeblink(weblink4.getName());
 		shutdown();
 	}
 }
