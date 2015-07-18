@@ -410,26 +410,56 @@ public class WebLinks_page extends Abstract_page {
 		
 		}
 	
-	//Is the filtered contact displayed == FAILED
-	public boolean isFilteredWeblinks (String _cate, String _stt){
-		boolean show = false;
-		int iCount = 0;
-		iCount = countElement(driver, By.xpath(Interfaces.WebLinksPage.TABLE_TR));
-		for (int i = 1; i <= iCount; i++) {
-			String category = getText(
-					driver,
-					By.xpath(Interfaces.WebLinksPage.TABLE_TR + "[" + i
-							+ "]/td[" + 4 + "]"));
+	// Sort the contacts table by ID column
+		public void clickSortID(){
 			
-			String status = getText(
-					driver,
-					By.xpath(Interfaces.WebLinksPage.TABLE_TR + "[" + i
-							+ "]/td[" + 3 + "]/a/span/span"));
-			
-			if (category.equals(_cate) && status.equals(_stt)) {
-				show = true;
-			}
+			click(driver, By.xpath(Interfaces.WebLinksPage.LNK_SORTID));
 		}
-		return show;		
-	}
+		
+		// Is Sort DES order
+		public boolean isWeblinkDESByID(){
+			
+			int count = countElement(driver, By.xpath(Interfaces.WebLinksPage.TABLE_TR));
+			int firstrow=0;
+			int secondrow=0;
+			boolean descending = false;
+			
+			for(int i=1;i<count;i++){
+				firstrow = Integer.parseInt(getText(driver, By.xpath(Interfaces.WebLinksPage.TABLE_TR+"["+i+"]/td[13]")));
+				int j = i+1;
+				secondrow = Integer.parseInt(getText(driver, By.xpath(Interfaces.WebLinksPage.TABLE_TR+"["+j+"]/td[13]")));
+				if(firstrow>secondrow){
+					descending = true;
+				}
+				else {
+					descending = false;
+					break;
+				}
+			}
+					
+			return descending;
+		}
+		
+		// Is Sort ASC order
+		public boolean isWeblinkASCByID(){
+			
+			int count = countElement(driver, By.xpath(Interfaces.WebLinksPage.TABLE_TR));
+			int firstrow=0;
+			int secondrow=0;
+			boolean ascending = false;
+			
+			for(int i=1;i<count;i++){
+				firstrow = Integer.parseInt(getText(driver, By.xpath(Interfaces.WebLinksPage.TABLE_TR+"["+i+"]/td[13]")));
+				int j = i+1;
+				secondrow = Integer.parseInt(getText(driver, By.xpath(Interfaces.WebLinksPage.TABLE_TR+"["+j+"]/td[13]")));
+				if(firstrow<secondrow)
+					ascending = true;
+				else {
+					ascending = false;
+					break;
+				}
+			}
+					
+			return ascending;
+		}
 }
