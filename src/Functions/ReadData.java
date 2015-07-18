@@ -381,11 +381,13 @@ public class ReadData {
 						Cell url = sheet.getCell(2, row);
 						Cell content = sheet.getCell(3, row);
 						Cell status = sheet.getCell(4,row);
+						Cell cate = sheet.getCell(5, row);
 						
 						wblink.setName(title.getContents());
 						wblink.setUrl(url.getContents());
 						wblink.setContent(content.getContents());
 						wblink.setStatus(status.getContents());
+						wblink.setCategory(cate.getContents());
 					}
 				}
 			}
