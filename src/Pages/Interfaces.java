@@ -219,6 +219,7 @@ public class Interfaces {
 		public static final String BTN_SAVE = "//li[@id='toolbar-apply']/a/span";
 		public static final String BTN_SAVEANDCLOSE = "//li[@id='toolbar-save']/a/span";
 		public static final String BTN_SAVEANDNEW = "//li[@id='toolbar-save-new']/a/span";
+		public static final String BTN_SAVEANDCOPY = "//li[@id='toolbar-save-copy']/a/span";
 		public static final String BTN_CANCEL = "//li[@id='toolbar-cancel']/a/span";
 		public static final String FRAME_CONTENT = "//iframe[@id='jform_description_ifr']";
 		public static final String BTN_IMAGE = "//div[@id='editor-xtd-buttons']/descendant::a[contains(text(),'Image')]";
