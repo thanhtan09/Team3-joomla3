@@ -491,4 +491,17 @@ public class WebLinks_page extends Abstract_page {
 									+ "]/td[3]/a/span"));
 				
 		}
+		public WebLinks_page copyWeblink(String oldtitle, String title, String url) {
+			searchforWeblink(oldtitle);
+			click(driver,By.xpath(Interfaces.WebLinksPage.TABLE_TR + "[" + 1
+									+ "]/td[" + 1 + "]/input[@type='checkbox']"));
+				
+			click(driver, By.xpath(Interfaces.WebLinksPage.BTN_EDIT));
+
+			NewWebLinks_page newweblink = Factory_page.getNewWebLinksPage(driver);
+			newweblink.copyWeblink(title, url);
+
+			return new WebLinks_page(driver);
+		}
 }
+
