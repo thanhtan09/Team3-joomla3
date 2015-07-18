@@ -34,13 +34,13 @@ public class WEBLINKS_TC011 extends Abstract_test {
 		weblinkPage.clickSortID();
 		
 		log.info("Verify the weblinks is sorted by ID in ascending order");
-		verifyTrue(weblinkPage.isWeblinkASCByID(), "Weblinks is sorted by ID in ascending order");
+		verifyTrue(weblinkPage.isWeblinkASCByID(), "weblinks is sorted by ID in ascending order");
 		
 		log.info("Click on the Header link of ID column");
 		weblinkPage.clickSortID();
 		
 		log.info("Verify the weblinks is sorted by ID in descending order");
-		verifyTrue(weblinkPage.isWeblinkDESByID(), "Weblinks is sorted by ID in descending order");
+		verifyTrue(weblinkPage.isWeblinkDESByID(), "weblinks is sorted by ID in descending order");
 		
 	}
 	
