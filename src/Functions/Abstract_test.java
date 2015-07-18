@@ -96,8 +96,9 @@ public abstract class Abstract_test {
 	protected void verifyTrue(boolean condition, String message){
 		try{
 			Assert.assertTrue(condition, message);
+			Reporter.log("PASS: "+message);
 		} catch(Exception e){
-			log.info("FAIL:" + e);
+			Reporter.log("FAIL: "+e);
 		}
 	}
 	
