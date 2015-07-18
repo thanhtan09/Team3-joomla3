@@ -56,7 +56,7 @@ public class WEBLINKS_TC015 extends Abstract_test{
 	public void TC_WEBLINK_016 (){
 		
 		log.info("Create a copy for weblink");
-		weblinkPage.copyWeblink(weblink4.getName(), weblink1.getName(), weblink1.getUrl());
+		weblinkPage.copyWeblink(weblink4.getName(), weblink1.getName(),weblink1.getName(),weblink1.getUrl());
 		
 		log.info("Sucessfull message displays and weblink displays in table");
 		verifyTrue(weblinkPage.isMessageWeblinkDisplay());
