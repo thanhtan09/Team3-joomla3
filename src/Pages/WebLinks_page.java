@@ -419,12 +419,12 @@ public class WebLinks_page extends Abstract_page {
 			String category = getText(
 					driver,
 					By.xpath(Interfaces.WebLinksPage.TABLE_TR + "[" + i
-							+ "]/td[" + 6 + "]"));
+							+ "]/td[" + 4 + "]"));
 			
 			String status = getText(
 					driver,
 					By.xpath(Interfaces.WebLinksPage.TABLE_TR + "[" + i
-							+ "]/td[" + 4 + "]/a/span/span"));
+							+ "]/td[" + 3 + "]/a/span/span"));
 			
 			if (category.equals(_cate) && status.equals(_stt)) {
 				show = true;
