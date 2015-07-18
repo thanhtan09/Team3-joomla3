@@ -35,18 +35,18 @@ public class WEBLINKS_TC010 extends Abstract_test{
 		weblinkPage.addNewWebLink(weblink4.getName(), weblink4.getUrl(), weblink4.getContent(), weblink4.getStatus(),weblink4.getCategory(), "");
 		
 		log.info("Verify message Weblink successfully saved displayed");
-		verifyTrue(weblinkPage.isWebLinkDisplay(weblink3.getName()));
+		verifyTrue(weblinkPage.isWebLinkDisplay(weblink4.getName()));
 		
 		log.info("Select an item from the 'Category' filter dropdown list, Select an item from the 'Status' filter dropdown list");
 		weblinkPage.searchbyfilter("Sample Data-Weblinks", "Published");
 		
 		log.info("Verify the property of displayed weblinks are matched with the selected criteria from the filter dropdown lists");
-		verifyTrue(weblinkPage.isFilteredWeblinks("Sample Data-Weblinks", "Published"));
+		verifyTrue(weblinkPage.isWebLinkDisplay(weblink4.getName()));
 	}
 	
 	@AfterClass
 	public void end(){
-		weblinkPage.deleteWeblink(weblink3.getName());
+		weblinkPage.deleteWeblink(weblink4.getName());
 		shutdown();
 	}
 }
