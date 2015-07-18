@@ -35,6 +35,7 @@ public class WEBLINKS_TC015 extends Abstract_test{
 		weblinkPage.addNewWebLink(weblink4.getName(), weblink4.getUrl(), weblink4.getContent(), weblink4.getStatus(),weblink4.getCategory(), "");
 		
 		log.info("Verify message Weblink successfully saved displayed");
+		verifyTrue(weblinkPage.isMessageWeblinkDisplay());
 		verifyTrue(weblinkPage.isWebLinkDisplay(weblink4.getName()));
 		
 		log.info("Click on the status icon of the selected weblink in the Status column");
@@ -48,6 +49,18 @@ public class WEBLINKS_TC015 extends Abstract_test{
 		
 		log.info("Verify the web link is published successfully");
 		verifyTrue(weblinkPage.isPublish(weblink4.getName()));
+		
+	}
+	
+	@Test(description = "Verify user can create a copied version of an existed weblink", dependsOnMethods="TC_WEBLINK_015")
+	public void TC_WEBLINK_016 (){
+		
+		log.info("Create a copy for weblink");
+		weblinkPage.copyWeblink(weblink4.getName(), weblink1.getName(), weblink1.getUrl());
+		
+		log.info("Sucessfull message displays and weblink displays in table");
+		verifyTrue(weblinkPage.isMessageWeblinkDisplay());
+		verifyTrue(weblinkPage.isWebLinkDisplay(weblink1.getName()));
 		
 	}
 	
