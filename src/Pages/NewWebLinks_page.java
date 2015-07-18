@@ -54,6 +54,9 @@ public class NewWebLinks_page extends Abstract_page{
 		enter(driver, By.xpath(Interfaces.NewWebLinksPage.TXT_URL), _url);
 	}
 	
+	public void enterAlias(String _alias) {
+		enter(driver, By.xpath(Interfaces.NewWebLinksPage.TXT_ALIAS), _alias);
+	}
 	/*
 	 * Select Category
 	 * 
@@ -141,10 +144,11 @@ public class NewWebLinks_page extends Abstract_page{
 		return new WebLinks_page(driver);
 	}
 	
-	public WebLinks_page copyWeblink(String title, String url) {
+	public WebLinks_page copyWeblink(String title, String alias, String url) {
 
 		enterTitle(title);
 		enterURL(url);
+		enterAlias(alias);
 		clickSaveasCopybutton();
 
 		return new WebLinks_page(driver);
