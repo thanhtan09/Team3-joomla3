@@ -425,9 +425,9 @@ public class WebLinks_page extends Abstract_page {
 			boolean descending = false;
 			
 			for(int i=1;i<count;i++){
-				firstrow = Integer.parseInt(getText(driver, By.xpath(Interfaces.WebLinksPage.TABLE_TR+"["+i+"]/td[13]")));
+				firstrow = Integer.parseInt(getText(driver, By.xpath(Interfaces.WebLinksPage.TABLE_TR+"["+i+"]/td[9]")));
 				int j = i+1;
-				secondrow = Integer.parseInt(getText(driver, By.xpath(Interfaces.WebLinksPage.TABLE_TR+"["+j+"]/td[13]")));
+				secondrow = Integer.parseInt(getText(driver, By.xpath(Interfaces.WebLinksPage.TABLE_TR+"["+j+"]/td[9]")));
 				if(firstrow>secondrow){
 					descending = true;
 				}
@@ -449,9 +449,9 @@ public class WebLinks_page extends Abstract_page {
 			boolean ascending = false;
 			
 			for(int i=1;i<count;i++){
-				firstrow = Integer.parseInt(getText(driver, By.xpath(Interfaces.WebLinksPage.TABLE_TR+"["+i+"]/td[13]")));
+				firstrow = Integer.parseInt(getText(driver, By.xpath(Interfaces.WebLinksPage.TABLE_TR+"["+i+"]/td[9]")));
 				int j = i+1;
-				secondrow = Integer.parseInt(getText(driver, By.xpath(Interfaces.WebLinksPage.TABLE_TR+"["+j+"]/td[13]")));
+				secondrow = Integer.parseInt(getText(driver, By.xpath(Interfaces.WebLinksPage.TABLE_TR+"["+j+"]/td[9]")));
 				if(firstrow<secondrow)
 					ascending = true;
 				else {
