@@ -125,6 +125,11 @@ public class NewWebLinks_page extends Abstract_page{
 		click(driver, By.xpath(Interfaces.NewWebLinksPage.BTN_CANCEL));
 	}
 	
+	
+	public void clickSaveasCopybutton() {
+		click(driver, By.xpath(Interfaces.NewWebLinksPage.BTN_SAVEANDCOPY));
+	}
+	
 	public WebLinks_page editWeblink(String title, String url,
 			String content, String status) {
 
@@ -135,5 +140,13 @@ public class NewWebLinks_page extends Abstract_page{
 
 		return new WebLinks_page(driver);
 	}
+	
+	public WebLinks_page copyWeblink(String title, String url) {
 
+		enterTitle(title);
+		enterURL(url);
+		clickSaveasCopybutton();
+
+		return new WebLinks_page(driver);
+	}
 }
