@@ -63,22 +63,14 @@ public class WebLinks_page extends Abstract_page {
 	 */
 	public boolean isWebLinkDisplay(String weblink) {
 		boolean show = false;
-		if (getText(driver, By.xpath(Interfaces.WebLinksPage.CONTROL_MESSAGE))
-				.equals(MESSAGESUCCESS)) {
-			int iCount = 0;
-			iCount = countElement(driver,
-					By.xpath(Interfaces.WebLinksPage.TABLE_TR));
-			for (int i = 1; i <= iCount; i++) {
+		searchforWeblink(weblink);
 				String cell = getText(
 						driver,
-						By.xpath(Interfaces.WebLinksPage.TABLE_TR + "[" + i
+						By.xpath(Interfaces.WebLinksPage.TABLE_TR + "[" + 1
 								+ "]/td[" + 2 + "]/a"));
 				if (cell.equals(weblink)) {
 					show = true;
-					break;
 				}
-			}
-		}
 		return show;
 	}
 	
@@ -404,5 +396,40 @@ public class WebLinks_page extends Abstract_page {
 		return search;
 	}
 	
+	//Search for contacts using the filter dropdown list
+	public void searchbyfilter (String _cate, String _stt){
+		
+		click(driver, By.xpath(Interfaces.WebLinksPage.BTN_CLEAR));
+		select(driver, By.xpath(Interfaces.WebLinksPage.DROP_DISPLAY), STATUS_ALL); 
+			if (_cate != null){
+				select(driver, By.xpath(Interfaces.WebLinksPage.DROP_CATEGORY), _cate);
+			} 
+			if (_stt != null){
+				select(driver, By.xpath(Interfaces.WebLinksPage.DROP_STATUS), _stt);
+			}
+		
+		}
 	
+	//Is the filtered contact displayed == FAILED
+	public boolean isFilteredWeblinks (String _cate, String _stt){
+		boolean show = false;
+		int iCount = 0;
+		iCount = countElement(driver, By.xpath(Interfaces.WebLinksPage.TABLE_TR));
+		for (int i = 1; i <= iCount; i++) {
+			String category = getText(
+					driver,
+					By.xpath(Interfaces.WebLinksPage.TABLE_TR + "[" + i
+							+ "]/td[" + 6 + "]"));
+			
+			String status = getText(
+					driver,
+					By.xpath(Interfaces.WebLinksPage.TABLE_TR + "[" + i
+							+ "]/td[" + 4 + "]/a/span/span"));
+			
+			if (category.equals(_cate) && status.equals(_stt)) {
+				show = true;
+			}
+		}
+		return show;		
+	}
 }
