@@ -150,6 +150,7 @@ public class NewWebLinks_page extends Abstract_page{
 		enterURL(url);
 		enterAlias(alias);
 		clickSaveasCopybutton();
+		clickCancelbutton();
 
 		return new WebLinks_page(driver);
 	}
