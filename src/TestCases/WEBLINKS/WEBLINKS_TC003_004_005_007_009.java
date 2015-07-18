@@ -35,6 +35,7 @@ public class WEBLINKS_TC003_004_005_007_009 extends Abstract_test {
 		weblinkPage.addNewWebLink(weblink3.getName(), weblink3.getUrl(), weblink3.getContent(), weblink3.getStatus(),weblink3.getCategory(), "");
 		
 		log.info("Verify message Weblink successfully saved displayed");
+		verifyTrue(weblinkPage.isMessageWeblinkDisplay(),"Weblink is created successfully");
 		verifyTrue(weblinkPage.isWebLinkDisplay(weblink3.getName()));
 		
 		log.info("Publish a weblink");
