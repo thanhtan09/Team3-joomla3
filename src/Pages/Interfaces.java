@@ -202,6 +202,9 @@ public class Interfaces {
 		public static final String TXT_SEARCH = "//input[@id='filter_search']";
 		public static final String BTN_SEARCH = "//button[contains(text(),'Search')]";
 		public static final String BTN_HELP = "//li[@id='toolbar-help']/a/span";	
+		public static final String BTN_CLEAR = "//button[contains(text(),'Clear')]";
+		public static final String DROP_DISPLAY = "//select[@id='limit']";
+		public static final String DROP_CATEGORY = "//select[@name='filter_category_id']";
 	}
 	
 	public class NewWebLinksPage{
