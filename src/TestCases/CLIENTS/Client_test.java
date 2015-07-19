@@ -69,9 +69,28 @@ public class Client_test extends Abstract_test{
 		
 	}
 	
+	@Test (description = "Verify that user can create many clients by using Save & New button")
+	public void TC_CLIENTS_011(){
+		
+		log.info("Add a new client");
+		clientPage.addNewClient(client.getName(), client.getContact(), client.getEmail(), client.getStatus(), "");
+		
+		log.info("A message : Client successfully saved shows and Add Client page displays");
+		verifyTrue(clientPage.isMessageDisplay(),"New Client page displays");
+		verifyTrue(clientPage.isClientcreated(client.getName()),"New client is created and matched with entered data");
+		
+		log.info("Add a new client");
+		clientPage.addNewClient(client2.getName(), client2.getContact(), client2.getEmail(), client2.getStatus(), "");
+		log.info("A message : Client successfully saved shows and Add Client page displays");
+		verifyTrue(clientPage.isMessageDisplay(),"New Client page displays");
+		verifyTrue(clientPage.isClientcreated(client2.getName()),"New client is created and matched with entered data");
+	}
+	
 	@AfterClass
 	public void end(){
 		clientPage.deleteClient(client1);
+		clientPage.deleteClient(client.getName());
+		clientPage.deleteClient(client2.getName());
 		shutdown();
 	}
 }
