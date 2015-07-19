@@ -13,11 +13,12 @@ public class Client_page extends Abstract_page {
 	private String MESSAGE_ARCHIEVE = "1 client successfully archived";
 	private String MESSAGE_DELETED = "1 client successfully deleted";
 	private String MESSAGE_TRASH = "1 client successfully trashed";
+	private String MESSAGE_CHECKIN = "1 client successfully checked in";
 	private String STATUS_TRASH = "Trashed";
 	private String STATUS_ARCHIEVE = "Archived";
 	private String STATUS_DEFAULT = "- Select Status -";
 	private String STATUS_UNPUBLISH = "Unpublished";
-	
+
 	private String HELPPAGE_TITLE = "Joomla! Help";
 
 	public Client_page(WebDriver driver) {
@@ -44,7 +45,7 @@ public class Client_page extends Abstract_page {
 	 * Author: Tan Vo
 	 */
 	public boolean isClientcreated(String client) {
-		
+
 		searchClient(client);
 		boolean display = false;
 
@@ -148,26 +149,27 @@ public class Client_page extends Abstract_page {
 		}
 		return false;
 	}
-	
+
 	/*
 	 * Is client trashed
 	 * 
 	 * Author: Tan Vo
 	 */
-	public boolean isClientTrashed(){
-		
-		if(getText(driver, By.xpath(Interfaces.ClientPage.MESSAGE)).equals(MESSAGE_TRASH))
+	public boolean isClientTrashed() {
+
+		if (getText(driver, By.xpath(Interfaces.ClientPage.MESSAGE)).equals(
+				MESSAGE_TRASH))
 			return true;
 		return false;
 	}
-	
+
 	/*
 	 * Is client sent to trash
 	 * 
 	 * Author: Tan Vo
 	 */
-	public boolean isClientSentToTrash(String client){
-		
+	public boolean isClientSentToTrash(String client) {
+
 		selectStatus(STATUS_TRASH);
 		if (getText(driver,
 				By.xpath(Interfaces.ClientPage.TABLE_TR + "/td[2]/a")).equals(
@@ -175,23 +177,70 @@ public class Client_page extends Abstract_page {
 			return true;
 		return false;
 	}
-	
+
 	/*
 	 * Is help page display
 	 * 
 	 * Author: Tan Vo
 	 */
 	public boolean isHelpPage() {
-		
+
 		String currentWindows = getCurrentWindows(driver);
 		clickHelp();
 		switchToNewWindows(driver);
-		if (getPageTitle(driver).equals(HELPPAGE_TITLE)) {
+		try {
+			if (getPageTitle(driver).equals(HELPPAGE_TITLE))
+				return true;
+			return false;
+		} finally {
 			driver.close();
 			driver.switchTo().window(currentWindows);
+		}
+	}
+
+	/*
+	 * Is client locked
+	 * 
+	 * Author: Tan Vo
+	 */
+	public boolean isLockedClient(String client) {
+
+		searchClient(client);
+		if (isControlExist(
+				driver,
+				By.xpath(Interfaces.ClientPage.TABLE_TR
+						+ "/td[2]/a/span/span[contains(text(),'Checked out')]")))
 			return true;
-		} else
-			return false;
+		return false;
+	}
+
+	/*
+	 * Is message check in display
+	 * 
+	 * Author: Tan Vo
+	 */
+	public boolean isMessageCheckInClientDisplay() {
+
+		if (getText(driver, By.xpath(Interfaces.ClientPage.MESSAGE)).equals(
+				MESSAGE_CHECKIN))
+			return true;
+		return false;
+	}
+
+	/*
+	 * Is client change to unlock
+	 * 
+	 * Auhtor: Tan Vo
+	 */
+	public boolean isUnlockClient(String client) {
+
+		searchClient(client);
+		if (isControlNotExist(
+				driver,
+				By.xpath(Interfaces.ClientPage.TABLE_TR
+						+ "/td[2]/a/span/span[contains(text(),'Checked out')]")))
+			return true;
+		return false;
 	}
 
 	/*
@@ -306,6 +355,18 @@ public class Client_page extends Abstract_page {
 	}
 
 	/*
+	 * Check in a client
+	 * 
+	 * Author: Tan Vo
+	 */
+	public void checkinClient(String client) {
+
+		searchClient(client);
+		clickFirstClient();
+		clickCheckIn();
+	}
+
+	/*
 	 * ======================STEP ON ONE ACTION=========================
 	 * 
 	 * 
@@ -398,24 +459,34 @@ public class Client_page extends Abstract_page {
 		enter(driver, By.xpath(Interfaces.ClientPage.TXT_SEARCH), client);
 		click(driver, By.xpath(Interfaces.ClientPage.BTN_SEARCH));
 	}
-	
+
 	/*
 	 * Click help button
 	 * 
 	 * Author: Tan Vo
 	 */
-	public void clickHelp(){
-		
+	public void clickHelp() {
+
 		click(driver, By.xpath(Interfaces.ClientPage.BTN_HELP));
 	}
-	
+
 	/*
 	 * Select unpublish drop status
 	 * 
 	 * Author: Tan Vo
 	 */
-	public void selectUnpublishStatus(){
-		
+	public void selectUnpublishStatus() {
+
 		selectStatus(STATUS_UNPUBLISH);
+	}
+
+	/*
+	 * Click Check In button
+	 * 
+	 * Author: Tan Vo
+	 */
+	public void clickCheckIn() {
+
+		click(driver, By.xpath(Interfaces.ClientPage.BTN_CHECKIN));
 	}
 }

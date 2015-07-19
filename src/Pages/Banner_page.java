@@ -232,15 +232,14 @@ public class Banner_page extends Abstract_page {
 		String currentWindows = getCurrentWindows(driver);
 		clickHelp();
 		switchToNewWindows(driver);
-		if (getPageTitle(driver).equals(HELP_BANNERPAGE_TITLE)) {
+		try {
+			if (getPageTitle(driver).equals(HELP_BANNERPAGE_TITLE))
+				return true;
+			return false;
+		} finally {
 			driver.close();
 			driver.switchTo().window(currentWindows);
-			if (isControlExist(driver,
-					By.xpath(Interfaces.NewBannerPage.BTN_CLOSE)))
-				click(driver, By.xpath(Interfaces.NewBannerPage.BTN_CLOSE));
-			return true;
-		} else
-			return false;
+		}
 	}
 
 	/*
