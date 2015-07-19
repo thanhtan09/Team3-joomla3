@@ -20,7 +20,6 @@ public class WebLinks_page extends Abstract_page {
 	private String MESSAGEARCHIVE = "1 weblink successfully archived";
 	private String MESSAGEDELETE = "1 weblink deleted.";
 	private String MESSAGETRASHWEBLINK = "1 weblink successfully trashed";
-	private String MESSAGECHECKIN = "1 weblink successfully checked in";
 	private String HELP_TITLE = "Joomla! Help";
 
 	// Status
@@ -29,9 +28,7 @@ public class WebLinks_page extends Abstract_page {
 	private String STATUS_ALL = "All";
 	private String PUBLISH = "Published";
 	private String UNPUBLISH = "Unpublished";
-	private String FRATURED = "Featured weblink";
-	private String UNFRATURED = "Unfeatured weblink";
-	private String ACCESS_PUBLIC = "Public";
+
 	
 	/*
 	 * Add new weblink
