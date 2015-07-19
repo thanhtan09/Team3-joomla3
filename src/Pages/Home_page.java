@@ -54,4 +54,14 @@ public class Home_page extends Abstract_page{
 		navigateMenu(driver,"Components|Contacts");		
 		return new Contacts_page (driver);
 	}
+	
+	/*
+	 * Navigate to Categories Page
+	 * 
+	 * Author: Giang Nguyen
+	 */
+	public Categories_page navigatetoCategoryManagerpage(){
+		navigateMenu(driver,"Content|Category Manager");		
+		return new Categories_page(driver);
+	}
 }

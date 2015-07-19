@@ -57,8 +57,8 @@ public class Categories_page extends Abstract_page {
 	 * Author: Tan Vo
 	 */
 	public boolean isCategoryDisplay(String cate) {
-		searchCategory(cate);
 		
+		searchCategory(cate);
 		String cell = getText(driver,
 				By.xpath(Interfaces.ArticlePage.TABLE_TR + "[1]/td[2]/a"));
 		if (cell.equals(cate))
@@ -122,5 +122,17 @@ public class Categories_page extends Abstract_page {
 	public void searchCategory(String cate){
 		enter(driver, By.xpath(Interfaces.CatetoryPage.TXT_SEARCH), cate);
 		click(driver, By.xpath(Interfaces.CatetoryPage.BTN_SEARCH));
+	}
+	
+	public void editCategort(String oldtitle, String title,
+			String button) {
+		searchCategory(oldtitle);
+		click(driver,
+						By.xpath(Interfaces.WebLinksPage.TABLE_TR + "[" + 1
+								+ "]/td[" + 1 + "]/input[@type='checkbox']"));
+		click(driver, By.xpath(Interfaces.WebLinksPage.BTN_EDIT));
+
+		NewCategory_page catePage = Factory_page.getNewCategoryPage(driver);
+		catePage.editCategory(title,"Save");
 	}
 }

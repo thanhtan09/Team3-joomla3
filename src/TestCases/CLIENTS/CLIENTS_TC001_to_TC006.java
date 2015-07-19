@@ -83,7 +83,34 @@ public class CLIENTS_TC001_to_TC006 extends Abstract_test{
 		verifyTrue(clientPage.isClientArchieved(client2.getName()), "Client is archived");
 	}
 	
-	@Test (description = "Verify that user can send a client to trash", dependsOnMethods = "TC_CLIENTS_001")
+	@Test (description = "Verify that user can search a client  by using filter textbox", dependsOnMethods = "TC_CLIENTS_001")
+	public void TC_CLIENTS_008(){
+		
+		log.info("Search client");
+		clientPage.searchClient(client2.getName());
+		
+		log.info("Recently created client displays");
+		verifyTrue(clientPage.isClientcreated(client2.getName()),"Rencenty created client displays");
+	}
+	
+	@Test (description = "Verify that user can search a client by using filter dropdown list", dependsOnMethods = "TC_CLIENTS_001")
+	public void TC_CLIENTS_009(){
+		
+		log.info("Add a new client");
+		clientPage.addNewClient(client3.getName(), client3.getContact(), client3.getEmail(), client3.getStatus(), "");
+		
+		log.info("A message : Client successfully saved shows and new client is created");
+		verifyTrue(clientPage.isMessageDisplay(),"Client successfully saved");
+		verifyTrue(clientPage.isClientcreated(client3.getName()),"New client is created");
+		
+		log.info("Select unpublish status");
+		clientPage.selectUnpublishStatus();
+		
+		log.info("Recently created client displays");
+		verifyTrue(clientPage.isClientcreated(client3.getName()), "Recently created client displays");
+	}
+	
+	@Test (description = "Verify that user can send a client to trash", dependsOnMethods = "TC_CLIENTS_009")
 	public void TC_CLIENTS_006(){
 		
 		log.info("Archieve a client");
@@ -99,6 +126,7 @@ public class CLIENTS_TC001_to_TC006 extends Abstract_test{
 	@AfterClass
 	public void end(){	
 		clientPage.deleteClient(client2.getName());
+		clientPage.deleteClient(client3.getName());
 		shutdown();
 	}
 }

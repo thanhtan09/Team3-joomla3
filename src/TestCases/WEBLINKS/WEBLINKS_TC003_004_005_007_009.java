@@ -35,6 +35,7 @@ public class WEBLINKS_TC003_004_005_007_009 extends Abstract_test {
 		weblinkPage.addNewWebLink(weblink3.getName(), weblink3.getUrl(), weblink3.getContent(), weblink3.getStatus(),weblink3.getCategory(), "");
 		
 		log.info("Verify message Weblink successfully saved displayed");
+		verifyTrue(weblinkPage.isMessageWeblinkDisplay(),"Weblink is created successfully");
 		verifyTrue(weblinkPage.isWebLinkDisplay(weblink3.getName()));
 		
 		log.info("Publish a weblink");
@@ -53,8 +54,8 @@ public class WEBLINKS_TC003_004_005_007_009 extends Abstract_test {
 		weblinkPage.unpublishWeblink(weblink3.getName());
 		
 		log.info("Weblink is unpublished successfully");
-		weblinkPage.isMessageUnpublishWeblinkDisplay();
-		weblinkPage.isUnPublish(weblink3.getName());		
+		verifyTrue(weblinkPage.isMessageUnpublishWeblinkDisplay());
+		verifyTrue(weblinkPage.isUnPublish(weblink3.getName()));		
 	}
 	
 	@Test(description = "Verify user can archive a weblink", dependsOnMethods = "TC_WEBLINK_003")
@@ -88,7 +89,7 @@ public class WEBLINKS_TC003_004_005_007_009 extends Abstract_test {
 		weblinkPage.searchforWeblink(weblink3.getName());
 		
 		log.info("Verify the titles of displayed weblinks are partially matched with the entered keyword");
-		weblinkPage.isSearchWeblinkDisplay(weblink3.getName());
+		verifyTrue(weblinkPage.isSearchWeblinkDisplay(weblink3.getName()));
 		
 	}
 	

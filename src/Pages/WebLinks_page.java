@@ -20,7 +20,6 @@ public class WebLinks_page extends Abstract_page {
 	private String MESSAGEARCHIVE = "1 weblink successfully archived";
 	private String MESSAGEDELETE = "1 weblink deleted.";
 	private String MESSAGETRASHWEBLINK = "1 weblink successfully trashed";
-	private String MESSAGECHECKIN = "1 weblink successfully checked in";
 	private String HELP_TITLE = "Joomla! Help";
 
 	// Status
@@ -29,9 +28,7 @@ public class WebLinks_page extends Abstract_page {
 	private String STATUS_ALL = "All";
 	private String PUBLISH = "Published";
 	private String UNPUBLISH = "Unpublished";
-	private String FRATURED = "Featured weblink";
-	private String UNFRATURED = "Unfeatured weblink";
-	private String ACCESS_PUBLIC = "Public";
+
 	
 	/*
 	 * Add new weblink
@@ -410,26 +407,98 @@ public class WebLinks_page extends Abstract_page {
 		
 		}
 	
-	//Is the filtered contact displayed == FAILED
-	public boolean isFilteredWeblinks (String _cate, String _stt){
-		boolean show = false;
-		int iCount = 0;
-		iCount = countElement(driver, By.xpath(Interfaces.WebLinksPage.TABLE_TR));
-		for (int i = 1; i <= iCount; i++) {
-			String category = getText(
-					driver,
-					By.xpath(Interfaces.WebLinksPage.TABLE_TR + "[" + i
-							+ "]/td[" + 4 + "]"));
+	// Sort the contacts table by ID column
+		public void clickSortID(){
 			
-			String status = getText(
-					driver,
-					By.xpath(Interfaces.WebLinksPage.TABLE_TR + "[" + i
-							+ "]/td[" + 3 + "]/a/span/span"));
-			
-			if (category.equals(_cate) && status.equals(_stt)) {
-				show = true;
-			}
+			click(driver, By.xpath(Interfaces.WebLinksPage.LNK_SORTID));
 		}
-		return show;		
-	}
+		
+		// Is Sort DES order
+		public boolean isWeblinkDESByID(){
+			
+			int count = countElement(driver, By.xpath(Interfaces.WebLinksPage.TABLE_TR));
+			int firstrow=0;
+			int secondrow=0;
+			boolean descending = false;
+			
+			for(int i=1;i<count;i++){
+				firstrow = Integer.parseInt(getText(driver, By.xpath(Interfaces.WebLinksPage.TABLE_TR+"["+i+"]/td[9]")));
+				int j = i+1;
+				secondrow = Integer.parseInt(getText(driver, By.xpath(Interfaces.WebLinksPage.TABLE_TR+"["+j+"]/td[9]")));
+				if(firstrow>secondrow){
+					descending = true;
+				}
+				else {
+					descending = false;
+					break;
+				}
+			}
+					
+			return descending;
+		}
+		
+		// Is Sort ASC order
+		public boolean isWeblinkASCByID(){
+			
+			int count = countElement(driver, By.xpath(Interfaces.WebLinksPage.TABLE_TR));
+			int firstrow=0;
+			int secondrow=0;
+			boolean ascending = false;
+			
+			for(int i=1;i<count;i++){
+				firstrow = Integer.parseInt(getText(driver, By.xpath(Interfaces.WebLinksPage.TABLE_TR+"["+i+"]/td[9]")));
+				int j = i+1;
+				secondrow = Integer.parseInt(getText(driver, By.xpath(Interfaces.WebLinksPage.TABLE_TR+"["+j+"]/td[9]")));
+				if(firstrow<secondrow)
+					ascending = true;
+				else {
+					ascending = false;
+					break;
+				}
+			}
+					
+			return ascending;
+		}
+		
+		//Select number of items displayed
+		public void selectDisplayItem(String _item) {
+
+			select(driver, By.xpath(Interfaces.WebLinksPage.DROP_DISPLAY), _item);
+
+		}
+		
+
+		public boolean isPaging(int _item) {
+			boolean paging = false;
+			int row = countElement(driver,
+					By.xpath(Interfaces.WebLinksPage.TABLE_TR));
+			if (row <= _item) {
+				paging = true;
+			}
+			return paging;
+		}
+		
+		public void clickStatusIcon(String weblink) {
+			searchforWeblink(weblink);
+					click(driver,
+							By.xpath(Interfaces.ArticlePage.TABLE_TR + "[" + 1
+									+ "]/td[1]/input"));
+					click(driver,
+							By.xpath(Interfaces.ArticlePage.TABLE_TR + "[" + 1
+									+ "]/td[3]/a/span"));
+				
+		}
+		public WebLinks_page copyWeblink(String oldtitle, String title, String alias, String url) {
+			searchforWeblink(oldtitle);
+			click(driver,By.xpath(Interfaces.WebLinksPage.TABLE_TR + "[" + 1
+									+ "]/td[" + 1 + "]/input[@type='checkbox']"));
+				
+			click(driver, By.xpath(Interfaces.WebLinksPage.BTN_EDIT));
+
+			NewWebLinks_page newweblink = Factory_page.getNewWebLinksPage(driver);
+			newweblink.copyWeblink(title, alias, url);
+
+			return new WebLinks_page(driver);
+		}
 }
+

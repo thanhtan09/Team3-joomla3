@@ -54,6 +54,9 @@ public class NewWebLinks_page extends Abstract_page{
 		enter(driver, By.xpath(Interfaces.NewWebLinksPage.TXT_URL), _url);
 	}
 	
+	public void enterAlias(String _alias) {
+		enter(driver, By.xpath(Interfaces.NewWebLinksPage.TXT_ALIAS), _alias);
+	}
 	/*
 	 * Select Category
 	 * 
@@ -125,6 +128,11 @@ public class NewWebLinks_page extends Abstract_page{
 		click(driver, By.xpath(Interfaces.NewWebLinksPage.BTN_CANCEL));
 	}
 	
+	
+	public void clickSaveasCopybutton() {
+		click(driver, By.xpath(Interfaces.NewWebLinksPage.BTN_SAVEANDCOPY));
+	}
+	
 	public WebLinks_page editWeblink(String title, String url,
 			String content, String status) {
 
@@ -135,5 +143,15 @@ public class NewWebLinks_page extends Abstract_page{
 
 		return new WebLinks_page(driver);
 	}
+	
+	public WebLinks_page copyWeblink(String title, String alias, String url) {
 
+		enterTitle(title);
+		enterURL(url);
+		enterAlias(alias);
+		clickSaveasCopybutton();
+		clickCancelbutton();
+
+		return new WebLinks_page(driver);
+	}
 }
