@@ -57,8 +57,8 @@ public class Categories_page extends Abstract_page {
 	 * Author: Tan Vo
 	 */
 	public boolean isCategoryDisplay(String cate) {
-		searchCategory(cate);
 		
+		searchCategory(cate);
 		String cell = getText(driver,
 				By.xpath(Interfaces.ArticlePage.TABLE_TR + "[1]/td[2]/a"));
 		if (cell.equals(cate))
