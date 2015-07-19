@@ -147,6 +147,7 @@ public class Interfaces {
 		public static final String PAGE_TITLE = "//div[contains(@class, 'pagetitle')]/h2";
 		public static final String BTN_SAVE = "//li[@id='toolbar-apply']/a/span";
 		public static final String BTN_CLOSE = "//li[@id='toolbar-cancel']/a/span";
+		public static final String MESSAGE = "//dd[@class='message message']/ul/li";
 	}
 	/*
 	 * Element in Banner page
