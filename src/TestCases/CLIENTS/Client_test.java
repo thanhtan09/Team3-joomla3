@@ -28,7 +28,7 @@ public class Client_test extends Abstract_test{
 		clientPage = homePage.navigatetoCLientpage();
 		
 		log.info("Banner client help page appears");
-		//verifyTrue(clientPage.isHelpPage(), "Banner client help page appears");
+		verifyTrue(clientPage.isHelpPage(), "Banner client help page appears");
 	}
 	
 	@Test (description = "Verify that user can check in a client")
@@ -50,7 +50,6 @@ public class Client_test extends Abstract_test{
 	
 	@AfterClass
 	public void end(){
-		
 		clientPage.deleteClient(client3.getName());
 		shutdown();
 	}
