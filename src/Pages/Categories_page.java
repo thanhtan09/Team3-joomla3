@@ -123,4 +123,16 @@ public class Categories_page extends Abstract_page {
 		enter(driver, By.xpath(Interfaces.CatetoryPage.TXT_SEARCH), cate);
 		click(driver, By.xpath(Interfaces.CatetoryPage.BTN_SEARCH));
 	}
+	
+	public void editCategort(String oldtitle, String title,
+			String button) {
+		searchCategory(oldtitle);
+		click(driver,
+						By.xpath(Interfaces.WebLinksPage.TABLE_TR + "[" + 1
+								+ "]/td[" + 1 + "]/input[@type='checkbox']"));
+		click(driver, By.xpath(Interfaces.WebLinksPage.BTN_EDIT));
+
+		NewCategory_page catePage = Factory_page.getNewCategoryPage(driver);
+		catePage.editCategory(title,"Save");
+	}
 }
