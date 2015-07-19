@@ -27,7 +27,7 @@ public abstract class Abstract_test {
 	
 	//Data content
 	protected Article article,article2,article3,article4,article5,article6,article7;
-	protected Client client,client2;
+	protected Client client,client2,client3;
 	protected Category category;
 	protected Banner banner,banner2,banner3,banner4;
 	protected Contact contact, contact2, contact3, contact4;
@@ -96,9 +96,9 @@ public abstract class Abstract_test {
 	protected void verifyTrue(boolean condition, String message){
 		try{
 			Assert.assertTrue(condition, message);
-			Reporter.log("PASS: "+message);
+			Reporter.log("VP: "+message);
 		} catch(Exception e){
-			Reporter.log("FAIL: "+e);
+			Reporter.log("VP FAIL: "+e);
 		}
 	}
 	
@@ -129,6 +129,7 @@ public abstract class Abstract_test {
 		article7 = data.getArticle("Article7");
 		client = data.getClient("Client1");
 		client2 = data.getClient("Client2");
+		client3 = data.getClient("Client3");
 		category = data.getCategory("Cate1");
 		banner = data.getBanner("Banner1");
 		banner2 = data.getBanner("Banner2");
