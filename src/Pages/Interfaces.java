@@ -144,6 +144,9 @@ public class Interfaces {
 	public class NewCatetoryPage{
 		public static final String TXT_TITLE = "//input[@id='jform_title']";
 		public static final String BTN_SAVEANDCLOSE = "//li[@id='toolbar-save']/a/span";
+		public static final String PAGE_TITLE = "//div[contains(@class, 'pagetitle')]/h2";
+		public static final String BTN_SAVE = "//li[@id='toolbar-apply']/a/span";
+		public static final String BTN_CLOSE = "//li[@id='toolbar-cancel']/a/span";
 	}
 	/*
 	 * Element in Banner page
