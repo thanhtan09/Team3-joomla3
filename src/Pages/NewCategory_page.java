@@ -7,6 +7,7 @@ public class NewCategory_page extends Abstract_page{
 
 	private WebDriver driver;
 	private String EDIT_TITLE = "Category Manager: Edit An Articles Category";
+	private String MESSAGESUCCESS = "Category successfully saved";
 	
 	public NewCategory_page(WebDriver driver) {
 		this.driver = driver;
@@ -33,6 +34,10 @@ public class NewCategory_page extends Abstract_page{
 		}
 	}
 	
+	public void clickSaveandClose(){
+		click(driver, By.xpath(Interfaces.NewCatetoryPage.BTN_SAVEANDCLOSE));
+	}
+	
 	public boolean isEditPage(){
 		boolean editpage = false;
 		String title = getText(driver, By.xpath(Interfaces.NewCatetoryPage.PAGE_TITLE));
@@ -41,5 +46,12 @@ public class NewCategory_page extends Abstract_page{
 			editpage = true;
 		}
 		return editpage;
+	}
+	
+	public boolean isMessageDisplay() {
+		if (getText(driver, By.xpath(Interfaces.NewCatetoryPage.MESSAGE)).equals(
+				MESSAGESUCCESS))
+			return true;
+		return false;
 	}
 }
