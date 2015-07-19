@@ -8,7 +8,7 @@ public class NewBanner_page extends Abstract_page {
 	private WebDriver driver;
 
 	private String MESSAGE_SUCCESS = "Banner successfully saved";
-	private String TITLE_EDITBANNER = "Joomla - Administration - Banner Manager: Edit Banner";
+	private String TITLE_EDITBANNER = "joomla selenium advance - Administration - Banner Manager: New Banner";
 
 	public NewBanner_page(WebDriver driver) {
 		this.driver = driver;
@@ -58,10 +58,11 @@ public class NewBanner_page extends Abstract_page {
 	 */
 	public boolean isEditBannerPage() {
 		if(getPageTitle(driver).equals(TITLE_EDITBANNER)){
-			click(driver, By.xpath(Interfaces.NewBannerPage.BTN_CLOSE));
 			return true;
 		}
+		click(driver, By.xpath(Interfaces.NewBannerPage.BTN_CLOSE));
 		return false;
+
 	}
 
 	/*

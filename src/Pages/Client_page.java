@@ -16,6 +16,7 @@ public class Client_page extends Abstract_page {
 	private String STATUS_TRASH = "Trashed";
 	private String STATUS_ARCHIEVE = "Archived";
 	private String STATUS_DEFAULT = "- Select Status -";
+	private String STATUS_UNPUBLISH = "Unpublished";
 	
 	private String HELPPAGE_TITLE = "Joomla! Help";
 
@@ -43,6 +44,8 @@ public class Client_page extends Abstract_page {
 	 * Author: Tan Vo
 	 */
 	public boolean isClientcreated(String client) {
+		
+		searchClient(client);
 		boolean display = false;
 
 		int iCount = 0;
@@ -404,5 +407,15 @@ public class Client_page extends Abstract_page {
 	public void clickHelp(){
 		
 		click(driver, By.xpath(Interfaces.ClientPage.BTN_HELP));
+	}
+	
+	/*
+	 * Select unpublish drop status
+	 * 
+	 * Author: Tan Vo
+	 */
+	public void selectUnpublishStatus(){
+		
+		selectStatus(STATUS_UNPUBLISH);
 	}
 }
