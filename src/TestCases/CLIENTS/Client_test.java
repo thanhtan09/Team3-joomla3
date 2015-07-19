@@ -28,16 +28,30 @@ public class Client_test extends Abstract_test{
 		clientPage = homePage.navigatetoCLientpage();
 		
 		log.info("Banner client help page appears");
-		verifyTrue(clientPage.isHelpPage(), "Banner client help page appears");
+		//verifyTrue(clientPage.isHelpPage(), "Banner client help page appears");
 	}
 	
-	@Test (description = "Verify that user can search a client  by using filter textbox")
-	public void TC_CLIENTS_008(){
+	@Test (description = "Verify that user can check in a client")
+	public void TC_CLIENTS_010(){
 		
+		log.info("Add a new client");
+		clientPage.addNewClient(client3.getName(), client3.getContact(), client3.getEmail(), client3.getStatus(), "");
+		
+		log.info("A message : Client successfully saved shows and new client is created");
+		verifyTrue(clientPage.isMessageDisplay(),"Client successfully saved");
+		verifyTrue(clientPage.isClientcreated(client3.getName()),"New client is created");
+		
+		log.info("Select unpublish status");
+		clientPage.selectUnpublishStatus();
+		
+		log.info("Recently created client displays");
+		verifyTrue(clientPage.isClientcreated(client3.getName()), "Recently created client displays");
 	}
 	
 	@AfterClass
 	public void end(){
+		
+		clientPage.deleteClient(client3.getName());
 		shutdown();
 	}
 }
