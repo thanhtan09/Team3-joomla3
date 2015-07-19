@@ -6,6 +6,8 @@ import org.openqa.selenium.WebDriver;
 public class NewCategory_page extends Abstract_page{
 
 	private WebDriver driver;
+	private String EDIT_TITLE = "Category Manager: Edit An Articles Category";
+	
 	public NewCategory_page(WebDriver driver) {
 		this.driver = driver;
 	}
@@ -29,5 +31,15 @@ public class NewCategory_page extends Abstract_page{
 		else {
 			click(driver, By.xpath(Interfaces.NewCatetoryPage.BTN_SAVEANDCLOSE));
 		}
+	}
+	
+	public boolean isEditPage(){
+		boolean editpage = false;
+		String title = getText(driver, By.xpath(Interfaces.NewCatetoryPage.PAGE_TITLE));
+		
+		if (title.equals(EDIT_TITLE)){
+			editpage = true;
+		}
+		return editpage;
 	}
 }
