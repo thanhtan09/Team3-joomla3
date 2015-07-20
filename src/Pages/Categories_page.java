@@ -9,6 +9,10 @@ public class Categories_page extends Abstract_page {
 	private String MESSAGESUCCESS = "Category successfully saved";
 	private String MESSAGE_TRASH = "1 category successfully deleted";
 	private String STATUS_TRASHED = "Trashed";
+	private String MESSAGE_UNPUBLISHED = "1 category successfully unpublished";
+	private String MESSAGE_PUBLISHED = "1 category successfully published";
+	private String MESSAGE_ARCHIVE = "1 category successfully archived";
+	private String MESSAGE_TRASHED = "1 category successfully trashed";
 
 	public Categories_page(WebDriver driver) {
 		this.driver = driver;
@@ -60,7 +64,7 @@ public class Categories_page extends Abstract_page {
 		
 		searchCategory(cate);
 		String cell = getText(driver,
-				By.xpath(Interfaces.ArticlePage.TABLE_TR + "[1]/td[2]/a"));
+				By.xpath(Interfaces.CatetoryPage.TABLE_TR + "[1]/td[2]/a"));
 		if (cell.equals(cate))
 			return true;
 		return false;
@@ -127,11 +131,20 @@ public class Categories_page extends Abstract_page {
 	public NewCategory_page clickEdit(String oldtitle) {
 		searchCategory(oldtitle);
 		click(driver,
-						By.xpath(Interfaces.WebLinksPage.TABLE_TR + "[" + 1
+						By.xpath(Interfaces.CatetoryPage.TABLE_TR + "[" + 1
 								+ "]/td[" + 1 + "]/input[@type='checkbox']"));
-		click(driver, By.xpath(Interfaces.WebLinksPage.BTN_EDIT));
+		click(driver, By.xpath(Interfaces.CatetoryPage.BTN_EDIT));
 		
 		return Factory_page.getNewCategoryPage(driver);
 		
 	}
+	
+	public void clickButton(String cate,String button) {
+		searchCategory(cate);
+		click(driver,By.xpath(Interfaces.CatetoryPage.TABLE_TR + "[" + 1 + "]/td[" + 1 + "]/input[@type='checkbox']"));
+		click(driver, By.xpath(button));
+	}
+	
+	
+	
 }
