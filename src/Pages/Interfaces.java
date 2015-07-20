@@ -148,6 +148,7 @@ public class Interfaces {
 		public static final String BTN_SAVE = "//li[@id='toolbar-apply']/a/span";
 		public static final String BTN_CLOSE = "//li[@id='toolbar-cancel']/a/span";
 		public static final String MESSAGE = "//dd[@class='message message']/ul/li";
+		public static final String DROP_STATUS = "//select[@id='jform_state']";
 	}
 	/*
 	 * Element in Banner page
