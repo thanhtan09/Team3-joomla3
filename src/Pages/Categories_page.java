@@ -124,15 +124,14 @@ public class Categories_page extends Abstract_page {
 		click(driver, By.xpath(Interfaces.CatetoryPage.BTN_SEARCH));
 	}
 	
-	public void editCategort(String oldtitle, String title,
-			String button) {
+	public NewCategory_page clickEdit(String oldtitle) {
 		searchCategory(oldtitle);
 		click(driver,
 						By.xpath(Interfaces.WebLinksPage.TABLE_TR + "[" + 1
 								+ "]/td[" + 1 + "]/input[@type='checkbox']"));
 		click(driver, By.xpath(Interfaces.WebLinksPage.BTN_EDIT));
-
-		NewCategory_page catePage = Factory_page.getNewCategoryPage(driver);
-		catePage.editCategory(title,"Save");
+		
+		return Factory_page.getNewCategoryPage(driver);
+		
 	}
 }
