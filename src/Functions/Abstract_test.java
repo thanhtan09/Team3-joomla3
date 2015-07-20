@@ -124,6 +124,18 @@ public abstract class Abstract_test {
 		}
 	}
 	
+	/*
+	 * Author: Giang NGuyen
+	 */
+	protected void verifyFalse(boolean condition, String message) {
+		try {
+			Assert.assertFalse(condition, message);
+			Reporter.log("VP: "+message);
+		} catch (Exception e) {
+			log.info("FAIL: "+e);
+		}
+	}
+	
 	/*.
 	 * Get data
 	 * 
