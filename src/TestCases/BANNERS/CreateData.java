@@ -42,7 +42,7 @@ public class CreateData extends Abstract_test{
 		
 		log.info("Create new category");
 		categoriesPage = clientPage.navigateCategoriespage();
-		categoriesPage.addNewCategory(category.getTitle());
+		categoriesPage.addNewCategory(category.getTitle(),"");
 		
 		log.info("A message : Category successfully saved shows and new category is created");
 		verifyTrue(categoriesPage.isMessageDisplay(),"Cagetory is add success");

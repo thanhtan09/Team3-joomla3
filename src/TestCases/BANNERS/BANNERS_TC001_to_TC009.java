@@ -38,7 +38,7 @@ public class BANNERS_TC001_to_TC009 extends Abstract_test{
 		
 		log.info("Create new category");
 		categoriesPage = clientPage.navigateCategoriespage();
-		categoriesPage.addNewCategory(category.getTitle());
+		categoriesPage.addNewCategory(category.getTitle(),"");
 		
 		log.info("A message : Category successfully saved shows and new category is created");
 		verifyTrue(categoriesPage.isMessageDisplay());
