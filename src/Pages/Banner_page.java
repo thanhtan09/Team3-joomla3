@@ -67,7 +67,7 @@ public class Banner_page extends Abstract_page {
 		
 		searchBanner(banner);
 		String cell = getText(driver,
-				By.xpath(Interfaces.ArticlePage.TABLE_TR + "[1]/td[2]/a"));
+				By.xpath(Interfaces.BannerPage.TABLE_TR + "[1]/td[2]/a"));
 		
 		if (cell.equals(banner)) {
 			selectClient("- Select Client -");

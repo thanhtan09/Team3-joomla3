@@ -47,22 +47,13 @@ public class Client_page extends Abstract_page {
 	public boolean isClientcreated(String client) {
 
 		searchClient(client);
-		boolean display = false;
 
-		int iCount = 0;
-		iCount = countElement(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR));
-		for (int i = 1; i <= iCount; i++) {
-			String cell = getText(
-					driver,
-					By.xpath(Interfaces.ArticlePage.TABLE_TR + "[" + i
-							+ "]/td[2]/a"));
-			if (cell.equals(client)) {
-				display = true;
-				break;
-			}
-		}
+		String cell = getText(driver,
+				By.xpath(Interfaces.BannerPage.TABLE_TR + "[1]/td[2]/a"));
 
-		return display;
+		if (cell.equals(client))
+			return true;
+		return false;
 	}
 
 	/*
@@ -279,7 +270,7 @@ public class Client_page extends Abstract_page {
 	public void deleteClient(String client) {
 
 		navigateMenu(driver, "Components|Banners|Clients");
-		
+
 		selectStatus("All");
 		searchClient(client);
 

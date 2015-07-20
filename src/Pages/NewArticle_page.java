@@ -7,6 +7,7 @@ public class NewArticle_page extends Abstract_page {
 
 	private WebDriver driver;
 	private String MESSAGESUCCESS = "Article successfully saved";
+	private String NEWARTICLEPAGE_TITLE = "joomla selenium advance - Administration - Article Manager: Edit Article";
 
 	public NewArticle_page(WebDriver driver) {
 		this.driver = driver;
@@ -19,7 +20,7 @@ public class NewArticle_page extends Abstract_page {
 	 * 
 	 * Author: Tan Vo
 	 */
-	public Article_page addNewArticle(String _title, String _category,
+	public void addNewArticle(String _title, String _category,
 			String _status, String _content, String _image, String button) {
 		enterTitle(_title);
 		selectCatetory(_category);
@@ -39,8 +40,12 @@ public class NewArticle_page extends Abstract_page {
 			clickSaveandClosebutton();
 			break;
 		}
-
-		return new Article_page(driver);
+	}
+	
+	public boolean isEditArticlePage(){
+		if(getPageTitle(driver).equals(NEWARTICLEPAGE_TITLE))
+			return true;
+		return false;
 	}
 
 	/*
@@ -171,10 +176,8 @@ public class NewArticle_page extends Abstract_page {
 	 */
 	public boolean isMessageArticleDisplay(){
 		if(getText(driver, By.xpath(Interfaces.ArticlePage.CONTROL_MESSAGE))
-				.equals(MESSAGESUCCESS)){
-			click(driver, By.xpath(Interfaces.NewArticlePage.BTN_CLOSE));
+				.equals(MESSAGESUCCESS))
 			return true;
-		}
 		return false;
 	}
 }
