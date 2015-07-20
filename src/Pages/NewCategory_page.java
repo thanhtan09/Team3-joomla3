@@ -16,7 +16,7 @@ public class NewCategory_page extends Abstract_page{
 	public void addNew(String title, String status){
 		enter(driver, By.xpath(Interfaces.NewCatetoryPage.TXT_TITLE), title);
 		if (status!= ""){
-		select(driver, By.xpath(Interfaces.NewCatetoryPage.DROP_STATUS), status);
+			select(driver, By.xpath(Interfaces.NewCatetoryPage.DROP_STATUS), status);
 		}
 		click(driver, By.xpath(Interfaces.NewCatetoryPage.BTN_SAVEANDCLOSE));
 	}
