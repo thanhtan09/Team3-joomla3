@@ -5,8 +5,10 @@ import java.util.Calendar;
 public class Category {
 
 	String title;
+	String status;
 	public Category(){
 		this.title="";
+		this.status = "";
 	};
 	
 	//Set title
@@ -24,4 +26,14 @@ public class Category {
 	public String getTitle(){
 		return title;
 	}
+	
+	//Set status
+		public void setStatus(String status){
+			this.status = status;
+		}
+		
+	//Get status
+	public String getStatus(){
+			return status;
+		}
 }
