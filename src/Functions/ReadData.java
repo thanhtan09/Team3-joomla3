@@ -192,8 +192,10 @@ public class ReadData {
 
 					if (cell.getContents().equals(cate)) {
 						Cell title = sheet.getCell(1, row);
+						Cell status = sheet.getCell(2,  row);
 						
 						category.setTitle(title.getContents());
+						category.setStatus(status.getContents());
 					}
 				}
 			}

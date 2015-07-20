@@ -34,7 +34,7 @@ public class CATEGORY_TC001_002 extends Abstract_test{
 		categoriesPage = homePage.navigatetoCategoryManagerpage();	
 		
 		log.info("Create new Category");
-		categoriesPage = categoriesPage.addNewCategory(category.getTitle());
+		categoriesPage = categoriesPage.addNewCategory(category.getTitle(), category.getStatus());
 		
 		log.info("Verify message successful displays and category displays in table");
 		verifyTrue(categoriesPage.isMessageDisplay(), "Category is saved successful");
