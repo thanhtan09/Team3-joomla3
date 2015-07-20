@@ -5,7 +5,9 @@ import java.util.concurrent.TimeUnit;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.testng.Assert;
 import org.testng.Reporter;
 
@@ -49,9 +51,18 @@ public abstract class Abstract_test {
 		//Get data
 		getData();
 		
-		//Start Joomla
+		//Start Joomla on Firefox
 		driver = new FirefoxDriver();
-		url = data.getUrl("Local_url");
+		
+		//Start Joomla on Chrome
+		//System.setProperty("webdriver.chrome.driver", "D:\\Selenium Advance\\Exercises\\Team3-joomla3\\driver\\chromedriver.exe");
+        //driver = new ChromeDriver();   
+		
+		//Start Joomla on IE
+		//System.setProperty("webdriver.ie.driver", "D:\\Selenium Advance\\Exercises\\Team3-joomla3\\driver\\IEDriverServer.exe");
+        //driver=new InternetExplorerDriver();
+		
+		url = data.getUrl("Logigear_url");
 		driver.get(url);
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
