@@ -48,7 +48,7 @@ public class NewCategory_page extends Abstract_page{
 		return editpage;
 	}
 	
-	public boolean isMessageDisplay() {
+	public boolean isMessageSuccessDisplay() {
 		if (getText(driver, By.xpath(Interfaces.NewCatetoryPage.MESSAGE)).equals(
 				MESSAGESUCCESS))
 			return true;
