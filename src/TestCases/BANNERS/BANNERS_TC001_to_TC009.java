@@ -53,7 +53,7 @@ public class BANNERS_TC001_to_TC009 extends Abstract_test{
 		verifyTrue(bannerPage.isBannerDisplay(banner.getName()));
 	}
 	
-	@Test(description = "Verify that user can edit a banner")
+	@Test(description = "Verify that user can edit a banner", dependsOnMethods = "TC_BANNERS_001")
 	public void TC_BANNERS_002(){
 		
 		log.info("Add new banner");
@@ -65,7 +65,7 @@ public class BANNERS_TC001_to_TC009 extends Abstract_test{
 		verifyTrue(newbannerPage.isEditBannerPage());
 	}
 	
-	@Test(description = "Verify that user can create a new banner with unpublished status")
+	@Test(description = "Verify that user can create a new banner with unpublished status", dependsOnMethods = "TC_BANNERS_001")
 	public void TC_BANNERS_003(){
 		
 		log.info("Add new banner with Unpublished status");
@@ -78,7 +78,7 @@ public class BANNERS_TC001_to_TC009 extends Abstract_test{
 		
 	}
 	
-	@Test (description = "Verify that user can unpublish a banner")
+	@Test (description = "Verify that user can unpublish a banner", dependsOnMethods = "TC_BANNERS_001")
 	public void TC_BANNERS_004(){
 		
 		log.info("Unpublish a banner");
@@ -89,7 +89,7 @@ public class BANNERS_TC001_to_TC009 extends Abstract_test{
 		verifyTrue(bannerPage.isBannerUnpublish(banner2.getName()));
 	}
 	
-	@Test (description = "Verify that user can archive a banner")
+	@Test (description = "Verify that user can archive a banner", dependsOnMethods = "TC_BANNERS_001")
 	public void TC_BANNERS_005(){
 		
 		log.info("Archieve a banner");
@@ -103,7 +103,7 @@ public class BANNERS_TC001_to_TC009 extends Abstract_test{
 		
 	}
 	
-	@Test (description = "Verify that user can send a banner to trash")
+	@Test (description = "Verify that user can send a banner to trash", dependsOnMethods = "TC_BANNERS_001")
 	public void TC_BANNERS_006(){
 		
 		log.info("Trash a banner");
@@ -116,14 +116,14 @@ public class BANNERS_TC001_to_TC009 extends Abstract_test{
 		verifyTrue(bannerPage.isBannerSentToTrash(banner2.getName()));
 	}
 	
-	@Test (description = "Verify that user can browse Banner help page")
+	@Test (description = "Verify that user can browse Banner help page", dependsOnMethods = "TC_BANNERS_001")
 	public void TC_BANNERS_007(){
 		
 		log.info("Banner help page appears");
 		verifyTrue(bannerPage.isHelpPage());
 	}
 	
-	@Test (description = "Verify that user can search a banner by using filter textbox")
+	@Test (description = "Verify that user can search a banner by using filter textbox", dependsOnMethods = "TC_BANNERS_001")
 	public void TC_BANNERS_008(){
 		
 		log.info("Search banner");
@@ -133,7 +133,7 @@ public class BANNERS_TC001_to_TC009 extends Abstract_test{
 		bannerPage.isBannerDisplay(banner2.getName());
 	}
 	
-	@Test (description = "Verify that user can search a banner by using filter dropdown lists")
+	@Test (description = "Verify that user can search a banner by using filter dropdown lists", dependsOnMethods = "TC_BANNERS_001")
 	public void TC_BANNERS_009(){
 		
 		log.info("Select Client that banner belong to in Client dropdown list");
