@@ -18,6 +18,7 @@ public class Categories_page extends Abstract_page {
 	private String STATUS_ALL = "All";
 	private String STATUS_PUBLISH = "Published";
 	private String STATUS_UNPUBLISH = "Unpublished";
+	private String HELP_TITLE = "Joomla! Help";
 	
 	public Categories_page(WebDriver driver) {
 		this.driver = driver;
@@ -167,6 +168,18 @@ public class Categories_page extends Abstract_page {
 		if (cell.equals(cate))
 			show = true;
 		return show;		
+	}
+	
+	public boolean isHelpWindow(){
+		String currentWindows = getCurrentWindows(driver);
+		click(driver, By.xpath(Interfaces.WebLinksPage.BTN_HELP));
+		switchToNewWindows(driver);
+		if(getPageTitle(driver).equals(HELP_TITLE)){
+			driver.close();
+			driver.switchTo().window(currentWindows);
+			return true;
+		} else
+		return false;
 	}
 	
 }
