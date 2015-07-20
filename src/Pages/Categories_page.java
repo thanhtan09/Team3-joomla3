@@ -23,11 +23,11 @@ public class Categories_page extends Abstract_page {
 	 * 
 	 * Author: Tan Vo
 	 */
-	public Categories_page addNewCategory(String title) {
+	public Categories_page addNewCategory(String title, String status) {
 		clickNew();
 
 		NewCategory_page newCate = Factory_page.getNewCategoryPage(driver);
-		newCate.addNew(title);
+		newCate.addNew(title, status);
 		return new Categories_page(driver);
 	}
 	
@@ -143,6 +143,14 @@ public class Categories_page extends Abstract_page {
 		searchCategory(cate);
 		click(driver,By.xpath(Interfaces.CatetoryPage.TABLE_TR + "[" + 1 + "]/td[" + 1 + "]/input[@type='checkbox']"));
 		click(driver, By.xpath(button));
+	}	
+	
+	public boolean isSuccessMessageDisplay (String message){
+		if(getText(driver, By.xpath(Interfaces.WebLinksPage.CONTROL_MESSAGE))
+				.equals(message)){
+			return true;
+			}
+		return false;
 	}
 	
 	
