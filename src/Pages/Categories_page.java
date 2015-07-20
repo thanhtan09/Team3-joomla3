@@ -13,7 +13,12 @@ public class Categories_page extends Abstract_page {
 	private String MESSAGE_PUBLISHED = "1 category successfully published";
 	private String MESSAGE_ARCHIVE = "1 category successfully archived";
 	private String MESSAGE_TRASHED = "1 category successfully trashed";
-
+	
+	private String STATUS_ARCHIVED = "Archived";
+	private String STATUS_ALL = "All";
+	private String STATUS_PUBLISH = "Published";
+	private String STATUS_UNPUBLISH = "Unpublished";
+	
 	public Categories_page(WebDriver driver) {
 		this.driver = driver;
 	}
@@ -153,6 +158,15 @@ public class Categories_page extends Abstract_page {
 		return false;
 	}
 	
-	
+	public boolean isCategoryStatus (String cate, String status){
+		boolean show = false;
+		select(driver, By.xpath(Interfaces.CatetoryPage.DROP_STATUS), status);
+		searchCategory(cate);
+		String cell = getText(driver, By.xpath(Interfaces.CatetoryPage.TABLE_TR + "[" + 1
+				+ "]/td[" + 2 + "]/a"));
+		if (cell.equals(cate))
+			show = true;
+		return show;		
+	}
 	
 }
