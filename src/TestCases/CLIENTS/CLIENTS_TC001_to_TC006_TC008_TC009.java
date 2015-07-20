@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 import Functions.Abstract_test;
 import Pages.*;
 
-public class CLIENTS_TC001_to_TC006 extends Abstract_test{
+public class CLIENTS_TC001_to_TC006_TC008_TC009 extends Abstract_test{
 
 	private Login_page loginPage;
 	private Home_page homePage;
