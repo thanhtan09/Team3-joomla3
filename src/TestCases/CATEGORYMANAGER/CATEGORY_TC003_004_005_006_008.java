@@ -12,7 +12,7 @@ import Pages.Interfaces;
 import Pages.Login_page;
 import Pages.NewCategory_page;
 
-public class CATEGORY_TC003_004_005_006 extends Abstract_test{
+public class CATEGORY_TC003_004_005_006_008 extends Abstract_test{
 	
 	private Login_page loginPage;
 	private Home_page homePage;
@@ -89,6 +89,14 @@ public class CATEGORY_TC003_004_005_006 extends Abstract_test{
 		verifyTrue(categoriesPage.isSuccessMessageDisplay(MESSAGE_TRASHED));
 		verifyTrue(categoriesPage.isCategoryStatus(category2.getTitle(), STATUS_TRASHED));
 	} 
+	
+	@Test(description = "Verify user can search a category by filter textbox", dependsOnMethods= "TC_CATEGORY_003")
+	public void TC_CATEGORY_008 (){
+		log.info("Search for category");
+		log.info("Category displays in table");
+		verifyTrue(categoriesPage.isCategoryDisplay(category2.getTitle()));
+
+	}
 	
 	@AfterClass
 	public void end(){
