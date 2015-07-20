@@ -52,17 +52,17 @@ public abstract class Abstract_test {
 		getData();
 		
 		//Start Joomla on Firefox
-		driver = new FirefoxDriver();
+		//driver = new FirefoxDriver();
 		
 		//Start Joomla on Chrome
-		//System.setProperty("webdriver.chrome.driver", "D:\\Selenium Advance\\Exercises\\Team3-joomla3\\driver\\chromedriver.exe");
-        //driver = new ChromeDriver();   
+		System.setProperty("webdriver.chrome.driver", "driver/chromedriver.exe");
+        driver = new ChromeDriver();   
 		
 		//Start Joomla on IE
-		//System.setProperty("webdriver.ie.driver", "D:\\Selenium Advance\\Exercises\\Team3-joomla3\\driver\\IEDriverServer.exe");
+		//System.setProperty("webdriver.ie.driver", "driver/IEDriverServer.exe");
         //driver=new InternetExplorerDriver();
 		
-		url = data.getUrl("Logigear_url");
+		url = data.getUrl("Local_url");
 		driver.get(url);
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
