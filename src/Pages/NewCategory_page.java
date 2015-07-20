@@ -34,8 +34,10 @@ public class NewCategory_page extends Abstract_page{
 		}
 	}
 	
-	public void clickSaveandClose(){
+	public Categories_page clickSaveandClose(){
 		click(driver, By.xpath(Interfaces.NewCatetoryPage.BTN_SAVEANDCLOSE));
+		
+		return Factory_page.getCategoriesPage(driver);
 	}
 	
 	public boolean isEditPage(){
@@ -48,7 +50,7 @@ public class NewCategory_page extends Abstract_page{
 		return editpage;
 	}
 	
-	public boolean isMessageDisplay() {
+	public boolean isMessageSuccessDisplay() {
 		if (getText(driver, By.xpath(Interfaces.NewCatetoryPage.MESSAGE)).equals(
 				MESSAGESUCCESS))
 			return true;

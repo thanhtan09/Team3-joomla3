@@ -12,7 +12,7 @@ import Pages.Login_page;
 import Pages.NewCategory_page;
 import Pages.WebLinks_page;
 
-public class CATEGORY_TC001 extends Abstract_test{
+public class CATEGORY_TC001_002 extends Abstract_test{
 	private Login_page loginPage;
 	private Home_page homePage;
 	private Categories_page categoriesPage;
@@ -41,17 +41,18 @@ public class CATEGORY_TC001 extends Abstract_test{
 		verifyTrue(categoriesPage.isCategoryDisplay(category.getTitle()), "Category is displayed in table");
 	}
 	
-	@Test(description = "Verify that user can edit a category")
+	@Test(description = "Verify that user can edit a category", dependsOnMethods ="TC_CATEGORY_001")
 	public void TC_CATEGORY_002 (){
 		log.info("Edit a category");
-		categoriesPage.editCategort(category.getTitle(), category2.getTitle(), "Save");
+		newcatePage = categoriesPage.clickEdit(category.getTitle());
+		newcatePage.editCategory(category2.getTitle(), "Save");
 		
 		log.info("A message Category successfully saved shows and Edit an Aritcal Category page displays");
-		verifyTrue(newcatePage.isMessageDisplay());
+		verifyTrue(newcatePage.isMessageSuccessDisplay());
 		verifyTrue(newcatePage.isEditPage());
 		
 		log.info("Click Save and Closed");
-		newcatePage.clickSaveandClose();
+		categoriesPage = newcatePage.clickSaveandClose();
 		
 		log.info("A message Category successfully saved shows and new category displays in table");
 		verifyTrue(categoriesPage.isMessageDisplay());
