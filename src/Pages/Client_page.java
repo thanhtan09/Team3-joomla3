@@ -278,6 +278,8 @@ public class Client_page extends Abstract_page {
 	 */
 	public void deleteClient(String client) {
 
+		navigateMenu(driver, "Components|Banners|Clients");
+		
 		selectStatus("All");
 		searchClient(client);
 

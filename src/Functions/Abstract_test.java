@@ -52,11 +52,11 @@ public abstract class Abstract_test {
 		getData();
 		
 		//Start Joomla on Firefox
-		//driver = new FirefoxDriver();
+		driver = new FirefoxDriver();
 		
 		//Start Joomla on Chrome
-		System.setProperty("webdriver.chrome.driver", "driver/chromedriver.exe");
-        driver = new ChromeDriver();   
+		//System.setProperty("webdriver.chrome.driver", "driver/chromedriver.exe");
+        //driver = new ChromeDriver();   
 		
 		//Start Joomla on IE
 		//System.setProperty("webdriver.ie.driver", "driver/IEDriverServer.exe");
