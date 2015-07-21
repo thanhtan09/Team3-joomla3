@@ -15,10 +15,12 @@ public class WEBLINKS_TC006 extends Abstract_test{
 	private Login_page loginPage;
 	private Home_page homePage;
 	private WebLinks_page weblinkPage;
+	private String weblink2;
 	
 	@BeforeClass
 	public void setup(){
 		driver = openJoomla();
+		weblink2 = weblink1.getName();
 	}
 	
 	@Test(description = "Verify user can check in a weblink with valid information")
@@ -48,17 +50,17 @@ public class WEBLINKS_TC006 extends Abstract_test{
 		weblinkPage = homePage.navigatetoWeblinkpage();	
 		
 		log.info("Check in weblink");
-		weblinkPage.checkinWeblink(weblink1.getName());
+		weblinkPage.checkinWeblink(weblink2);
 		
 		log.info("Weblink is checked in successfully");
 		verifyTrue(weblinkPage.isCheckinMessage());
-		verifyTrue(weblinkPage.isCheckinWeblink(weblink1.getName()));
+		verifyTrue(weblinkPage.isCheckinWeblink(weblink2));
 		
 	}
 	
 	@AfterClass
 	public void end(){
-		weblinkPage.deleteWeblink(weblink1.getName());
+		weblinkPage.deleteWeblink(weblink2);
 		shutdown();
 	}
 }
