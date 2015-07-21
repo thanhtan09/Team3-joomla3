@@ -528,7 +528,7 @@ public class WebLinks_page extends Abstract_page {
 			searchforWeblink(weblink);
 					if (isControlExist(
 							driver,
-							By.xpath(Interfaces.ContactsPage.TABLE_TR + "[" + 1
+							By.xpath(Interfaces.WebLinksPage.TABLE_TR + "[" + 1
 									+ "]/td[" + 2 + "]/a/span/span")))
 						show = true;
 			return show;
