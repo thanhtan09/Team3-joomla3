@@ -73,7 +73,7 @@ public class NewArticle_page extends Abstract_page {
 	 * 
 	 * Author: Tan Vo
 	 */
-	public Article_page editArticle(String title, String category,
+	public void editArticle(String title, String category,
 			String status, String content) {
 
 		enterTitle(title);
@@ -83,8 +83,6 @@ public class NewArticle_page extends Abstract_page {
 		}
 		enterArticleText(content);
 		clickSaveandClosebutton();
-
-		return new Article_page(driver);
 	}
 
 	/*

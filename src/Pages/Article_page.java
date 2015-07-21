@@ -182,7 +182,7 @@ public class Article_page extends Abstract_page {
 	 * 
 	 * Author: Tan Vo
 	 */
-	public Article_page editArticle(String oldtitle, String title,
+	public void editArticle(String oldtitle, String title,
 			String category, String status, String content) {
 		searchforArticle(oldtitle);
 		clickFirstArticle();
@@ -191,7 +191,6 @@ public class Article_page extends Abstract_page {
 		NewArticle_page newarticle = Factory_page.getNewArticlePage(driver);
 		newarticle.editArticle(title, category, status, content);
 
-		return new Article_page(driver);
 	}
 
 	/*
