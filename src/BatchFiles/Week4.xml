@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Suite1" verbose="1" >
+<listeners>
+      <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+      <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
+  </listeners>
+  <test name="Package Banners"   >
+  	<packages>
+  		<package name="TestCases.BANNERS"></package>
+  	</packages>
+ </test>
+ <test name="Package Banners"   >
+  	<packages>
+  		<package name="TestCases.BANNERS"></package>
+  	</packages>
+ </test>
+ <test name="Package Categories"   >
+  	<packages>
+  		<package name="TestCases.CATEGORYMANAGER"></package>
+  	</packages>
+ </test>
+ <test name="Package Clients"   >
+  	<packages>
+  		<package name="TestCases.CLIENTS"></package>
+  	</packages>
+ </test>
+ <test name="Package Contacts"   >
+  	<packages>
+  		<package name="TestCases.CONTACTS"></package>
+  	</packages>
+ </test>
+ <test name="Package Weblinks"   >
+  	<packages>
+  		<package name="TestCases.WEBLINKS"></package>
+  	</packages>
+ </test>
+</suite>
