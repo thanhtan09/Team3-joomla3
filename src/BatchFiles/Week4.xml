@@ -6,7 +6,7 @@
   </listeners>
   <test name="Package Articles"   >
   	<packages>
-  		<package name="TestCases.ARTICLES"></package>
+  		<package name="TestCases.ARTICLE"></package>
   	</packages>
  </test>
  <test name="Package Banners"   >
