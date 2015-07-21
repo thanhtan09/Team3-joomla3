@@ -142,7 +142,7 @@ public abstract class Abstract_test {
 	 * Author: Tan Vo
 	 */
 	public void getData(){
-		user = data.getUser("Giang");
+		user = data.getUser("Tan");
 		article = data.getArticle("Article1");
 		article2 = data.getArticle("Article2");
 		article3 = data.getArticle("Article3");
