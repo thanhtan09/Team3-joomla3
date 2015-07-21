@@ -4,9 +4,9 @@
       <listener class-name="org.uncommons.reportng.HTMLReporter"/>
       <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
   </listeners>
-  <test name="Package Banners"   >
+  <test name="Package Articles"   >
   	<packages>
-  		<package name="TestCases.BANNERS"></package>
+  		<package name="TestCases.ARTICLES"></package>
   	</packages>
  </test>
  <test name="Package Banners"   >
