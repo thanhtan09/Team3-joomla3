@@ -42,7 +42,7 @@ public class BANNERS_TC011_012_015_016_017 extends Abstract_test{
 		
 		log.info("Create new category");
 		categoriesPage = clientPage.navigateCategoriespage();
-		categoriesPage.addNewCategory(category.getTitle());
+		categoriesPage.addNewCategory(category.getTitle(),"");
 		
 		log.info("A message : Category successfully saved shows and new category is created");
 		verifyTrue(categoriesPage.isMessageDisplay(),"Cagetory is add success");
@@ -75,14 +75,14 @@ public class BANNERS_TC011_012_015_016_017 extends Abstract_test{
 		verifyTrue(bannerPage.isHelpPage(), "New banner help page appears");
 	}
 	
-	@Test(description = "Verify that user can change the quantity of items displayed in banner table")
+	@Test(description = "Verify that user can change the quantity of items displayed in banner table", dependsOnMethods = "TC_BANNERS_011")
 	public void TC_BANNERS_015 (){
 		
 		log.info("Quantity of items displayed in table is changed");
 		verifyTrue(bannerPage.isBannerDisplayedInTable("20"),"Quantity of items displayed in table is changed");
 	}
 	
-	@Test(description = "Verify that user can sort items displayed in banner table by ID")
+	@Test(description = "Verify that user can sort items displayed in banner table by ID", dependsOnMethods = "TC_BANNERS_011")
 	public void TC_BANNERS_016 (){
 		
 		log.info("Click ID link in the top of table");
@@ -98,7 +98,7 @@ public class BANNERS_TC011_012_015_016_017 extends Abstract_test{
 		verifyTrue(bannerPage.isBannerDescendingByID(), "Items are sorted descending by ID in banner table");
 	}
 	
-	@Test(description = "Verify that user can access Banner clients page while browsing Banner page")
+	@Test(description = "Verify that user can access Banner clients page while browsing Banner page", dependsOnMethods = "TC_BANNERS_011")
 	public void TC_BANNERS_017 (){
 		
 		log.info("Click Clients link in the left top ");

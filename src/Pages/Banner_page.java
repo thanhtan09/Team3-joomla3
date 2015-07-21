@@ -67,7 +67,7 @@ public class Banner_page extends Abstract_page {
 		
 		searchBanner(banner);
 		String cell = getText(driver,
-				By.xpath(Interfaces.ArticlePage.TABLE_TR + "[1]/td[2]/a"));
+				By.xpath(Interfaces.BannerPage.TABLE_TR + "[1]/td[2]/a"));
 		
 		if (cell.equals(banner)) {
 			selectClient("- Select Client -");
@@ -165,7 +165,6 @@ public class Banner_page extends Abstract_page {
 	 * Author: Tan Vo
 	 */
 	public void deleteBanner(String banner) {
-		navigateMenu(driver, "Components|Banners|Banners");
 		
 		if (isControlExist(driver, By.xpath(Interfaces.NewBannerPage.BTN_CLOSE)))
 			click(driver, By.xpath(Interfaces.NewBannerPage.BTN_CLOSE));
@@ -179,6 +178,8 @@ public class Banner_page extends Abstract_page {
 	 * Author: Tan Vo
 	 */
 	public void trashBanner(String banner) {
+		
+		navigateMenu(driver, "Components|Banners|Banners");
 		
 		selectStatus("All");
 		selectClient("- Select Client -");
@@ -239,6 +240,8 @@ public class Banner_page extends Abstract_page {
 		} finally {
 			driver.close();
 			driver.switchTo().window(currentWindows);
+			if(isControlExist(driver, By.xpath(Interfaces.NewArticlePage.BTN_CLOSE)))
+				click(driver, By.xpath(Interfaces.NewArticlePage.BTN_CLOSE));
 		}
 	}
 

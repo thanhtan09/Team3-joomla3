@@ -55,11 +55,11 @@ public abstract class Abstract_test {
 		driver = new FirefoxDriver();
 		
 		//Start Joomla on Chrome
-		//System.setProperty("webdriver.chrome.driver", "D:\\Selenium Advance\\Exercises\\Team3-joomla3\\driver\\chromedriver.exe");
+		//System.setProperty("webdriver.chrome.driver", "driver/chromedriver.exe");
         //driver = new ChromeDriver();   
 		
 		//Start Joomla on IE
-		//System.setProperty("webdriver.ie.driver", "D:\\Selenium Advance\\Exercises\\Team3-joomla3\\driver\\IEDriverServer.exe");
+		//System.setProperty("webdriver.ie.driver", "driver/IEDriverServer.exe");
         //driver=new InternetExplorerDriver();
 		
 		url = data.getUrl("Local_url");
@@ -119,6 +119,18 @@ public abstract class Abstract_test {
 	protected void verifyFalse(boolean condition) {
 		try {
 			Assert.assertFalse(condition);
+		} catch (Exception e) {
+			log.info("FAIL: "+e);
+		}
+	}
+	
+	/*
+	 * Author: Giang NGuyen
+	 */
+	protected void verifyFalse(boolean condition, String message) {
+		try {
+			Assert.assertFalse(condition, message);
+			Reporter.log("VP: "+message);
 		} catch (Exception e) {
 			log.info("FAIL: "+e);
 		}
