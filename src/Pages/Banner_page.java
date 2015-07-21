@@ -179,6 +179,8 @@ public class Banner_page extends Abstract_page {
 	 */
 	public void trashBanner(String banner) {
 		
+		navigateMenu(driver, "Components|Banners|Banners");
+		
 		selectStatus("All");
 		selectClient("- Select Client -");
 		selectCategory(CATETORY_DEFAULT);
