@@ -165,7 +165,6 @@ public class Banner_page extends Abstract_page {
 	 * Author: Tan Vo
 	 */
 	public void deleteBanner(String banner) {
-		navigateMenu(driver, "Components|Banners|Banners");
 		
 		if (isControlExist(driver, By.xpath(Interfaces.NewBannerPage.BTN_CLOSE)))
 			click(driver, By.xpath(Interfaces.NewBannerPage.BTN_CLOSE));
@@ -239,6 +238,8 @@ public class Banner_page extends Abstract_page {
 		} finally {
 			driver.close();
 			driver.switchTo().window(currentWindows);
+			if(isControlExist(driver, By.xpath(Interfaces.NewArticlePage.BTN_CLOSE)))
+				click(driver, By.xpath(Interfaces.NewArticlePage.BTN_CLOSE));
 		}
 	}
 
