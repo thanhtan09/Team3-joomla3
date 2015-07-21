@@ -1,5 +1,7 @@
 package Pages;
 
+import java.security.PublicKey;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -20,6 +22,7 @@ public class WebLinks_page extends Abstract_page {
 	private String MESSAGEARCHIVE = "1 weblink successfully archived";
 	private String MESSAGEDELETE = "1 weblink deleted.";
 	private String MESSAGETRASHWEBLINK = "1 weblink successfully trashed";
+	private String MESSAGECHECKIN =  "1 weblink successfully checked in";
 	private String HELP_TITLE = "Joomla! Help";
 
 	// Status
@@ -499,6 +502,36 @@ public class WebLinks_page extends Abstract_page {
 			newweblink.copyWeblink(title, alias, url);
 
 			return new WebLinks_page(driver);
+		}
+		
+		public void checkinWeblink (String weblink){
+			searchforWeblink(weblink);
+			click(driver,By.xpath(Interfaces.WebLinksPage.TABLE_TR + "[" + 1
+					+ "]/td[" + 1 + "]/input[@type='checkbox']"));
+
+			click(driver, By.xpath(Interfaces.WebLinksPage.BTN_CHECKIN));
+			
+		}
+		
+		//Is Check in Message displayed
+		public boolean isCheckinMessage() {
+			if (getText(driver, By.xpath(Interfaces.WebLinksPage.CONTROL_MESSAGE))
+					.equals(MESSAGECHECKIN))
+				return true;
+
+			return false;
+		}
+
+		// Is Checked-in Weblink displayed
+		public boolean isCheckinWeblink(String weblink) {
+			boolean show = false;
+			searchforWeblink(weblink);
+					if (isControlExist(
+							driver,
+							By.xpath(Interfaces.ContactsPage.TABLE_TR + "[" + 1
+									+ "]/td[" + 2 + "]/a/span/span")))
+						show = true;
+			return show;
 		}
 }
 
