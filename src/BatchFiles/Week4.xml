@@ -24,11 +24,6 @@
   		<package name="TestCases.CLIENTS"></package>
   	</packages>
  </test>
- <test name="Package Contacts"   >
-  	<packages>
-  		<package name="TestCases.CONTACTS"></package>
-  	</packages>
- </test>
  <test name="Package Weblinks"   >
   	<packages>
   		<package name="TestCases.WEBLINKS"></package>
