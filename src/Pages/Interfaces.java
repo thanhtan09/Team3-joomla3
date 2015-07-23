@@ -134,6 +134,7 @@ public class Interfaces {
 		public static final String BTN_SEARCH = "//button[contains(text(),'Search')]";
 		public static final String CHECKBOX_1 = "//input[@id='cb0']";
 		public static final String TABLE_TR = "//table[@class='adminlist']/tbody/tr";
+		public static final String BTN_HELP = "//li[@id='toolbar-help']/a/span";
 	}
 	
 	/*

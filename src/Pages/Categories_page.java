@@ -152,7 +152,7 @@ public class Categories_page extends Abstract_page {
 	}	
 	
 	public boolean isSuccessMessageDisplay (String message){
-		if(getText(driver, By.xpath(Interfaces.WebLinksPage.CONTROL_MESSAGE))
+		if(getText(driver, By.xpath(Interfaces.CatetoryPage.MESSAGE))
 				.equals(message)){
 			return true;
 			}
@@ -172,7 +172,7 @@ public class Categories_page extends Abstract_page {
 	
 	public boolean isHelpWindow(){
 		String currentWindows = getCurrentWindows(driver);
-		click(driver, By.xpath(Interfaces.WebLinksPage.BTN_HELP));
+		click(driver, By.xpath(Interfaces.CatetoryPage.BTN_HELP));
 		switchToNewWindows(driver);
 		if(getPageTitle(driver).equals(HELP_TITLE)){
 			driver.close();

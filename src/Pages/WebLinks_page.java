@@ -128,230 +128,6 @@ public class WebLinks_page extends Abstract_page {
 	}
 	
 	/*
-	 * Publish Weblink
-	 * 
-	 * Parameter: Weblink name
-	 * 
-	 * Author: Giang Nguyen
-	 */
-	public void publishWeblink(String weblink) {
-		int iCount = 0;
-		iCount = countElement(driver, By.xpath(Interfaces.WebLinksPage.TABLE_TR));
-		for (int i = 1; i <= iCount; i++) {
-			String cell = getText(
-					driver,
-					By.xpath(Interfaces.WebLinksPage.TABLE_TR + "[" + i
-							+ "]/td[" + 2 + "]/a"));
-			if (cell.equals(weblink)) {
-				click(driver,
-						By.xpath(Interfaces.WebLinksPage.TABLE_TR + "[" + i
-								+ "]/td[" + 1 + "]/input[@type='checkbox']"));
-
-				break;
-			}
-		}
-		click(driver, By.xpath(Interfaces.WebLinksPage.BTN_PUBLISH));
-	}
-
-	/*
-	 * UnPublish Weblink
-	 * 
-	 * Parameter: Weblink name
-	 * 
-	 * Author: Giang Nguyen
-	 */
-	public void unpublishWeblink(String weblink) {
-		int iCount = 0;
-		iCount = countElement(driver, By.xpath(Interfaces.WebLinksPage.TABLE_TR));
-		for (int i = 1; i <= iCount; i++) {
-			String cell = getText(
-					driver,
-					By.xpath(Interfaces.WebLinksPage.TABLE_TR + "[" + i
-							+ "]/td[" + 2 + "]/a"));
-			if (cell.equals(weblink)) {
-				click(driver,
-						By.xpath(Interfaces.WebLinksPage.TABLE_TR + "[" + i
-								+ "]/td[" + 1 + "]/input[@type='checkbox']"));
-
-				break;
-			}
-		}
-		click(driver, By.xpath(Interfaces.WebLinksPage.BTN_UNPUBLISH));
-	}
-	
-	/*
-	 * Is weblink publish
-	 * 
-	 * Author: Giang Nguyen
-	 */
-	public boolean isPublish(String weblink) {
-		boolean show = false;
-		if (getText(driver, By.xpath(Interfaces.WebLinksPage.CONTROL_MESSAGE))
-				.equals(MESSAGEPUBLISH)) {
-			int iCount = 0;
-			iCount = countElement(driver,
-					By.xpath(Interfaces.WebLinksPage.TABLE_TR));
-			for (int i = 1; i <= iCount; i++) {
-				String cell = getText(
-						driver,
-						By.xpath(Interfaces.WebLinksPage.TABLE_TR + "[" + i
-								+ "]/td[" + 2 + "]/a"));
-				if (cell.equals(weblink)) {
-					if (isControlExist(
-							driver,
-							By.xpath(Interfaces.WebLinksPage.TABLE_TR + "[" + i
-									+ "]/td[3]/a/span/span[contains(text(),'"
-									+ PUBLISH + "')]")))
-						show = true;
-					break;
-				}
-			}
-		}
-
-		return show;
-	}
-
-	/*
-	 * Is weblink unpublish
-	 * 
-	 * Author: Giang Nguyen
-	 */
-	public boolean isUnPublish(String weblink) {
-		boolean show = false;
-
-		if (getText(driver, By.xpath(Interfaces.WebLinksPage.CONTROL_MESSAGE))
-				.equals(MESSAGEUNPUBLISH)) {
-			int iCount = 0;
-			iCount = countElement(driver,
-					By.xpath(Interfaces.WebLinksPage.TABLE_TR));
-			for (int i = 1; i <= iCount; i++) {
-				String cell = getText(
-						driver,
-						By.xpath(Interfaces.WebLinksPage.TABLE_TR + "[" + i
-								+ "]/td[" + 2 + "]/a"));
-				if (cell.equals(weblink)) {
-					if (isControlExist(
-							driver,
-							By.xpath(Interfaces.WebLinksPage.TABLE_TR + "[" + i
-									+ "]/td[3]/a/span/span[contains(text(),'"
-									+ UNPUBLISH + "')]")))
-						show = true;
-					break;
-				}
-			}
-		}
-
-		return show;
-	}
-	// Is Message Unpublished displayed
-	public boolean isMessageUnpublishWeblinkDisplay(){
-		if(getText(driver, By.xpath(Interfaces.WebLinksPage.CONTROL_MESSAGE))
-				.equals(MESSAGEUNPUBLISH)){
-			return true;
-			}
-		return false;
-	}
-	// Is Message Published displayed
-	public boolean isMessagePublishWeblinkDisplay(){
-		if(getText(driver, By.xpath(Interfaces.WebLinksPage.CONTROL_MESSAGE))
-				.equals(MESSAGEPUBLISH)){
-			return true;
-			}
-		return false;
-	}
-	
-	/*
-	 * Archive weblink
-	 * 
-	 * Parameter: weblink name
-	 * 
-	 * Author: giang
-	 */
-	public void archiveWeblink(String weblink) {
-		
-		searchforWeblink(weblink);
-		click(driver, By.xpath(Interfaces.WebLinksPage.TABLE_TR + "[" + 1 + "]/td[" + 1 + "]/input[@type='checkbox']"));
-		click(driver, By.xpath(Interfaces.WebLinksPage.BTN_ARCHIVE));
-	}
-	
-	/*
-	 * Is message archive
-	 * 
-	 * Author: Giang
-	 */
-	public boolean isArchiveMessage() {
-		if (getText(driver, By.xpath(Interfaces.WebLinksPage.CONTROL_MESSAGE))
-				.equals(MESSAGEARCHIVE))
-			return true;
-
-		return false;
-	}
-
-	/*
-	 * Is weblink in archive list
-	 * 
-	 * Author: Giang
-	 */
-	public boolean isArchiveList(String weblink) {
-		boolean show = false;
-
-		select(driver, By.xpath(Interfaces.WebLinksPage.DROP_STATUS),
-				STATUS_ARCHIVED);
-		searchforWeblink(weblink);
-			String cell = getText(
-					driver,
-					By.xpath(Interfaces.WebLinksPage.TABLE_TR + "[" + 1
-							+ "]/td[" + 2 + "]/a"));
-			if (cell.equals(weblink)) {
-				show = true;
-			}
-		return show;
-	}
-	
-	/*
-	 * Trash Weblink
-	 * 
-	 * Author: Giang
-	 */
-	public void TrashWeblink(String weblink) {
-		select(driver, By.xpath(Interfaces.WebLinksPage.DROP_STATUS), "All");
-		searchforWeblink(weblink);
-		click(driver, By.xpath(Interfaces.BannerPage.CHECKBOX_1));
-		click(driver, By.xpath(Interfaces.WebLinksPage.BTN_TRASH));
-	}
-
-	/*
-	 * Is Trash Weblink message
-	 * 
-	 * Author: Giang Nguyen
-	 */
-	public boolean isTrashWeblinkMessage() {
-		if (getText(driver, By.xpath(Interfaces.WebLinksPage.CONTROL_MESSAGE))
-				.equals(MESSAGETRASHWEBLINK))
-			return true;
-
-		return false;
-	}
-
-	/*
-	 * Is Trashed Weblink in Table Grid
-	 * 
-	 * Author: Giang Nguyen
-	 */
-	public boolean isTrashedWeblinkinTable(String weblink) {
-		boolean show = false;
-		select(driver, By.xpath(Interfaces.WebLinksPage.DROP_STATUS),
-				STATUS_TRASHED);
-		searchforWeblink(weblink);
-		String cell = getText(driver, By.xpath(Interfaces.WebLinksPage.TABLE_TR + "[" + 1
-						+ "]/td[" + 2 + "]/a"));
-		if (cell.equals(weblink)) {
-			show = true;
-		}
-		return show;
-	}
-	
-	/*
 	 * Access to Weblink's Help window
 	 * 
 	 * Author: Giang
@@ -396,7 +172,7 @@ public class WebLinks_page extends Abstract_page {
 		return search;
 	}
 	
-	//Search for contacts using the filter dropdown list
+	//Search for weblinks using the filter dropdown list
 	public void searchbyfilter (String _cate, String _stt){
 		
 		click(driver, By.xpath(Interfaces.WebLinksPage.BTN_CLEAR));
@@ -410,7 +186,7 @@ public class WebLinks_page extends Abstract_page {
 		
 		}
 	
-	// Sort the contacts table by ID column
+	// Sort the weblink table by ID column
 		public void clickSortID(){
 			
 			click(driver, By.xpath(Interfaces.WebLinksPage.LNK_SORTID));
@@ -481,6 +257,7 @@ public class WebLinks_page extends Abstract_page {
 			return paging;
 		}
 		
+		
 		public void clickStatusIcon(String weblink) {
 			searchforWeblink(weblink);
 					click(driver,
@@ -532,6 +309,34 @@ public class WebLinks_page extends Abstract_page {
 									+ "]/td[" + 2 + "]/a/span/span")))
 						show = true;
 			return show;
+		}		
+		
+		// Click a button on Toolbar
+		public void clickButton(String weblink,String button) {
+			searchforWeblink(weblink);
+			click(driver,By.xpath(Interfaces.WebLinksPage.TABLE_TR + "[" + 1 + "]/td[" + 1 + "]/input[@type='checkbox']"));
+			click(driver, By.xpath(button));
+		}	
+		
+		//Verify correct message displays
+		public boolean isSuccessMessageDisplay (String message){
+			if(getText(driver, By.xpath(Interfaces.WebLinksPage.CONTROL_MESSAGE))
+					.equals(message)){
+				return true;
+				}
+			return false;
+		}
+		
+		//Verify correct status displays
+		public boolean isWeblinkStatus (String weblink, String status){
+			boolean show = false;
+			select(driver, By.xpath(Interfaces.WebLinksPage.DROP_STATUS), status);
+			searchforWeblink(weblink);
+			String cell = getText(driver, By.xpath(Interfaces.WebLinksPage.TABLE_TR + "[" + 1
+					+ "]/td[" + 2 + "]/a"));
+			if (cell.equals(weblink))
+				show = true;
+			return show;		
 		}
 }
 
