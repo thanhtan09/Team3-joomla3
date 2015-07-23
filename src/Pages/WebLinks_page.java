@@ -526,7 +526,7 @@ public class WebLinks_page extends Abstract_page {
 		public boolean isCheckinWeblink(String weblink) {
 			boolean show = false;
 			searchforWeblink(weblink);
-					if (isControlExist(
+					if (isControlNotExist(
 							driver,
 							By.xpath(Interfaces.WebLinksPage.TABLE_TR + "[" + 1
 									+ "]/td[" + 2 + "]/a/span/span")))
