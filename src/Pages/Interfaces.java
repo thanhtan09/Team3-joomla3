@@ -213,7 +213,8 @@ public class Interfaces {
 		public static final String DROP_CATEGORY = "//select[@name='filter_category_id']";
 		public static final String LNK_SORTID = "//a[contains(text(), 'ID')]"; 
 		public static final String BAR_PAGING = "//div[@class = 'pagination']/div[4]";
-		public static final String BTN_CHECKIN = "//li[@id='toolbar-checkin']/a/span";
+		public static final String BTN_CHECKIN = "//li[@id='toolbar-checkin']/a/span"; 
+		public static final String HEADER_ORDERING = "//table[@class='adminlist']/thead/tr/th/a[contains(text(),'Ordering')]";
 	}
 	
 	public class NewWebLinksPage{
