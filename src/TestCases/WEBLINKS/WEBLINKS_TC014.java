@@ -21,7 +21,7 @@ public class WEBLINKS_TC014 extends Abstract_test {
 	}
 	
 	@Test(description = "Verify user can change the status of weblinks using the Status column")
-	public void TC_WEBLINK_015 (){
+	public void TC_WEBLINK_014 (){
 		
 		log.info("Login with valid account");
 		loginPage = Factory_page.getLoginPage(driver);
