@@ -1,11 +1,7 @@
 package Pages;
 
-import java.security.PublicKey;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
-import Pages.Interfaces.NewWebLinksPage;
 
 public class WebLinks_page extends Abstract_page {
 
@@ -17,22 +13,15 @@ public class WebLinks_page extends Abstract_page {
 
 	// Message
 	private String MESSAGESUCCESS = "Weblink successfully saved";
-	private String MESSAGEPUBLISH = "1 weblink successfully published";
-	private String MESSAGEUNPUBLISH = "1 weblink successfully unpublished";
-	private String MESSAGEARCHIVE = "1 weblink successfully archived";
 	private String MESSAGEDELETE = "1 weblink deleted.";
-	private String MESSAGETRASHWEBLINK = "1 weblink successfully trashed";
 	private String MESSAGECHECKIN =  "1 weblink successfully checked in";
 	private String HELP_TITLE = "Joomla! Help";
+	private String MESSAGE_ORDERING = "Ordering successfully saved.";
 
 	// Status
 	private String STATUS_TRASHED = "Trashed";
-	private String STATUS_ARCHIVED = "Archived";
 	private String STATUS_ALL = "All";
-	private String PUBLISH = "Published";
-	private String UNPUBLISH = "Unpublished";
 
-	
 	/*
 	 * Add new weblink
 	 * 
@@ -338,5 +327,45 @@ public class WebLinks_page extends Abstract_page {
 				show = true;
 			return show;		
 		}
+		
+		public boolean isOrderingWeblink (String weblink1, String weblink2){
+			
+			boolean show = false;
+			click(driver, By.xpath(Interfaces.WebLinksPage.BTN_CLEAR));
+			select(driver, By.xpath(Interfaces.WebLinksPage.DROP_STATUS), STATUS_ALL);
+			selectDisplayItem("All");
+			click(driver, By.xpath(Interfaces.WebLinksPage.HEADER_ORDERING));
+			int i = getPositionWeblink(weblink1);
+			click(driver, By.xpath(Interfaces.WebLinksPage.TABLE_TR + "[" + i
+								+ "]/td[" + 5 + "]/span[" + 2 + "]/a/span"));
+			if (getText(driver, By.xpath(Interfaces.WebLinksPage.CONTROL_MESSAGE))
+					.equals(MESSAGE_ORDERING)){
+			int i2 = getPositionWeblink(weblink1);
+			int j = getPositionWeblink(weblink2);
+			if (i2>j){
+				show = true;
+			}		
+			}
+			return show;
+			
+		}
+		
+		public int getPositionWeblink(String weblink) {
+			int iCount = 0;
+			int position = 0;
+			iCount = countElement(driver, By.xpath(Interfaces.WebLinksPage.TABLE_TR));
+			for (int i = 1; i <= iCount; i++) {
+				String cell = getText(
+						driver,
+						By.xpath(Interfaces.WebLinksPage.TABLE_TR + "[" + i
+								+ "]/td[" + 2 + "]/a"));
+				if (cell.equals(weblink)) {
+					position = i;
+					break;
+				}
+			}
+			return position;
+		}
+		
 }
 
