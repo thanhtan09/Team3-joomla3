@@ -1,16 +1,12 @@
 package TestCases.WEBLINKS;
 
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import Functions.Abstract_test;
-import Pages.Article_page;
 import Pages.Factory_page;
 import Pages.Home_page;
-import Pages.Interfaces.WebLinksPage;
 import Pages.Login_page;
 import Pages.WebLinks_page;
 
