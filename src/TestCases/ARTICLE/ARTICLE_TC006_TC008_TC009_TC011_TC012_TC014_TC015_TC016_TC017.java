@@ -75,7 +75,7 @@ public class ARTICLE_TC006_TC008_TC009_TC011_TC012_TC014_TC015_TC016_TC017 exten
 		verifyTrue(articlePage.isSearchArticleDisplay(article1),"The titles of displayed articles are partially matched with the entered keyword");
 	}
 	
-	@Test(description = "Verify that user can create many banners by using Save & New button", dependsOnMethods = "TC_ARTICLE_006")
+	@Test(description = "Verify that user can create many article by using Save & New button", dependsOnMethods = "TC_ARTICLE_006")
 	public void TC_ARTICLE_011 (){
 		
 		log.info("Add new article");
