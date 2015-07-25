@@ -20,16 +20,28 @@ public class CONTACTS_TC010 extends Abstract_test {
 		driver = openJoomla();
 	}
 	
-	@Test(description = "Verify user can search for contacts using the filter dropdown lists")
-	public void TC_CONTACT_010 (){
-
+	@Test(description = "Verify user can sort the contact table by ID column")
+	public void TC_CONTACT_011 (){
+		
 		log.info("Login with valid account");
 		loginPage = Factory_page.getLoginPage(driver);
 		homePage = loginPage.loginValidAccount(user.getUsername(), user.getPassword(),"");
 		
 		log.info("Enter Contacts page");
 		contactsPage = homePage.navigatetoContactspage();		
+
+		contactsPage.clickSortID();
+		log.info("Enter Contacts page");
+		verifyTrue(contactsPage.isContactASCByID(),"The contacts are sorted by ID in ascending order ");
 		
+		contactsPage.clickSortID();	
+		log.info("Enter Contacts page");
+		verifyTrue(contactsPage.isContactDESByID(), "The contacts is sorted by ID in descending order.");
+	}
+	
+	@Test(description = "Verify user can search for contacts using the filter dropdown lists")
+	public void TC_CONTACT_010 (){
+
 		log.info("Create new contact");
 		contactsPage.addNewContact(contact4.getName(),contact4.getCategory(),contact4.getStatus(),"","");
 		
@@ -41,10 +53,10 @@ public class CONTACTS_TC010 extends Abstract_test {
 		
 		contactsPage.searchbyfilter(contact4.getName(),"Sample Data-Contact", "Published");
 		
-		verifyTrue(contactsPage.isFilteredContact("Sample Data-Contact", "Published"));
+		verifyTrue(contactsPage.isContactDisplay(contact4.getName()));	
 		
 	}
-	
+		
 	@AfterClass
 	public void end(){
 		contactsPage.deleteContact(contact4.getName());
