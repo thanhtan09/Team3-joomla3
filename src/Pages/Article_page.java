@@ -477,7 +477,7 @@ public class Article_page extends Abstract_page {
 	public void TrashArticle(String article) {
 		select(driver, By.xpath(Interfaces.ArticlePage.DROP_STATUS), "All");
 		searchforArticle(article);
-		click(driver, By.xpath(Interfaces.BannerPage.CHECKBOX_1));
+		click(driver, By.xpath(Interfaces.ArticlePage.CHECKBOX_1));
 		click(driver, By.xpath(Interfaces.ArticlePage.BTN_TRASH));
 	}
 
