@@ -191,4 +191,10 @@ public class Categories_page extends Abstract_page {
 		return false;
 	}
 	
+	public void searchByFilter (String status, String access, String language){
+		
+		select(driver, By.xpath(Interfaces.CatetoryPage.DROP_STATUS), status);
+		select(driver, By.xpath(Interfaces.CatetoryPage.DROP_ACCESS), access);
+		select(driver, By.xpath(Interfaces.CatetoryPage.DROP_LANGUAGE), language);
+	}
 }
