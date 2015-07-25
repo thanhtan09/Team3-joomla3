@@ -42,13 +42,13 @@ public class WEBLINKS_TC015_016 extends Abstract_test{
 		weblinkPage.clickStatusIcon(weblink4.getName());
 		
 		log.info("Verify the web link is unpublished successfully");
-		verifyTrue(weblinkPage.isWeblinkStatus(weblink3.getName(), STATUS_UNPUBLISH));	
+		verifyTrue(weblinkPage.isWeblinkStatus(weblink4.getName(), STATUS_UNPUBLISH));	
 		
 		log.info("Click on the status icon of the selected weblink in the Status column");
 		weblinkPage.clickStatusIcon(weblink4.getName());
 		
 		log.info("Verify the web link is published successfully");
-		verifyTrue(weblinkPage.isWeblinkStatus(weblink3.getName(), STATUS_PUBLISH));
+		verifyTrue(weblinkPage.isWeblinkStatus(weblink4.getName(), STATUS_PUBLISH));
 		
 	}
 	
