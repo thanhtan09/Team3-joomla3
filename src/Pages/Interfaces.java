@@ -135,6 +135,8 @@ public class Interfaces {
 		public static final String CHECKBOX_1 = "//input[@id='cb0']";
 		public static final String TABLE_TR = "//table[@class='adminlist']/tbody/tr";
 		public static final String BTN_HELP = "//li[@id='toolbar-help']/a/span";
+		public static final String DROP_ACCESS = "//select[@name='filter_access']";
+		public static final String DROP_LANGUAGE = "//select[@name='filter_language']";
 	}
 	
 	/*
