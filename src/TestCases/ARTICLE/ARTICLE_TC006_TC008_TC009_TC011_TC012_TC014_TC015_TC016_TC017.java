@@ -75,15 +75,21 @@ public class ARTICLE_TC006_TC008_TC009_TC011_TC012_TC014_TC015_TC016_TC017 exten
 		verifyTrue(articlePage.isSearchArticleDisplay(article1),"The titles of displayed articles are partially matched with the entered keyword");
 	}
 	
-	@Test(description = "Verify that user can create many article by using Save & New button", dependsOnMethods = "TC_ARTICLE_006")
+	@Test(description = "Verify user can sort the article table by ID column")
 	public void TC_ARTICLE_011 (){
 		
-		log.info("Add new article");
-		articlePage.addNewArticle(article4.getTitle(), article4.getCategory(), article4.getStatus(), article4.getContent(), "", "");
-	
-		log.info("Verify the article is saved successfully");
-		verifyTrue(articlePage.isMessageArticleDisplay(),"Article successfully saved");
-		verifyTrue(articlePage.isArticleDisplay(article4.getTitle()),"Created article is displayed on the articles table");
+		log.info("Click ID header to sort ASC");
+		articlePage.clickSortID();
+		
+		log.info("Verify ID is sorted ASC");
+		verifyTrue(articlePage.isArticleASCByID());
+		
+		log.info("Click ID header to sort DES");
+		articlePage.clickSortID();
+		
+		log.info("Verify ID is sorted DES");
+		verifyTrue(articlePage.isArticleDESByID());
+		
 	}
 	
 	@Test(description = "User can paging the article using the paging control", dependsOnMethods = "TC_ARTICLE_006")
@@ -97,6 +103,13 @@ public class ARTICLE_TC006_TC008_TC009_TC011_TC012_TC014_TC015_TC016_TC017 exten
 	
 	@Test(description = "Verify user can change the order of articles using the Ordering column", dependsOnMethods = "TC_ARTICLE_006")
 	public void TC_ARTICLE_014 (){		
+		
+		log.info("Add new article");
+		articlePage.addNewArticle(article4.getTitle(), article4.getCategory(), article4.getStatus(), article4.getContent(), "", "");
+	
+		log.info("Verify the article is saved successfully");
+		verifyTrue(articlePage.isMessageArticleDisplay(),"Article successfully saved");
+		verifyTrue(articlePage.isArticleDisplay(article4.getTitle()),"Created article is displayed on the articles table");
 		
 		log.info("Verify the first article changes its position with the second article");
 		verifyTrue(articlePage.isArticleChangePosition(article4.getTitle()));
