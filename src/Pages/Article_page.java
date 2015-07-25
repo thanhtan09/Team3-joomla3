@@ -597,4 +597,57 @@ public class Article_page extends Abstract_page {
 		
 		click(driver, By.xpath(Interfaces.ArticlePage.BTN_CHECKIN));
 	}
+	
+	// Sort the weblink table by ID column
+	public void clickSortID(){
+		
+		click(driver, By.xpath(Interfaces.ArticlePage.LNK_SORTID));
+	}
+	
+	// Is Sort DES order
+	public boolean isArticleDESByID(){
+		
+		int count = countElement(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR));
+		int firstrow=0;
+		int secondrow=0;
+		boolean descending = false;
+		
+		for(int i=1;i<count;i++){
+			firstrow = Integer.parseInt(getText(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR+"["+i+"]/td[9]")));
+			int j = i+1;
+			secondrow = Integer.parseInt(getText(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR+"["+j+"]/td[9]")));
+			if(firstrow>secondrow){
+				descending = true;
+			}
+			else {
+				descending = false;
+				break;
+			}
+		}
+				
+		return descending;
+	}
+	
+	// Is Sort ASC order
+	public boolean isArticleASCByID(){
+		
+		int count = countElement(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR));
+		int firstrow=0;
+		int secondrow=0;
+		boolean ascending = false;
+		
+		for(int i=1;i<count;i++){
+			firstrow = Integer.parseInt(getText(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR+"["+i+"]/td[9]")));
+			int j = i+1;
+			secondrow = Integer.parseInt(getText(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR+"["+j+"]/td[9]")));
+			if(firstrow<secondrow)
+				ascending = true;
+			else {
+				ascending = false;
+				break;
+			}
+		}
+				
+		return ascending;
+	}
 }
