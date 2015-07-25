@@ -322,7 +322,6 @@ public class Contacts_page extends Abstract_page {
 	public void searchbyfilter (String _name, String _cate, String _stt){
 		
 		click(driver, By.xpath(Interfaces.ContactsPage.BTN_CLEAR));
-		//enter(driver, By.xpath(Interfaces.ContactsPage.TXT_SEARCH), _name);
 		select(driver, By.xpath(Interfaces.ContactsPage.DROP_DISPLAY), STATUS_ALL); 
 			if (_cate != null){
 				select(driver, By.xpath(Interfaces.ContactsPage.DROP_CATEGORY), _cate);
@@ -336,6 +335,7 @@ public class Contacts_page extends Abstract_page {
 	//Is the filtered contact displayed == FAILED
 	public boolean isFilteredContact (String _cate, String _stt){
 		boolean show = false;
+		
 		int iCount = 0;
 		iCount = countElement(driver, By.xpath(Interfaces.ContactsPage.TABLE_TR));
 		for (int i = 1; i <= iCount; i++) {
