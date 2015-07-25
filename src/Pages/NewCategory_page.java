@@ -21,6 +21,26 @@ public class NewCategory_page extends Abstract_page{
 		click(driver, By.xpath(Interfaces.NewCatetoryPage.BTN_SAVEANDCLOSE));
 	}
 	
+	
+	public void addNew(String title, String status, String access, String language){
+		enter(driver, By.xpath(Interfaces.NewCatetoryPage.TXT_TITLE), title);
+		if (status!= ""){
+			select(driver, By.xpath(Interfaces.NewCatetoryPage.DROP_STATUS), status);
+		}
+		
+		if (access!= ""){
+			select(driver, By.xpath(Interfaces.NewCatetoryPage.DROP_ACCESS), access);
+		}
+		
+		if (language!= ""){
+			select(driver, By.xpath(Interfaces.NewCatetoryPage.DROP_LANGUAGE), language);
+		}
+		
+		click(driver, By.xpath(Interfaces.NewCatetoryPage.BTN_SAVEANDCLOSE));
+		
+
+	} 
+	
 	public void editCategory (String title, String button){
 		enter(driver, By.xpath(Interfaces.NewCatetoryPage.TXT_TITLE), title);
 		
