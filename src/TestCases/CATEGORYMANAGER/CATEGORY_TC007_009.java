@@ -1,7 +1,6 @@
 package TestCases.CATEGORYMANAGER;
 
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -9,8 +8,7 @@ import Functions.Abstract_test;
 import Pages.Categories_page;
 import Pages.Factory_page;
 import Pages.Home_page;
-import Pages.Login_page;
-import Pages.WebLinks_page;
+import Pages.Login_page;;
 
 public class CATEGORY_TC007_009 extends Abstract_test {
 	

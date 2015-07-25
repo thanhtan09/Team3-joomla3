@@ -10,7 +10,6 @@ import Pages.Factory_page;
 import Pages.Home_page;
 import Pages.Interfaces;
 import Pages.Login_page;
-import Pages.NewCategory_page;
 
 public class CATEGORY_TC003_004_005_006_008 extends Abstract_test{
 	
@@ -22,7 +21,6 @@ public class CATEGORY_TC003_004_005_006_008 extends Abstract_test{
 	private String MESSAGE_ARCHIVE = "1 category successfully archived";
 	private String MESSAGE_TRASHED = "1 category successfully trashed";
 	private String STATUS_ARCHIVED = "Archived";
-	private String STATUS_ALL = "All";
 	private String STATUS_PUBLISH = "Published";
 	private String STATUS_UNPUBLISH = "Unpublished";
 	private String STATUS_TRASHED = "Trashed";
