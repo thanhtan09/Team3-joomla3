@@ -168,6 +168,7 @@ public class Contacts_page extends Abstract_page {
 	// Is CONTACT successfully saved 
 	public boolean isUnpublishContactDisplay(String contact) {
 		boolean show = false;
+		
 			if (getText(driver, By.xpath(Interfaces.ContactsPage.CONTROL_MESSAGE))
 					.equals(MESSAGEPUBLISH)) {
 				int iCount = 0;
@@ -197,6 +198,7 @@ public class Contacts_page extends Abstract_page {
 		 
 	// Is  "1 contact archived" message displayed
 	public boolean isMessageArchivedContactDisplay(){
+		
 		if(getText(driver, By.xpath(Interfaces.ContactsPage.CONTROL_MESSAGE))
 						.equals(MESSAGEARCHIVE)){
 				return true;
@@ -238,20 +240,26 @@ public class Contacts_page extends Abstract_page {
 	// Delete Contact
 	public void deleteContact(String _contact) {
 		
-			//select(driver, By.xpath(Interfaces.ContactsPage.DROP_STATUS), "All");
+			select(driver, By.xpath(Interfaces.ContactsPage.DROP_STATUS), "All");
 			searchforContact(_contact);
-			click(driver, By.xpath(Interfaces.ContactsPage.CHECKBOX_1));
-			click(driver, By.xpath(Interfaces.ContactsPage.BTN_TRASH));
-			select(driver, By.xpath(Interfaces.ContactsPage.DROP_STATUS),
-					STATUS_TRASHED);
+			
+			String cell = getText(driver,
+					By.xpath(Interfaces.ContactsPage.TABLE_TR + "[1]/td[2]/a"));
+			
+			if (cell.equals(_contact)) {
+				clickFirstContact();
+				click(driver, By.xpath(Interfaces.ContactsPage.BTN_TRASH));
+				select(driver, By.xpath(Interfaces.ContactsPage.DROP_STATUS),
+						STATUS_TRASHED);
 
-			click(driver, By.xpath(Interfaces.ContactsPage.CHECKBOX_1));
+				clickFirstContact();
 
-			click(driver, By.xpath(Interfaces.ContactsPage.BTN_EMPTYTRASH));
-					waitControlExist(
-							driver,
-							By.xpath(Interfaces.ContactsPage.CONTROL_MESSAGE
-									+ "[contains(text(),'" + MESSAGEDELETE + "')]"));
+				click(driver, By.xpath(Interfaces.ContactsPage.BTN_EMPTYTRASH));
+				waitControlExist(
+						driver,
+						By.xpath(Interfaces.ContactsPage.CONTROL_MESSAGE
+								+ "[contains(text(),'" + MESSAGEDELETE + "')]"));
+			}
 	}
 	
 	/*
@@ -321,7 +329,7 @@ public class Contacts_page extends Abstract_page {
 					By.xpath(Interfaces.ContactsPage.TABLE_TR + "[" + i
 							+ "]/td[" + 2 + "]/a"));
 			if (cell.equals(contact)) {
-				if (isControlExist(
+				if (isControlNotExist(
 						driver,
 						By.xpath(Interfaces.ContactsPage.TABLE_TR + "[" + i
 								+ "]/td[" + 2 + "]/a/span/span")))
