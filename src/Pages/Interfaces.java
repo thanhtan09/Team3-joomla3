@@ -50,6 +50,7 @@ public class Interfaces {
 		public static final String DROP_DISPLAY = "//select[@id='limit']";
 		public static final String BAR_PAGING = "//div[@class = 'pagination']/div[4]";
 		public static final String CHECKBOX_1 = "//input[@id='cb0']";
+		public static final String LNK_SORTID = "//a[contains(text(), 'ID')]"; 
 	}
 
 	/*
