@@ -37,6 +37,15 @@ public class Categories_page extends Abstract_page {
 		return new Categories_page(driver);
 	}
 	
+	
+	public Categories_page addNewCategory(String title, String status, String access, String language) {
+		clickNew();
+
+		NewCategory_page newCate = Factory_page.getNewCategoryPage(driver);
+		newCate.addNew(title, status, access, language);
+		return new Categories_page(driver);
+	} 
+	
 	/*
 	 * Navigate to Banner page
 	 * 
