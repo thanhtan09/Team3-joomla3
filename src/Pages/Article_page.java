@@ -613,9 +613,9 @@ public class Article_page extends Abstract_page {
 		boolean descending = false;
 		
 		for(int i=1;i<count;i++){
-			firstrow = Integer.parseInt(getText(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR+"["+i+"]/td[9]")));
+			firstrow = Integer.parseInt(getText(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR+"["+i+"]/td[12]")));
 			int j = i+1;
-			secondrow = Integer.parseInt(getText(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR+"["+j+"]/td[9]")));
+			secondrow = Integer.parseInt(getText(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR+"["+j+"]/td[12]")));
 			if(firstrow>secondrow){
 				descending = true;
 			}
@@ -637,9 +637,9 @@ public class Article_page extends Abstract_page {
 		boolean ascending = false;
 		
 		for(int i=1;i<count;i++){
-			firstrow = Integer.parseInt(getText(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR+"["+i+"]/td[9]")));
+			firstrow = Integer.parseInt(getText(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR+"["+i+"]/td[12]")));
 			int j = i+1;
-			secondrow = Integer.parseInt(getText(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR+"["+j+"]/td[9]")));
+			secondrow = Integer.parseInt(getText(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR+"["+j+"]/td[12]")));
 			if(firstrow<secondrow)
 				ascending = true;
 			else {
