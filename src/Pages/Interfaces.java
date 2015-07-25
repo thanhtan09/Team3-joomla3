@@ -150,6 +150,8 @@ public class Interfaces {
 		public static final String BTN_CLOSE = "//li[@id='toolbar-cancel']/a/span";
 		public static final String MESSAGE = "//dd[@class='message message']/ul/li";
 		public static final String DROP_STATUS = "//select[@id='jform_published']";
+		public static final String DROP_ACCESS = "//select[@id='jform_access']";
+		public static final String DROP_LANGUAGE = "//select[@id='jform_language']";
 	}
 	/*
 	 * Element in Banner page
