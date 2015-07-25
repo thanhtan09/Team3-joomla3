@@ -21,7 +21,7 @@ public class CONTACTS_TC010 extends Abstract_test {
 	}
 	
 	@Test(description = "Verify user can search for contacts using the filter dropdown lists")
-	public void TC_CONTACT_001 (){
+	public void TC_CONTACT_010 (){
 
 		log.info("Login with valid account");
 		loginPage = Factory_page.getLoginPage(driver);
