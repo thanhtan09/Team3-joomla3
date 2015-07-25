@@ -6,9 +6,14 @@ public class Category {
 
 	String title;
 	String status;
+	String access;
+	String language;
+	
 	public Category(){
 		this.title="";
 		this.status = "";
+		this.access = "";
+		this.language = "";
 	};
 	
 	//Set title
@@ -36,4 +41,24 @@ public class Category {
 	public String getStatus(){
 			return status;
 		}
+	
+	//Set access
+			public void setAccess(String access){
+				this.access = access;
+			}
+			
+	//Get status
+		public String getAccess(){
+				return access;
+			}
+		
+	//Set status
+		public void setLanguage(String language){
+					this.language = language;
+				}
+				
+	//Get status
+		public String getLanguage(){
+					return language;
+				}
 }
