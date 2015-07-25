@@ -600,7 +600,7 @@ public class Article_page extends Abstract_page {
 	
 	// Sort the weblink table by ID column
 	public void clickSortID(){
-		
+		click(driver, By.xpath(Interfaces.ArticlePage.BTN_CLEAR));
 		click(driver, By.xpath(Interfaces.ArticlePage.LNK_SORTID));
 	}
 	
