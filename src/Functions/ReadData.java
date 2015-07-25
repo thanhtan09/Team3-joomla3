@@ -193,9 +193,13 @@ public class ReadData {
 					if (cell.getContents().equals(cate)) {
 						Cell title = sheet.getCell(1, row);
 						Cell status = sheet.getCell(2,  row);
+						Cell access = sheet.getCell(3,  row);
+						Cell language = sheet.getCell(4,  row);
 						
 						category.setTitle(title.getContents());
 						category.setStatus(status.getContents());
+						category.setAccess(access.getContents());
+						category.setLanguage(language.getContents());
 					}
 				}
 			}
