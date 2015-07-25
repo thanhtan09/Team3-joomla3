@@ -87,6 +87,7 @@ public class WEBLINKS_TC006_008_010_011_012 extends Abstract_test{
 	@Test(description = "Verify user can sort the weblink table by ID column")
 	public void TC_WEBLINK_011 (){
 		
+		weblinkPage.click(driver, By.xpath(Interfaces.WebLinksPage.BTN_CLEAR));
 		log.info("Click on the Header link of ID column");
 		weblinkPage.clickSortID();
 		
