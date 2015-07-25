@@ -54,7 +54,7 @@ public class CONTACTS_TC006_to_009 extends Abstract_test{
 		verifyTrue(contactsPage.isCheckinMessage());
 			
 		log.info("Verify the lock icon next to the contact is removed");
-		verifyFalse(contactsPage.isCheckinContact(contact2));
+		verifyTrue(contactsPage.isCheckinContact(contact2));
 	}
 		
 	@Test(description = "Verify user can move a contact to trash section")
