@@ -259,10 +259,9 @@ public class Interfaces {
 		public static final String BTN_SEARCH = "//button[contains(text(),'Search')]";
 		public static final String BTN_CLEAR = "//button[contains(text(),'Clear')]";
 		public static final String CHECKBOX_1 = "//input[@id='cb0']";
-		public static final String LNK_SORTID = "//a[contains(text(), 'Title')]/img"; 
+		public static final String LNK_SORTID = "//a[contains(text(), 'ID')]"; 
 		public static final String BAR_PAGING = "//div[@class = 'pagination']/div[4]";
-
-				
+			
 	}
 
 	/*
