@@ -477,7 +477,7 @@ public class Article_page extends Abstract_page {
 	public void TrashArticle(String article) {
 		select(driver, By.xpath(Interfaces.ArticlePage.DROP_STATUS), "All");
 		searchforArticle(article);
-		click(driver, By.xpath(Interfaces.BannerPage.CHECKBOX_1));
+		click(driver, By.xpath(Interfaces.ArticlePage.CHECKBOX_1));
 		click(driver, By.xpath(Interfaces.ArticlePage.BTN_TRASH));
 	}
 
@@ -596,5 +596,58 @@ public class Article_page extends Abstract_page {
 	public void clickCheckIn(){
 		
 		click(driver, By.xpath(Interfaces.ArticlePage.BTN_CHECKIN));
+	}
+	
+	// Sort the weblink table by ID column
+	public void clickSortID(){
+		click(driver, By.xpath(Interfaces.ArticlePage.BTN_CLEAR));
+		click(driver, By.xpath(Interfaces.ArticlePage.LNK_SORTID));
+	}
+	
+	// Is Sort DES order
+	public boolean isArticleDESByID(){
+		
+		int count = countElement(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR));
+		int firstrow=0;
+		int secondrow=0;
+		boolean descending = false;
+		
+		for(int i=1;i<count;i++){
+			firstrow = Integer.parseInt(getText(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR+"["+i+"]/td[12]")));
+			int j = i+1;
+			secondrow = Integer.parseInt(getText(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR+"["+j+"]/td[12]")));
+			if(firstrow>secondrow){
+				descending = true;
+			}
+			else {
+				descending = false;
+				break;
+			}
+		}
+				
+		return descending;
+	}
+	
+	// Is Sort ASC order
+	public boolean isArticleASCByID(){
+		
+		int count = countElement(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR));
+		int firstrow=0;
+		int secondrow=0;
+		boolean ascending = false;
+		
+		for(int i=1;i<count;i++){
+			firstrow = Integer.parseInt(getText(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR+"["+i+"]/td[12]")));
+			int j = i+1;
+			secondrow = Integer.parseInt(getText(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR+"["+j+"]/td[12]")));
+			if(firstrow<secondrow)
+				ascending = true;
+			else {
+				ascending = false;
+				break;
+			}
+		}
+				
+		return ascending;
 	}
 }

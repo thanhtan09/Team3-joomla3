@@ -1,7 +1,6 @@
 package TestCases.CATEGORYMANAGER;
 
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -9,10 +8,9 @@ import Functions.Abstract_test;
 import Pages.Categories_page;
 import Pages.Factory_page;
 import Pages.Home_page;
-import Pages.Login_page;
-import Pages.WebLinks_page;
+import Pages.Login_page;;
 
-public class CATEGORY_TC007 extends Abstract_test {
+public class CATEGORY_TC007_009 extends Abstract_test {
 	
 	private Login_page loginPage;
 	private Home_page homePage;
@@ -37,9 +35,24 @@ public class CATEGORY_TC007 extends Abstract_test {
 		verifyTrue(catePage.isHelpWindow());
 		
 	}
+	
+	@Test(description = "Verify that user can search a category by using filter dropdown lists")
+	public void TC_WEBLINK_009 (){
+		
+		log.info("Create new category");
+		catePage.addNewCategory(category3.getTitle(), category3.getStatus(), category3.getAccess(), category3.getLanguage());
+		
+		log.info("Searh for a category by using filter dropdown lists ");
+		catePage.searchByFilter(category3.getStatus(), category3.getAccess(), category3.getLanguage());
+		
+		log.info("Verify category displays in table");
+		catePage.isCategoryDisplay(category3.getTitle());
+		
+	}
 
 	@AfterClass
 	public void end(){
+		catePage.deleteCategory(category3.getTitle());
 		shutdown();
 	}
 }

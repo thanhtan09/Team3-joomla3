@@ -37,6 +37,15 @@ public class Categories_page extends Abstract_page {
 		return new Categories_page(driver);
 	}
 	
+	
+	public Categories_page addNewCategory(String title, String status, String access, String language) {
+		clickNew();
+
+		NewCategory_page newCate = Factory_page.getNewCategoryPage(driver);
+		newCate.addNew(title, status, access, language);
+		return new Categories_page(driver);
+	} 
+	
 	/*
 	 * Navigate to Banner page
 	 * 
@@ -152,7 +161,7 @@ public class Categories_page extends Abstract_page {
 	}	
 	
 	public boolean isSuccessMessageDisplay (String message){
-		if(getText(driver, By.xpath(Interfaces.WebLinksPage.CONTROL_MESSAGE))
+		if(getText(driver, By.xpath(Interfaces.CatetoryPage.MESSAGE))
 				.equals(message)){
 			return true;
 			}
@@ -172,7 +181,7 @@ public class Categories_page extends Abstract_page {
 	
 	public boolean isHelpWindow(){
 		String currentWindows = getCurrentWindows(driver);
-		click(driver, By.xpath(Interfaces.WebLinksPage.BTN_HELP));
+		click(driver, By.xpath(Interfaces.CatetoryPage.BTN_HELP));
 		switchToNewWindows(driver);
 		if(getPageTitle(driver).equals(HELP_TITLE)){
 			driver.close();
@@ -182,4 +191,10 @@ public class Categories_page extends Abstract_page {
 		return false;
 	}
 	
+	public void searchByFilter (String status, String access, String language){
+		
+		select(driver, By.xpath(Interfaces.CatetoryPage.DROP_STATUS), status);
+		select(driver, By.xpath(Interfaces.CatetoryPage.DROP_ACCESS), access);
+		select(driver, By.xpath(Interfaces.CatetoryPage.DROP_LANGUAGE), language);
+	}
 }

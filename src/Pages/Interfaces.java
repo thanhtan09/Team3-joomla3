@@ -50,6 +50,8 @@ public class Interfaces {
 		public static final String DROP_DISPLAY = "//select[@id='limit']";
 		public static final String BAR_PAGING = "//div[@class = 'pagination']/div[4]";
 		public static final String CHECKBOX_1 = "//input[@id='cb0']";
+		public static final String LNK_SORTID = "//a[contains(text(), 'ID')]"; 
+		public static final String BTN_CLEAR = "//button[contains(text(),'Clear')]";
 	}
 
 	/*
@@ -134,6 +136,9 @@ public class Interfaces {
 		public static final String BTN_SEARCH = "//button[contains(text(),'Search')]";
 		public static final String CHECKBOX_1 = "//input[@id='cb0']";
 		public static final String TABLE_TR = "//table[@class='adminlist']/tbody/tr";
+		public static final String BTN_HELP = "//li[@id='toolbar-help']/a/span";
+		public static final String DROP_ACCESS = "//select[@name='filter_access']";
+		public static final String DROP_LANGUAGE = "//select[@name='filter_language']";
 	}
 	
 	/*
@@ -149,6 +154,8 @@ public class Interfaces {
 		public static final String BTN_CLOSE = "//li[@id='toolbar-cancel']/a/span";
 		public static final String MESSAGE = "//dd[@class='message message']/ul/li";
 		public static final String DROP_STATUS = "//select[@id='jform_published']";
+		public static final String DROP_ACCESS = "//select[@id='jform_access']";
+		public static final String DROP_LANGUAGE = "//select[@id='jform_language']";
 	}
 	/*
 	 * Element in Banner page
@@ -212,7 +219,8 @@ public class Interfaces {
 		public static final String DROP_CATEGORY = "//select[@name='filter_category_id']";
 		public static final String LNK_SORTID = "//a[contains(text(), 'ID')]"; 
 		public static final String BAR_PAGING = "//div[@class = 'pagination']/div[4]";
-		public static final String BTN_CHECKIN = "//li[@id='toolbar-checkin']/a/span";
+		public static final String BTN_CHECKIN = "//li[@id='toolbar-checkin']/a/span"; 
+		public static final String HEADER_ORDERING = "//table[@class='adminlist']/thead/tr/th/a[contains(text(),'Ordering')]";
 	}
 	
 	public class NewWebLinksPage{
@@ -257,10 +265,10 @@ public class Interfaces {
 		public static final String BTN_SEARCH = "//button[contains(text(),'Search')]";
 		public static final String BTN_CLEAR = "//button[contains(text(),'Clear')]";
 		public static final String CHECKBOX_1 = "//input[@id='cb0']";
-		public static final String LNK_SORTID = "//a[contains(text(), 'Title')]/img"; 
+		public static final String LNK_SORTID = "//a[contains(text(), 'ID')]"; 
 		public static final String BAR_PAGING = "//div[@class = 'pagination']/div[4]";
-
-				
+		public static final String FILTER_ORDERING = "//table[@class='adminlist']/thead/tr/th/a[contains(text(),'Ordering')]";
+			
 	}
 
 	/*

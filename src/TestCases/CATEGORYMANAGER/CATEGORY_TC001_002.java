@@ -10,7 +10,6 @@ import Pages.Factory_page;
 import Pages.Home_page;
 import Pages.Login_page;
 import Pages.NewCategory_page;
-import Pages.WebLinks_page;
 
 public class CATEGORY_TC001_002 extends Abstract_test{
 	private Login_page loginPage;

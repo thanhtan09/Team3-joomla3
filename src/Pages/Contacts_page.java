@@ -10,7 +10,7 @@ public class Contacts_page extends Abstract_page {
 	// Message
 	private String MESSAGESUCCESS = "Contact successfully saved";
 	private String MESSAGEPUBLISH = "1 contact successfully published";
-	private String MESSAGEUNPUBLISH = "1 contact successfully unpublished.";
+	private String MESSAGEUNPUBLISH = "1 contact successfully unpublished";
 	private String MESSAGEARCHIVE = "1 contact successfully archived";
 	private String MESSAGEDELETE = "1 contact successfully deleted";
 	private String MESSAGECHECKIN = "1 contact successfully checked in";
@@ -18,12 +18,12 @@ public class Contacts_page extends Abstract_page {
 
 	// Status
 	private String STATUS_TRASHED = "Trashed";
-	//private String STATUS_ARCHIVED = "Archived";
+	private String STATUS_ARCHIVED = "Archived";
 	private String STATUS_ALL = "All";
 	//private String PUBLISH = "Published";
 	//private String UNPUBLISH = "Unpublished";
-	//private String FRATURED = "Featured article";
-	//private String UNFRATURED = "Unfeatured article";
+	private String FEATURED = "Featured";
+	private String UNFEATURED = "Unfeatured contact";
 	//private String ACCESS_PUBLIC = "Public";
 	
 	//Title
@@ -74,20 +74,8 @@ public class Contacts_page extends Abstract_page {
 	public Contacts_page editContact(String oldname, String name,
 				String category, String status) {
 			
-		int iCount = 0;
-			iCount = countElement(driver, By.xpath(Interfaces.ContactsPage.TABLE_TR));
-		for (int i = 1; i <= iCount; i++) {
-				String cell = getText(
-						driver,
-						By.xpath(Interfaces.ContactsPage.TABLE_TR + "[" + i
-								+ "]/td[" + 2 + "]/a"));
-				if (cell.equals(oldname)) {
-					click(driver,
-							By.xpath(Interfaces.ContactsPage.TABLE_TR + "[" + i
-									+ "]/td[" + 1 + "]/input[@type='checkbox']"));
-					break;
-				}
-			}
+			searchforContact(oldname);
+			clickFirstContact();
 			click(driver, By.xpath(Interfaces.ContactsPage.BTN_EDIT));
 
 			NewContacts_page newContact = Factory_page.getNewContactsPage(driver);
@@ -104,7 +92,7 @@ public class Contacts_page extends Abstract_page {
 		click(driver, By.xpath(Interfaces.ContactsPage.BTN_PUBLISH));
 	}
 		
-	// Is Message CONTACT SAVED SUCCESSFULLY displayed
+	// Is Message Contact Public Successfully displayed
 	public boolean isMessagePublishContactDisplay(){
 		if(getText(driver, By.xpath(Interfaces.ContactsPage.CONTROL_MESSAGE))
 				.equals(MESSAGEPUBLISH)){
@@ -113,51 +101,29 @@ public class Contacts_page extends Abstract_page {
 			return false;
 	}
 		
-	// Is CONTACT successfully saved 
-	 public boolean isPublishContactDisplay(String contact) {
-		boolean show = false;
-			if (getText(driver, By.xpath(Interfaces.ContactsPage.CONTROL_MESSAGE))
-					.equals(MESSAGEPUBLISH)) {
-				int iCount = 0;
-				iCount = countElement(driver,
-						By.xpath(Interfaces.ContactsPage.TABLE_TR));
-				for (int i = 1; i <= iCount; i++) {
-					String cell = getText(
-							driver,
-							By.xpath(Interfaces.ContactsPage.TABLE_TR + "[" + i
-									+ "]/td[" + 2 + "]/a"));
-					if (cell.equals(contact)) {
-						show = true;
-						break;
-					}
-				}
-			}
-		return show;
+	// Is Publish Icon Shown
+	 public boolean isPublishContactDisplay(String _contact) {
+
+			searchforContact(_contact);
+
+			if (isControlExist(driver, By.xpath(Interfaces.ContactsPage.TABLE_TR
+					+ "[1]/td[4]/descendant::span[contains(text(),'Published')]")))
+				return true;
+			return false;
 	}
-		
-		
-	//Unpublish a published contact
-	public void unpublishContact (String contact){
 			
-		int iCount = 0;
-			iCount = countElement(driver, By.xpath(Interfaces.ContactsPage.TABLE_TR));
-			for (int i = 1; i <= iCount; i++) {
-				String cell = getText(
-						driver,
-						By.xpath(Interfaces.ContactsPage.TABLE_TR + "[" + i
-								+ "]/td[" + 2 + "]/a"));
-				if (cell.equals(contact)) {
-					click(driver,
-							By.xpath(Interfaces.ContactsPage.TABLE_TR + "[" + i
-									+ "]/td[" + 1 + "]/input[@type='checkbox']"));
-					break;
-				}
-			}
-			click(driver, By.xpath(Interfaces.ContactsPage.BTN_UNPUBLISH));
+	//Unpublish a published contact
+	public void unpublishContact (String _contact){
+			
+		searchforContact(_contact);
+		clickFirstContact();
+		click(driver, By.xpath(Interfaces.ContactsPage.BTN_UNPUBLISH));
+		
 		}
 		
-	// Is Message CONTACT SAVED SUCCESSFULLY displayed
+	// The "1 contact successfully unpublished" message is displayed
 	public boolean isMessageUnpublishContactDisplay(){
+		
 		if(getText(driver, By.xpath(Interfaces.ContactsPage.CONTROL_MESSAGE))
 				.equals(MESSAGEUNPUBLISH)){
 			return true;
@@ -165,38 +131,28 @@ public class Contacts_page extends Abstract_page {
 		return false;
 	}
 		
-	// Is CONTACT successfully saved 
-	public boolean isUnpublishContactDisplay(String contact) {
-		boolean show = false;
-			if (getText(driver, By.xpath(Interfaces.ContactsPage.CONTROL_MESSAGE))
-					.equals(MESSAGEPUBLISH)) {
-				int iCount = 0;
-				iCount = countElement(driver,
-						By.xpath(Interfaces.ContactsPage.TABLE_TR));
-				for (int i = 1; i <= iCount; i++) {
-					String cell = getText(
-							driver,
-							By.xpath(Interfaces.ContactsPage.TABLE_TR + "[" + i
-									+ "]/td[" + 2 + "]/a"));
-					if (cell.equals(contact)) {
-						show = true;
-						break;
-					}
-				}
-			}
-		return show;
+	// The icon of the selected item is showed as 'Unpublish'
+	public boolean isUnpublishContactDisplay(String _contact) {
+
+		searchforContact(_contact);
+
+		if (isControlExist(driver, By.xpath(Interfaces.ContactsPage.TABLE_TR
+				+ "[1]/td[4]/descendant::span[contains(text(),'Unpublished')]")))
+			return true;
+		return false;
 	}
 		 
 	//Archive Contact
-	 public void archiveContact (String contact){
+	 public void archiveContact (String _contact){
 				
-		searchforContact(contact);
+		searchforContact(_contact);
 		clickFirstContact();
 		click(driver, By.xpath(Interfaces.ContactsPage.BTN_ARCHIVE));
 	}
 		 
 	// Is  "1 contact archived" message displayed
 	public boolean isMessageArchivedContactDisplay(){
+		
 		if(getText(driver, By.xpath(Interfaces.ContactsPage.CONTROL_MESSAGE))
 						.equals(MESSAGEARCHIVE)){
 				return true;
@@ -205,31 +161,28 @@ public class Contacts_page extends Abstract_page {
 	}
 			
 	// Is CONTACT successfully archived
-	 public boolean isArchivedContactDisplay(String contact) {
-		boolean show = false;
-			if (getText(driver, By.xpath(Interfaces.ContactsPage.CONTROL_MESSAGE))
-						.equals(MESSAGEPUBLISH)) {
-					int iCount = 0;
-					iCount = countElement(driver,
-							By.xpath(Interfaces.ContactsPage.TABLE_TR));
-					for (int i = 1; i <= iCount; i++) {
-						String cell = getText(
-								driver,
-								By.xpath(Interfaces.ContactsPage.TABLE_TR + "[" + i
-										+ "]/td[" + 2 + "]/a"));
-						if (cell.equals(contact)) {
-							show = true;
-							break;
-						}
-					}
-				}
-		return show;
-	}
+	 public boolean isArchivedContactDisplay(String _contact) {
+
+			select(driver, By.xpath(Interfaces.ContactsPage.DROP_STATUS),
+					STATUS_ARCHIVED);
+
+			searchforContact(_contact);
+			String cell = getText(driver,
+					By.xpath(Interfaces.ContactsPage.TABLE_TR + "[1]/td[2]/a"));
+
+			try {
+				if (cell.equals(_contact))
+					return true;
+				return false;
+			} finally {
+				select(driver, By.xpath(Interfaces.ContactsPage.DROP_STATUS), "All");
+			}
+		}
 			 
 	//search for contact
-	public void searchforContact(String contact) {
+	public void searchforContact(String _contact) {
 		
-			enter(driver, By.xpath(Interfaces.ContactsPage.TXT_SEARCH), contact);
+			enter(driver, By.xpath(Interfaces.ContactsPage.TXT_SEARCH), _contact);
 			click(driver, By.xpath(Interfaces.ContactsPage.BTN_SEARCH));
 
 		}	
@@ -238,20 +191,26 @@ public class Contacts_page extends Abstract_page {
 	// Delete Contact
 	public void deleteContact(String _contact) {
 		
-			//select(driver, By.xpath(Interfaces.ContactsPage.DROP_STATUS), "All");
+			select(driver, By.xpath(Interfaces.ContactsPage.DROP_STATUS), "All");
 			searchforContact(_contact);
-			click(driver, By.xpath(Interfaces.ContactsPage.CHECKBOX_1));
-			click(driver, By.xpath(Interfaces.ContactsPage.BTN_TRASH));
-			select(driver, By.xpath(Interfaces.ContactsPage.DROP_STATUS),
-					STATUS_TRASHED);
+			
+			String cell = getText(driver,
+					By.xpath(Interfaces.ContactsPage.TABLE_TR + "[1]/td[2]/a"));
+			
+			if (cell.equals(_contact)) {
+				clickFirstContact();
+				click(driver, By.xpath(Interfaces.ContactsPage.BTN_TRASH));
+				select(driver, By.xpath(Interfaces.ContactsPage.DROP_STATUS),
+						STATUS_TRASHED);
 
-			click(driver, By.xpath(Interfaces.ContactsPage.CHECKBOX_1));
+				clickFirstContact();
 
-			click(driver, By.xpath(Interfaces.ContactsPage.BTN_EMPTYTRASH));
-					waitControlExist(
-							driver,
-							By.xpath(Interfaces.ContactsPage.CONTROL_MESSAGE
-									+ "[contains(text(),'" + MESSAGEDELETE + "')]"));
+				click(driver, By.xpath(Interfaces.ContactsPage.BTN_EMPTYTRASH));
+				waitControlExist(
+						driver,
+						By.xpath(Interfaces.ContactsPage.CONTROL_MESSAGE
+								+ "[contains(text(),'" + MESSAGEDELETE + "')]"));
+			}
 	}
 	
 	/*
@@ -282,7 +241,11 @@ public class Contacts_page extends Abstract_page {
 		return false;
 	}
 	
-	//Click first contact
+	/*
+	 * Click first item
+	 * 
+	 * Author: Nga Nguyen
+	 */
 	public void clickFirstContact(){
 		click(driver, By.xpath(Interfaces.ContactsPage.CHECKBOX_1));
 	}
@@ -311,25 +274,12 @@ public class Contacts_page extends Abstract_page {
 
 	// Is Checked-in Contact displayed
 	public boolean isCheckinContact(String contact) {
-		boolean show = false;
-
-		int iCount = 0;
-		iCount = countElement(driver, By.xpath(Interfaces.ContactsPage.TABLE_TR));
-		for (int i = 1; i <= iCount; i++) {
-			String cell = getText(
-					driver,
-					By.xpath(Interfaces.ContactsPage.TABLE_TR + "[" + i
-							+ "]/td[" + 2 + "]/a"));
-			if (cell.equals(contact)) {
-				if (isControlExist(
-						driver,
-						By.xpath(Interfaces.ContactsPage.TABLE_TR + "[" + i
-								+ "]/td[" + 2 + "]/a/span/span")))
-					show = true;
-				break;
-			}
-		}
-		return show;
+		
+		searchforContact(contact);
+		if(isControlNotExist(driver, By.xpath(Interfaces.ContactsPage.TABLE_TR+"[1]/td[2]/a/span/span[contains(text(),'Checked out')]")))
+			return true;
+		return false;
+		
 	}
 	
 	// Trash Contact
@@ -350,66 +300,33 @@ public class Contacts_page extends Abstract_page {
 	}
 
 	//Is Trashed Article in Table Grid displayed
-	public boolean isTrashedContactinG(String contact) {
-		boolean show = false;
-		select(driver, By.xpath(Interfaces.ContactsPage.DROP_STATUS),
-				STATUS_TRASHED);
-		int iCount = 0;
-		iCount = countElement(driver, By.xpath(Interfaces.ContactsPage.TABLE_TR));
-		for (int i = 1; i <= iCount; i++) {
-			String cell = getText(
-					driver,
-					By.xpath(Interfaces.ContactsPage.TABLE_TR + "[" + i
-							+ "]/td[" + 2 + "]/a"));
-			if (cell.equals(contact)) {
-				if (isControlExist(
-						driver,
-						By.xpath(Interfaces.ContactsPage.TABLE_TR + "[" + i
-								+ "]/td[" + 2 + "]/a")))
-					show = true;
-				break;
-			}
+	public boolean isTrashedContactInGrid(String contact) {
+
+		select(driver, By.xpath(Interfaces.ContactsPage.DROP_STATUS), STATUS_TRASHED);
+		searchforContact(contact);
+		String cell = getText(driver,
+				By.xpath(Interfaces.ContactsPage.TABLE_TR + "[1]/td[2]/a"));
+
+		try {
+			if (cell.equals(contact))
+				return true;
+			return false;
+		} 
+			finally {
+			select(driver, By.xpath(Interfaces.ContactsPage.DROP_STATUS), "All");
 		}
-		return show;
 	}
 	
+	// Select Category
+	public void selectCategory (String _cate){
 		
-	//Search for contacts using the filter dropdown list
-	public void searchbyfilter (String _name, String _cate, String _stt){
+		select(driver, By.xpath(Interfaces.ContactsPage.DROP_CATEGORY), _cate);
+	}
+
+	// Select Category
+	public void selectStatus (String _status){
 		
-		click(driver, By.xpath(Interfaces.ContactsPage.BTN_CLEAR));
-		//enter(driver, By.xpath(Interfaces.ContactsPage.TXT_SEARCH), _name);
-		select(driver, By.xpath(Interfaces.ContactsPage.DROP_DISPLAY), STATUS_ALL); 
-			if (_cate != null){
-				select(driver, By.xpath(Interfaces.ContactsPage.DROP_CATEGORY), _cate);
-			} 
-			if (_stt != null){
-				select(driver, By.xpath(Interfaces.ContactsPage.DROP_STATUS), _stt);
-			}
-		
-		}
-	
-	//Is the filtered contact displayed == FAILED
-	public boolean isFilteredContact (String _cate, String _stt){
-		boolean show = false;
-		int iCount = 0;
-		iCount = countElement(driver, By.xpath(Interfaces.ContactsPage.TABLE_TR));
-		for (int i = 1; i <= iCount; i++) {
-			String category = getText(
-					driver,
-					By.xpath(Interfaces.ContactsPage.TABLE_TR + "[" + i
-							+ "]/td[" + 6 + "]"));
-			
-			String status = getText(
-					driver,
-					By.xpath(Interfaces.ContactsPage.TABLE_TR + "[" + i
-							+ "]/td[" + 4 + "]/a/span/span"));
-			
-			if (category.equals(_cate) && status.equals(_stt)) {
-				show = true;
-			}
-		}
-		return show;		
+		select(driver, By.xpath(Interfaces.ContactsPage.DROP_STATUS), _status);
 	}
 	
 	// Sort the contacts table by ID column
@@ -427,9 +344,9 @@ public class Contacts_page extends Abstract_page {
 		boolean descending = false;
 		
 		for(int i=1;i<count;i++){
-			firstrow = Integer.parseInt(getText(driver, By.xpath(Interfaces.ContactsPage.TABLE_TR+"["+i+"]/td[13]")));
+			firstrow = Integer.parseInt(getText(driver, By.xpath(Interfaces.ContactsPage.TABLE_TR+"["+i+"]/td[10]")));
 			int j = i+1;
-			secondrow = Integer.parseInt(getText(driver, By.xpath(Interfaces.ContactsPage.TABLE_TR+"["+j+"]/td[13]")));
+			secondrow = Integer.parseInt(getText(driver, By.xpath(Interfaces.ContactsPage.TABLE_TR+"["+j+"]/td[10]")));
 			if(firstrow>secondrow){
 				descending = true;
 			}
@@ -445,15 +362,15 @@ public class Contacts_page extends Abstract_page {
 	// Is Sort ASC order
 	public boolean isContactASCByID(){
 		
-		int count = countElement(driver, By.xpath(Interfaces.BannerPage.TABLE_TR));
+		int count = countElement(driver, By.xpath(Interfaces.ContactsPage.TABLE_TR));
 		int firstrow=0;
 		int secondrow=0;
 		boolean ascending = false;
 		
 		for(int i=1;i<count;i++){
-			firstrow = Integer.parseInt(getText(driver, By.xpath(Interfaces.ContactsPage.TABLE_TR+"["+i+"]/td[13]")));
+			firstrow = Integer.parseInt(getText(driver, By.xpath(Interfaces.ContactsPage.TABLE_TR+"["+i+"]/td[10]")));
 			int j = i+1;
-			secondrow = Integer.parseInt(getText(driver, By.xpath(Interfaces.ContactsPage.TABLE_TR+"["+j+"]/td[13]")));
+			secondrow = Integer.parseInt(getText(driver, By.xpath(Interfaces.ContactsPage.TABLE_TR+"["+j+"]/td[10]")));
 			if(firstrow<secondrow)
 				ascending = true;
 			else {
@@ -482,5 +399,77 @@ public class Contacts_page extends Abstract_page {
 			paging = true;
 		}
 		return paging;
+	}
+	
+	public void clickOrdering() {
+		click(driver, By.xpath(Interfaces.ContactsPage.FILTER_ORDERING));
+	}
+
+	// Change position of contact by using Ordering column
+	public boolean isContactChangePosition(String _contact) {
+		
+		searchforContact("");
+		selectDisplayItem("All");
+		int first, second = 0;
+		clickOrdering();
+		first = getPositionContact(_contact);
+		clickOrdering();
+		second = getPositionContact(_contact);
+		clickOrdering();
+		if (first != second)
+			return true;
+		return false;
+	}
+	
+	// Get position of Contact
+	public int getPositionContact(String _contact) {
+		int iCount = 0;
+		int position = 0;
+		iCount = countElement(driver, By.xpath(Interfaces.ContactsPage.TABLE_TR));
+		for (int i = 1; i <= iCount; i++) {
+			String cell = getText(
+					driver,
+					By.xpath(Interfaces.ContactsPage.TABLE_TR + "[" + i
+							+ "]/td[" + 2 + "]/a"));
+			if (cell.equals(_contact)) {
+				position = i;
+				break;
+			}
+		}
+		return position;
+	}
+	
+	// Click Status of Icon in GRID
+	public void clickStatusIcon(String _contact) {
+		
+		searchforContact(_contact);
+		clickFirstContact();
+		click(driver, By.xpath(Interfaces.ContactsPage.TABLE_TR+"/td[4]/a/span"));
+	}
+	
+	// Click Featured Icon
+	public void clickFeaturedIcon(String _contact) {
+		
+		select(driver, By.xpath(Interfaces.ContactsPage.DROP_STATUS), STATUS_ALL);
+		searchforContact(_contact);
+		click(driver, By.xpath(Interfaces.ContactsPage.TABLE_TR+"/td[5]/a/img"));
+	}
+	
+	// Is Featured Icon
+	public boolean isShowFeaturedIcon(String _contact) {
+
+		//searchforContact(_contact);
+		if(isControlExist(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR+"[1]/td[5]/a/img[@alt='" + FEATURED + "']")))
+			return true;
+		return false;
+	}
+
+	// Is UnFeatured Icon 
+	public boolean isShowUnFeaturedIcon(String _contact) {
+
+		//searchforContact(_contact);
+		if(isControlExist(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR+"[1]/td[5]/a/img[@alt='" + UNFEATURED + "']")))
+			return true;
+		return false;
 	}
 }
