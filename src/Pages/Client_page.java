@@ -488,19 +488,19 @@ public class Client_page extends Abstract_page {
 	 * 
 	 * Author: Nga Nguyen
 	 */
-	public boolean isClientNotReplacing(String _newClient, String _oldClient) {
+	public boolean isMultiClientsDisplay(String _client1, String _client2) {
 
-		searchClient(_newClient);
+		searchClient(_client1);
 
 		String cell = getText(driver,
 				By.xpath(Interfaces.BannerPage.TABLE_TR + "[1]/td[2]/a"));
 		
-		searchClient(_oldClient);
+		searchClient(_client2);
 
 		String cell1 = getText(driver,
 				By.xpath(Interfaces.BannerPage.TABLE_TR + "[1]/td[2]/a"));
 
-		if (cell.equals(_newClient) && cell1.equals(_oldClient))
+		if (cell.equals(_client1) && cell1.equals(_client2))
 			return true;
 		return false;
 	}
