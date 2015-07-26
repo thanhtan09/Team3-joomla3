@@ -33,7 +33,6 @@ public class CLIENTS_TC012_to_TC016 extends Abstract_test {
 		
 		log.info("Access to New Client Help page");
 		clientPage.click(driver, By.xpath(Interfaces.ClientPage.BTN_NEW));
-		//newclientPage.click(driver, By.xpath(Interfaces.NewClientPage.BTN_HELP));
 		verifyTrue(clientPage.isHelpPage(), "New Client Help page appears");
 		
 		clientPage.clickCancel();
@@ -44,12 +43,17 @@ public class CLIENTS_TC012_to_TC016 extends Abstract_test {
 	public void TC_CLIENTS_013(){
 		log.info("Create a client banner");
 		clientPage.addNewClient(client.getName(), client.getContact(), client.getEmail(), "", "Save");
+		newclientPage = Factory_page.getNewClientPage(driver);
 		
+		log.info("Save message display");
 		verifyTrue(clientPage.isMessageDisplay(),"Client successfully saved");
+		
+		log.info("Edit Page display");
 		verifyTrue(newclientPage.isEditClientPage(), "Edit client page displays");
 		
 		log.info("Create a copy client banner");
-		newclientPage.addClient(client2.getName(), "","", "", "SaveAsCopy");
+		newclientPage.addClient(client2.getName(), "", "", "", "SaveAsCopy");
+		
 		verifyTrue(clientPage.isMessageDisplay(),"Client successfully saved");
 				
 		clientPage.clickCancel();
