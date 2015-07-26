@@ -22,8 +22,8 @@ public class Contacts_page extends Abstract_page {
 	private String STATUS_ALL = "All";
 	//private String PUBLISH = "Published";
 	//private String UNPUBLISH = "Unpublished";
-	//private String FRATURED = "Featured article";
-	//private String UNFRATURED = "Unfeatured article";
+	private String FEATURED = "Featured";
+	private String UNFEATURED = "Unfeatured contact";
 	//private String ACCESS_PUBLIC = "Public";
 	
 	//Title
@@ -92,7 +92,7 @@ public class Contacts_page extends Abstract_page {
 		click(driver, By.xpath(Interfaces.ContactsPage.BTN_PUBLISH));
 	}
 		
-	// Is Message CONTACT SAVED SUCCESSFULLY displayed
+	// Is Message Contact Public Successfully displayed
 	public boolean isMessagePublishContactDisplay(){
 		if(getText(driver, By.xpath(Interfaces.ContactsPage.CONTROL_MESSAGE))
 				.equals(MESSAGEPUBLISH)){
@@ -101,13 +101,13 @@ public class Contacts_page extends Abstract_page {
 			return false;
 	}
 		
-	// Is CONTACT successfully saved 
+	// Is Publish Icon Shown
 	 public boolean isPublishContactDisplay(String _contact) {
 
 			searchforContact(_contact);
 
 			if (isControlExist(driver, By.xpath(Interfaces.ContactsPage.TABLE_TR
-					+ "[1]/td[3]/a/span/span[contains(text(),'Published')]")))
+					+ "[1]/td[4]/a/span/span[contains(text(),'Published')]")))
 				return true;
 			return false;
 	}
@@ -137,7 +137,7 @@ public class Contacts_page extends Abstract_page {
 		searchforContact(_contact);
 
 		if (isControlExist(driver, By.xpath(Interfaces.ContactsPage.TABLE_TR
-				+ "[1]/td[3]/a/span/span[contains(text(),'Unpublished')]")))
+				+ "[1]/td[4]/a/span/span[contains(text(),'Unpublished')]")))
 			return true;
 		return false;
 	}
@@ -405,6 +405,7 @@ public class Contacts_page extends Abstract_page {
 		click(driver, By.xpath(Interfaces.ContactsPage.FILTER_ORDERING));
 	}
 
+	// Change position of contact by using Ordering column
 	public boolean isContactChangePosition(String _contact) {
 		
 		searchforContact("");
@@ -420,6 +421,7 @@ public class Contacts_page extends Abstract_page {
 		return false;
 	}
 	
+	// Get position of Contact
 	public int getPositionContact(String _contact) {
 		int iCount = 0;
 		int position = 0;
@@ -435,5 +437,39 @@ public class Contacts_page extends Abstract_page {
 			}
 		}
 		return position;
+	}
+	
+	// Click Status of Icon in GRID
+	public void clickStatusIcon(String _contact) {
+		
+		searchforContact(_contact);
+		clickFirstContact();
+		click(driver, By.xpath(Interfaces.ContactsPage.TABLE_TR+"/td[4]/a/span"));
+	}
+	
+	// Click Featured Icon
+	public void clickFeaturedIcon(String _contact) {
+		
+		select(driver, By.xpath(Interfaces.ContactsPage.DROP_STATUS), STATUS_ALL);
+		searchforContact(_contact);
+		click(driver, By.xpath(Interfaces.ContactsPage.TABLE_TR+"/td[5]/a/img"));
+	}
+	
+	// Is Featured Icon
+	public boolean isShowFeaturedIcon(String _contact) {
+
+		//searchforContact(_contact);
+		if(isControlExist(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR+"[1]/td[5]/a/img[@alt='" + FEATURED + "']")))
+			return true;
+		return false;
+	}
+
+	// Is UnFeatured Icon 
+	public boolean isShowUnFeaturedIcon(String _contact) {
+
+		//searchforContact(_contact);
+		if(isControlExist(driver, By.xpath(Interfaces.ArticlePage.TABLE_TR+"[1]/td[5]/a/img[@alt='" + UNFEATURED + "']")))
+			return true;
+		return false;
 	}
 }
