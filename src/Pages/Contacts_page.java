@@ -317,43 +317,16 @@ public class Contacts_page extends Abstract_page {
 		}
 	}
 	
+	// Select Category
+	public void selectCategory (String _cate){
 		
-	//Search for contacts using the filter dropdown list
-	public void searchbyfilter (String _name, String _cate, String _stt){
+		select(driver, By.xpath(Interfaces.ContactsPage.DROP_CATEGORY), _cate);
+	}
+
+	// Select Category
+	public void selectStatus (String _status){
 		
-		click(driver, By.xpath(Interfaces.ContactsPage.BTN_CLEAR));
-		select(driver, By.xpath(Interfaces.ContactsPage.DROP_DISPLAY), STATUS_ALL); 
-			if (_cate != null){
-				select(driver, By.xpath(Interfaces.ContactsPage.DROP_CATEGORY), _cate);
-			} 
-			if (_stt != null){
-				select(driver, By.xpath(Interfaces.ContactsPage.DROP_STATUS), _stt);
-			}
-		
-		}
-	
-	//Is the filtered contact displayed == FAILED
-	public boolean isFilteredContact (String _cate, String _stt){
-		boolean show = false;
-		
-		int iCount = 0;
-		iCount = countElement(driver, By.xpath(Interfaces.ContactsPage.TABLE_TR));
-		for (int i = 1; i <= iCount; i++) {
-			String category = getText(
-					driver,
-					By.xpath(Interfaces.ContactsPage.TABLE_TR + "[" + i
-							+ "]/td[" + 6 + "]"));
-			
-			String status = getText(
-					driver,
-					By.xpath(Interfaces.ContactsPage.TABLE_TR + "[" + i
-							+ "]/td[" + 4 + "]/a/span/span"));
-			
-			if (category.equals(_cate) && status.equals(_stt)) {
-				show = true;
-			}
-		}
-		return show;		
+		select(driver, By.xpath(Interfaces.ContactsPage.DROP_STATUS), _status);
 	}
 	
 	// Sort the contacts table by ID column
@@ -426,5 +399,41 @@ public class Contacts_page extends Abstract_page {
 			paging = true;
 		}
 		return paging;
+	}
+	
+	public void clickOrdering() {
+		click(driver, By.xpath(Interfaces.ContactsPage.FILTER_ORDERING));
+	}
+
+	public boolean isContactChangePosition(String _contact) {
+		
+		searchforContact("");
+		selectDisplayItem("All");
+		int first, second = 0;
+		clickOrdering();
+		first = getPositionContact(_contact);
+		clickOrdering();
+		second = getPositionContact(_contact);
+		clickOrdering();
+		if (first != second)
+			return true;
+		return false;
+	}
+	
+	public int getPositionContact(String _contact) {
+		int iCount = 0;
+		int position = 0;
+		iCount = countElement(driver, By.xpath(Interfaces.ContactsPage.TABLE_TR));
+		for (int i = 1; i <= iCount; i++) {
+			String cell = getText(
+					driver,
+					By.xpath(Interfaces.ContactsPage.TABLE_TR + "[" + i
+							+ "]/td[" + 2 + "]/a"));
+			if (cell.equals(_contact)) {
+				position = i;
+				break;
+			}
+		}
+		return position;
 	}
 }
