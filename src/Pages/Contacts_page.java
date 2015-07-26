@@ -107,7 +107,7 @@ public class Contacts_page extends Abstract_page {
 			searchforContact(_contact);
 
 			if (isControlExist(driver, By.xpath(Interfaces.ContactsPage.TABLE_TR
-					+ "[1]/td[4]/a/span/span[contains(text(),'Published')]")))
+					+ "[1]/td[4]/descendant::span[contains(text(),'Published')]")))
 				return true;
 			return false;
 	}
@@ -137,7 +137,7 @@ public class Contacts_page extends Abstract_page {
 		searchforContact(_contact);
 
 		if (isControlExist(driver, By.xpath(Interfaces.ContactsPage.TABLE_TR
-				+ "[1]/td[4]/a/span/span[contains(text(),'Unpublished')]")))
+				+ "[1]/td[4]/descendant::span[contains(text(),'Unpublished')]")))
 			return true;
 		return false;
 	}
