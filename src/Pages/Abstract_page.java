@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -242,4 +243,30 @@ public class Abstract_page {
 	public String getPageTitle(WebDriver driver) {
 		return driver.getTitle();
 	}
+	
+	/*
+	 * Get Control Css
+	 * 
+	 * Parameter: dllName
+	 * 
+	 * Author: Nga Nguyen
+	 */
+	public String getControlCss(WebElement ddlName, String css)
+	{		
+		return ddlName.getCssValue(css);
+	}
+	
+	/*
+	 * Convert Rgba to Hex
+	 * 
+	 * Parameter: rgba
+	 * 
+	 * Author: Nga Nguyen
+	 */
+	
+	 public static String convertRgbaToHex(String rgba)
+	 {
+	 	String hex = Color.fromString(rgba).asHex();
+	 	return hex;
+	 }
 }
