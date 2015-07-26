@@ -31,13 +31,13 @@ public class CONTACTS_TC010_to_016 extends Abstract_test {
 
 		log.info("Enter Contacts page");
 		contactsPage = homePage.navigatetoContactspage();	
-
+		log.info("Select '5' item of the 'Display' dropdown list");
 		contactsPage.selectDisplayItem("5");
 		
-		log.info("Enter Contacts page");
-		verifyTrue(contactsPage.isPaging(5));
+		verifyTrue(contactsPage.isPaging(5), "Verify the contact table is paging into 5 contacts per page");
+		
 		contactsPage.selectDisplayItem("All");
-		verifyFalse(contactsPage.isControlExist(driver, By.xpath(Interfaces.ContactsPage.BAR_PAGING)));
+		verifyTrue(contactsPage.isControlNotExist(driver, By.xpath(Interfaces.ContactsPage.BAR_PAGING)), "Verify all contacts are displayed in one page");
 
 	}
 	
@@ -88,6 +88,36 @@ public class CONTACTS_TC010_to_016 extends Abstract_test {
 		log.info("Verify the first article changes its position with the second article");
 		verifyTrue(contactsPage.isContactChangePosition(contact.getName()));
 		
+	}
+	
+	@Test(description = "Verify user can change the status of contacts using the Status column", dependsOnMethods = "TC_CONTACT_010")
+	public void TC_CONTACT_015 (){
+		
+		log.info("Click on the status icon of the selected contact in the Status column");
+		contactsPage.clickStatusIcon(contact4.getName());
+		
+		log.info("Verify the contact is published successfully");
+		verifyTrue(contactsPage.isMessageUnpublishContactDisplay(), "1 contact unpublished");
+		verifyTrue(contactsPage.isUnpublishContactDisplay(contact4.getName()),"The icon of the selected item is showed as 'Unpublish'. ");
+	
+		log.info("Click on the status icon of the selected contact in the Status column");
+		contactsPage.clickStatusIcon(contact4.getName());
+		
+		log.info("Verify the contact is published successfully");
+		verifyTrue(contactsPage.isMessagePublishContactDisplay(), "1 contact published");
+		verifyTrue(contactsPage.isPublishContactDisplay(contact4.getName()),"The icon of the selected item is showed as 'Publish'. ");
+	}
+	
+	@Test(description = "Verify user can change the feature property of contacts using the Featured column", dependsOnMethods = "TC_CONTACT_010")
+	public void TC_CONTACT_016 (){
+		
+		log.info("Verify the contact is featured successfully");
+		contactsPage.clickFeaturedIcon(contact4.getName());
+		verifyTrue(contactsPage.isShowFeaturedIcon(contact4.getName()),"The icon of the selected item is showed as 'Featured'. ");		
+		
+		log.info("Verify the contact is unfeatured successfully");
+		contactsPage.clickFeaturedIcon(contact4.getName());
+		verifyTrue(contactsPage.isShowUnFeaturedIcon(contact4.getName()),"The icon of the selected item is showed as 'Unfeatured'. ");
 	}
 	
 	@AfterClass
