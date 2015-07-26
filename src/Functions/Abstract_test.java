@@ -62,7 +62,7 @@ public abstract class Abstract_test {
 		//System.setProperty("webdriver.ie.driver", "driver/IEDriverServer.exe");
         //driver=new InternetExplorerDriver();
 		
-		url = data.getUrl("Logigear_url");
+		url = data.getUrl("Local_url");
 		driver.get(url);
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
@@ -142,7 +142,7 @@ public abstract class Abstract_test {
 	 * Author: Tan Vo
 	 */
 	public void getData(){
-		user = data.getUser("Tan");
+		user = data.getUser("default user");
 		article = data.getArticle("Article1");
 		article2 = data.getArticle("Article2");
 		article3 = data.getArticle("Article3");
