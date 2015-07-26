@@ -58,9 +58,16 @@ public class CLIENTS_TC012_to_TC016 extends Abstract_test {
 				
 		clientPage.clickCancel();
 		
-		verifyTrue(clientPage.isClientNotReplacing(client2.getName(), client.getName()), " A new category is created without replacing the old client");
+		verifyTrue(clientPage.isMultiClientsDisplay(client2.getName(), client.getName()), " A new category is created without replacing the old client");
 		
 	}
+	
+	@Test (description = "Verify that user cannot create a new client without entering the name of the client")
+	public void TC_CLIENTS_014(){
+		log.info(" create a new client without entering the name of the client");
+		clientPage.addNewClient("", client.getContact(), client.getEmail(), "", "");
+	}
+	
 	
 	@AfterClass
 	public void end(){
