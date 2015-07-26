@@ -482,4 +482,36 @@ public class Client_page extends Abstract_page {
 
 		click(driver, By.xpath(Interfaces.ClientPage.BTN_CHECKIN));
 	}
+	
+	/*
+	 * Is new client not replace the old client when using Save As Copy
+	 * 
+	 * Author: Nga Nguyen
+	 */
+	public boolean isClientNotReplacing(String _newClient, String _oldClient) {
+
+		searchClient(_newClient);
+
+		String cell = getText(driver,
+				By.xpath(Interfaces.BannerPage.TABLE_TR + "[1]/td[2]/a"));
+		
+		searchClient(_oldClient);
+
+		String cell1 = getText(driver,
+				By.xpath(Interfaces.BannerPage.TABLE_TR + "[1]/td[2]/a"));
+
+		if (cell.equals(_newClient) && cell1.equals(_oldClient))
+			return true;
+		return false;
+	}
+	
+	/*
+	 * Click Close button
+	 * 
+	 * Author: Nga Nguyen
+	 */
+	public void clickCancel() {
+
+		click(driver, By.xpath(Interfaces.NewClientPage.BTN_CANCEL));
+	}
 }
