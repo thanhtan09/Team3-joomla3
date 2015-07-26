@@ -1,8 +1,8 @@
 package TestCases.CONTACTS;
 
-import org.junit.AfterClass;
-import org.openqa.selenium.By;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.AfterClass;
+import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
 import Functions.Abstract_test;
@@ -33,13 +33,15 @@ public class CONTACTS_TC010_to_016 extends Abstract_test {
 		contactsPage = homePage.navigatetoContactspage();	
 
 		contactsPage.selectDisplayItem("5");
+		
+		log.info("Enter Contacts page");
 		verifyTrue(contactsPage.isPaging(5));
 		contactsPage.selectDisplayItem("All");
 		verifyFalse(contactsPage.isControlExist(driver, By.xpath(Interfaces.ContactsPage.BAR_PAGING)));
 
 	}
 	
-	@Test(description = "Verify user can sort the contact table by ID column", dependsOnMethods = "TC_CONTACT_012")
+	@Test(description = "Verify user can sort the contact table by ID column")
 	public void TC_CONTACT_011 (){		
 		
 		contactsPage.clickSortID();
@@ -51,7 +53,7 @@ public class CONTACTS_TC010_to_016 extends Abstract_test {
 		verifyTrue(contactsPage.isContactDESByID(), "The contacts is sorted by ID in descending order.");
 	}
 	
-	@Test(description = "Verify user can search for contacts using the filter dropdown lists", dependsOnMethods = "TC_CONTACT_011")
+	@Test(description = "Verify user can search for contacts using the filter dropdown lists", dependsOnMethods = "TC_CONTACT_012")
 	public void TC_CONTACT_010 (){
 		
 		log.info("Create new contact");
@@ -63,15 +65,35 @@ public class CONTACTS_TC010_to_016 extends Abstract_test {
 		log.info("Verify Created contact is displayed on the contacts table");
 		verifyTrue(contactsPage.isContactDisplay(contact4.getName()));	
 		
-		contactsPage.searchbyfilter(contact4.getName(),"Sample Data-Contact", "Published");
+		log.info("Select Category");
+		contactsPage.selectCategory("Sample Data-Contact");
 		
-		verifyTrue(contactsPage.isContactDisplay(contact4.getName()));	
+		log.info("Select Status");
+		contactsPage.selectStatus("Published");
+		
+		verifyTrue(contactsPage.isContactDisplay(contact4.getName()));
 		
 	}	
+	
+	@Test(description = "Verify user can change the order of contacts using the Ordering column")
+	public void TC_CONTACT_014 (){
 		
+		log.info("Create new contact");
+		contactsPage.addNewContact(contact.getName(),contact.getCategory(),"","","");
+		
+		log.info("Verify Contact successfully saved");
+		verifyTrue(contactsPage.isMessageContactDisplay());
+		verifyTrue(contactsPage.isContactDisplay(contact.getName()));	
+		
+		log.info("Verify the first article changes its position with the second article");
+		verifyTrue(contactsPage.isContactChangePosition(contact.getName()));
+		
+	}
+	
 	@AfterClass
 	public void end(){
 		contactsPage.deleteContact(contact4.getName());
+		contactsPage.deleteContact(contact.getName());
 		shutdown();
 	}
 }
