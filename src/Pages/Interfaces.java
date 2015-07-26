@@ -267,6 +267,7 @@ public class Interfaces {
 		public static final String CHECKBOX_1 = "//input[@id='cb0']";
 		public static final String LNK_SORTID = "//a[contains(text(), 'ID')]"; 
 		public static final String BAR_PAGING = "//div[@class = 'pagination']/div[4]";
+		public static final String FILTER_ORDERING = "//table[@class='adminlist']/thead/tr/th/a[contains(text(),'Ordering')]";
 			
 	}
 
