@@ -10,7 +10,7 @@ public class Contacts_page extends Abstract_page {
 	// Message
 	private String MESSAGESUCCESS = "Contact successfully saved";
 	private String MESSAGEPUBLISH = "1 contact successfully published";
-	private String MESSAGEUNPUBLISH = "1 contact successfully unpublished.";
+	private String MESSAGEUNPUBLISH = "1 contact successfully unpublished";
 	private String MESSAGEARCHIVE = "1 contact successfully archived";
 	private String MESSAGEDELETE = "1 contact successfully deleted";
 	private String MESSAGECHECKIN = "1 contact successfully checked in";
