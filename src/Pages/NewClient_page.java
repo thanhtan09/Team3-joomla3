@@ -36,6 +36,9 @@ public class NewClient_page extends Abstract_page{
 		case "Save":
 			clickSave();
 			break;
+		case "SaveAsCopy":
+			clickSaveAsCopy();
+			break;
 		case "":
 		case "SaveAndClose":
 			clickSaveandClose();
@@ -116,5 +119,15 @@ public class NewClient_page extends Abstract_page{
 	 */
 	public void clickSave(){
 		click(driver, By.xpath(Interfaces.NewClientPage.BTN_SAVE));
+	}
+	
+	/*
+	 * Click Save As Copy button
+	 * 
+	 * Author: Nga Nguyen
+	 */
+	public void clickSaveAsCopy() {
+
+		click(driver, By.xpath(Interfaces.NewClientPage.BTN_SAVEASCOPY));
 	}
 }
