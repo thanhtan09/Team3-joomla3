@@ -2,11 +2,17 @@ package Pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class NewClient_page extends Abstract_page{
 
 	private WebDriver driver;
-	private String PAGE_TITLE = "joomla selenium advance - Administration - Banner Manager: Edit Client";
+	//private String PAGE_TITLE = "joomla selenium advance - Administration - Banner Manager: Edit Client";
+	private String PAGE_TITLE = "Administration - Banner Manager: Edit Client";
+	
+	@FindBy(xpath = "//input[@id='jform_name']")
+	private WebElement TXT_NAME;
 	
 	public NewClient_page(WebDriver driver){
 		this.driver = driver;
@@ -129,5 +135,30 @@ public class NewClient_page extends Abstract_page{
 	public void clickSaveAsCopy() {
 
 		click(driver, By.xpath(Interfaces.NewClientPage.BTN_SAVEASCOPY));
+	}
+	
+	/*
+	 * Get color of Name control
+	 * 
+	 * Author: Nga Nguyen
+	 */
+	public String getColorOfTitle()
+	{
+		String hex = convertRgbaToHex(getControlCss(TXT_NAME, "color"));
+		return hex;		
+	}
+	
+	/*
+	 * is Name control changed to red
+	 * 
+	 * Author: Nga Nguyen
+	 */
+	
+	public boolean isControlChangedtoRed(){
+		String color = getColorOfTitle();
+		if (color.equals("FF0000"))
+			return true;
+		return false;
+		
 	}
 }
