@@ -371,9 +371,9 @@ public class Contacts_page extends Abstract_page {
 		boolean descending = false;
 		
 		for(int i=1;i<count;i++){
-			firstrow = Integer.parseInt(getText(driver, By.xpath(Interfaces.ContactsPage.TABLE_TR+"["+i+"]/td[13]")));
+			firstrow = Integer.parseInt(getText(driver, By.xpath(Interfaces.ContactsPage.TABLE_TR+"["+i+"]/td[10]")));
 			int j = i+1;
-			secondrow = Integer.parseInt(getText(driver, By.xpath(Interfaces.ContactsPage.TABLE_TR+"["+j+"]/td[13]")));
+			secondrow = Integer.parseInt(getText(driver, By.xpath(Interfaces.ContactsPage.TABLE_TR+"["+j+"]/td[10]")));
 			if(firstrow>secondrow){
 				descending = true;
 			}
@@ -389,15 +389,15 @@ public class Contacts_page extends Abstract_page {
 	// Is Sort ASC order
 	public boolean isContactASCByID(){
 		
-		int count = countElement(driver, By.xpath(Interfaces.BannerPage.TABLE_TR));
+		int count = countElement(driver, By.xpath(Interfaces.ContactsPage.TABLE_TR));
 		int firstrow=0;
 		int secondrow=0;
 		boolean ascending = false;
 		
 		for(int i=1;i<count;i++){
-			firstrow = Integer.parseInt(getText(driver, By.xpath(Interfaces.ContactsPage.TABLE_TR+"["+i+"]/td[13]")));
+			firstrow = Integer.parseInt(getText(driver, By.xpath(Interfaces.ContactsPage.TABLE_TR+"["+i+"]/td[10]")));
 			int j = i+1;
-			secondrow = Integer.parseInt(getText(driver, By.xpath(Interfaces.ContactsPage.TABLE_TR+"["+j+"]/td[13]")));
+			secondrow = Integer.parseInt(getText(driver, By.xpath(Interfaces.ContactsPage.TABLE_TR+"["+j+"]/td[10]")));
 			if(firstrow<secondrow)
 				ascending = true;
 			else {
