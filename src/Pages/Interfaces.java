@@ -111,6 +111,7 @@ public class Interfaces {
 		public static final String TXT_EMAIL = "//input[@id='jform_email']";
 		public static final String BTN_SAVE = "//li[@id='toolbar-apply']/a/span";
 		public static final String BTN_SAVEANDCLOSE = "//li[@id='toolbar-save']/a/span";
+		public static final String BTN_SAVEASCOPY = "//li[@id='toolbar-save-copy']/a/span";
 		public static final String BTN_SAVEANDNEW = "//li[@id='toolbar-save-new']/a/span";
 		public static final String BTN_CANCEL = "//li[@id='toolbar-cancel']/a/span";
 		public static final String DROP_STATUS = "//select[@id='jform_state']";
