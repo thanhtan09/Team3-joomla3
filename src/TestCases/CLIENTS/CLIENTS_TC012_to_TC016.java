@@ -68,18 +68,27 @@ public class CLIENTS_TC012_to_TC016 extends Abstract_test {
 		clientPage.addNewClient("", client.getContact(), client.getEmail(), "", "");
 		newclientPage = Factory_page.getNewClientPage(driver);
 		
-		verifyTrue(newclientPage.isControlChangedtoRed(), "The color of Client name textbox changes to red");
+		verifyTrue(newclientPage.isTXTNAMEChangedtoRed(), "The color of Client name textbox changes to red");
 	
 	}
 	
 	@Test (description = "Verify that user cannot create a new client after entering invalid email address")
 	public void TC_CLIENTS_015(){
 		log.info(" create a new client without entering the name of the client");
-		clientPage.addNewClient("", client.getContact(), client.getEmail(), "", "");
-		newclientPage = Factory_page.getNewClientPage(driver);
+		newclientPage.addClient(client4.getName(), client4.getContact(), client4.getEmail(), "", "");
 		
-		verifyTrue(newclientPage.isControlChangedtoRed(), "The color of Client name textbox changes to red");
+		verifyTrue(newclientPage.isTXTEMAILChangedtoRed(), "The color of Client name textbox changes to red");
+		
+		clientPage.clickCancel();
+		verifyFalse(clientPage.isClientcreated(client4.getName()), "New client is not created");
+		clientPage.clickClear();
+	}
 	
+	@Test (description = "Verify that user can change the quantity of items displayed in banner table")
+	public void TC_CLIENTS_016(){
+		
+		
+		
 	}
 	
 	@AfterClass
