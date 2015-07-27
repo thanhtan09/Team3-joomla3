@@ -269,6 +269,8 @@ public class Client_page extends Abstract_page {
 	 */
 	public void deleteClient(String client) {
 
+		if(isControlExist(driver, By.xpath(Interfaces.NewClientPage.BTN_CANCEL)))
+			click(driver, By.xpath(Interfaces.NewClientPage.BTN_CANCEL));
 		navigateMenu(driver, "Components|Banners|Clients");
 
 		selectStatus("All");

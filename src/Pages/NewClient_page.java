@@ -134,28 +134,15 @@ public class NewClient_page extends Abstract_page{
 	}
 	
 	/*
-	 * Get color of Name control
-	 * 
-	 * Author: Nga Nguyen
-	 */
-	public String getColorOfTitle()
-	{
-		String hex = convertRgbaToHex(getControlCss(TXT_NAME, "color"));
-		System.out.println(hex);
-		return hex;		
-	}
-	
-	/*
 	 * is Name control changed to red
 	 * 
 	 * Author: Nga Nguyen
 	 */
 	
 	public boolean isControlChangedtoRed(){
-		String color = getColorOfTitle();
-		if (color.equals("FF0000"))
-			return true;
-		return false;
+		String txt_attr = driver.findElement(By.xpath(".//*[@id='jform_" + "name" + "']")).getAttribute("aria-invalid").toString();
+		  Boolean check = txt_attr.equals("true");
+		  return check;
 		
 	}
 }
