@@ -35,8 +35,6 @@ public class NewClient_page extends Abstract_page{
 			enterEmail(email);
 		if(status!="")
 			selectStatus(status);
-		if(status!="")
-			selectStatus(status);
 		
 		switch (button) {
 		case "Save":
