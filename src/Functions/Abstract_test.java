@@ -29,7 +29,7 @@ public abstract class Abstract_test {
 	
 	//Data content
 	protected Article article,article2,article3,article4,article5,article6,article7;
-	protected Client client,client2,client3;
+	protected Client client,client2,client3, client4;
 	protected Category category, category2, category3;
 	protected Banner banner,banner2,banner3,banner4;
 	protected Contact contact, contact2, contact3, contact4;
@@ -153,6 +153,7 @@ public abstract class Abstract_test {
 		client = data.getClient("Client1");
 		client2 = data.getClient("Client2");
 		client3 = data.getClient("Client3");
+		client4 = data.getClient("Client4");
 		category = data.getCategory("Cate1");
 		category2 = data.getCategory("Cate2");
 		category3 = data.getCategory("Cate3");
