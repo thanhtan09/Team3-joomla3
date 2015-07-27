@@ -75,7 +75,7 @@ public class CLIENTS_TC012_to_TC016 extends Abstract_test {
 	public void end(){
 		clientPage.deleteClient(client.getName());
 		clientPage.deleteClient(client2.getName());
-	shutdown();
+		shutdown();
 	}
 	
 }
