@@ -141,6 +141,7 @@ public class NewClient_page extends Abstract_page{
 	public String getColorOfTitle()
 	{
 		String hex = convertRgbaToHex(getControlCss(TXT_NAME, "color"));
+		System.out.println(hex);
 		return hex;		
 	}
 	
