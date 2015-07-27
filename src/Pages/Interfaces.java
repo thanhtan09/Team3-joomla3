@@ -151,6 +151,7 @@ public class Interfaces {
 	public class NewCatetoryPage{
 		public static final String TXT_TITLE = "//input[@id='jform_title']";
 		public static final String BTN_SAVEANDCLOSE = "//li[@id='toolbar-save']/a/span";
+		public static final String BTN_SAVEANDNEW = "//li[@id='toolbar-save-new']/a/span";
 		public static final String PAGE_TITLE = "//div[contains(@class, 'pagetitle')]/h2";
 		public static final String BTN_SAVE = "//li[@id='toolbar-apply']/a/span";
 		public static final String BTN_CLOSE = "//li[@id='toolbar-cancel']/a/span";
@@ -158,6 +159,7 @@ public class Interfaces {
 		public static final String DROP_STATUS = "//select[@id='jform_published']";
 		public static final String DROP_ACCESS = "//select[@id='jform_access']";
 		public static final String DROP_LANGUAGE = "//select[@id='jform_language']";
+		public static final String BTN_HELP = "//li[@id='toolbar-help']/a/span";
 	}
 	/*
 	 * Element in Banner page
