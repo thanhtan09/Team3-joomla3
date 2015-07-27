@@ -8,10 +8,8 @@ import org.openqa.selenium.support.FindBy;
 public class NewClient_page extends Abstract_page{
 
 	private WebDriver driver;
-	//private String PAGE_TITLE = "joomla selenium advance - Administration - Banner Manager: Edit Client";
-	private String PAGE_TITLE = "Administration - Banner Manager: Edit Client";
+	private String PAGE_TITLE = "joomla selenium advance - Administration - Banner Manager: Edit Client";
 	
-	@FindBy(xpath = "//input[@id='jform_name']")
 	private WebElement TXT_NAME;
 	
 	public NewClient_page(WebDriver driver){
