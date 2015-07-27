@@ -516,4 +516,14 @@ public class Client_page extends Abstract_page {
 
 		click(driver, By.xpath(Interfaces.NewClientPage.BTN_CANCEL));
 	}
+	
+	/*
+	 * Click on Clear button
+	 * 
+	 * Author: Nga Nguyen
+	 */
+	public void clickClear() {
+
+		click(driver, By.xpath(Interfaces.ClientPage.BTN_CLEAR));
+	}
 }
