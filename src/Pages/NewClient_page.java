@@ -138,12 +138,24 @@ public class NewClient_page extends Abstract_page{
 	 * 
 	 * Author: Nga Nguyen
 	 */
-	
-	public boolean isControlChangedtoRed(){
+	public boolean isTXTNAMEChangedtoRed(){
 		String txt_attr = driver.findElement(By.xpath(".//*[@id='jform_" + "name" + "']")).getAttribute("aria-invalid").toString();
 		  Boolean check = txt_attr.equals("true");
 		  return check;
 		
 	}
 	
+	/*
+	 * is Email control changed to red
+	 * 
+	 * Author: Nga Nguyen
+	 */
+	
+	public boolean isTXTEMAILChangedtoRed(){
+		String txt_attr = driver.findElement(By.xpath(".//*[@id='jform_" + "email" + "']")).getAttribute("aria-invalid").toString();
+			  Boolean check = txt_attr.equals("true");
+			  return check;	
+		}
+	
+
 }
