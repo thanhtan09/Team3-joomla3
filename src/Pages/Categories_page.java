@@ -197,4 +197,5 @@ public class Categories_page extends Abstract_page {
 		select(driver, By.xpath(Interfaces.CatetoryPage.DROP_ACCESS), access);
 		select(driver, By.xpath(Interfaces.CatetoryPage.DROP_LANGUAGE), language);
 	}
+	
 }
