@@ -145,4 +145,5 @@ public class NewClient_page extends Abstract_page{
 		  return check;
 		
 	}
+	
 }
