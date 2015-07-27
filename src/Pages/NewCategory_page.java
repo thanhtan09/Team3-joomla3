@@ -8,6 +8,7 @@ public class NewCategory_page extends Abstract_page{
 	private WebDriver driver;
 	private String EDIT_TITLE = "Category Manager: Edit An Articles Category";
 	private String MESSAGESUCCESS = "Category successfully saved";
+	private String HELP_TITLE = "Joomla! Help";
 	
 	public NewCategory_page(WebDriver driver) {
 		this.driver = driver;
@@ -77,6 +78,31 @@ public class NewCategory_page extends Abstract_page{
 		if (getText(driver, By.xpath(Interfaces.NewCatetoryPage.MESSAGE)).equals(
 				MESSAGESUCCESS))
 			return true;
+		return false;
+	}
+	
+	//NGA NGUYEN
+	public void addSaveNew(String title, String status){
+		enter(driver, By.xpath(Interfaces.NewCatetoryPage.TXT_TITLE), title);
+		if (status!= ""){
+			select(driver, By.xpath(Interfaces.NewCatetoryPage.DROP_STATUS), status);
+		}
+		click(driver, By.xpath(Interfaces.NewCatetoryPage.BTN_SAVEANDNEW));
+	}
+	
+	/* 
+	 * Is Help Window display
+	 * Author: Nga Nguyen
+	 */
+	public boolean isHelpWindow(){
+		String currentWindows = getCurrentWindows(driver);
+		click(driver, By.xpath(Interfaces.CatetoryPage.BTN_HELP));
+		switchToNewWindows(driver);
+		if(getPageTitle(driver).equals(HELP_TITLE)){
+			driver.close();
+			driver.switchTo().window(currentWindows);
+			return true;
+		} else
 		return false;
 	}
 }
