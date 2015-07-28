@@ -66,6 +66,18 @@ public class Categories_page extends Abstract_page {
 		
 		return new Banner_page(driver);
 	}
+	
+	/*
+	 * Navigate to Article page
+	 * 
+	 * Author: Tan Vo
+	 */
+	public Article_page navigatetoArticlePage(){
+		
+		navigateMenu(driver, "Content|Article Manager");		
+		
+		return new Article_page(driver);
+	}
 
 	/*
 	 * Check message display
@@ -112,6 +124,9 @@ public class Categories_page extends Abstract_page {
 		searchCategory(_cate2);
 		String cell2 = getText(driver,
 				By.xpath(Interfaces.CatetoryPage.TABLE_TR + "[1]/td[2]/a"));
+		
+		//click(driver, By.xpath(Interfaces.CatetoryPage.BTN_CLEAR));
+		
 		if (cell1.equals(_cate1) && cell2.equals(_cate2))
 			return true;
 		return false;
