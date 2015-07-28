@@ -46,6 +46,23 @@ public class Article_page extends Abstract_page {
 				button);
 
 	}
+	
+	/*
+	 * Add multi articles
+	 * 
+	 * Author: Nga Nguyen
+	 */
+	public void addMultiArticle(String _title, String _category, String _status,
+			String _content, String _image, String button){
+		for(int i=1;i<=2;i++){
+			clickNewbutton();
+
+			NewArticle_page newarticle = Factory_page.getNewArticlePage(driver);
+
+			newarticle.addNewArticle(_title + i, _category, _status, _content, _image,
+					button);
+			}
+	}
 
 	/*
 	 * Click on New button
@@ -649,5 +666,43 @@ public class Article_page extends Abstract_page {
 		}
 				
 		return ascending;
+	}
+	
+	/*
+	 * Author: Nga Nguyen
+	 * Move article to Category
+	 */
+	public void moveArticlestoCate(String _article, String _cate){
+		
+		searchforArticle(_article);
+		click(driver, By.xpath(Interfaces.ArticlePage.CHECKBOX_ALL));
+		select(driver, By.xpath(Interfaces.ArticlePage.DROP_CATEFORCOPYORMOVE), _cate);
+		click(driver, By.xpath(Interfaces.ArticlePage.RAD_MOVE));
+		click(driver, By.xpath(Interfaces.ArticlePage.BTN_PROCESS));
+	}
+	
+	/*
+	 * Is Selected Articles moved to Cate
+	 * Author: Nga Nguyen
+	 */
+	public boolean isArticlemovedtoCate(String _article, String _cate){
+		
+		boolean show = false;
+		select(driver, By.xpath(Interfaces.ArticlePage.DROP_CATE), _cate);
+
+		int iCount = 0;
+		iCount = countElement(driver,
+				By.xpath(Interfaces.ArticlePage.TABLE_TR));
+		for (int i = 1; i <= iCount; i++) {
+			String cell = getText(
+					driver,
+					By.xpath(Interfaces.ArticlePage.TABLE_TR + "[" + i
+							+ "]/td[" + 2 + "]/a"));
+			if (cell.equals(_article)) {
+				show = true;
+				break;
+			}
+		}
+			return show;
 	}
 }
