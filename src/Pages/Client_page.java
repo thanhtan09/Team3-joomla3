@@ -50,7 +50,6 @@ public class Client_page extends Abstract_page {
 
 		String cell = getText(driver,
 				By.xpath(Interfaces.BannerPage.TABLE_TR + "[1]/td[2]/a"));
-		clickClear();	
 		if (cell.equals(client))	
 			return true;
 		return false;
@@ -539,7 +538,7 @@ public class Client_page extends Abstract_page {
 	public boolean isClientDisplayedInTable(String display) {
 
 		if (getText(driver, By.xpath(Interfaces.ClientPage.TXT_SEARCH)) != null)
-			enter(driver, By.xpath(Interfaces.ClientPage.TXT_SEARCH), "");
+			clickClear();
 
 			select(driver, By.xpath(Interfaces.ClientPage.DROP_DISPLAY), display);
 		
@@ -553,4 +552,26 @@ public class Client_page extends Abstract_page {
 			}
 			return false;
 		}
+	
+	/*
+	 * Is new client not created
+	 * 
+	 * Author: Nga Nguyen
+	 */
+	public boolean isClientNotInGrid(String client) {
+		
+		if(isControlExist(driver, By.xpath(Interfaces.NewClientPage.BTN_CANCEL)))
+				click(driver, By.xpath(Interfaces.NewClientPage.BTN_CANCEL));
+
+		searchClient(client);
+
+		if(isControlNotExist(driver, By.xpath(Interfaces.ClientPage.CHECKBOX_1)))
+			return true;
+		return false;
+	}
+
+
 }
+
+
+
