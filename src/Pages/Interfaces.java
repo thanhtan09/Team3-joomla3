@@ -56,6 +56,8 @@ public class Interfaces {
 		public static final String RAD_COPY = "//input[@id='batch[move_copy]c']";
 		public static final String RAD_MOVE = "//input[@id='batch[move_copy]m']";
 		public static final String DROP_CATEFORCOPYORMOVE = "//select[@id='batch-category-id']";
+		public static final String CHECKBOX_ALL = "//input[@name ='checkall-toggle']";
+		public static final String DROP_CATE = "//select[@name ='filter_category_id']";
 	}
 
 	/*
@@ -146,6 +148,7 @@ public class Interfaces {
 		public static final String BTN_HELP = "//li[@id='toolbar-help']/a/span";
 		public static final String DROP_ACCESS = "//select[@name='filter_access']";
 		public static final String DROP_LANGUAGE = "//select[@name='filter_language']";
+		public static final String BTN_CLEAR = "//button[contains(text(),'Clear')]";
 	}
 	
 	/*
