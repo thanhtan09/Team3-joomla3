@@ -48,6 +48,7 @@ public class Categories_page extends Abstract_page {
 	} 
 	
 	public Categories_page addNewCategory(String title, String status, String access, String language, String button) {
+		
 		clickNew();
 
 		NewCategory_page newCate = Factory_page.getNewCategoryPage(driver);
@@ -99,16 +100,19 @@ public class Categories_page extends Abstract_page {
 	 * 
 	 * Author: Nga Nguyen
 	 */
-	public boolean isMultiCategoryDisplay(String cate1, String cate2) {
+	public boolean isMultiCategoryDisplay(String _cate1, String _cate2) {
 		
-		searchCategory(cate1);
+		if(isControlExist(driver, By.xpath(Interfaces.NewCatetoryPage.BTN_CANCEL)))
+			click(driver, By.xpath(Interfaces.NewCatetoryPage.BTN_CANCEL));
+		
+		searchCategory(_cate1);
 		String cell1 = getText(driver,
 				By.xpath(Interfaces.CatetoryPage.TABLE_TR + "[1]/td[2]/a"));
 		
-		searchCategory(cate2);
+		searchCategory(_cate2);
 		String cell2 = getText(driver,
 				By.xpath(Interfaces.CatetoryPage.TABLE_TR + "[1]/td[2]/a"));
-		if (cell1.equals(cate1) && cell2.equals(cate2))
+		if (cell1.equals(_cate1) && cell2.equals(_cate2))
 			return true;
 		return false;
 
