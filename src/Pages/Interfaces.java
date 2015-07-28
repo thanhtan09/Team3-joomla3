@@ -161,6 +161,8 @@ public class Interfaces {
 		public static final String DROP_ACCESS = "//select[@id='jform_access']";
 		public static final String DROP_LANGUAGE = "//select[@id='jform_language']";
 		public static final String BTN_HELP = "//li[@id='toolbar-help']/a/span";
+		public static final String BTN_CANCEL = "//li[@id='toolbar-cancel']/a/span";
+		public static final String BTN_SAVEASCOPY = "//li[@id='toolbar-save-copy']/a/span";
 	}
 	/*
 	 * Element in Banner page
