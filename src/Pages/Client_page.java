@@ -497,12 +497,12 @@ public class Client_page extends Abstract_page {
 		searchClient(_client1);
 
 		String cell = getText(driver,
-				By.xpath(Interfaces.BannerPage.TABLE_TR + "[1]/td[2]/a"));
+				By.xpath(Interfaces.ClientPage.TABLE_TR + "[1]/td[2]/a"));
 		
 		searchClient(_client2);
 
 		String cell1 = getText(driver,
-				By.xpath(Interfaces.BannerPage.TABLE_TR + "[1]/td[2]/a"));
+				By.xpath(Interfaces.ClientPage.TABLE_TR + "[1]/td[2]/a"));
 
 		if (cell.equals(_client1) && cell1.equals(_client2))
 			return true;
