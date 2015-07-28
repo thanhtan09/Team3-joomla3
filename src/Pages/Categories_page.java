@@ -19,6 +19,7 @@ public class Categories_page extends Abstract_page {
 	private String STATUS_PUBLISH = "Published";
 	private String STATUS_UNPUBLISH = "Unpublished";
 	private String HELP_TITLE = "Joomla! Help";
+	private String CATEMANAGER_TITLE = "joomla selenium advance - Administration - Category Manager: Articles";
 	
 	public Categories_page(WebDriver driver) {
 		this.driver = driver;
@@ -46,6 +47,13 @@ public class Categories_page extends Abstract_page {
 		return new Categories_page(driver);
 	} 
 	
+	public Categories_page addNewCategory(String title, String status, String access, String language, String button) {
+		clickNew();
+
+		NewCategory_page newCate = Factory_page.getNewCategoryPage(driver);
+		newCate.addNew(title, status, access, language, button);
+		return new Categories_page(driver);
+	} 
 	/*
 	 * Navigate to Banner page
 	 * 
@@ -84,6 +92,56 @@ public class Categories_page extends Abstract_page {
 			return true;
 		return false;
 
+	}
+	
+	/*
+	 * Check multi categories are created
+	 * 
+	 * Author: Nga Nguyen
+	 */
+	public boolean isMultiCategoryDisplay(String cate1, String cate2) {
+		
+		searchCategory(cate1);
+		String cell1 = getText(driver,
+				By.xpath(Interfaces.CatetoryPage.TABLE_TR + "[1]/td[2]/a"));
+		
+		searchCategory(cate2);
+		String cell2 = getText(driver,
+				By.xpath(Interfaces.CatetoryPage.TABLE_TR + "[1]/td[2]/a"));
+		if (cell1.equals(cate1) && cell2.equals(cate2))
+			return true;
+		return false;
+
+	}
+	
+	/*
+	 * Is new category not created
+	 * 
+	 * Author: Nga Nguyen
+	 */
+	public boolean isCategoryNotInGrid(String cate) {
+		
+		if(isControlExist(driver, By.xpath(Interfaces.NewClientPage.BTN_CANCEL)))
+				click(driver, By.xpath(Interfaces.NewClientPage.BTN_CANCEL));
+
+		searchCategory(cate);
+
+		if(isControlNotExist(driver, By.xpath(Interfaces.CatetoryPage.CHECKBOX_1)))
+			return true;
+		return false;
+	}
+	
+	/*
+	 * Is Categories Manager page display
+	 * 
+	 * Author: Nga Nguyen
+	 */
+	public boolean isCateManagerPage() {
+		
+		if(getPageTitle(driver).equals(CATEMANAGER_TITLE))
+			return true;
+		return false;
+		
 	}
 	
 	/*
