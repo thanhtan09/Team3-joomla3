@@ -42,6 +42,44 @@ public class NewCategory_page extends Abstract_page{
 
 	} 
 	
+	public void addNew(String title, String status, String access, String language, String button){
+		enter(driver, By.xpath(Interfaces.NewCatetoryPage.TXT_TITLE), title);
+		if (status!= ""){
+			select(driver, By.xpath(Interfaces.NewCatetoryPage.DROP_STATUS), status);
+		}
+		
+		if (access!= ""){
+			select(driver, By.xpath(Interfaces.NewCatetoryPage.DROP_ACCESS), access);
+		}
+		
+		if (language!= ""){
+			select(driver, By.xpath(Interfaces.NewCatetoryPage.DROP_LANGUAGE), language);
+		}
+		
+		switch (button) {
+		case "Save":
+			click(driver, By.xpath(Interfaces.NewCatetoryPage.BTN_SAVE));
+			break;
+		case "SaveAndNew":
+			click(driver, By.xpath(Interfaces.NewCatetoryPage.BTN_SAVEANDNEW));
+			break;
+		
+		case "SaveAsCopy":
+			click(driver, By.xpath(Interfaces.NewCatetoryPage.BTN_SAVEASCOPY));
+			break;
+			
+		case "Cancel":
+			click(driver, By.xpath(Interfaces.NewCatetoryPage.BTN_CANCEL));
+			break;
+		case "":
+		case "SaveAndClose":
+			click(driver, By.xpath(Interfaces.NewCatetoryPage.BTN_SAVEANDCLOSE));
+			break;
+		}		
+		
+
+	} 
+	
 	public void editCategory (String title, String button){
 		enter(driver, By.xpath(Interfaces.NewCatetoryPage.TXT_TITLE), title);
 		
