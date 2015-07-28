@@ -70,11 +70,14 @@ public class CLIENTS_TC012_to_TC016 extends Abstract_test {
 	
 	@Test (description = "Verify that user cannot create a new client after entering invalid email address")
 	public void TC_CLIENTS_015(){
-		log.info(" create a new client without entering the name of the client");
-		newclientPage.addClient(client4.getName(), client4.getContact(), client4.getEmail(), "", "");
+		log.info(" create a new client with invalid email address");
+		clientPage.addNewClient(client4.getName(), client4.getContact(), client4.getEmail(), "", "");
 		
+		log.info(" The color of Client name textbox changes to red");
 		verifyTrue(newclientPage.isTXTEMAILChangedtoRed(), "The color of Client name textbox changes to red");
-		verifyFalse(clientPage.isClientcreated(client4.getName()), "New client is not created");
+		
+		log.info("New client is not created");
+		verifyTrue(clientPage.isClientNotInGrid(client4.getName()), "New client is not created");
 		
 	}
 	
