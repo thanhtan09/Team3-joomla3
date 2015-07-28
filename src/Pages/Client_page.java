@@ -547,7 +547,7 @@ public class Client_page extends Abstract_page {
 				By.xpath(Interfaces.ClientPage.TABLE_TR));
 		int dis = Integer.parseInt(display);
 
-		if (count <= dis ) {
+		if (count == dis ) {
 				
 				return true;
 			}
