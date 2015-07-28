@@ -14,12 +14,11 @@ public class CLIENTS_TC012_to_TC016 extends Abstract_test {
 	private Home_page homePage;
 	private Client_page clientPage;
 	private NewClient_page newclientPage;
-	//private String client1;
+
 	
 	@BeforeClass
 	public void setup(){
 		driver = openJoomla();
-		//client1 = client.getName();
 	}
 	
 	@Test (description = "Verify that user can browse 'New client help' page")
@@ -54,10 +53,7 @@ public class CLIENTS_TC012_to_TC016 extends Abstract_test {
 		log.info("Create a copy client banner");
 		newclientPage.addClient(client2.getName(), "", "", "", "SaveAsCopy");
 		
-		verifyTrue(clientPage.isMessageDisplay(),"Client successfully saved");
-				
-		clientPage.clickCancel();
-		
+		verifyTrue(clientPage.isMessageDisplay(),"Client successfully saved");		
 		verifyTrue(clientPage.isMultiClientsDisplay(client2.getName(), client.getName()), " A new category is created without replacing the old client");
 		
 	}
@@ -78,16 +74,15 @@ public class CLIENTS_TC012_to_TC016 extends Abstract_test {
 		newclientPage.addClient(client4.getName(), client4.getContact(), client4.getEmail(), "", "");
 		
 		verifyTrue(newclientPage.isTXTEMAILChangedtoRed(), "The color of Client name textbox changes to red");
-		
-		clientPage.clickCancel();
 		verifyFalse(clientPage.isClientcreated(client4.getName()), "New client is not created");
-		clientPage.clickClear();
+		
 	}
 	
 	@Test (description = "Verify that user can change the quantity of items displayed in banner table")
 	public void TC_CLIENTS_016(){
 		
-		
+		log.info ("Quantity of items displayed in table is changed");
+		verifyTrue(clientPage.isClientDisplayedInTable("20"),"Quantity of items displayed in table is changed");
 		
 	}
 	
