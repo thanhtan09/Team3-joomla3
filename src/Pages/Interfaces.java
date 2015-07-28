@@ -52,6 +52,10 @@ public class Interfaces {
 		public static final String CHECKBOX_1 = "//input[@id='cb0']";
 		public static final String LNK_SORTID = "//a[contains(text(), 'ID')]"; 
 		public static final String BTN_CLEAR = "//button[contains(text(),'Clear')]";
+		public static final String BTN_PROCESS = "//button[contains(text(), 'Process')]";
+		public static final String RAD_COPY = "//input[@id='batch[move_copy]c']";
+		public static final String RAD_MOVE = "//input[@id='batch[move_copy]m']";
+		public static final String DROP_CATEFORCOPYORMOVE = "//select[@id='batch-category-id']";
 	}
 
 	/*
@@ -163,6 +167,7 @@ public class Interfaces {
 		public static final String BTN_HELP = "//li[@id='toolbar-help']/a/span";
 		public static final String BTN_CANCEL = "//li[@id='toolbar-cancel']/a/span";
 		public static final String BTN_SAVEASCOPY = "//li[@id='toolbar-save-copy']/a/span";
+		
 	}
 	/*
 	 * Element in Banner page
