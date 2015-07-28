@@ -157,8 +157,6 @@ public class NewClient_page extends Abstract_page{
 	public boolean isTXTEMAILChangedtoRed(){
 		String txt_attr = driver.findElement(By.xpath(".//*[@id='jform_" + "email" + "']")).getAttribute("aria-invalid").toString();
 			  Boolean check = txt_attr.equals("true");
-			  if(isControlExist(driver, By.xpath(Interfaces.NewClientPage.BTN_CANCEL)))
-					click(driver, By.xpath(Interfaces.NewClientPage.BTN_CANCEL));
 			  return check;	
 		}
 	
