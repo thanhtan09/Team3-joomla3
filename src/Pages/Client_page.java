@@ -50,8 +50,8 @@ public class Client_page extends Abstract_page {
 
 		String cell = getText(driver,
 				By.xpath(Interfaces.BannerPage.TABLE_TR + "[1]/td[2]/a"));
-
-		if (cell.equals(client))
+		clickClear();	
+		if (cell.equals(client))	
 			return true;
 		return false;
 	}
@@ -492,6 +492,9 @@ public class Client_page extends Abstract_page {
 	 */
 	public boolean isMultiClientsDisplay(String _client1, String _client2) {
 
+		if(isControlExist(driver, By.xpath(Interfaces.NewClientPage.BTN_CANCEL)))
+			click(driver, By.xpath(Interfaces.NewClientPage.BTN_CANCEL));
+		
 		searchClient(_client1);
 
 		String cell = getText(driver,
@@ -526,4 +529,28 @@ public class Client_page extends Abstract_page {
 
 		click(driver, By.xpath(Interfaces.ClientPage.BTN_CLEAR));
 	}
+	
+	
+	/*
+	 * Is Quantity of items displayed in table is changed
+	 * 
+	 * Author: Nga Nguyen
+	 */
+	public boolean isClientDisplayedInTable(String display) {
+
+		if (getText(driver, By.xpath(Interfaces.ClientPage.TXT_SEARCH)) != null)
+			enter(driver, By.xpath(Interfaces.ClientPage.TXT_SEARCH), "");
+
+			select(driver, By.xpath(Interfaces.ClientPage.DROP_DISPLAY), display);
+		
+		int count = countElement(driver,
+				By.xpath(Interfaces.ClientPage.TABLE_TR));
+		int dis = Integer.parseInt(display);
+
+		if (count <= dis ) {
+				
+				return true;
+			}
+			return false;
+		}
 }
