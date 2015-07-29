@@ -17,6 +17,7 @@ public class Article_page extends Abstract_page {
 	private String MESSAGECHECKIN = "1 article successfully checked in";
 	private String HELP_TITLE = "Joomla! Help";
 
+
 	// Status
 	private String STATUS_TRASHED = "Trashed";
 	private String STATUS_ARCHIVED = "Archived";
@@ -26,6 +27,9 @@ public class Article_page extends Abstract_page {
 	private String FRATURED = "Featured article";
 	private String UNFRATURED = "Unfeatured article";
 	private String ACCESS_PUBLIC = "Public";
+	private String DEFAULTACCESS = "- Select Access -";
+	private String DEFAULTCATEGORY = "- Select Category -";
+
 
 	public Article_page(WebDriver driver) {
 		this.driver = driver;
@@ -47,22 +51,6 @@ public class Article_page extends Abstract_page {
 
 	}
 	
-	/*
-	 * Add multi articles
-	 * 
-	 * Author: Nga Nguyen
-	 */
-	public void addMultiArticle(String _title, String _category, String _status,
-			String _content, String _image, String button){
-		for(int i=1;i<=2;i++){
-			clickNewbutton();
-
-			NewArticle_page newarticle = Factory_page.getNewArticlePage(driver);
-
-			newarticle.addNewArticle(_title + i, _category, _status, _content, _image,
-					button);
-			}
-	}
 
 	/*
 	 * Click on New button
@@ -672,12 +660,21 @@ public class Article_page extends Abstract_page {
 	 * Author: Nga Nguyen
 	 * Move article to Category
 	 */
-	public void moveArticlestoCate(String _article, String _cate){
+	public void actionArticlestoCate(String _article, String _cate, String button){
 		
 		searchforArticle(_article);
 		click(driver, By.xpath(Interfaces.ArticlePage.CHECKBOX_ALL));
 		select(driver, By.xpath(Interfaces.ArticlePage.DROP_CATEFORCOPYORMOVE), _cate);
-		click(driver, By.xpath(Interfaces.ArticlePage.RAD_MOVE));
+		
+		switch (button) {
+		case "Move":
+			click(driver, By.xpath(Interfaces.ArticlePage.RAD_MOVE));
+			break;
+		case "Copy":
+			click(driver, By.xpath(Interfaces.ArticlePage.RAD_COPY));
+			break;
+		}
+		
 		click(driver, By.xpath(Interfaces.ArticlePage.BTN_PROCESS));
 	}
 	
@@ -698,11 +695,75 @@ public class Article_page extends Abstract_page {
 					driver,
 					By.xpath(Interfaces.ArticlePage.TABLE_TR + "[" + i
 							+ "]/td[" + 2 + "]/a"));
-			if (cell.equals(_article)) {
+			if (cell.equals(_article + i)) {
 				show = true;
 				break;
 			}
+			
 		}
 			return show;
 	}
+	
+	/*
+	 * Set Access Level
+	 * Author: Nga Nguyen
+	 */
+	public void accessLevel (String _article, String _level){
+		
+		searchforArticle(_article);
+		click(driver, By.xpath(Interfaces.ArticlePage.CHECKBOX_ALL));
+		select(driver, By.xpath(Interfaces.ArticlePage.DROP_ACCESS_BOTTOM), _level);	
+		click(driver, By.xpath(Interfaces.ArticlePage.BTN_PROCESS));
+	}
+	
+	/*
+	 * Is Selected Articles moved to Cate
+	 * Author: Nga Nguyen
+	 */
+	public boolean isAccessLeveltoArticles (String _article, String _level){
+		
+		boolean show = false;
+		select(driver, By.xpath(Interfaces.ArticlePage.DROP_ACCESS), _level);
+
+		int iCount = 0;
+		iCount = countElement(driver,
+				By.xpath(Interfaces.ArticlePage.TABLE_TR));
+		for (int i = 1; i <= iCount; i++) {
+			String cell = getText(
+					driver,
+					By.xpath(Interfaces.ArticlePage.TABLE_TR + "[" + i
+							+ "]/td[" + 2 + "]/a"));
+			if (cell.equals(_article + i)) {
+				show = true;
+				break;
+			}
+		
+		}
+			return show;
+	}
+	
+	/*
+	 * Delete all articles
+	 * Author: Nga Nguyen
+	 */
+	public void deleteAllArticles(String _article) {
+		
+		select(driver, By.xpath(Interfaces.ArticlePage.DROP_STATUS), "All");
+		select(driver, By.xpath(Interfaces.ArticlePage.DROP_ACCESS), DEFAULTACCESS);
+		select(driver, By.xpath(Interfaces.ArticlePage.DROP_CATE), DEFAULTCATEGORY);
+		
+		searchforArticle(_article);
+		
+		click(driver, By.xpath(Interfaces.ArticlePage.CHECKBOX_ALL));
+		click(driver, By.xpath(Interfaces.ArticlePage.BTN_TRASH));
+	
+		select(driver, By.xpath(Interfaces.ArticlePage.DROP_STATUS), STATUS_TRASHED);
+		click(driver, By.xpath(Interfaces.ArticlePage.CHECKBOX_ALL));
+
+		click(driver, By.xpath(Interfaces.ArticlePage.BTN_EMPTYTRASH));
+			waitControlExist(driver,
+							By.xpath(Interfaces.ArticlePage.CONTROL_MESSAGE
+							+ "[contains(text(),'" + MESSAGEDELETE + "')]"));
+	}
+	
 }
