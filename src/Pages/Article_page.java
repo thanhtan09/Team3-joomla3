@@ -744,7 +744,8 @@ public class Article_page extends Abstract_page {
 	
 	/*
 	 * Delete all articles
-	 * Author: Nga Nguyen
+	 * 
+	 * Author: Nga Nguyen.
 	 */
 	public void deleteAllArticles(String _article) {
 		
