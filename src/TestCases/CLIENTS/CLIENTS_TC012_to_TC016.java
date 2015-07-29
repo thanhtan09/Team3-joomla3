@@ -38,7 +38,7 @@ public class CLIENTS_TC012_to_TC016 extends Abstract_test {
 		
 	}
 	
-	@Test (description = "Verify that user can creat a new client by using 'Save as Copy' button")
+	@Test (description = "Verify that user can creat a new client by using 'Save as Copy' button", dependsOnMethods="TC_CLIENTS_012")
 	public void TC_CLIENTS_013(){
 		log.info("Create a client banner");
 		clientPage.addNewClient(client.getName(), client.getContact(), client.getEmail(), "", "Save");
@@ -58,8 +58,9 @@ public class CLIENTS_TC012_to_TC016 extends Abstract_test {
 		
 	}
 	
-	@Test (description = "Verify that user cannot create a new client without entering the name of the client")
+	@Test (description = "Verify that user cannot create a new client without entering the name of the client", dependsOnMethods="TC_CLIENTS_012")
 	public void TC_CLIENTS_014(){
+		
 		log.info(" create a new client without entering the name of the client");
 		clientPage.addNewClient("", client.getContact(), client.getEmail(), "", "");
 		newclientPage = Factory_page.getNewClientPage(driver);
@@ -68,8 +69,9 @@ public class CLIENTS_TC012_to_TC016 extends Abstract_test {
 	
 	}
 	
-	@Test (description = "Verify that user cannot create a new client after entering invalid email address")
+	@Test (description = "Verify that user cannot create a new client after entering invalid email address", dependsOnMethods="TC_CLIENTS_012")
 	public void TC_CLIENTS_015(){
+		
 		log.info(" create a new client with invalid email address");
 		clientPage.addNewClient(client4.getName(), client4.getContact(), client4.getEmail(), "", "");
 		
@@ -81,7 +83,7 @@ public class CLIENTS_TC012_to_TC016 extends Abstract_test {
 		
 	}
 	
-	@Test (description = "Verify that user can change the quantity of items displayed in banner table")
+	@Test (description = "Verify that user can change the quantity of items displayed in banner table", dependsOnMethods="TC_CLIENTS_012")
 	public void TC_CLIENTS_016(){
 		
 		log.info ("Quantity of items displayed in table is changed");
