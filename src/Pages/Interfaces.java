@@ -40,6 +40,7 @@ public class Interfaces {
 		public static final String BTN_TRASH = "//li[@id='toolbar-trash']/a/span";
 		public static final String BTN_EMPTYTRASH = "//li[@id='toolbar-delete']/a/span";		
 		public static final String DROP_STATUS = "//select[@name='filter_published']";
+		public static final String DROP_ACCESS = "//select[@name='filter_access']";
 		public static final String CONTROL_MESSAGE = "//dd[@class='message message']/ul/li";
 		public static final String TABLE = "//table[@class='adminlist']";
 		public static final String TABLE_TR = "//table[@class='adminlist']/tbody/tr";	
@@ -56,6 +57,7 @@ public class Interfaces {
 		public static final String RAD_COPY = "//input[@id='batch[move_copy]c']";
 		public static final String RAD_MOVE = "//input[@id='batch[move_copy]m']";
 		public static final String DROP_CATEFORCOPYORMOVE = "//select[@id='batch-category-id']";
+		public static final String DROP_ACCESS_BOTTOM = "//select[@id='batch-access']";
 		public static final String CHECKBOX_ALL = "//input[@name ='checkall-toggle']";
 		public static final String DROP_CATE = "//select[@name ='filter_category_id']";
 	}
