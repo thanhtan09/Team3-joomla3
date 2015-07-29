@@ -95,7 +95,6 @@ public class CATEGORY_TC010_to_013 extends Abstract_test {
 	@AfterClass
 	public void end (){
 		
-		
 		categoriesPage.deleteCategory(category.getTitle());
 		categoriesPage.deleteCategory(category2.getTitle());
 		categoriesPage.deleteCategory(category3.getTitle());
