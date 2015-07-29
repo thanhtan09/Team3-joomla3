@@ -12,7 +12,7 @@ import Databases.*;
 public class ReadData {
 
 	private final String fileName = "src/Databases/data.xls";
-	private String URL,IE,Chrome;
+	private String URL;
 
 	/*
 	 * Get username and pass base on user

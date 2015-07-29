@@ -20,7 +20,7 @@ public abstract class Abstract_test {
 	
 	//Data
 	protected ReadData data = new ReadData();
-	protected String url;
+	protected String url, browser;
 	protected User user;
 	
 	//Status
