@@ -20,7 +20,7 @@ public abstract class Abstract_test {
 	
 	//Data
 	protected ReadData data = new ReadData();
-	protected String url, browser;
+	protected String url, browsers;
 	protected User user;
 	
 	//Status
@@ -51,16 +51,21 @@ public abstract class Abstract_test {
 		//Get data
 		getData();
 		
-		//Start Joomla on Firefox
-		driver = new FirefoxDriver();
+		if(browsers.equals("FIREFOX")){
+			System.out.print(browsers);
+			driver = new FirefoxDriver();
+		}
 		
-		//Start Joomla on Chrome
-		//System.setProperty("webdriver.chrome.driver", "driver/chromedriver.exe");
-        //driver = new ChromeDriver();   
+		if(browsers.equals("CHROME")){
+			System.setProperty("webdriver.chrome.driver", "driver/chromedriver.exe");
+	        driver = new ChromeDriver();  
+		}
+		 
 		
-		//Start Joomla on IE
-		//System.setProperty("webdriver.ie.driver", "driver/IEDriverServer.exe");
-        //driver=new InternetExplorerDriver();
+		if(browsers.equals("IE")){
+			System.setProperty("webdriver.ie.driver", "driver/IEDriverServer.exe");
+	        driver=new InternetExplorerDriver();
+		}
 		
 		url = data.getUrl("Logigear_url");
 		driver.get(url);
@@ -144,6 +149,7 @@ public abstract class Abstract_test {
 	 */
 	public void getData(){
 		user = data.getUser("Tan");
+		browsers = data.getBrowser();
 		article = data.getArticle("Article1");
 		article2 = data.getArticle("Article2");
 		article3 = data.getArticle("Article3");

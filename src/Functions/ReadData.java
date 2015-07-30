@@ -12,7 +12,7 @@ import Databases.*;
 public class ReadData {
 
 	private final String fileName = "src/Databases/data.xls";
-	private String URL;
+	private String URL, BROWSER;
 
 	/*
 	 * Get username and pass base on user
@@ -93,8 +93,8 @@ public class ReadData {
 						Cell category = sheet.getCell(2, row);
 						Cell status = sheet.getCell(3, row);
 						Cell content = sheet.getCell(4, row);
-						Cell image = sheet.getCell(5,row);
-						
+						Cell image = sheet.getCell(5, row);
+
 						article.setTitle(title.getContents());
 						article.setCategory(category.getContents());
 						article.setStatus(status.getContents());
@@ -114,7 +114,7 @@ public class ReadData {
 
 		return article;
 	}
-	
+
 	/*
 	 * Get Client
 	 * 
@@ -122,7 +122,7 @@ public class ReadData {
 	 * 
 	 * Author: Tan Vo
 	 */
-	public Client getClient(String _client){
+	public Client getClient(String _client) {
 		Client client = new Client();
 		Workbook workbook;
 		try {
@@ -146,7 +146,7 @@ public class ReadData {
 						Cell contact = sheet.getCell(2, row);
 						Cell email = sheet.getCell(3, row);
 						Cell status = sheet.getCell(4, row);
-						
+
 						client.setName(name.getContents());
 						client.setContact(contact.getContents());
 						client.setEmail(email.getContents());
@@ -165,13 +165,13 @@ public class ReadData {
 
 		return client;
 	}
-	
+
 	/*
 	 * Get Category
 	 * 
 	 * Author: Tan Vo
 	 */
-	public Category getCategory(String cate){
+	public Category getCategory(String cate) {
 		Category category = new Category();
 		Workbook workbook;
 		try {
@@ -192,10 +192,10 @@ public class ReadData {
 
 					if (cell.getContents().equals(cate)) {
 						Cell title = sheet.getCell(1, row);
-						Cell status = sheet.getCell(2,  row);
-						Cell access = sheet.getCell(3,  row);
-						Cell language = sheet.getCell(4,  row);
-						
+						Cell status = sheet.getCell(2, row);
+						Cell access = sheet.getCell(3, row);
+						Cell language = sheet.getCell(4, row);
+
 						category.setTitle(title.getContents());
 						category.setStatus(status.getContents());
 						category.setAccess(access.getContents());
@@ -214,13 +214,13 @@ public class ReadData {
 
 		return category;
 	}
-	
+
 	/*
 	 * Get Banner
 	 * 
 	 * Author: Tan Vo
 	 */
-	public Banner getBanner(String ban){
+	public Banner getBanner(String ban) {
 		Banner banner = new Banner();
 		Workbook workbook;
 		try {
@@ -243,8 +243,8 @@ public class ReadData {
 						Cell name = sheet.getCell(1, row);
 						Cell category = sheet.getCell(2, row);
 						Cell client = sheet.getCell(3, row);
-						Cell status = sheet.getCell(4,row);
-						
+						Cell status = sheet.getCell(4, row);
+
 						banner.setName(name.getContents());
 						banner.setCategory(category.getContents());
 						banner.setClient(client.getContents());
@@ -263,13 +263,13 @@ public class ReadData {
 
 		return banner;
 	}
-	
+
 	/*
 	 * Get Contact
 	 * 
 	 * Author: Nga Nguyen
 	 */
-	public Contact getContact(String cont){
+	public Contact getContact(String cont) {
 		Contact contact = new Contact();
 		Workbook workbook;
 		try {
@@ -292,8 +292,8 @@ public class ReadData {
 						Cell name = sheet.getCell(1, row);
 						Cell category = sheet.getCell(2, row);
 						Cell status = sheet.getCell(3, row);
-						Cell image = sheet.getCell(4,row);
-						
+						Cell image = sheet.getCell(4, row);
+
 						contact.setName(name.getContents());
 						contact.setCategory(category.getContents());
 						contact.setStatus(status.getContents());
@@ -312,7 +312,7 @@ public class ReadData {
 
 		return contact;
 	}
-	
+
 	/*
 	 * Get url
 	 * 
@@ -354,7 +354,44 @@ public class ReadData {
 		}
 		return URL;
 	}
-	
+
+	/*
+	 * Get browser
+	 * 
+	 * Parameter: where
+	 * 
+	 * Author: Tan Vo
+	 */
+	public String getBrowser() {
+		Workbook workbook;
+		try {
+			// create workbook to open file
+			workbook = Workbook.getWorkbook(new File(fileName));
+
+			// get sheet want read
+			Sheet sheet = workbook.getSheet(0);
+
+			// read data in each cell
+			Cell browser1 = sheet.getCell(2, 1);
+			Cell browser2 = sheet.getCell(3, 1);
+			Cell browser3 = sheet.getCell(4, 1);
+			if (browser1.getContents().equals("yes"))
+				BROWSER = "CHROME";
+			if (browser2.getContents().equals("yes"))
+				BROWSER = "IE";
+			if (browser3.getContents().equals("yes"))
+				BROWSER = "FIREFOX";
+			// close
+			workbook.close();
+
+		} catch (BiffException e) {
+			System.out.println("File not found\n" + e.toString());
+		} catch (IOException e) {
+			System.out.println("File not found\n" + e.toString());
+		}
+		return BROWSER;
+	}
+
 	/*
 	 * Get weblink data
 	 * 
@@ -386,9 +423,9 @@ public class ReadData {
 						Cell title = sheet.getCell(1, row);
 						Cell url = sheet.getCell(2, row);
 						Cell content = sheet.getCell(3, row);
-						Cell status = sheet.getCell(4,row);
+						Cell status = sheet.getCell(4, row);
 						Cell cate = sheet.getCell(5, row);
-						
+
 						wblink.setName(title.getContents());
 						wblink.setUrl(url.getContents());
 						wblink.setContent(content.getContents());
@@ -408,6 +445,5 @@ public class ReadData {
 
 		return wblink;
 	}
-	
 
 }
