@@ -28,10 +28,6 @@ public class NewArticle_page extends Abstract_page {
 			selectStatus(_status);
 		}
 		enterArticleText(_content);
-
-		if (_image != "") {
-			insertImage(_image);
-		}
 		switch (button) {
 		case "Save":
 			clickSavebutton();
@@ -46,24 +42,6 @@ public class NewArticle_page extends Abstract_page {
 		if(getPageTitle(driver).equals(NEWARTICLEPAGE_TITLE))
 			return true;
 		return false;
-	}
-
-	/*
-	 * Edit an article
-	 * 
-	 * Parameter: title, category, status, content
-	 * 
-	 * Author: Tan Vo
-	 */
-	public void insertImage(String image) {
-
-		click(driver, By.xpath(Interfaces.NewArticlePage.BTN_IMAGE));
-		driver.switchTo().frame(
-				driver.findElement(By.xpath("//iframe[@frameborder='0']")));
-		switchFrame(driver, By.xpath(Interfaces.NewArticlePage.FRAME_IMAGE));
-		click(driver,
-				By.xpath("//div[@class='item']/a[@title='" + image + "']/img"));
-
 	}
 
 	/*
