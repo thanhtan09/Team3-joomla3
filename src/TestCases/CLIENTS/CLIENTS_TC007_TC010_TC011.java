@@ -34,7 +34,7 @@ public class CLIENTS_TC007_TC010_TC011 extends Abstract_test{
 		verifyTrue(clientPage.isHelpPage(), "Banner client help page appears");
 	}
 	
-	@Test (description = "Verify that user can check in a client")
+	@Test (description = "Verify that user can check in a client", dependsOnMethods = "TC_CLIENTS_007")
 	public void TC_CLIENTS_010(){
 		
 		log.info("Add a new client");
@@ -69,7 +69,7 @@ public class CLIENTS_TC007_TC010_TC011 extends Abstract_test{
 		
 	}
 	
-	@Test (description = "Verify that user can create many clients by using Save & New button")
+	@Test (description = "Verify that user can create many clients by using Save & New button", dependsOnMethods = "TC_CLIENTS_007")
 	public void TC_CLIENTS_011(){
 		
 		log.info("Add a new client");
